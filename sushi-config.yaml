@@ -63,8 +63,8 @@ pages:
   core-concepts.md:
     title: Core Concepts
     generation: markdown
-  Representing-Request-State.md:
-    title: Communicating the Status of a Request
+  Representing-Workflow-State.md:
+    title: Communicating the Workflow Status
     generation: markdown
   patterns-overview.md:
     title: Overview of Workflow Patterns
@@ -134,7 +134,7 @@ menu:
   Background: background.html
   Core Concepts: 
     Concepts: core-concepts.html
-    Communicating the Status of a Request: Representing-Request-State.html
+    Communicating the Workflow Status: Representing-Workflow-State.html
   Workflow Patterns: 
     Overview of Workflow Patterns: patterns-overview.html
     Simple Request: simple-request.html

@@ -7,6 +7,22 @@ If the performer declines to perform the service (or fails to respond within a p
 
 TODO: Swap these out for the simple examples just for request with acceptance
 
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Request with Fulfiller Acceptance (Subscriptions - Task at Fulfiller) <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig1" data-toggle="collapse">+</button></div>
+  </div>
+  <div id="fig1" class="panel-collapse collapse">
+    <div class="panel-body">
+        <figure>
+        {%include request-fulfiller-subscriptions-task-at-fulfiller.svg%}
+        </figure>
+        <br clear="all"/>
+    </div>
+  </div>
+</div>
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">Request with Fulfiller Acceptance (Messaging - Task at Placer) <button type="button" class="btn btn-default" style="float: right;" data-target="#fig2" data-toggle="collapse">+</button></div>
@@ -22,18 +38,5 @@ TODO: Swap these out for the simple examples just for request with acceptance
 </div>
 
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">Request with Fulfiller Acceptance (Subscriptions - Task at Fulfiller) <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig1" data-toggle="collapse">+</button></div>
-  </div>
-  <div id="fig1" class="panel-collapse collapse">
-    <div class="panel-body">
-        <figure>
-        {%include request-fulfiller-subscriptions-task-at-fulfiller.svg%}
-        </figure>
-        <br clear="all"/>
-    </div>
-  </div>
-</div>
 
 
