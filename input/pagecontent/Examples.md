@@ -5,10 +5,11 @@ This section includes examples of how the patterns described elsewhere in this I
 
 ### Example Scenarios
 
-|Scenario| Description | Fulfiller Selection| Tracking |
-|---|---|----|--- |
-|Placer-assigned Lab order| <br>etc.<br> | Placer-assigned | Task tracking|
+| Scenario | Description | Fulfiller Selection | Tracking |
+|---|---|----|---|
+|Placer-assigned Lab order| etc. | Placer-assigned | Task tracking |
 {:.table-bordered .table-sm .table-striped }
+
 
 Examples include:
 * An order for a simple test to a specific laboratory to which the patient will present for collection - this example corresponds to the first scenario described in this IG.
