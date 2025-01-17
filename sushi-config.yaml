@@ -161,20 +161,22 @@ menu:
   Background: background.html
   Core Concepts: 
     Concepts: core-concepts.html
-    Communicating the Workflow Status: Representing-Workflow-State.html
+    Communicating the Workflow Status: workflow-state-overview.html
   Workflow Patterns: 
     Overview of Workflow Patterns: patterns-overview.html
-    Simple Request: simple-request.html
-    Request with Acceptance: request-with-acceptance.html
-    Request with Multiple Performers: request-with-multiple-potential-performers.html
-    Request with Multiple Performers, Bid: request-with-multiple-potential-performers-with-bidding.html
-    Requests to a Central Service: requests-to-central-coordinator.html
-    Patient-Mediated Requests: patient-mediated-requests.html
-    Cancelling and Modifying Requests: Cancelling-and-Modifying-Requests.html
-    Fulfiller Requests for Additional Info: Fulfiller_Request_for_Additional_Info.html
+    Fulfiller Selection:
+      Simple Request: simple-request.html
+      Request with Acceptance: request-with-acceptance.html
+      Request with Multiple Performers: request-with-multiple-potential-performers.html
+      Request with Multiple Performers, Bid: request-with-multiple-potential-performers-with-bidding.html
+      Requests to a Central Service: requests-to-central-coordinator.html
+      Patient-Mediated Requests: patient-mediated-requests.html
+    Variations:
+      Cancelling and Modifying Requests: cancelling-and-modifying-Requests.html
+    Fulfiller Requests for Additional Info: fulfiller-request-for-additional-info.html
     Sharing Outputs of Referrals and Orders: sharing-outputs.html
     
-  Examples: Examples.html
+  Examples: examples.html
   Artifacts: artifacts.html
 
 
