@@ -4,7 +4,10 @@ TO DO: Workflow state vs Order state
 The below represents a set of states as triggered by a request. Not all of these states states will apply to all workflows or use-cases. This guidance builds on the [Task State 
 Machine]([url](https://build.fhir.org/workflow-communications.html#12.10.2)) and is intended to provide a way to communicate the status of a request regardless of the choice of FHIR exhcange mechanism.
 
+
 ### Common workflow states
+
+
 | Workflow State to Represent  | Request resource representation  | Task resource representation  | Event resources representation | Descriptions   |   |
 | ------------| -----| -------| ------| ----|---|
 | Request Placed (no designated performer)        | Request:<br>- Status: active<br>- Intent: order<br>- 0..* SupportingInfo   | Task:<br>- Status: requested<br>- Focus: [the ServiceRequest]<br>- Performer: [null]<br>- Code: fulfill<br>- Intent: order<br>- 0..* Input  | *Not set*  | This state can be a starting point for cases where the patient chooses the performer, cases when someone can *claim* the task, etc.       ||
@@ -20,3 +23,5 @@ Machine]([url](https://build.fhir.org/workflow-communications.html#12.10.2)) and
 | Complete          | Request:<br>- Status: completed<br>- Intent: order  | Task:<br>- Status: completed<br>- Performer: [specified]<br>- Code: fulfill<br>- Intent: order<br>- 0..* Output (DiagnosticReport, Observations, DocumentReference, CarePlan, etc.)   | Complete (if service has an output) |    ||
 {:.table-bordered .table-hover .table-sm}
 
+
+<br>
