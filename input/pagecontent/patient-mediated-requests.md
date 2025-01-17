@@ -8,5 +8,4 @@ Examples:
 
 <figure>
   {% include patient-selection.svg %}
-  <figcaption>Example with styles and other features</figcaption>
 </figure>
