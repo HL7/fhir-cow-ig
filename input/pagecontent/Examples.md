@@ -1,5 +1,15 @@
 This section includes examples of how the patterns described elsewhere in this IG could be applied to particular use-cases. These examples are non-binding, and are intended only to illustrate to spec authors the expected use of the concepts here. 
 
+
+### Example instances
+
+### Example Scenarios
+
+|Scenario| Description | Fulfiller Selection| Tracking |
+|---|---|----|--- |
+|Placer-assigned Lab order| <br>etc.<br> | Placer-assigned | Task tracking|
+{:.table-bordered .table-sm .table-striped }
+
 Examples include:
 * An order for a simple test to a specific laboratory to which the patient will present for collection - this example corresponds to the first scenario described in this IG.
 * A result that, per protocol, should require a reflex test

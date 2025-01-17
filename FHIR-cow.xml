@@ -4,23 +4,28 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="ExampleScenario/example-laborder" key="ExampleScenario-example-laborder" name="Placer-assigned Lab order tracking with Task"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="background" name="Background - Scope and General Principles"/>
-<page key="Cancelling-and-Modifying-Requests" name="Cancelling and Modifying Requests"/>
 <page key="index" name="Clinical Order Workflows - Home Page"/>
-<page key="Representing-Request-State" name="Communicating the Status of a Request"/>
 <page key="core-concepts" name="Core Concepts"/>
-<page key="Examples" name="Examples"/>
-<page key="Fulfiller_Request_for_Additional_Info" name="Fulfiller Request for Additional Info"/>
-<page key="patterns-overview" name="Overview of Workflow Patterns"/>
+<page key="examples" name="Examples Index"/>
+<page key="fhir-exchange-architectures" name="FHIR data exchange architectures"/>
+<page key="fulfiller-request-for-additional-info" name="Fulfiller Request for Additional Info"/>
+<page key="fulfiller-selection" name="Fulfiller Selection"/>
+<page key="order-grouping" name="Order grouping"/>
+<page key="ordering-workflows" name="Ordering Workflows"/>
 <page key="patient-mediated-requests" name="Patient-Mediated Requests"/>
 <page key="request-with-acceptance" name="Request with Acceptance"/>
 <page key="request-with-multiple-potential-performers" name="Request with Multiple Potential Performers"/>
 <page key="request-with-multiple-potential-performers-with-bidding" name="Request with Multiple Potential Performers and Bidding"/>
 <page key="requests-to-central-coordinator" name="Requests to a Central Coordinator"/>
 <page key="sharing-outputs" name="Sharing Outputs from a Referral or Order"/>
-<page key="simple-request" name="Simple Request"/>
+<page key="placer-assignment" name="Simple Request"/>
 <page key="toc" name="Table of Contents"/>
+<page key="variations" name="Variations and Features"/>
+<page key="patterns-overview" name="Workflow Patterns"/>
+<page key="workflow-state-overview" name="Workflow Status overview"/>
 </specification>

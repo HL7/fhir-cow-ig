@@ -1,0 +1,23 @@
+@startuml
+' Define components
+skinparam Linetype polyline
+'skinparam actorStyle awesome
+
+rectangle "\nRequestor\n" as R #PaleGreen
+rectangle "\nPotential Performer A\n" as A #LightBlue
+rectangle "\nPotential Performer B\n" as B #LightBlue
+rectangle "\nPotential Performer C\n" as C #LightBlue
+actor "Patient" as P
+
+A -d[hidden]- B
+B -d[hidden]- C
+A -d[hidden]- B
+B -d[hidden]- C
+
+R -r-> P: 1. Propose /\n Authorize\nService
+
+P .u. A : "Patient picks\npreferred provider\n(Pharmacy)"
+P --r-- B
+P .d. C : "             \n                          "
+
+@enduml

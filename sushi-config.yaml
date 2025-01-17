@@ -63,43 +63,70 @@ pages:
   core-concepts.md:
     title: Core Concepts
     generation: markdown
-  Representing-Workflow-State.md:
-    title: Communicating the Workflow Status
+  fhir-exchange-architectures.md:
+    title: FHIR data exchange architectures
     generation: markdown
+  workflow-state-overview.md:
+    title: Workflow Status overview
+    generation: markdown
+
   patterns-overview.md:
-    title: Overview of Workflow Patterns
+    title: Workflow Patterns
     generation: markdown
-    simple-request.md:
-      title: Simple Request
+    ordering-workflows.md:
+      title: Ordering Workflows
       generation: markdown
-    request-with-acceptance.md:
-      title: Request with Acceptance
+
+    fulfiller-selection.md:
+      title: Fulfiller Selection
       generation: markdown
-    request-with-multiple-potential-performers.md:
-      title: Request with Multiple Potential Performers
+      placer-assignment.md:
+        title: Simple Request
+        generation: markdown
+      patient-mediated-requests.md:
+        title: Patient-Mediated Requests
+        generation: markdown
+      request-with-acceptance.md:
+        title: Request with Acceptance
+        generation: markdown
+      request-with-multiple-potential-performers.md:
+        title: Request with Multiple Potential Performers
+        generation: markdown
+      request-with-multiple-potential-performers-with-bidding.md:
+        title: Request with Multiple Potential Performers and Bidding
+        generation: markdown
+      requests-to-central-coordinator.md:
+        title: Requests to a Central Coordinator
+        generation: markdown
+
+    variations.md:
+      title: Variations and Features
       generation: markdown
-    request-with-multiple-potential-performers-with-bidding.md:
-      title: Request with Multiple Potential Performers and Bidding
+
+    order-grouping.md:
+      title: Order grouping
       generation: markdown
-    requests-to-central-coordinator.md:
-      title: Requests to a Central Coordinator
-      generation: markdown
-    patient-mediated-requests.md:
-      title: Patient-Mediated Requests
-      generation: markdown
-    Cancelling-and-Modifying-Requests.md:
-      title: Cancelling and Modifying Requests
-      generation: markdown
-    Fulfiller_Request_for_Additional_Info.md:
-      title: Fulfiller Request for Additional Info
-      generation: markdown
+
     sharing-outputs.md:
       title: Sharing Outputs from a Referral or Order
       generation: markdown
-      
+      fulfiller-request-for-additional-info.md:
+        title: Fulfiller Request for Additional Info
+        generation: markdown
+    
+#     documenting-workflows:
+#       title: Documenting Workflows
+#       generation: markdown
+   
+
+
+#     Cancelling-and-Modifying-Requests.md:
+#       title: Cancelling and Modifying Requests
+#      generation: markdown
+
 #  Example Use Cases:
-  Examples.md:
-    title: Examples
+  examples.md:
+    title: Examples Index
     generation: markdown
 
 

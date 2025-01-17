@@ -1,0 +1,31 @@
+@startuml
+start
+:        ...        ;
+:Request Placed 
+(no designated 
+performer);
+fork
+:Placer Instructs a
+Selected Performer;
+:Fulfiller Accepted;
+fork again
+:Notify multiple
+Potential Performers;
+:Fulfiller Selected;
+:Fulfiller Accepted;
+end fork
+
+:Potential Fulfiller Awaiting
+for Information;
+
+fork
+:In progress;
+fork again
+:Partial fulfillment;
+fork again
+:Preliminary
+fulfillment;
+end fork
+:Complete;
+stop
+@enduml
