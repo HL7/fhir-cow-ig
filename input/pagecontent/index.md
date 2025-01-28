@@ -3,7 +3,7 @@ This implementation guide provides basic guidance for how service-request fulfil
 
 This implementation guide defines specific exchanges to achieve workflow objectives. The main focus is on using a RESTful approach (with subscription notifications or polling used to share awareness of changes made on remote systems). Some environments may choose to implement these types of workflows using messaging or custom operations and this IG will expose the commonality of these approaches.
 
-The guidance provided here in terms of data flow and supporting structures should be consistently applied. For example, if the RESTful workflow approach to convey information uses Task, then the MessageHeader.focus or custom operation body should also make use of Task populated in the same manner.  Similarly, rules around what resource instances are controlled by which party should also be adhered to regardless of paradigm (e.g. the status of the original Request should not be updated by the filler).
+The guidance provided here in terms of data flow and supporting structures should be consistently applied. For example, if the RESTful workflow approach to convey information uses Task, then the MessageHeader.focus or custom operation body should also make use of Task populated in the same manner.  Similarly, rules around what resource instances are controlled by which party should also be adhered to regardless of paradigm (e.g. the original Request should not be updated by the filler).
 
 Documents (on their own) are not suitable for controlling workflows, although they may be used to report workflow results.  Documents do not 'ask' for action – some more active paradigm is required.
 
