@@ -21,7 +21,7 @@ Fulfiller <-- Fulfiller: Create Local Representation
 ||20||
 
 note over Placer,Fulfiller
-Based on business agreements, no confirmation needed of the HTTP status code. 
+Based on business agreements, no confirmation needed beyond the HTTP status code. 
 The Placer may assume the Fulfiller accepts the request. 
 end note
 
