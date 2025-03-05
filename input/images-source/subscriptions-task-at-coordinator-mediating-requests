@@ -1,0 +1,65 @@
+@startuml
+autonumber
+
+participant Placer order 10
+participant Coordinator order 20
+participant Fulfiller_A order 30 
+participant Fulfiller_B order 40
+
+note over Placer,Fulfiller_B: Assume client registration has taken place already, endpoints are known, subscriptions created (subscribing Placer to the Coordinator), etc. 
+
+== Create Request ==
+
+Placer --> Placer : Create local representation, ServiceRequest
+
+||20||
+
+Placer -> Coordinator: POST Task (A)
+
+Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential fulfillers for service
+
+Coordinator -> Fulfiller_A: POST Task (B) with rewritten URIs from Task (A)
+
+note over Coordinator, Fulfiller_A: Note: it is not required that the communication between the Coordinator\nand the Fullfillers be the same mechanism as that between the Placer and Coordinator
+
+Coordinator -> Fulfiller_B: POST Task (C) with rewritten URIs from Task (A)
+
+Fulfiller_A <- Fulfiller_A: Process requst, create internal representation. 
+
+group if additional information needed:
+
+    Fulfiller_A <- Fulfiller_A: Finds that additional information is needed
+    Fulfiller_A -> Coordinator: Query for supporting information 
+    Coordinator -> Coordinator: Rewrite query
+    Coordinator -> Placer: Query for additional information:
+    Placer -> Coordinator: Supply info
+    Coordinator -> Coordinator: rewrite responses
+    Coordinator -> Fulfiller_A: Supply info (before timeout)
+
+end
+
+Fulfiller_A -> Fulfiller_A: evaluate request. Update Task (B) with status
+
+Fulfiller_A -> Coordinator: SubscriptionStatus notification on Task (B) 
+
+Coordinator -> Coordinator: Update Task(A) 
+
+note over Coordinator, Placer: TODO - decide whether we need a profile for tracking status of individual requests
+
+Coordinator -> Placer: SubscriptionStatus notification indicating an\nupdate to their original Task (bid received or confirmed performer)
+
+group if placer must accept proposal:
+
+    Placer -> Placer: review proposal
+
+    Placer -> Coordinator: POST update to shared tracking Task A with updated status
+
+    Coordinator -> Fulfiller_A: POST update to shared tracking Task B with updated status
+
+end
+
+Fulfiller_A--> Fulfiller_A: Proceed to perform service
+
+
+||20||
+@enduml
