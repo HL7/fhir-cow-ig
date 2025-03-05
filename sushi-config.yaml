@@ -64,7 +64,7 @@ pages:
     title: Core Concepts
     generation: markdown
   workflow-state-overview.md:
-    title: Workflow State overview
+    title: Workflow State Overview
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
@@ -73,7 +73,7 @@ pages:
       title: Order Initiation
       generation: markdown
     order-grouping.md:
-      title: Order grouping
+      title: Order Grouping
       generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
@@ -97,13 +97,13 @@ pages:
       #   title: Requests to a Central Coordinator
       #   generation: markdown
     fulfiller-need-for-additional-info.md:
-      title: Fulfiller need for additional Info
+      title: Fulfillers Requesting Additional Information
       generation: markdown
     cancelling-and-modifying-requests.md:
-      title: Cancelling and modifying orders
+      title: Cancelling and Modifying Orders
       generation: markdown
     sharing-outputs.md:
-      title: Sharing outputs from an Order
+      title: Sharing Outputs from an Order or Referral
       generation: markdown
       
 
