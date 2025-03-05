@@ -40,7 +40,8 @@ This flow is equivalent to the normal flow up to the point that a placer first n
 
 This flow is equivalent to the normal flow through the step that a placer notifies an intended performer of an available service request. The potential fulfiller in this flow then notifies the placer of a proposal for a specific or alternative service. 
 
-This could be expected (such as a bid) or a proposed modification to the original request for which the fulfiller seegs approval. 
+This could be expected (such as a bid) or a proposed modification to the original request for which the fulfiller seeks approval (as in many cases, the placer need not be aware of the specifics of what the Fulfiller is performing).
+
 *	ServiceRequest (Original):
     *	Status: active
     *	Intent: order
