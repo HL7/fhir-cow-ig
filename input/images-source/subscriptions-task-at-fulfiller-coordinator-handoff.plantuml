@@ -1,1 +1,65 @@
+@startuml
+autonumber
 
+participant Placer order 10
+participant Coordinator order 20
+participant Fulfiller_A order 30 
+participant Fulfiller_B order 40
+
+note over Placer,Fulfiller_B: Assume client registration has taken place already, endpoints are known, subscriptions created (subscribing Placer to the Coordinator), etc. 
+
+== Create Request ==
+
+Placer --> Placer : Create local representation, ServiceRequest
+
+||20||
+
+Placer -> Coordinator: POST Task (A)
+
+Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential fulfillers for service
+
+Coordinator -> Coordinator: Determine by some criteria an\nintended performer (availability, etc.)
+
+Coordinator -> Placer: Inform Placer of potential performers
+note over Placer, Coordinator: SubscriptionStatus notification in this flow.\nTask (A).output of some kind? What? In some flows an\nappt. Organization?
+
+||20||
+Placer -> Placer: Lookup endpoint for Fulfiller from\nearlier coordination or Coordinator response
+
+Placer -> Fulfiller_A: Authenticate
+
+Placer -> Fulfiller_A: POST Task (B)
+
+note over Placer, Fulfiller_A: How to link this Task back to the earlier request. Just the ServiceRequest? 
+||20||
+Placer -> Placer: Lookup endpoint for Fulfiller from earlier coord.
+Placer -> Fulfiller_B: Authenticate -- in this example, Client Registration has already occurred
+
+Placer -> Fulfiller_B: POST Task (C)
+||20||
+note over Placer, Fulfiller_B: From here, equivalent to the multiple potential performers flow
+
+group if additional information needed:
+
+    Fulfiller_A -> Placer: Request additional information
+    Placer -> Fulfiller_A: supply requested information
+end
+
+Fulfiller_A -> Fulfiller_A: Evaluate request
+
+Fulfiller_A -> Fulfiller_A: Update Task(B) with intent to perform
+
+Fulfiller_A -> Placer: SubscriptionStatus notification on Task(B)
+
+group if Placer must approve:
+
+    Placer -> Placer: Review
+    Placer -> Fulfiller_A: POST Task Update
+end
+
+Placer -> Fulfiller_B: Update Task (C) that request closed
+
+Fulfiller_A --> Fulfiller_A: Proceed to perform service
+
+||20||
+@enduml
