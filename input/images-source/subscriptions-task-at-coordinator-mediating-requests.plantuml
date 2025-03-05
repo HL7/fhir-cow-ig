@@ -58,6 +58,8 @@ group if placer must accept proposal:
 
 end
 
+Coordinator -> Fulfiller_B: POST update request is closed
+
 Fulfiller_A--> Fulfiller_A: Proceed to perform service
 
 
