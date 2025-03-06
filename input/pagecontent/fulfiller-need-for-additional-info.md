@@ -22,12 +22,12 @@ Several features of the Subscriptions framework can be used to help with this. A
 A fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
 
 Fulfillers MAY specify the information which they are awaiting using Task.statusReason. Fulfillers may also indicate what information is needed by creating additional Task resources with:
-    * Commmunication.partOf referencing the shared coordination Task
-    * Communication.inResponseTo referencing an earlier communication, if present
-    * Communication.basedOn referencing the ServiceRequest (TODO - is this needed?)
-    * Communication.Recipient
-    * Communication.Sender
-    * Communicatoin.payload specifying the content of the message or the attachment, if available.
+* Commmunication.partOf referencing the shared coordination Task
+* Communication.inResponseTo referencing an earlier communication, if present
+* Communication.basedOn referencing the ServiceRequest (TODO - is this needed?)
+* Communication.Recipient
+* Communication.Sender
+* Communicatoin.payload specifying the content of the message or the attachment, if available.
 
 Such Communications may serve as a record of communications that via FHIR (such as a Communication.Create on the Placer's FHIR server by the Fulfiller) or simply a record of communication that occurred out of band. 
     
@@ -39,6 +39,6 @@ TODO - when to use Communication vs. CommunicationRequest
 Often, Fulfillers may have some instructions for the Placer of a request: they may ask that the Placer ensure the patient have a Covid test, ask that specified information like Consents be supplied, etc. 
 
 If these activities must be tracked as part of coordinating the original request for service, fulfillers may coordinate these additional Tasks for the Fulfiller by updating Task.businessStatus to an appropriate status and by creating additional Task resources with:
-    * Task.partOf referencing the shared coordination Task
-    * Task.performer specifying the Placer of the original ServiceRequest 
+* Task.partOf referencing the shared coordination Task
+* Task.performer specifying the Placer of the original ServiceRequest 
 
