@@ -22,30 +22,29 @@ Based on the workflow of interest, the performer may or may not notify the reque
 Examples: 
 [Scenario 1 - Placer-assigned Lab order tracking with Task](ExampleScenario-scenario1-lab-order.html)
 
-
-#### Example using Subscriptions with Task at Placer
+##### Task at Fulfiller
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Placer<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig1" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig2" data-toggle="collapse">+</button></div>
   </div>
-  <div id="fig1" class="panel-collapse collapse">
+  <div id="fig2" class="panel-collapse collapse">
     <div class="panel-body">
         <figure>
-        {%include subscriptions-no-decline-task-at-placer.svg%}
+        {%include no-decline-subscriptions-task-at-fulfiller.svg%}
         </figure>
         <br clear="all"/>
     </div>
   </div>
 </div>
 
-##### Example with Subscriptions with Task at Fulfiller
+#### Example using Task at Placer with Subscriptions
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig2" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Placer with Subscriptions<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig1" data-toggle="collapse">+</button></div>
   </div>
-  <div id="fig2" class="panel-collapse collapse">
+  <div id="fig1" class="panel-collapse collapse">
     <div class="panel-body">
         <figure>
         {%include subscriptions-no-decline-task-at-placer.svg%}
@@ -84,12 +83,12 @@ When a requestor can't be certain of whether the fulfiller will be willing to pe
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Placer<button type="button" class="btn btn-default" style="float: right;" data-target="#fig4" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig5" data-toggle="collapse">+</button></div>
   </div>
-  <div id="fig4" class="panel-collapse collapse">
+  <div id="fig5" class="panel-collapse collapse">
     <div class="panel-body">
         <figure>
-        {%include subscriptions-with-acceptance-task-at-placer.svg%}
+        {%include subscriptions-with-acceptance-task-at-fulfiller.svg%}
         </figure>
         <br clear="all"/>
     </div>
@@ -98,12 +97,12 @@ When a requestor can't be certain of whether the fulfiller will be willing to pe
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig5" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Placer with Subscriptions<button type="button" class="btn btn-default" style="float: right;" data-target="#fig4" data-toggle="collapse">+</button></div>
   </div>
-  <div id="fig5" class="panel-collapse collapse">
+  <div id="fig4" class="panel-collapse collapse">
     <div class="panel-body">
         <figure>
-        {%include subscriptions-with-acceptance-task-at-fulfiller.svg%}
+        {%include subscriptions-with-acceptance-task-at-placer.svg%}
         </figure>
         <br clear="all"/>
     </div>

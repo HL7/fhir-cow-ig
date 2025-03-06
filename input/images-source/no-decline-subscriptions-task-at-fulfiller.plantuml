@@ -32,7 +32,15 @@ Fulfiller <- Fulfiller : Create Output Document (of some\nform, if needed) and h
 
 Fulfiller <- Fulfiller: Update Task.Output
 
-Placer <- Fulfiller: send SubscriptionStatusNotification for Task update
+group if using Subscriptions:
+    Placer <- Fulfiller: send SubscriptionStatusNotification for Task update
+end
+
+note over Placer,Fulfiller: Note - implementers should be mindful of performance considerations to polling
+group if not using Subscriptions:
+    Placer -> Fulfiller: Poll Fulfiller periodically to see if Service complete
+    Fulfiller -> Placer: Respond with Info
+end
 
 Placer --> Placer : Create local-representation as needed
 @enduml

@@ -112,7 +112,7 @@ This section is provided for context and provides a brief overview of mechanisms
 **POST of a resource (RESTful FHIR Creates or Updates):**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
 * Actors need to pre-coordinate where the FHIR resources of interest (serving as the source-of-truth) will be hosted within the exchange ecosystem, when the resources should be posted, who may update them, and under what circumstances.
-* Note that posting of a resource may require more complex supporting transactions. For example, to POST a ServiceRequest, a client must first obtain the FHIR ID that will be used for ServiceRequest.subject (such as a Patient's FHIR ID on the target server).
+* Note that posting of a resource may require more complex supporting transactions. For example, to support a Placer POSTing a ServiceRequest, the placer and fulfiller must coordinate on the expectations for the FHIR ID used for the ServiceRequest.subject (such as whether the Client is expected to first perform a patient.$match to obtain the target server's FHIR ID for the patient, or if instead the Server should be capable of performing a match themselves).
 
 **Batch or Transaction bundles:**
 * These may operate similar to the RESTful Create and Update described above, but provide a mechanism for a client to submit several transactions as a set, which can reduce network traffic. This guide does not explore this option in detail.
@@ -126,4 +126,3 @@ This section is provided for context and provides a brief overview of mechanisms
 * Subscriptions includes two additional features that are potentially relevant for order, referral, and transfer workflows. 
     * The first is that a data-holder may make a "SubscriptionTopic" available to which authorized data requestors may then subscribe for updates. This is not required, as record holders may choose instead to create subscriptions administratively and out-of-band, but can be helpful if both actors support it. Dynamic subscriptions allow a Data requestor to  specify their own endpoint and select their events of interest and desired data format for messages from a menu of options chosen by the data holder. 
     * The second is a standard mechanism for a data holder to indicate to a potential recipient how they could query for specific additional information later. For example, if a patient's insurance may change between the time a referral is created and when a service will be performed, subscriptions provide a way for a referrer to inform a fulfiller of how they can obtain the patient's Coverage information later, closer to when it is needed.    
-bmsTest
