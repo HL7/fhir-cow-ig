@@ -20,7 +20,7 @@ This section describes how placers and fulfillers may modify a request once it h
     * A fulfiller informing a placer that they can no longer perform a service
 
 * **Order grouping**  
-This section addresses how multiple requests for service may be communicated and, briefly, how dependencies between requests may be communicated and coordinated. This section is informative. 
+This section addresses how multiple requests for service may be communicated and, briefly, how dependencies between requests may be communicated and coordinated.
 
 * **Sharing outputs from an order**  
 This section describes how the outputs from a request for service, such as a diagnostic result report, a consult note, or other content, may be linked back to the request and shared between actors. This section does not specify any requirements on the content of such outputs or when such outputs must be present. Instead, it specifies merely how they are linked across FHIR servers to aid discoverability. 
