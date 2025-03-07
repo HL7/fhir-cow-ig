@@ -14,17 +14,17 @@ As general guidance, this guide recommends that ServiceRequest.replaces be used 
 This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a new Task resource with a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
 ```
-*	ServiceRequest
-    *	Status: Revoked
-* 1..* Task:
-    *	Status: Cancelled 
-    *	Code: Fulfill
-    *	Intent: Order
-    *	Focus: <the ServiceRequest>
-*	New Task:
-    *	Status: Requested
-    *	Code: Abort
-    * Input: original Task
+Request Resource
+* Status: Revoked
+1..* Task:
+* Status: Cancelled
+* Code: Fulfill
+* Intent: Order
+* Focus: <the Request>
+New Task:
+* Status: Requested
+* Code: Abort
+* Input: original Task
 ```
 
 ### Fulfiller Decline to Perform:
@@ -32,14 +32,14 @@ This is equivalent to the normal flow through the step that an intended performe
 This flow is equivalent to the normal flow up to the point that a placer first notifies a potential fulfiller of a service request. In this flow, a fulfiller declines to perform the service, and may or may not specify a reason. 
 
 ```
-*	ServiceRequest:
-    *	Status: active
-    *	Intent: order
-*	1 Task:
-    *	Status: Rejected
-    *	Performer: <specified>
-    *	Code: Fulfill
-    *	Intent: order
+Request Resource:
+* Status: active
+* Intent: order
+1 Task:
+* Status: Rejected
+* Performer: <specified>
+* Code: Fulfill
+* Intent: order
 ```
 
 ### Fulfiller Proposal for Particular or Alternative Service
