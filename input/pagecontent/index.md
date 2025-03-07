@@ -30,9 +30,9 @@ The below is a summary of key challenges in the referral, orders, and transfer s
 
 * Endpoint discovery - letting actors know to where an initial notification should be pushed, or from where additional information may be queried.
 * Sharing supporting information - it can be hard to supply all of the background with an order or referral today. For example - in HL7 v2, it's challenging to refer a patient for a surgical consult while communicating that it is based on a _particular_ set of imaging.
-* **Requesting additional information** providers who receive a request for service may find that additional specific information is needed. That information may not laready exist in the patient's chart, and often that information of interest is not _always_ necessary to a given type of service. 
-* **Orchestration and tracking** - coordinating which actor has the baton, monitoring the overall status of a referral, managing the earlier steps, etc.
-* **Closing the loop** - sharing the outcome (and parital outcomes), such as a consult note, an imaging result, a proposed plan of care, etc. 
+* Requesting additional information providers who receive a request for service may find that additional specific information is needed. That information may not laready exist in the patient's chart, and often that information of interest is not _always_ necessary to a given type of service. 
+* Orchestration and tracking - coordinating which actor has the baton, monitoring the overall status of a referral, managing the earlier steps, etc.
+* Closing the loop - sharing the outcome (and parital outcomes), such as a consult note, an imaging result, a proposed plan of care, etc. 
 
 #### Aspects Included in this IG
 This IG provides guidance for how the following workflows could be accomplished in FHIR:
