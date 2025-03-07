@@ -1,0 +1,38 @@
+@startuml
+'skinparam svgDimensionStyle false
+autonumber
+
+participant Placer order 10
+participant Patient order 20
+participant Fulfiller order 30 
+
+note over Placer,Fulfiller: Assume client registration has taken place already, endpoints are known, etc. 
+
+== Create Request ==
+
+Placer -> Placer : Create local representation, ServiceRequest
+
+||20||
+Placer -> Patient: Make ServiceRequest available to patient\n(paper req, QR code, patient portal, etc.)
+
+
+Patient -> Fulfiller: Patient may shop around. Finds fulfiller
+
+||20||
+
+Fulfiller <-- Fulfiller: Create Local Representation
+
+Fulfiller -> Placer: Queries Placer for details of request for service
+
+note over Placer, Fulfiller: Note - this may be a scenario where an authorization_base is used. See Core Concepts
+
+Fulfiller <-- Fulfiller: update representation
+
+Fulfiller <- Fulfiller: Create Task
+
+Fulfiller -> Placer: send SubscriptionStatus notification to Placer to inform of Task\nwith .basedOn as ServiceRequest
+
+Fulfiller <-- Fulfiller: proceed to perform service
+
+||45||
+@enduml

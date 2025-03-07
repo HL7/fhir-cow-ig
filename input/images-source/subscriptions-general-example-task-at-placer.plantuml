@@ -1,104 +1,75 @@
 @startuml
 autonumber
-skinparam svgDimensionStyle false
-skinparam sequenceMessageAlign center
+'skinparam svgDimensionStyle false
+'skinparam sequenceMessageAlign center
 
+== Pre-coordination ==
+
+Placer --> Placer: Register Fulfiller as a client
+
+Fulfiller <-- Fulfiller: Register Placer as a client
+
+Placer <-- Fulfiller: inform Placer of the FHIR endpoint on which SubscriptionStatus-notifications should be sent
+
+
+Placer --> Placer: Create administrative subscription for fulfiller on Tasks where they are Task.performer
+||20||
 == Create Request ==
 
 Placer -> Placer : Create Order, ServiceRequest, Task\n**per (potential) fulfiller**
 
-Placer -> Placer: Create Subscription for Task on potential\nfulfiller's channel
-||45||
 Placer -> Fulfiller: POST SubscriptionStatus notification bundle
 
 note over Placer,Fulfiller
 SubscriptionStatus.notificationEvent.focus is the Task. 
 
-Can include theServiceRequest and other supporting info in the 
-.additionalContext to save on a query
+The placer may include the ServiceRequest and references from .supportingInfo in 
+.additionalContext
 end note
 
 note over Placer,Fulfiller
 Task.basedOn is the ServiceRequest at the Placer. 
-
-Can include additional supporting info in ServiceRequest.info 
-or in the SubscriptionStatus with SubscriptionStatus.relatedQuery 
-if fulfiller specific.
 end note
 
-note over Placer,Fulfiller
-Placer can end the Subscription to a given Fulfiller whenever they wish. 
-Can also expire an authorization_base
-end note
-
-||45||
+||20||
 
 Fulfiller -> Placer : Query ServiceRequest.supportingInfo, ServiceRequest.reason, etc.
 
-||45||
+Fulfiller -> Placer : Update Task. businessStatus from 'requested' to 'accepted' (or supply a Plan for Bid flows via Task.input for Placer review)
 
-Fulfiller -> Placer : Update Task. businessStatus 'requested'  'accepted' (or supply Plan, etc. for Bid)
-
-note over Placer,Fulfiller
-Could also have that the Fulfiller makes a Plan / RequestOrchestration 
-with task.input
-
-Then the Placer can update the Task to Accepted if they accept the 
-Fulfiller's Proposal.
-
-end note
 
 group If Placer will review bids
+    Placer -[hidden]>Fulfiller:
     Placer --> Placer : Review. Cancel tasks to other potential fulfillers as needed
     Placer -> Placer : Update Task.status, Task.businessStatus, etc. 
-    Placer -> Fulfiller : SubscriptionStatus notification indicating status isupdated and they 'won' the bid
+    Placer -> Fulfiller : SubscriptionStatus notification \nindicating status isupdated and they 'won' the bid
 
 end
 
 group If Fulfiller will perform a more\nspecific service
-
-Fulfiller <- Fulfiller : Create ServiceRequest with .basedOn\npointing to the Placer's ServiceRequest 
-
+    Fulfiller-[hidden]>Placer:
+    Fulfiller <- Fulfiller : Create ServiceRequest with .basedOn\npointing to the Placer's ServiceRequest 
 
 end
 
 == Perform Service ==
 
 group If Fulfiller creating an output document
-
-Fulfiller <- Fulfiller : Performs service, creates Output
-
-Fulfiller -> Placer : Updates Task.Output -> Outcome document on Fulfiller's server
+    Fulfiller-[hidden]>Placer:
+    Fulfiller <- Fulfiller : Performs service, creates Output
+    Fulfiller -> Placer : Updates Task.Output -> Outcome document on Fulfiller's server
 
 end
 
 Placer -> Placer : Update Task and ServiceRequest.status -> Completed
 
 note over Placer,Fulfiller
-If Placer needs to review the outcome before confirming it's complete 
-(like deciding whether to continue therapy), could have interim statuses.
-
+Interim statuses may be used if the Placer must decide if the service is complete 
 end note
 
 group Optionally, if Placer needs to be able to surface\nthat Outcome in future
-
-Placer <-> Fulfiller: Read Output Document
-
-Placer -> Placer : Save a copy. Provenance.policy.location -> Fulfiller as source of truth
-
-note over Placer,Fulfiller
-The DocumentReference, DiagnosticReport, etc. can also point back
-to the ServiceRequest on the Placer's system
-end note
-
-group If Placer may later addend that document, subscribe Fulfiller to their version
-
-Placer -> Fulfiller: Placer subscribes Fulfiller to their copy for sake of future updates
-
-Fulfiller <-Fulfiller: Update
-
-end
-
-
+    Placer-[hidden]>Fulfiller
+    Placer <-> Fulfiller: Read Output Document
+    Placer -> Placer : Save a copy. Provenance.policy.location -> Fulfiller as source of truth\n or leverage DiagnosticReport, etc. referencing the ServiceRequest\nand Task.performer and Task.output
 end
 @enduml

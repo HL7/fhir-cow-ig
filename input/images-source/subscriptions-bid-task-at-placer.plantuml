@@ -1,0 +1,47 @@
+@startuml
+'skinparam svgDimensionStyle false
+autonumber
+
+participant Placer order 10
+
+participant Fulfiller_A order 20 
+
+participant Fulfiller_B order 30
+
+== Create Request ==
+
+note over Placer,Fulfiller_B
+Assume endpoints, client registration, business rules, etc. 
+are communicated beforehand
+end note
+
+||45||
+
+Placer -> Placer : Create local representation, ServiceRequest, Task **per Fulfiller**
+||20||
+
+Placer -> Fulfiller_A: SubscriptionStatus notification with Task **A** in notificationEvent.focus
+||20||
+
+Fulfiller_A <- Fulfiller_A: Create Local Representation
+
+||20||
+
+Placer -> Fulfiller_B: SubscriptionStatus notification with Task **B** in notificationEvent.focus
+Fulfiller_B <- Fulfiller_B: Create Local Representation
+
+
+Fulfiller_A -> Placer: Query for any additional information needed to make determination
+||20||
+
+
+Fulfiller_A -> Placer: Update Task with business status for proposal and Task.input 
+Placer --> Placer: Review proposalPlacer -> Placer: Update Task **A**.status
+Placer -> Fulfiller_A: Send SubscriptionStatus notification bundle with Task in focus and status updated
+Placer -> Placer: Update status of Task **B**
+Placer -> Fulfiller_B: SubscriptionStatus notification on Task status change
+
+||20||
+
+Fulfiller_A <-- Fulfiller_A: proceed to perform service
+@enduml

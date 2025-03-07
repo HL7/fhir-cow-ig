@@ -63,21 +63,18 @@ pages:
   core-concepts.md:
     title: Core Concepts
     generation: markdown
-  fhir-exchange-architectures.md:
-    title: FHIR data exchange architectures
-    generation: markdown
   workflow-state-overview.md:
-    title: Workflow State overview
+    title: Workflow State Overview
     generation: markdown
-
   workflow-patterns.md:
     title: Workflow Patterns
     generation: markdown
-
     order-initiation.md:
       title: Order Initiation
       generation: markdown
-
+    order-grouping.md:
+      title: Order Grouping
+      generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
       generation: markdown
@@ -99,21 +96,17 @@ pages:
       # requests-to-central-coordinator.md:
       #   title: Requests to a Central Coordinator
       #   generation: markdown
-
-    cancelling-and-modifying-requests.md:
-      title: Cancelling and modifying orders
-      generation: markdown
-
-    order-grouping.md:
-      title: Order grouping
-      generation: markdown
-
-    sharing-outputs.md:
-      title: Sharing outputs from an Order
-      generation: markdown
     fulfiller-need-for-additional-info.md:
-      title: Fulfiller need for additional Info
+      title: Fulfillers Requesting Additional Information
       generation: markdown
+    cancelling-and-modifying-requests.md:
+      title: Cancelling and Modifying Orders
+      generation: markdown
+    sharing-outputs.md:
+      title: Sharing Outputs from an Order or Referral
+      generation: markdown
+      
+
     
 #     documenting-workflows:
 #       title: Documenting Workflows
@@ -175,8 +168,8 @@ menu:
     Order initiation: order-initiation.html
     Order grouping: order-grouping.html
     Fulfiller determination: fulfiller-determination.html
-    Cancelling and modifying requests: cancelling-and-modifying-Requests.html
-    Fulfiller requests for additional Info: fulfiller-request-for-additional-info.html
+    Fulfiller requests for additional Info: fulfiller-need-for-additional-info.html
+    Cancelling and modifying requests: cancelling-and-modifying-requests.html
     Sharing outputs of referrals and orders: sharing-outputs.html
     
   Examples: examples.html

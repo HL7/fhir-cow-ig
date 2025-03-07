@@ -1,39 +1,38 @@
-This section describes several high-level patterns of interaction for order, referral, and transfer workflows, with a brief description of clinical scenarios in which they may apply.The set of interaction patterns described is not exhaustive: this IG uses them as a starting point to provide context in the subsequent discussions, and as a way to demonstrate the shared features of these exchanges.
+This section describes several patterns of interaction for order, referral, and transfer workflows, with a brief description of clinical scenarios in which they may apply.
 
 The areas identified in this Implementation Guide are:
 
 * **Order initiation**:  
-(TO DO) This addresses some aspects of how orders are created - some of those aspects are workflow-related and are identified here, while others are detailed in other specifications or are not currently in scope.
-* **Fulfiller determination**  
-(TO DO) This addresses the workflow implications of how a fulfiller is determined - by patient-mediated selection, or direct assignment by the placer...
-
-* **Cancelling and modifying orders**  
-(TO DO) 
+This section addresses aspects of how orders are created that relate to FHIR workflows. Many details are left to implementers or more specific implementation guides. 
 
 * **Order grouping**  
-(TO DO) 
+This section addresses how multiple requests for service may be communicated and, briefly, how dependencies between requests may be communicated and coordinated.
+
+* **Fulfiller determination**  
+After a request has been created, this section describes how a fulfiller for that service is selected. This could be direct assignment by a placer, assignment by a central triage or coordination office, or patient-selection.
+
+* **Requests by a fulfiller for additional information**  
+This section  describes how potential fulfillers may request additional information about the requested service, which may be important to their determining if they will accept the request for service. 
+
+* **Cancelling and modifying orders**  
+This section describes how placers and fulfillers may modify a request once it has been created. This includes:
+    * A placer cancelling a request before service has begun
+    * A placer requesting that an in-progress request for service be cancelled
+    * A fulfiller proposing an alternative service back to the placer
+    * A fulfiller electing to perform a more specific service under their own authority
+    * A fulfiller informing a placer that they can no longer perform a service
 
 * **Sharing outputs from an order**  
-(TO DO) 
+This section describes how the outputs from a request for service, such as a diagnostic result report, a consult note, or other content, may be linked back to the request and shared between actors. This section does not specify any requirements on the content of such outputs or when such outputs must be present. Instead, it specifies merely how they are linked across FHIR servers to aid discoverability. 
 
-* **Fulfiller need for additional information**  
-(TO DO) 
 
 <hr>
 <hr>
 <hr>
-### The patterns described are:
-* A [simple order](./simple-request.html), in which a placer creates a request and they are confident a specific performer will fulfill it. 
-* A simple referral, in which a placer creates a request for a specific intended performer, but the selected performer may decline.
-* A request that may be broadcasted to several potential performers, in which any of them may claim the request.
-* A request sent to many potential performers, where the requestor and patient will then review information sent back by the performers before selecting a definite performer.
-* A request to a central coordinator who will assign the request to a performer, and notify the requestor of who will fulfill the request.
-* TODO: A request to a central coordinator, who will assign the request to a performer and additionally mediate further communication between the requestor and performer.
-* A request authorized by a prescriber, which a patient then uses to seek service at a place of their choosing.
 
 
 ### Overview Example - Subscriptions with Task at Placer
-The below is a general overview of how Subscriptions could be used with the coordinating Task hosted at the Placer. Many details are only alluded to in this draft. 
+The below is a general overview of how Subscriptions may be used with the coordinating Task hosted at the Placer. Many details are deferred for more detailed discussions elsewhere in this guide for for later implementation guides. 
 
 <!--
 <figure>
@@ -49,18 +48,6 @@ The below is a general overview of how Subscriptions could be used with the coor
   {% include subscriptions-general-example-task-at-fulfiller.svg %} 
 </div>
 
-### Overview Example - Messaging + REST with Task at Placer
-The below is a general overview of how Messaging + REST  could be used with the coordinating Task hosted at the Placer. Many details are only alluded to in this draft. 
-
-<figure>
-  {% include messaging-rest-general-task-at-placer.svg %} 
-</figure>
-
-### Overview Example - Messaging + REST with Task at Fulfiller
-
-<figure>
-  {% include messaging-rest-general-task-at-fulfiller.svg %} 
-</figure>
 
 ### Overview Example - Messaging
 <figure>

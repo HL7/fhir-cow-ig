@@ -1,0 +1,37 @@
+@startuml
+'skinparam svgDimensionStyle false
+autonumber
+
+== Create Request ==
+
+note over Placer,Fulfiller
+Assume endpoints, client registration, business rules, etc. are already communicated
+end note
+
+||20||
+
+Placer -> Placer : Create local representation
+
+||20||
+Placer -> Fulfiller : POST Message bundle to Fulfiller $process-message endpoint\n with MessageHeader.focus as a Task and Task.focus as a ServiceRequest
+
+||20||
+Fulfiller <-- Fulfiller: Create Local Representation
+
+||20||
+
+note over Placer,Fulfiller
+Based on business agreements, no confirmation needed beyond the HTTP status code. 
+The Placer may assume the Fulfiller accepts the request. 
+end note
+
+||45||
+
+== If Generating Output == 
+||20||
+Fulfiller <- Fulfiller : Create Output (if needed) and internal representation
+||20||
+Placer <- Fulfiller: send Message with Task in focus and Task.output as output
+||20||
+Placer --> Placer : Create local-representation as needed
+@enduml

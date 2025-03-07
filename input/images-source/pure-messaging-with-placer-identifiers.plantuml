@@ -1,13 +1,21 @@
 @startuml
 title Referrals Outline - Messaging w/ Placer Identifiers
 
+== Pre-coordination==
+
+Placer <--> Fulfiller: Coordinate business agreement
+
+Placer --> Fulfiller: Register client
+
+Fulfiller --> Placer: Register client
+
 == Initial Notification ==
-note over Placer, Fulfiller: Assume client registration + business agreements all occur beforehand. Assume Single business org, but could separate resource server and auth server
 
 Placer -> Placer: Placer generates Request. Creates internal representation.
-Placer -> Fulfiller: Authenticates to Fulfiller. Assume something like Client Credentials Flow
+Placer -> Fulfiller: Authenticates to Fulfiller
+note over Placer, Fulfiller: This may be a flow like OAuth 2.0 client credentials
 Fulfiller -> Placer: Provides Access Token scoped to allow messaging
-Placer -> Fulfiller: 
+Placer -> Fulfiller: Sends message with MessageHeader.focus as a Task, and supporting info such as the ServiceRequest
 
 Fulfiller <- Fulfiller: Creates their own internal representation.
 Fulfiller -> Placer: Acknowledges the request.
@@ -16,16 +24,16 @@ note over Placer, Fulfiller: Note - may or may not accept. May or may not send b
 
 group If potential fulfiller has further processing to do, like checking availability before accepting
     Fulfiller <- Fulfiller: Processes the Request
-    Fulfiller -> Placer: Requests additional info necessary for processing
+    Fulfiller -> Placer: Requests additional info necessary for processing. Sends a message with Task.identifier that identifies this relates to the\nearlier request, and a businessStatus indicating info needed.
     Placer -> Placer: May review what else can be shared
-    Placer -> Fulfiller: Sends additional info
+    Placer -> Fulfiller: Sends additional info in a message with Task in focus, Task.identifier indicating the relation to the earlier request, and Status of Requested
     Fulfiller -> Placer: Accepts the request
 end
-
+||20||
 group If placer has to accept a 'bid' from the potential fulfiller
     Placer -> Fulfiller: Send confirmation they should provide the service
 end
-
+||45||
 == Share Updates ==
 
 group If placer has additional info come in
@@ -36,10 +44,11 @@ group If placer wants status updates and fulfiller can send
     Fulfiller -> Placer: Send status updates (scheduled, etc.)
 end
 
+||45||
 == Share Outcome ==
 
 Fulfiller <- Fulfiller: Generate outcome/result with internal identifier
-Fulfiller -> Placer: Notify of outcome (share own identifier)
+Fulfiller -> Placer: Notify of outcome via a Message with Task in focus, Task.Status updated, and Task.output referencing any output
 Placer -> Placer: Process outcome and create internal representation
-Placer -> Placer: Update status. Could include 'further work needed'.
+
 @enduml

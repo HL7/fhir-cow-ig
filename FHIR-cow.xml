@@ -13,7 +13,6 @@
 <page key="index" name="Clinical Order Workflows - Home Page"/>
 <page key="core-concepts" name="Core Concepts"/>
 <page key="examples" name="Examples Index"/>
-<page key="fhir-exchange-architectures" name="FHIR data exchange architectures"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>
 <page key="fulfiller-need-for-additional-info" name="Fulfiller need for additional Info"/>
 <page key="order-initiation" name="Order Initiation"/>

@@ -1,0 +1,41 @@
+@startuml
+'skinparam svgDimensionStyle false
+autonumber
+
+== Create Request ==
+
+note over Placer,Fulfiller
+Assume endpoints, client registration, business rules, etc. are already communicated
+end note
+
+||20||
+
+Placer --> Placer : Create local representation
+
+||20||
+Placer -> Fulfiller : POST Message bundle to Fulfiller $process-message endpoint\n with MessageHeader.focus as Task and Task.focus as  ServiceRequest
+
+||20||
+Fulfiller <-- Fulfiller: Create Local Representation
+
+||20||
+
+Fulfiller -> Placer: send message acknowledging message
+
+||20|| 
+
+Fulfiller <-- Fulfiller: review request
+
+||20||
+
+group if more information needed:
+    Fulfiller --> Placer: request information out-of band
+    Placer -> Fulfiller: send Message with Task in focus, same identifier, and\nnew info in ServiceRequest.supportingInfo
+end
+||45||
+
+Fulfiller -> Placer: send Message with Task in focus, same identifier, and updated status
+
+Fulfiller <-- Fulfiller: proceed with service
+
+@enduml

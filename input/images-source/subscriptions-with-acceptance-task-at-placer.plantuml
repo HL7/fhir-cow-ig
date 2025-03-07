@@ -1,0 +1,42 @@
+@startuml
+
+'skinparam svgDimensionStyle false
+autonumber
+
+== Create Request ==
+
+note over Placer,Fulfiller
+Assume endpoints, client registration, business rules, etc. 
+are communicated beforehand
+end note
+
+||45||
+
+Placer -> Placer : Create local representation, ServiceRequest, Task **on Placer's FHIR server**
+||20||
+Placer -> Fulfiller : SubscriptionStatus Notification bundle with Task in notificationEvent.focus
+||20||
+Fulfiller <- Fulfiller: Create Local Representation
+
+||20||
+
+
+Fulfiller -> Placer: Query for any additional information needed to make determination
+||20||
+group if business agreement allows Fulfiller to accept:
+    Fulfiller -> Placer: Update Task.status to indicate acceptance 
+end
+||20||
+group if placer needs to review proposal:
+    Fulfiller -> Placer: Update Task with business status for proposal and Task.input 
+    Placer --> Placer: Review proposal
+    Placer -> Placer: Update Task.status
+    Placer -> Fulfiller: Send SubscriptionStatus notification bundle with Task in focus and status updated
+
+end
+
+||20||
+
+Fulfiller <-- Fulfiller: proceed to perform service
+
+@enduml

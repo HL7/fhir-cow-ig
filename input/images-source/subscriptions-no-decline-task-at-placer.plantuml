@@ -29,7 +29,7 @@ end note
 
 == If Generating Output == 
 
-Fulfiller <- Fulfiller : Create Output Document (of some\nform) and host on FHIR server
+Fulfiller <- Fulfiller : Create Output Document (of some\nform, if needed) and host on FHIR server
 
 Fulfiller -> Placer : Update Task.Output with a pointer to the output document on the Fulfiller's server
 

@@ -1,0 +1,43 @@
+@startuml
+'skinparam svgDimensionStyle false
+autonumber
+
+== Create Request ==
+
+note over Placer,Fulfiller
+Assume endpoints, client registration, business rules, etc. 
+are communicated beforehand and that subscriptions already initiated
+end note
+
+||20||
+
+Placer -> Placer : Create local representation, ServiceRequest
+||20||
+
+Placer -> Fulfiller : POST Task to Fulfiller with ServiceRequest in Task.basedOn
+||20||
+
+Fulfiller <-- Fulfiller: Create Local Representation
+||20||
+
+Fulfiller -> Placer: Request additional information necessary for determination
+||20||
+
+group if business agreement allows Fulfiller to accept:
+    Fulfiller -[hidden]> Placer:
+    Fulfiller <- Fulfiller: Update Task status
+    Fulfiller -> Placer: SubscriptionStatus notification to Placer with updated Task
+end
+||20||
+group if placer needs to review proposal:
+    Fulfiller -[hidden]> Placer:
+    Fulfiller <- Fulfiller: prepare proposal
+    Fulfiller -> Placer: SubscriptionStatus notification with updated Task
+    ||20||
+    Placer -> Placer: review proposal
+    Placer -> Fulfiller: POST Update to Task indicating acceptance
+
+end
+
+Fulfiller <-- Fulfiller: proceed to perform service
+@enduml
