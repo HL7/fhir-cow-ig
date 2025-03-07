@@ -1,7 +1,7 @@
 Often, potential Fulfillers find that they need additional data from the Placer to process a request for care. They may do so by:
-    * Directly querying for information that a Placer already has, and which the Fulfiller is authorized to access. These requests for additional information are generally handled synchronously. For example - "Check insurance coverage" or "check patient's medication list". 
-    * Sending a request to the Placer asking that they provide additional information. This often takes the form of a letter, which a user at the Placer's organization processes. Ofen, these should be accompanied with a status indicating the Fulfiller is waiting for information.
-    * A Fulfiller could even send an instruction back to the placer, such as "Please ensure this patient has had a blood test before their consult". 
+* Directly querying for information that a Placer already has, and which the Fulfiller is authorized to access. These requests for additional information are generally handled synchronously. For example - "Check insurance coverage" or "check patient's medication list". 
+* Sending a request to the Placer asking that they provide additional information. This often takes the form of a letter, which a user at the Placer's organization processes. Ofen, these should be accompanied with a status indicating the Fulfiller is waiting for information.
+* A Fulfiller could even send an instruction back to the placer, such as "Please ensure this patient has had a blood test before their consult". 
 
 TODO - lots to write up here. Seems like we need some profiles. Do we need to specify this in this guide? It is a core challenge. 
 
