@@ -12,6 +12,8 @@ As general guidance, this guide recommends that ServiceRequest.replaces be used 
 ### Placer Initiated Cancellations.
 
 This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a new Task resource with a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+
+```
 *	ServiceRequest
     *	Status: Revoked
 * 1..* Task:
@@ -23,10 +25,13 @@ This is equivalent to the normal flow through the step that an intended performe
     *	Status: Requested
     *	Code: Abort
     * Input: original Task
+```
 
 ### Fulfiller Decline to Perform:
 
 This flow is equivalent to the normal flow up to the point that a placer first notifies a potential fulfiller of a service request. In this flow, a fulfiller declines to perform the service, and may or may not specify a reason. 
+
+```
 *	ServiceRequest:
     *	Status: active
     *	Intent: order
@@ -35,6 +40,7 @@ This flow is equivalent to the normal flow up to the point that a placer first n
     *	Performer: <specified>
     *	Code: Fulfill
     *	Intent: order
+```
 
 ### Fulfiller Proposal for Particular or Alternative Service
 
@@ -42,6 +48,7 @@ This flow is equivalent to the normal flow through the step that a placer notifi
 
 This could be expected (such as a bid) or a proposed modification to the original request for which the fulfiller seeks approval (as in many cases, the placer need not be aware of the specifics of what the Fulfiller is performing).
 
+```
 *	ServiceRequest (Original):
     *	Status: active
     *	Intent: order
@@ -58,6 +65,7 @@ This could be expected (such as a bid) or a proposed modification to the origina
 *	ServiceRequest (proposed):
     *	Status: active
     *	Intent: Proposal
+```
 
 A placer may accept that proposal by:
 1. Optionally – creating a new ServiceRequest that matches the proposal, updating the status of their original ServiceRequest to Revoked, and indicating in ServiceRequest.replaces on the new request that it is a replacement. This ServiceRequest may include the proposal in ServiceRequest.basedOn
@@ -75,6 +83,8 @@ Such a scenario may also occur in the case that a procedure could not be complet
 
 ### Fulfiller Unable to Perform:
 In some scenarios, a fulfiller who initially accepted a request finds that they can no longer perform the requested service. Examples include when a specimen is dropped or if a bed didn’t open up. 
+
+```
 *	ServiceRequest:
     *	Status: active
     *	Intent: order
@@ -83,4 +93,4 @@ In some scenarios, a fulfiller who initially accepted a request finds that they 
     *	Performer: <specified>
     *	Code: Fulfill
     *	Intent: order
-
+```
