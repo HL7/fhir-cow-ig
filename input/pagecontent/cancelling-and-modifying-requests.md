@@ -56,7 +56,7 @@ Request Resource (Original):
     *	Intent: order
 Task:
     *	Status: Rejected
-    * StatusReason: alternative proposal
+    * StatusReason: Alternative Proposal
     *	Performer: <specified>
     *	Code: Fulfill
     *	Focus: the Request resource (Original)
