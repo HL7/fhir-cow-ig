@@ -18,7 +18,7 @@ Not all states will apply to all workflows or use-cases, and many implementation
 | Partial fulfillment         | Request:<br>- Status: active<br>- Intent: order     | Task:<br>- Status: in-progress<br>- BusinessStatus: [images available, end exam, awaiting interp, etc.]<br>- Code: fulfill<br>- Intent: order<br>- 1..* Output    | Draft    |    |
 | Preliminary fulfillment     | Request:<br>- Status: active<br>- Intent: order     | Task:<br>- Status: in-progress<br>- BusinessStatus: Preliminary<br>- Code: fulfill<br>- Intent: order<br>- 1..* Output   | Preliminary        |    |
 | Complete          | Request:<br>- Status: completed<br>- Intent: order  | Task:<br>- Status: completed<br>- Performer: [specified]<br>- Code: fulfill<br>- Intent: order<br>- 0..* Output (DiagnosticReport, Observations, DocumentReference, CarePlan, etc.)   | Complete (if service has an output) | |
-{:.table-bordered .table-hover .table-sm}
+{: .grid .table-striped}
 
 
 <br>
