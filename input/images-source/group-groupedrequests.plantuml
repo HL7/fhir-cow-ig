@@ -1,0 +1,53 @@
+@startuml
+'skinparam linetype ortho
+skinparam linetype polyline
+hide circle
+hide stereotype
+hide method
+
+'skinparam defaultFontName Avenir-Book
+'skinparam defaultFontSize 17
+'skinparam monochrome true
+
+
+'!pragma layout smetana
+
+skinparam class<<MD>> {
+ BorderColor DarkSlateGray
+ BackgroundColor #DFD
+ HeaderBackgroundColor #aFa
+}
+
+skinparam class<<TM>> {
+ BorderColor #505090
+ BackgroundColor APPLICATION
+ HeaderBackgroundColor SkyBlue
+}
+
+skinparam class<<BM>> {
+ BorderColor #905050
+ BackgroundColor #FDD
+ HeaderBackgroundColor #FAA
+}
+
+
+class "** Request 1 **" as M1 <<TM>> {
+* identifier: **001**
+* groupIdentifier: **G01**
+    }
+class "** Request 2 **" as M2 <<BM>> {
+* identifier: **002**
+* groupIdentifier: **G01**
+
+    }
+class "** Request 3 **" as M3<<MD>> {
+* identifier: **003**
+* groupIdentifier: **G01**
+
+    }
+
+
+M1 -r[hidden]- M2 
+M2 -r[hidden]- M3
+
+@enduml

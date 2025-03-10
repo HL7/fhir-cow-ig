@@ -6,7 +6,7 @@ The areas identified in this Implementation Guide are:
 This section addresses aspects of how orders are created that relate to FHIR workflows. Many details are left to implementers or more specific implementation guides. 
 
 * **Order grouping**  
-This section addresses how multiple requests for service may be communicated and, briefly, how dependencies between requests may be communicated and coordinated.
+This section addresses how multiple requests for service (or multi-item requests) may be communicated and how dependencies between requests may be communicated and coordinated.
 
 * **Fulfiller determination**  
 After a request has been created, this section describes how a fulfiller for that service is selected. This could be direct assignment by a placer, assignment by a central triage or coordination office, or patient-selection.
