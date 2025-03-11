@@ -11,8 +11,8 @@ Examples:
 In FHIR, each order is represented as a Request for one item - a service, a medication, a supply,...  
 The implementation for group orders is done with the following approach:
 
-* If several requests are created separately or their creation and action is not inter-related: a set of unrelated requests; The request IDs are the `.identifier`s of each of the requests. 
-* If several requests are created in one order session, but their execution is independent, **a group identifier is added** in `.groupIdentifier` / `.requisition` element. The request ID is the `.groupIdentifier`;
+* If several requests are created separately or their creation and action is not inter-related: a set of unrelated requests; The request IDs are the `.identifier`s of each of the requests.   
+* If several requests are intended to be grouped but still actionable independently, for example they have been authorized more or less simultaneously by a single author, **a group identifier is added** in `.groupIdentifier` / `.requisition` element, representing the identifier of the requisition or prescription. The overall request ID is the `.groupIdentifier`;  
 * If the requests are related to each other, by relations of timing, prerequisite, or others, **a RequestOrchestration may be added**. The request ID is then the `RequestGroup.identifier` This means that the requests are no longer independent - All resources referenced by the RequestGroup must have an intent of "option", meaning that they cannot be interpreted independently - and that changes to them must take into account the impact on referencing resources. The RequestGroup and all of its referenced "option" Requests are treated as a single integrated Request whose status is the status of the RequestGroup.
 
 
