@@ -10,7 +10,7 @@
 	<date value="2017-10-10T07:46:45-07:00"/>
 	<description value="The business status which helps determine the state of an order workflow"/>
 	<caseSensitive value="true"/>
-	<valueSet value="http://hl7.org/fhir/uv/cow//ValueSet/cow-businesStatus"/>
+	<valueSet value="http://hl7.org/fhir/uv/cow/ValueSet/cow-businessStatus"/>
 	<content value="complete"/>
 	<concept>
 		<code value="specimen-collected"/>

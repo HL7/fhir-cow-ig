@@ -62,27 +62,6 @@
                 "mustSupport": true
             },
             {
-                "id": "Task.code",
-                "path": "Task.code",
-                "min": 1,
-                "mustSupport": true
-            },
-            {
-                "id": "Task.focus",
-                "path": "Task.focus",
-                "min": 1,
-                "mustSupport": true,
-                "type": [
-                    {
-                        "code": "Reference",
-                        "targetProfile": [ 
-                            "http://hl7.org/fhir/StructureDefinition/ServiceRequest" 
-                        ]
-                    }
-                ]
-
-            },
-            {
                 "id": "Task.businessStatus",
                 "path": "Task.businessStatus",
                 "extension": [
@@ -143,11 +122,31 @@
                     
                     ],
                     "binding": {
-                        "conformance" : "example",
-                        "valueSet" : "http://hl7.org/fhir/uv/cow//ValueSet/cow-businesStatus"
+                        "strength" : "example",
+                        "valueSet" : "http://hl7.org/fhir/uv/cow/ValueSet/cow-businessStatus"
                     }
-            }
-        
+            },
+            {
+                "id": "Task.code",
+                "path": "Task.code",
+                "min": 1,
+                "mustSupport": true
+            },
+            {
+                "id": "Task.focus",
+                "path": "Task.focus",
+                "min": 1,
+                "mustSupport": true,
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": [ 
+                            "http://hl7.org/fhir/StructureDefinition/ServiceRequest" 
+                        ]
+                    }
+                ]
+
+            }       
         ]
     }
 }
