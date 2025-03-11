@@ -81,7 +81,73 @@
                     }
                 ]
 
+            },
+            {
+                "id": "Task.businessStatus",
+                "path": "Task.businessStatus",
+                "extension": [
+                        {
+                        "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                        "extension":[
+                            {
+                                "url": "code",
+                                "valueCode": "SHALL:populate-if-known"
+                            },
+                            {
+                                "url": "actor",
+                                "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/placer"
+                            }
+                            
+                        ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:handle"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/placer"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:handle"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:populate-if-known"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+                                }
+                            ]
+                        }
+                    
+                    ],
+                    "binding": {
+                        "conformance" : "example",
+                        "valueSet" : "http://hl7.org/fhir/uv/cow//ValueSet/cow-businesStatus"
+                    }
             }
+        
         ]
     }
 }
