@@ -27,7 +27,7 @@ actor Physician as Doc
 participant "Order Placer System" as Placer
 participant "Order Filler System" as Filler
 
-group Physician Workflow 
+group #eee Physician Workflow 
 Doc --> Placer: Enter Order
 Doc --> Doc: Draw Sample
 Doc --> Placer: enter Specimen Information
@@ -107,7 +107,7 @@ note left #lightgreen
 	|_ "".status"" = """**completed**"""
 end note
 end
-group Result Reporting to Physician
+group #eee Result Reporting to Physician
 
 Placer --> Doc: Report ""DiagnosticReport""
 end
