@@ -20,11 +20,11 @@ Order initiation refers to the different activities that may exist or be require
 
 In FHIR, requests express authorizations, and are not intended to be actionable *per se*. An order becomes actionable if:
 
-* it's tagged as actionable (using the "actionable" tag)
+* it's tagged as actionable (using the ["actionable" tag](https://hl7.org/fhir/valueset-common-tags.html) in [`meta.tag`](https://build.fhir.org/valueset-common-tags.html))
 * there's a Task pointing to the request telling to fulfill it
 * there's a message or operation that implies it is to be actioned  
 
-in very simple workflows, an order may be considered actionable in that context.....?????
+It is **not recommended** to consider orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
 
 <br>
 <br>
@@ -40,7 +40,7 @@ In many systems, the "orderable" items are established in a catalog - sometimes 
 <br clear="all"/>
 
 
-The interaction with catalogs may exist in any point where the order is potentially changed - upon ordering, upon changing, upon validation,... this interaction is orthogonal to the scope of this ImplementationGuide. For more details about order catalogs, users are invited to consult the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
+The interaction with catalogs may exist in any point where the order is potentially changed - upon ordering, upon changing, upon validation, etc. This interaction is orthogonal to the scope of this ImplementationGuide. For more details about order catalogs, users are invited to consult the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
 
 
 
@@ -48,7 +48,11 @@ The interaction with catalogs may exist in any point where the order is potentia
 
 #### Order set protocols
 
-Protocols are ....
+Protocols are sets of defined orders, possibly interdependent. Order sets may be ordered:
+* As group of orders, as defined in [grouping](grouping.html);
+* In a single request, if a designation or code exists for the order set. In this case, the order will be broken down:
+  * at the order placer when seeking fulfillment - thus becoming a group order. 
+  * at the fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order; additional orchestration may be done by grouping fillder orders, with one task coordinating the orders, or several tasks - see order grouping.
 
 
 
