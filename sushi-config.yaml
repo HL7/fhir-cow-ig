@@ -67,6 +67,9 @@ pages:
   workflow-state-overview.md:
     title: Workflow State Overview
     generation: markdown
+  using_task.md:
+    title: Using Task
+    generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
     generation: markdown
@@ -121,8 +124,12 @@ pages:
 
 #  Example Use Cases:
   examples.md:
-    title: Examples Index
+    title: Examples
     generation: markdown
+    ex3-grouped-dispense.md:
+      title: Prescription and Dispense with mandatory single dispense
+      generation: markdown
+     
 
 
 #  order-content.xml:
