@@ -1,18 +1,35 @@
-Order initiation refers to the different activities that may exist or be required up until an order or authorization is ready to be actioned. These are transversal mechanisms that may be combined:
+Order initiation refers to the different activities that may exist or be required up until an order or authorization is ready to be actioned. There are some  considerations and mechanisms to consider in this ordering process:
+
+### Order progression 
+
+#### **Status** and **intent**:  
+* `request.status` is a coded element with required binding - the status of the request is limited to those statuses identified in the resource, and MAY NOT be extended. The request `.status` is the status of the authorization, not the status of execution.  
+
+* the extension `statusReason` contains **reasons** for a given status of authorization. It SHALL NOT be used to contain detailed statuses.
+  * example: "expired" is a possible reason for an order to be "revoked", but is not an additional status.
+
+* **`request.intent` is an immutable element, meaning that systems SHALL NOT update the intent of an order**. For creating a plan from a proposal, or an order from a plan or proposal, a new request resource instance **MUST** be created, basedOn the proposal/plan instance.  
+
+  * To do: we can add sub-intents because they don't change the intent, they just refine it....
+
+* Orders can be created in `active` status, or may evolve from `draft` to `active` - an order instance may be created as "draft" and then be udpated to become "active"  ...
 
 
-### Order status progression
-
-**Status** vs **intent**:  
-* Order status may evolve from `draft` to `active` - an order instance may be created as "draft" and then be udpated to become "active"
 * Order intent may be, among others:
-  * proposal: a suggestion made by someone/something that does not have an intention to ensure it occurs.  
-  * plan: an intention to ensure something occurs without providing an authorization for others to act.  
-  * order: a request/demand and authorization for action by the requestor.  
-  It is important to note that **`request.intent` is an immutable element, meaning that systems SHALL NOT update the intent on an order**. For creating a plan from a proposal, or an order from a plan or proposal, a new request resource instance **MUST** be created, basedOn the proposal/plan instance.  
-  what we can do is to refine from order to placer-order...
+  * **`proposal`**: a suggestion made by someone/something that does not have an intention to ensure it occurs.  
+  * **`plan`**: an intention to ensure something occurs without providing an authorization for others to act.  
+  * **`order`**: a request/demand and authorization for action by the requestor.  
 
-(see https://build.fhir.org/valueset-request-intent.html)
+
+#### Co-authoring
+In some cases, additional confirmation / sign-off is needed - this is common for special procedures, controlled substances.
+For the scope of this ImplementationGuide, we say that the order is not active until it is fully co-signed.  
+
+TO DO: DO NOT SAY SIGNATURE
+
+
+#### Prior Auth
+Any 
 
 
 
@@ -39,9 +56,11 @@ In many systems, the "orderable" items are established in a catalog - sometimes 
 </figure>
 <br clear="all"/>
 
+The availability of catalogs and interactions with catalog services are a common dependency but are out of scope of this guidance. They are mentioned here to acknowledge that:
 
 The interaction with catalogs may exist in any point where the order is potentially changed - upon ordering, upon changing, upon validation, etc. This interaction is orthogonal to the scope of this ImplementationGuide. For more details about order catalogs, users are invited to consult the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
 
+* HL7 is producing guidance on order catalogs, namely the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
 
 
 <hr>
