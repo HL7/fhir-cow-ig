@@ -19,5 +19,5 @@
 
 ### Example using Subscriptions with Task at Placer
 <figure>
-  {% include ex2-simple-lab-order-flow-with-phlebotomist.svg %}
+  {% include ex2-single-lab-order-flow-with-phlebotomist.svg %}
 </figure>
