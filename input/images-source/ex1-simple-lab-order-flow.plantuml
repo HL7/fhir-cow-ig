@@ -28,87 +28,87 @@ participant "Order Placer System" as Placer
 participant "Order Filler System" as Filler
 
 group #eee Physician Workflow 
-Doc --> Placer: Enter Order
-Doc --> Doc: Draw Sample
-Doc --> Placer: enter Specimen Information
+	Doc --> Placer: Enter Order
+	Doc --> Doc: Draw Sample
+	Doc --> Placer: enter Specimen Information
 end
+
 group In Scope of this IG's Guidance
-Placer -> Placer: create ""ServiceRequest"" 
 
+	Placer -> Placer: create ""ServiceRequest"" 
+	note left #lightgreen
+		**""ServiceRequest""**
+		|_ "".code"" = //2345-7//
+		|_ "".intent"" = """**Order**"""
+		|_ ""...""
+	end note
+	
+	Placer -> Placer: create ""Specimen"" 
+	note left #lightgreen
+		**""Specimen""**
+		|_ "".request"" -> ""ServiceRequest""
+		|_ "".type"" = **"""SER"""**
+		|_ ""...""
+	end note
+	
+	Placer -> Placer: create ""Task"" 
+	note left #lightgreen
+		**""ServiceRequest""**
+		|_  "".status""="""**active**"""
+		**""Task""**
+		|_  "".basedOn"" -> ""ServiceRequest""
+		|_  "".focus"" -> ""ServiceRequest""
+		|_  "".input"" -> ""Specimen""
+		|_ ""...""
+	end note 
+	
+	Placer -> Filler: send ""Task"" to **Filler** 
+	note right #lightblue
+		all needed data is accessed by Order Filler
+		ownership of ""Specimen"" might be transfered to Filler 
+	end note
 
+	Filler -> Filler: Accept ""ServiceRequest"" 
+	note right #pink
+		**""Task""**
+		|_ "".status"" == """**accepted**"""
+		|_ "".owner"" -> Order Filler
+		|_ ""businessStatus"" is set appropriate
+	end note
+	
+	... wait for Specimen \nand\nexecution of ServiceRequest... 
+	
+	Filler -> Filler: Create ""DiagnosticReport"" 
+	note right #pink
+		Result of Order execution is filled into ""DiagnosticReport""
+		**""DiagnosticReport""**
+		|_ "".basedOn"" = ""ServiceRequest""
+		|_ ""...""
+	end note
 
-note left #lightgreen
-	**""ServiceRequest""**
-	|_ "".code"" = //2345-7//
-	|_ "".intent"" = """**Order**"""
-	|_ ""...""
-end note
-
-Placer -> Placer: create ""Specimen"" 
-note left #lightgreen
-	**""Specimen""**
-	|_ "".request"" -> ""ServiceRequest""
-	|_ "".type"" = **"""SER"""**
-	|_ ""...""
-end note
-
-Placer -> Placer: create ""Task"" 
-note left #lightgreen
-	**""ServiceRequest""**
-	|_  "".status""="""**active**"""
-	**""Task""**
-	|_  "".basedOn"" -> ""ServiceRequest""
-	|_  "".focus"" -> ""ServiceRequest""
-	|_  "".input"" -> ""Specimen""
-	|_ ""...""
-end note 
-
-Placer -> Filler: send ""Task"" to **Filler** 
-note right #lightblue
-	all needed data is accessed by Order Filler
-	ownership of ""Specimen"" might be transfered to Filler 
-end note
-Filler -> Filler: Accept ""ServiceRequest"" 
-note right #pink
-	**""Task""**
-	|_ "".status"" == """**accepted**"""
-	|_ "".owner"" -> Order Filler
-	|_ ""businessStatus"" is set appropriate
-end note
-
-... wait for Specimen \nand\nexecution of ServiceRequest... 
-
-
-Filler -> Filler: Create""DiagnosticReport"" 
-note right #pink
-	Result of Order execution is filled into ""DiagnosticReport""
-	**""DiagnosticReport""**
-	|_ "".basedOn"" = ""ServiceRequest""
-	|_ ""...""
-end note
-Filler -> Filler: Update ""Task""
-note right #pink
-	**""Task""**
-	|_ "".output""->""DiagnosticReport"" 
-	|_ "".status"" = """**completed**"""
-end note
-
-note over Placer, Filler #lightblue
-	The Order Placer System gets information that the Task is finished via
-		- Subscription
-		- polling
-		- messaging
-		- ...
-end note
-
-Placer -> Placer: Update ""ServiceRequest"" 
-note left #lightgreen
-	**""ServiceRequest""**
-	|_ "".status"" = """**completed**"""
-end note
+	Filler -> Filler: Update ""Task""
+	note right #pink
+		**""Task""**
+		|_ "".output""->""DiagnosticReport"" 
+		|_ "".status"" = """**completed**"""
+	end note
+	
+	note over Placer, Filler #lightblue
+		The Order Placer System gets information that the Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
+	
+	Placer -> Placer: Update ""ServiceRequest"" 
+	note left #lightgreen
+		**""ServiceRequest""**
+		|_ "".status"" = """**completed**"""
+	end note
 end
-group #eee Result Reporting to Physician
 
-Placer --> Doc: Report ""DiagnosticReport""
+group #eee Result Reporting to Physician
+	Placer --> Doc: Report ""DiagnosticReport""
 end
 @enduml
