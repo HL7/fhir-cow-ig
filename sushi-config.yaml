@@ -120,8 +120,14 @@ pages:
 
 #  Example Use Cases:
   examples.md:
-    title: Examples Index
+    title: Examples
     generation: markdown
+    ex1-simple-lab-order-flow.md:
+      title: Simple Lab Order Flow
+      generation: markdown
+    ex2-simple-lab-order-flow-with-phlebotomist.md:
+      title: Lab Order Flow with Phlebotomist
+      generation: markdown
 
 
 #  order-content.xml:
