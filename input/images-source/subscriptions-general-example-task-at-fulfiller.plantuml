@@ -14,7 +14,7 @@ Placer --> Fulfiller: Inform Fulfiller of their channel on which to receive Subs
 Fulfiller <-- Fulfiller: Create an administrative subscription for the Placer on Tasks which the Placer creates 
 
 note over Placer, Fulfiller: TODO: need to think through more how to do the below if the Task is at the Fulfiller
-Fulfiller --> Placer: Inform Placer of their own channel
+Fulfiller --> Placer: Inform Placer on their own channel
 
 Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which there is a Task designating the Fulfiller as the intended performer in Task.performer
 
@@ -67,7 +67,7 @@ Placer -> Placer: Update ServiceRequest.status == Completed
 group Optionally - if Placer needs to surface that outcome in future
     Fulfiller -[hidden]> Placer:
     Placer <-> Fulfiller: Read Output Document if not received within SubscriptionStatus Notification
-    Placer -> Placer: Save a copy with Provenance indicating Fulfiller's document\n is source of truth. Note DiagnosticReport, etc. will also\nreference Placer's ServiceRequest
+    Placer -> Placer: Save a copy. If needed, indicate Fulfiller's document\n is source of truth via Provenance.location, etc. Note the output may also\ndirectly reference the performer.
    
 end
 @enduml

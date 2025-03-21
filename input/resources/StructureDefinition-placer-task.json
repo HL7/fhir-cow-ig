@@ -1,0 +1,152 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "placer-task",
+    "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+          "valueCode" : "oo"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+          "valueCode" : "trial-use"
+        }
+    ],
+    "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task",
+    "name": "COWPlacerTask",
+    "title": "Placer-Task",
+    "status": "active",
+    "experimental": false,
+    "date": "2025-03-03",
+    "description": "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfull by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Task",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Task",
+    "derivation": "constraint",
+    "differential": {
+        "element": [
+            {
+                "id": "Task.identifier",
+                "path": "Task.identifier",
+                "min": 1,
+                "extension": [
+                    {
+                    "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                    "extension":[
+                        {
+                            "url": "code",
+                            "valueCode": "SHALL:populate"
+                        },
+                        {
+                            "url": "actor",
+                            "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/placer"
+                        }
+                        
+                    ]
+                    },
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                        "extension":[
+                            {
+                                "url": "code",
+                                "valueCode": "SHALL:handle"
+                            },
+                            {
+                                "url": "actor",
+                                "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+                            }
+                        ]
+                    }
+                
+                ],
+                "mustSupport": true
+            },
+            {
+                "id": "Task.businessStatus",
+                "path": "Task.businessStatus",
+                "extension": [
+                        {
+                        "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                        "extension":[
+                            {
+                                "url": "code",
+                                "valueCode": "SHALL:populate-if-known"
+                            },
+                            {
+                                "url": "actor",
+                                "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/placer"
+                            }
+                            
+                        ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:handle"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/placer"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:handle"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+                            "extension":[
+                                {
+                                    "url": "code",
+                                    "valueCode": "SHALL:populate-if-known"
+                                },
+                                {
+                                    "url": "actor",
+                                    "valueCanonical": "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+                                }
+                            ]
+                        }
+                    
+                    ],
+                    "binding": {
+                        "strength" : "example",
+                        "valueSet" : "http://hl7.org/fhir/uv/cow/ValueSet/cow-businessStatus"
+                    }
+            },
+            {
+                "id": "Task.code",
+                "path": "Task.code",
+                "min": 1,
+                "mustSupport": true
+            },
+            {
+                "id": "Task.focus",
+                "path": "Task.focus",
+                "min": 1,
+                "mustSupport": true,
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": [ 
+                            "http://hl7.org/fhir/StructureDefinition/ServiceRequest" 
+                        ]
+                    }
+                ]
+
+            }       
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "resourceType" : "ActorDefinition",
+    "id" : "recipient",
+    "url" : "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient",
+    "version" : "1..0",
+    "name" : "RecipientActor",
+    "title" : "Recipient",
+    "status" : "active",
+    "date" : "2025-03-07T16:20:30.239Z",
+    "description" : "COW Recipient Actor",
+    "jurisdiction" : [{
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "001"
+      }]
+    }],
+    "type" : "system"
+  }

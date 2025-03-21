@@ -1,0 +1,37 @@
+@startuml
+autonumber
+participant Placer order 10
+
+participant Fulfiller order 20
+
+== Perform Service and Share Output == 
+group If Fulfiller creating an output
+    Fulfiller <- Fulfiller: Performs Service, creates output
+    Fulfiller -> Placer: Updates Task.output to reference the output 
+    end
+||10||
+Placer -> Placer: Update Task and Service Request.status == Completed
+||10||
+
+note over Placer, Fulfiller
+    Interim statuses are also possible if a placer needs to review the outcome before 
+    confirming the service is complete (like deciding whether to continue therapy). 
+    endnote
+||10||
+    
+group Optionally - if Placer needs to be able to surface or modify that outcome in future
+    Placer <->> Fulfiller: Read Output 
+||10||
+    Placer -> Placer: Save a copy. MAY update Provenance.location to indicate the Fulfiller as the source of truth
+
+||10||
+    note over Placer, Fulfiller
+    The DocumentReference, DiagnosticReport etc. can also point back to the Request on the Placer's system
+    endnote
+||10||
+    group If Placer may later addend that output:
+    Placer <-> Fulfiller: Placer and Fulfiller coordinate how to share updates, such as a Subscription
+    end
+||10||
+    end
+@enduml
