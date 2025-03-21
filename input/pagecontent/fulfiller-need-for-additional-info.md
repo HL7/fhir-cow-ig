@@ -18,31 +18,34 @@ Both of these objectives can be accomplished using aspects of the Subscriptions 
 
 ### Requesting Additional Information Asynchronously via a Letter Flow with Status Update
 
-A fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
+A Fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
 
-Fulfillers MAY specify the information which they are awaiting using an appropriate Task.businessStatus. Fulfillers may also indicate that action is needed by the Placer by creating additional Tasks with Task.partOf referencing the Shared Coordination Task, and the original Placer as the intended performer of that Task.  
+Fulfillers SHOULD specify that they are awaiting information using an appropriate Task.businessStatus.
 
+If desired, Fulfillers may register a record of communication that has occurred related to the Task, either via FHIR or out of band. For example:
 ```
-* Commmunication.partOf referencing the shared coordination Task
+* Commmunication.partOf referencing the shared coordination
 * Communication.inResponseTo referencing an earlier communication, if present
 * Communication.basedOn referencing the ServiceRequest
 * Communication.Recipient
 * Communication.Sender
-* Communicatoin.payload specifying the content of the message or the attachment, if available.
+* Communication.payload specifying the content of the message or the attachment, if available.
 ```
-
-Such Communications may serve as a record of communications via FHIR (such as a Communication.Create on the Placer's FHIR server by the Fulfiller) or simply a record of communication that occurred out of band. T
-    
-TODO - decide if we need to link anything in Task.StatusReason
-TODO - when to use Communication vs. CommunicationRequest
 
 ### Sending an Instruction Back to the Placer With Status Update
 
 Often, Fulfillers may have some instructions for the Placer of a request: they may ask that the Placer ensure the patient have a Covid test, ask that specified information like Consents be supplied, etc. 
 
-If these activities must be tracked as part of coordinating the original request for service, fulfillers may coordinate these additional Tasks for the Fulfiller by updating Task.businessStatus to an appropriate status and by creating additional Task resources with:
+If these activities must be tracked as part of coordinating the original request for service, Fulfillers SHOULD coordinate these additional Tasks for the Fulfiller by updating Task.businessStatus to an appropriate status and by creating additional Task resources:
 
 ```
+On the Shared CoordinationTask:
+* Task.businessStatus is a value such as "Fulfiller awaiting information"
+* Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, Communications, CommunicationRequests, etc. 
+
+For any Tasks created to record that action is needed:
 * Task.partOf referencing the shared coordination Task
-* Task.performer specifying the Placer of the original ServiceRequest 
+* Task.performer specifying the party from whom action is needed (often the Placer of the original ServiceRequest 
 ```
+
+
