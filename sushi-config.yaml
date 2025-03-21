@@ -34,7 +34,8 @@ releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | re
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
 #
-# dependencies:
+dependencies:
+  hl7.fhir.extensions.r4: 4.0.1
 #   hl7.fhir.us.core: 3.1.0
 #   hl7.fhir.us.mcode:
 #     id: mcode
@@ -65,6 +66,9 @@ pages:
     generation: markdown
   workflow-state-overview.md:
     title: Workflow State Overview
+    generation: markdown
+  using_task.md:
+    title: Using Task
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
@@ -120,8 +124,21 @@ pages:
 
 #  Example Use Cases:
   examples.md:
-    title: Examples Index
+    title: Examples
     generation: markdown
+    ex1-simple-lab-order-flow.md:
+      title: Simple Lab Order Flow
+      generation: markdown
+    ex2-simple-lab-order-flow-with-phlebotomist.md:
+      title: Lab Order Flow with Phlebotomist
+      generation: markdown
+    ex3-lab-order-flow-reflex-initiated-lab.md:
+      title: Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test
+      generation: markdown
+    ex4-grouped-dispense.md:
+      title: Prescription and Dispense with mandatory single dispense
+      generation: markdown
+     
 
 
 #  order-content.xml:
