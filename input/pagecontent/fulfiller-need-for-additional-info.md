@@ -41,7 +41,8 @@ If these activities must be tracked as part of coordinating the original request
 ```
 On the Shared CoordinationTask:
 * Task.businessStatus is a value such as "Fulfiller awaiting information"
-* Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, Communications, CommunicationRequests, etc. 
+* Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, 
+Communications, CommunicationRequests, etc. 
 
 For any Tasks created to record that action is needed:
 * Task.partOf referencing the shared coordination Task
