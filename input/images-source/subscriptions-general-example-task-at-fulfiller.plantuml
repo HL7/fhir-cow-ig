@@ -67,7 +67,7 @@ Placer -> Placer: Update ServiceRequest.status == Completed
 group Optionally - if Placer needs to surface that outcome in future
     Fulfiller -[hidden]> Placer:
     Placer <-> Fulfiller: Read Output Document if not received within SubscriptionStatus Notification
-    Placer -> Placer: Save a copy with Provenance indicating Fulfiller's document\n is source of truth. Note the output may also\ndirectly reference the performer
+    Placer -> Placer: Save a copy. If needed, indicate Fulfiller's document\n is source of truth via Provenance.location, etc. Note the output may also\ndirectly reference the performer.
    
 end
 @enduml
