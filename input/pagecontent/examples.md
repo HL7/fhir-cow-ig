@@ -13,6 +13,9 @@ This section includes examples of how the patterns described elsewhere in this I
 | Scenario | Description | Fulfiller Selection | Tracking |
 |---|---|----|---|
 |Placer-assigned Lab order| etc. | Placer-assigned | Task tracking |
+|[Simple Lab Order Flow](ex1-simple-lab-order-flow.html)|A Simple Lab Order Workflow with a single Glucose Test|Placer Assigned||
+|[Simple Lab Order Flow with a Collection Center](ex2-simple-lab-order-flow-with-phlebotomist.html)|A Simple Lab Order Workflow with a single Glucose Test. Sample Collected at a collection Center|Placer Assigned||
+
 {:.table-bordered .table-sm .table-striped }
 
 

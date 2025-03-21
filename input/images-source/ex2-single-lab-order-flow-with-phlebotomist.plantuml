@@ -1,0 +1,174 @@
+@startuml
+
+'skinparam sequenceMessageAlign center
+title 
+	Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test and a Phlebotomist
+	- generic Overview -
+end title
+hide footbox
+
+'note across #turquoise
+'	**Assumptions:**
+'	- Physician knows which Specimen to draw (i.e. via an Order Catalog)
+'	- Specimen is drawn at a Phlebotomist
+'	- It is clear which Order Filler will execute the Order
+'	- ""ServiceRequest"" is owned by the Order Placer; changes are allowed only to be done by Placer
+'	- ""Task"" is a shared resource of Placer and Filler and updated by both
+'	- Order Result is reported via ""DiagnosticReport""
+'	- ""DiagnosticReport"" is owned by the Order Filler
+'	- Order is accepted and is fulfilled 
+'	- Lab internal flow is **out of scope**
+'	- All needed data is accessible
+'	- Phlebotmist knows where to send the sample to
+'	- Phlebotmist knows what to draw
+'	**Not defined**
+'	- Ownership of Specimen Resource (Ownership should/could/might change with the physical location)
+'	- Transport of the Sample
+'end note
+
+actor Physician as Doc
+participant "Order Placer System" as Placer
+participant "Order Filler System (Lab)" as Filler
+participant "Phlebotomist System" as Collector
+actor "Phlebotomist" as Phlebo
+
+
+group #eee Physician Workflow 
+	Doc --> Placer: Enter Order
+end
+
+group In Scope of this IG's Guidance 
+
+
+	group Creation of ServiceRequest
+		Placer -> Placer: create ""ServiceRequest"" 
+		note left 
+			**""ServiceRequest""**
+			|_ "".code"" = //2345-7//
+			|_ "".intent"" = """**Order**"""
+			|_ ""...""
+		end note
+	end
+	
+
+	group Collection of Specimen
+		
+		Placer -> Placer: create ""Collection Task"" 
+		note left 
+			**""ServiceRequest""**
+			|_  "".status""="""**active**"""
+			**""Task""**
+			|_  "".basedOn"" -> ""ServiceRequest""
+			|_  "".focus"" -> ""ServiceRequest""
+			|_ ""...""
+		end note 
+		
+		Placer -> Collector: send ""Collection Task"" to **Collection Filler** 
+		note right #lightblue
+			all needed data is accessed by Order Filler
+		end note
+
+		Collector -> Collector: Accept ""ServiceRequest"" 
+		note right #pink
+			**""Collector Task""**
+			|_ "".status"" == """**accepted**"""
+			|_ "".owner"" -> Phlebotomist System 
+			|_ ""businessStatus"" is set appropriate
+		end note
+		
+		... wait for Patient to arrive \nand\nSpecimen is collected...
+		
+		group #eee Phlebotmist workflow
+			Phlebo --> Phlebo: Draw Sample
+			Phlebo --> Collector: enter Specimen Information
+		end
+		
+		Collector -> Collector: create ""Specimen"" 
+		note right #pink
+			**""Specimen""**
+			|_ "".request"" -> ""ServiceRequest""
+			|_ "".type"" = **"""SER"""**
+			|_ ""...""
+		end note
+		
+		Collector -> Collector: Update ""Collector Task""
+		note right #pink
+			**""Collector Task""**
+			|_ "".output""->""Specimen"" 
+			|_ "".status"" = """**completed**"""
+		end note
+	end
+
+	note over Placer, Collector #lightblue
+		The Order Placer System gets information that the Collection Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
+
+	group Transmit Order to Laboratory 
+		Placer -> Placer: create ""Lab Task"" 
+		note left 
+			**""ServiceRequest""**
+			|_  "".status""="""**active**"""
+			**""Lab Task""**
+			|_  "".basedOn"" -> ""ServiceRequest""
+			|_  "".focus"" -> ""ServiceRequest""
+			|_  "".input"" -> ""Specimen""
+			|_ ""...""
+		end note 
+		
+		Placer -> Filler: send ""Lab Task"" to **Lab Filler** 
+		note right #lightblue
+			all needed data is accessed by Order Filler
+			ownership of ""Specimen"" might be transfered to Filler 
+		end note
+	
+		Filler -> Filler: Accept ""ServiceRequest"" 
+		note right #lightgreen
+			**""Lab Task""**
+			|_ "".status"" == """**accepted**"""
+			|_ "".owner"" -> Order Filler
+			|_ ""businessStatus"" is set appropriate
+		end note
+		
+		... wait for Specimen \nand\nexecution of ServiceRequest...
+		
+		Filler -> Filler: Create ""DiagnosticReport"" 
+		note right #lightgreen
+			Result of Order execution is filled into ""DiagnosticReport""
+			**""DiagnosticReport""**
+			|_ "".basedOn"" = ""ServiceRequest""
+			|_ ""...""
+		end note 
+	
+		Filler -> Filler: Update ""Lab Task""
+		note right #lightgreen
+			**""Lab Task""**
+			|_ "".output""->""DiagnosticReport"" 
+			|_ "".status"" = """**completed**"""
+		end note
+	end
+	
+	note over Placer, Filler #lightblue
+		The Order Placer System gets information that the Lab Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
+	
+	group Finish ServiceRequest
+		Placer -> Placer: Update ""ServiceRequest"" 
+		note left
+			**""ServiceRequest""**
+			|_ "".status"" = """**completed**"""
+		end note
+	end
+end
+
+Group #eee Result Reporting to Physician
+	Placer --> Doc: Report ""DiagnosticReport""
+end
+@enduml

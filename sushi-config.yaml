@@ -126,7 +126,16 @@ pages:
   examples.md:
     title: Examples
     generation: markdown
-    ex3-grouped-dispense.md:
+    ex1-simple-lab-order-flow.md:
+      title: Simple Lab Order Flow
+      generation: markdown
+    ex2-simple-lab-order-flow-with-phlebotomist.md:
+      title: Lab Order Flow with Phlebotomist
+      generation: markdown
+    ex3-lab-order-flow-reflex-initiated-lab.md:
+      title: Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test
+      generation: markdown
+    ex4-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
      
