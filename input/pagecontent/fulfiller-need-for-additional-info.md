@@ -1,40 +1,37 @@
 Often, potential Fulfillers find that they need additional data from the Placer to process a request for care. They may do so by:
 * Directly querying for information that a Placer already has, and which the Fulfiller is authorized to access. These requests for additional information are generally handled synchronously. For example - "Check insurance coverage" or "check patient's medication list". 
-* Sending a request to the Placer asking that they provide additional information. This often takes the form of a letter, which a user at the Placer's organization processes. Ofen, these should be accompanied with a status indicating the Fulfiller is waiting for information.
-* A Fulfiller could even send an instruction back to the placer, such as "Please ensure this patient has had a blood test before their consult". 
+* Sending a request to the Placer asking that they provide additional information which will require user effort to prepare. This often takes the form of a letter or other communication from the Fulfiller to the Placer, which a user at the Placer's organization then processes. Often, these should be accompanied with a businessStatus in the shared coordination Task indicating that the Fulfiller is waiting for information. For example, a Long Term Care facility may communicate they have a shared room available, and ask if that is acceptable based on the patient's needs and preferences.
+* A Fulfiller could even send Tasks or other instructions back to the Placer. For example, a surgeon may instruct that a lab test or imaging should be performed ahead of a surgical consult. 
 
-TODO - lots to write up here. Seems like we need some profiles. Do we need to specify this in this guide? It is a core challenge. 
+### Supporting Direct Queries:
+Fulfillers can perform RESTful queries against Placer's FHIR servers to obtain information that they suspect is already available.
 
-### Supporting Direct Queries with authorization_base
-When a Fulfiller needs additional information that they expect already exists on the placer's server, they can perform RESTful queries against the placer's server.
+Placers may choose to indicate in their initial notifications how related information for a patient could be obtained. For example, it may not be obvious to a Fulfiller what combination of queries would allow them to obtaina patient's insurance information and consent from a Placer.
 
-However - a placer may wish to narrow what set of resources a fulfiller has access to: it may be appropriate that the Fulfiller can find ServiceRequests that they've been asked to perform, or supporting information
-like MedicationRequests for patients that have been referred to them, but the Placer may not want to let the Fulfiller see *all* ServiceRequests for a given service, including those that they've sent to the Fulfiller's
-competitor. 
+At the same time, a Placer may wish to narrow what set of resources a fulfiller has access to; a Placer may wish to let a Fulfiller query for information related to ServiceRequests that have been assigned *to them*, without allowing the Fulfiller to see *all* ServiceRequests for a given service, including those that they've sent to the Fulfiller's competitor.
 
-Several features of the Subscriptions framework can be used to help with this. Analagous functionality can be implemented in exchanges using RESTful Tasks or Messaging+REST.
+Likewise, a Placer may wish to limit a Fulfiller to accessing patient data only for patients to whom that Fulfiller is providing care.
 
-```
-* SubscriptionStatus relatedQuery
-* Authorization Base
-.
-```
+Both of these objectives can be accomplished using aspects of the Subscriptions framework. Analagous functionality may be implemented in exchanges using RESTful Tasks or Messaging + REST. See:
+* [Adding Queries to Notifications ]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html))
+* [Authorization within Notifications]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html)) and the [authorization-hint]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html)) extension.
+
 ### Requesting Additional Information Asynchronously via a Letter Flow with Status Update
 
 A fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
 
-Fulfillers MAY specify the information which they are awaiting using Task.statusReason. Fulfillers may also indicate what information is needed by creating additional Task resources with:
+Fulfillers MAY specify the information which they are awaiting using an appropriate Task.businessStatus. Fulfillers may also indicate that action is needed by the Placer by creating additional Tasks with Task.partOf referencing the Shared Coordination Task, and the original Placer as the intended performer of that Task.  
 
 ```
 * Commmunication.partOf referencing the shared coordination Task
 * Communication.inResponseTo referencing an earlier communication, if present
-* Communication.basedOn referencing the ServiceRequest (TODO - is this needed?)
+* Communication.basedOn referencing the ServiceRequest
 * Communication.Recipient
 * Communication.Sender
 * Communicatoin.payload specifying the content of the message or the attachment, if available.
 ```
 
-Such Communications may serve as a record of communications via FHIR (such as a Communication.Create on the Placer's FHIR server by the Fulfiller) or simply a record of communication that occurred out of band. 
+Such Communications may serve as a record of communications via FHIR (such as a Communication.Create on the Placer's FHIR server by the Fulfiller) or simply a record of communication that occurred out of band. T
     
 TODO - decide if we need to link anything in Task.StatusReason
 TODO - when to use Communication vs. CommunicationRequest
