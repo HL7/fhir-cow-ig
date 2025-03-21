@@ -1,0 +1,106 @@
+@startuml
+
+'skinparam sequenceMessageAlign center
+title 
+	Prescription and Dispense with mandatory single dispense task
+end title
+hide footbox
+
+skinparam Note<<resource>> {
+    'BackgroundColor Pink
+    FontName Consolas
+    FontSize 14
+    'FontStyle Bold
+    BorderColor Black
+}
+
+
+actor Prescriber as Doc
+participant "Order Placer System\n(Prescriber)" as Placer
+participant "Order Filler System\n(Pharmacy)" as Filler
+
+group #eee Ordering
+Doc --> Placer: Enter Order
+end
+
+group Workflow
+
+Placer -> Placer: create\n**""MedicationRequests""** 
+
+note left <<resource>> #lightgreen
+	**MedicationRequest**
+	|_ .id = **prescription-line1**
+	|_ .groupIdentifier = **prescription1**
+	|_ .medication = **Clavamox**
+	|_ .intent = "**Order**"
+	|_ ...
+
+	**MedicationRequest**
+	|_ .id = **prescription-line2**
+	|_ .groupIdentifier = **prescription1**
+	|_ .medication = **Azythromycin**
+	|_ .intent = "**order**"
+	|_ ...
+end note
+
+
+
+Placer -> Filler: Patient-mediated selection
+
+note right #lightblue
+	Prescription is accessed by Pharmacy querying
+    **""MedicationRequest?group-or-identifier=prescription1""**
+end note
+Filler -> Filler: Accept dispense
+
+Filler -> Filler: Create Task
+
+note right <<resource>>#pink
+	**Task**
+	|_  .basedOn"" -> **prescription-line1**
+	|_  .extension[basedOn] -> **prescription-line2**
+	|_  .focus"" -> **prescription-line1**
+	|_  .extension[focus] -> **prescription-line2**
+	|_ ...
+end note 
+
+
+Filler -> Filler: Create Dispenses
+note right <<resource>> #pink
+  **MedicationDispense**
+  |_  id -> **dispense1**
+  |_  .authorizingPrescription -> **prescription-line1**
+  |_  ...
+
+  **MedicationDispense**
+  |_  .id -> **dispense2** 
+  |_  .authorizingPrescription -> **prescription-line2**
+  |_  ...
+end note 
+
+
+
+Filler -> Filler: Update Task
+
+note right <<resource>>#pink
+	**Task**
+	|_  .basedOn"" -> **prescription-line1**
+	|_  .extension[basedOn] -> **prescription-line2**
+	|_  .focus"" -> **prescription-line1**
+	|_  .extension[focus] -> **prescription-line2**
+	|_  .output -> **dispense1**
+	|_  .output -> **dispense2**
+	|_ ...
+end note 
+
+
+note over Placer, Filler #lightblue
+	The Order Placer System gets information that the Task is finished via
+		- Subscription
+		- polling
+		- messaging
+		- ...
+end note
+
+
+@enduml

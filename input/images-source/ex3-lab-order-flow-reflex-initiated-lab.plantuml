@@ -34,7 +34,7 @@ group #eee Physician Workflow
 end
 
 group In Scope of this IG's Guidance
-
+	
 	Placer -> Placer: create ""ServiceRequest"" 
 	note left #lightgreen
 		**""ServiceRequest""**
@@ -67,7 +67,7 @@ group In Scope of this IG's Guidance
 		all needed data is accessed by Order Filler
 		ownership of ""Specimen"" might be transfered to Filler 
 	end note
-
+	
 	Filler -> Filler: Accept ""ServiceRequest"" 
 	note right #pink
 		**""Task""**
@@ -78,14 +78,29 @@ group In Scope of this IG's Guidance
 	
 	... wait for Specimen \nand\nexecution of ServiceRequest... 
 	
-	Filler -> Filler: Create ""DiagnosticReport"" 
+	group #eee Laboratory Workflow
+	
+		Filler -> Filler: exectute Order
+		Filler -> Filler: create a Reflex Order
+		note right #lightblue
+			The Laboratory creates a Reflex Order which is triggered 
+			by a laboratory internal protocol
+		end note
+
+		Filler -> Filler: execute reflex Test
+		note right #lightblue
+			The Laboratory exectues the Reflex Order
+		end note
+	end
+	
+	Filler -> Filler: Create ""DiagnosticReport"" with all results
 	note right #pink
 		Result of Order execution is filled into ""DiagnosticReport""
 		**""DiagnosticReport""**
 		|_ "".basedOn"" = ""ServiceRequest""
 		|_ ""...""
 	end note
-
+	
 	Filler -> Filler: Update ""Task""
 	note right #pink
 		**""Task""**

@@ -1,0 +1,23 @@
+@startuml
+participant Catalog #fefefe
+participant Placer
+participant Filler
+
+activate Placer
+group #eee //<color:#777>Catalog query// 
+Placer -[#aaa]-> Catalog: <color:#777>Query panels for "blood" 
+activate Catalog
+Catalog -[#aaa]-> Placer: <color:#777>Respond 
+
+deactivate Catalog
+end
+
+...
+Placer -> Placer: Select Panel to order
+
+group Order Workflow here
+Placer -> Filler: ...
+Filler -> Placer: ...
+Placer -> Filler: ...
+end
+@enduml 
