@@ -26,13 +26,13 @@ This guidance is intended to be universal-realm and does not reference any natio
 Many of the concepts in this guide are built on top of work by the Netherlands FHIR community in their work on the Notified Pull framework which was incorporated into FHIR Subscriptions in R6, work by the Canadian FHIR community to facilitate referrals, work by BSeR to facilitate social care referrals, and earlier guidance created for Durable Medical Equipment orders. This guide also draws inspiration from work on 360X.
 
 #### Key Challenges Today:
-The below is a summary of key challenges in the referral, orders, and transfer space today, especially for cross-organization exchanges. The below is informational background and may not be comprehensive. Only some of the challenges described below are addressed as part of this implementation guide. 
+A summary of key challenges in the referral, orders, and transfer space today, especially for cross-organization exchanges, is shown below. This informational background may not be comprehensive, and only some of the challenges described below are addressed as part of this implementation guide. 
 
 * Endpoint discovery - letting actors know to where an initial notification should be pushed, or from where additional information may be queried.
-* Sharing supporting information - it can be hard to supply all of the background with an order or referral today. For example - in HL7 v2, it's challenging to refer a patient for a surgical consult while communicating that it is based on a _particular_ set of imaging.
-* Requesting additional information providers who receive a request for service may find that additional specific information is needed. That information may not laready exist in the patient's chart, and often that information of interest is not _always_ necessary to a given type of service. 
-* Orchestration and tracking - coordinating which actor has the baton, monitoring the overall status of a referral, managing the earlier steps, etc.
-* Closing the loop - sharing the outcome (and parital outcomes), such as a consult note, an imaging result, a proposed plan of care, etc. 
+* Sharing supporting information - it can be hard to supply all of the necessary and relevant background information with an order or referral today. For example - in HL7 v2, it's challenging to refer a patient for a surgical consult while communicating that it is based on a _particular_ set of imaging.
+* Requesting additional information - providers who receive a request for service may find that additional specific information is needed. That information may not already exist in the patient's chart, and often that information of interest is not _always_ necessary to a given type of service. 
+* Workflow management and tracking - coordinating which actor has the baton, monitoring the overall status of a referral, managing the earlier steps, etc.
+* Closing the loop - sharing the outcome (and partial outcomes), such as a consult note, an imaging result, a proposed plan of care, etc. 
 
 #### Aspects Included in this IG
 This IG provides guidance for how the following workflows could be accomplished in FHIR:
@@ -42,7 +42,7 @@ This IG provides guidance for how the following workflows could be accomplished 
 * A placer, patient, and potential performers coordinating who will ultimately fulfill a request
 * Requestors sending updates to requests - this could be a cancellation of the request, additional supporting information, a demographics change of the patient, etc.
 * Fulfillers sharing status updates
-* Performers sharing outcomes of the reuqest for service - where applicable, this could be a result, a consult note, etc. A fulfiller may also inform a placer that they could not complete the request for service. 
+* Performers sharing outcomes of the request for service - where applicable, this could be a result, a consult note, etc. A fulfiller may also inform a placer that they could not complete the request for service. 
 * Corrections - in which updates are made to an output after the request for service has been completed.
 
 #### Aspects Not Covered in this IG:
@@ -50,7 +50,7 @@ While specification authors and data exchange architects should consider the are
 
 * Client Registration - registering a client with an authorization server and identifying the set of data a client may access and the actions it may take (collectively "scopes") to carry out a set of workflows per a business agreement.
 * Patient Matching - this guide provides minimal guidance on how the exchanging actors should confirm the identity of the patient in the exchange, since this may vary considerably by jurisdiction based on local identifiers and the availability of national IdPs. 
-* Provider addressbooks - identifying the set of providers, where they work, and their electronic endpoints for communication.
+* Provider address books - identifying the set of providers, where they work, and their electronic endpoints for communication.
 * Service catalogs - what tests, procedures, or other services a fulfiller can perform, and what information they would require to perform a service or to assess their ability to perform a service (such as their order-specific questions).
 * Decision Support and Prior authorization - this IG provides only minimal guidance on workflow steps that occur before the creation of an actionable request for service. Many jurisdictions require that providers receive prior-authorization for a request for service from insurers or other payers.
 * Scheduling - confirming the time slot, location, provider, and materials with which a service will be performed
