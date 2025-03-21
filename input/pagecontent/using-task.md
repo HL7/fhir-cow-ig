@@ -1,9 +1,15 @@
 
 ### Tracking business status
-`Task.businessStatus` is the 
+`Task.businessStatus` is the ...
 
 
-### ...
+### Task.focus
+
+
+### Task.input
+
+
+### Task.output
 
 
 
