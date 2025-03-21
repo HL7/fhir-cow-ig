@@ -39,70 +39,73 @@ end
 
 group In Scope of this IG's Guidance 
 
-group Creation of ServiceRequest
-	Placer -> Placer: create ""ServiceRequest"" 
-	note left 
-		**""ServiceRequest""**
-		|_ "".code"" = //2345-7//
-		|_ "".intent"" = """**Order**"""
-		|_ ""...""
-	end note
-end
 
-group Collection of Specimen
-	Placer -> Placer: create ""Collection Task"" 
-	note left 
-		**""ServiceRequest""**
-		|_  "".status""="""**active**"""
-		**""Task""**
-		|_  "".basedOn"" -> ""ServiceRequest""
-		|_  "".focus"" -> ""ServiceRequest""
-		|_ ""...""
-	end note 
-	
-	Placer -> Collector: send ""Collection Task"" to **Collection Filler** 
-	note right #lightblue
-		all needed data is accessed by Order Filler
-	end note
-
-	Collector -> Collector: Accept ""ServiceRequest"" 
-	note right #pink
-		**""Collector Task""**
-		|_ "".status"" == """**accepted**"""
-		|_ "".owner"" -> Phlebotomist System 
-		|_ ""businessStatus"" is set appropriate
-	end note
-	
-	... wait for Patient to arrive \nand\nSpecimen is collected...
-	
-	group #eee Phlebotmist workflow
-		Phlebo --> Phlebo: Draw Sample
-		Phlebo --> Collector: enter Specimen Information
+	group Creation of ServiceRequest
+		Placer -> Placer: create ""ServiceRequest"" 
+		note left 
+			**""ServiceRequest""**
+			|_ "".code"" = //2345-7//
+			|_ "".intent"" = """**Order**"""
+			|_ ""...""
+		end note
 	end
 	
-	Collector -> Collector: create ""Specimen"" 
-	note right #pink
-		**""Specimen""**
-		|_ "".request"" -> ""ServiceRequest""
-		|_ "".type"" = **"""SER"""**
-		|_ ""...""
-	end note
-	
-	Collector -> Collector: Update ""Collector Task""
-	note right #pink
-		**""Collector Task""**
-		|_ "".output""->""Specimen"" 
-		|_ "".status"" = """**completed**"""
-	end note
-end
 
-note over Placer, Collector #lightblue
-	The Order Placer System gets information that the Collection Task is finished via
-		- Subscription
-		- polling
-		- messaging
-		- ...
-end note
+	group Collection of Specimen
+		
+		Placer -> Placer: create ""Collection Task"" 
+		note left 
+			**""ServiceRequest""**
+			|_  "".status""="""**active**"""
+			**""Task""**
+			|_  "".basedOn"" -> ""ServiceRequest""
+			|_  "".focus"" -> ""ServiceRequest""
+			|_ ""...""
+		end note 
+		
+		Placer -> Collector: send ""Collection Task"" to **Collection Filler** 
+		note right #lightblue
+			all needed data is accessed by Order Filler
+		end note
+
+		Collector -> Collector: Accept ""ServiceRequest"" 
+		note right #pink
+			**""Collector Task""**
+			|_ "".status"" == """**accepted**"""
+			|_ "".owner"" -> Phlebotomist System 
+			|_ ""businessStatus"" is set appropriate
+		end note
+		
+		... wait for Patient to arrive \nand\nSpecimen is collected...
+		
+		group #eee Phlebotmist workflow
+			Phlebo --> Phlebo: Draw Sample
+			Phlebo --> Collector: enter Specimen Information
+		end
+		
+		Collector -> Collector: create ""Specimen"" 
+		note right #pink
+			**""Specimen""**
+			|_ "".request"" -> ""ServiceRequest""
+			|_ "".type"" = **"""SER"""**
+			|_ ""...""
+		end note
+		
+		Collector -> Collector: Update ""Collector Task""
+		note right #pink
+			**""Collector Task""**
+			|_ "".output""->""Specimen"" 
+			|_ "".status"" = """**completed**"""
+		end note
+	end
+
+	note over Placer, Collector #lightblue
+		The Order Placer System gets information that the Collection Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
 
 	group Transmit Order to Laboratory 
 		Placer -> Placer: create ""Lab Task"" 
@@ -132,7 +135,7 @@ end note
 		
 		... wait for Specimen \nand\nexecution of ServiceRequest...
 		
-		Filler -> Filler: Create""DiagnosticReport"" 
+		Filler -> Filler: Create ""DiagnosticReport"" 
 		note right #lightgreen
 			Result of Order execution is filled into ""DiagnosticReport""
 			**""DiagnosticReport""**
