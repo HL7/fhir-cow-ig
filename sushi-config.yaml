@@ -67,7 +67,7 @@ pages:
   workflow-state-overview.md:
     title: Workflow State Overview
     generation: markdown
-  using_task.md:
+  using-task.md:
     title: Using Task
     generation: markdown
   workflow-patterns.md:
