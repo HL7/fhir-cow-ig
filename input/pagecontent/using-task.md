@@ -7,10 +7,18 @@
 
 
 ### Task.input
+`Task.input` is used to get the relevant Data to execute the Request into the Filler system. Examples are the
+- `Specimen` Resource
+- Ask at Order Entry Questions
+- etc.
 
 
 ### Task.output
-
+`Task.output` is used to get the -if available- output of the Request from the Filler to the Placer. Examples of this outputs are
+- `DiagnosticReport`
+- `Questionaires`
+- `ImageStudy`
+- etc.
 
 
 ### Coordinating several requests
