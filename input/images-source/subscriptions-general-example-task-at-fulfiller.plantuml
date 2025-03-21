@@ -14,7 +14,7 @@ Placer --> Fulfiller: Inform Fulfiller of their channel on which to receive Subs
 Fulfiller <-- Fulfiller: Create an administrative subscription for the Placer on Tasks which the Placer creates 
 
 note over Placer, Fulfiller: TODO: need to think through more how to do the below if the Task is at the Fulfiller
-Fulfiller --> Placer: Inform Placer of their own channel
+Fulfiller --> Placer: Inform Placer on their own channel
 
 Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which there is a Task designating the Fulfiller as the intended performer in Task.performer
 
