@@ -1,7 +1,5 @@
 @startuml
-skinparam svgDimensionStyle false
 autonumber
-skinparam svgDimensionStyle false
 
 participant Placer order 10
 
