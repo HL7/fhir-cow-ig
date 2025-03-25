@@ -40,7 +40,15 @@
                     }
                 ]
 
-            }       
+            },
+            {
+                "id": "MessageHeader.event",
+                "path": "MessageHeader.eventCoding",
+                "binding": {
+                    "strength": "extensible",
+                    "valueSet": "http://hl7.org/fhir/uv/cow/ValueSet/cow-message-header-event"
+                }
+            }      
         ]
     }
 }
