@@ -1,5 +1,4 @@
-The table below describes how a request may be represented throughout its life cycle. A request could be a ServiceRequest, a DeviceRequest, etc. This guidance builds on the [Task State 
-Machine]([url](https://hl7.org/fhir/task.html#statemachine) and is intended to provide a way to communicate the status of a request that is agnostic to the choice of FHIR exchange mechanism.
+The table below describes how a request may be represented throughout its life cycle. A request could be a ServiceRequest, a DeviceRequest, etc. This guidance builds on the [Task state machine]([url](https://hl7.org/fhir/task.html#statemachine)) and is intended to provide a way to communicate the status of a request that is agnostic to the choice of FHIR exchange mechanism.
 
 Not all states will apply to all workflows or use-cases, and many implementations may not have a need to 'surface' resources representing a given stage of the workflow. Specification authors building IGs on top of this guidance may choose to further sub-divide these states to meet their needs by leveraging elements such as Task.businessStatus. 
 
