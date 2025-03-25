@@ -10,7 +10,7 @@ title: Clinical Order Workflows
 status: draft # draft | active | retired | unknown
 
 publisher:
-  name: HL7 International - Orders and Observations Work Group
+  name: HL7 International / Orders and Observations Work Group
   url: 'http://hl7.org/Special/committees/orders'
   email: oo@lists.hl7.org
 
@@ -23,11 +23,11 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 description: An Implementation Guide providing the foundational guidance for order-based workflow FHIR interoperability
 license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 date: '2024-10-25'
-version: 0.1.0
+version: 1.0.0-ballot
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2023+
 
-releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: STU 1 Ballot # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
@@ -126,16 +126,7 @@ pages:
   examples.md:
     title: Examples
     generation: markdown
-    ex1-simple-lab-order-flow.md:
-      title: Simple Lab Order Flow
-      generation: markdown
-    ex2-simple-lab-order-flow-with-phlebotomist.md:
-      title: Lab Order Flow with Phlebotomist
-      generation: markdown
-    ex3-lab-order-flow-reflex-initiated-lab.md:
-      title: Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test
-      generation: markdown
-    ex4-grouped-dispense.md:
+    ex3-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
      
