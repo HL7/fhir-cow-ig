@@ -1,10 +1,8 @@
 @startuml
 autonumber
 participant Placer order 10
-
 participant Fulfiller order 20
 
-== Perform Service and Share Output == 
 group If Fulfiller creating an output
     Fulfiller <- Fulfiller: Performs Service, creates output
     Fulfiller -> Placer: Updates Task.output to reference the output 
