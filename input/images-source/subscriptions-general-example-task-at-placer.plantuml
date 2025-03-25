@@ -3,7 +3,7 @@ autonumber
 'skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 
-== Pre-coordination ==
+group Pre-Coordination
 
 Placer --> Placer: Register Fulfiller as a client
 
@@ -14,7 +14,10 @@ Placer <-- Fulfiller: inform Placer of the FHIR endpoint on which SubscriptionSt
 
 Placer --> Placer: Create administrative subscription for fulfiller on Tasks where they are Task.performer
 ||20||
-== Create Request ==
+end
+
+group Create Request
+
 
 Placer -> Placer : Create Order, ServiceRequest, Task\n**per (potential) fulfiller**
 
@@ -51,8 +54,8 @@ group If Fulfiller will perform a more\nspecific service
     Fulfiller <- Fulfiller : Create ServiceRequest with .basedOn\npointing to the Placer's ServiceRequest 
 
 end
-
-== Perform Service ==
+end
+group Perform Service
 
 group If Fulfiller creating an output document
     Fulfiller-[hidden]>Placer:
@@ -71,5 +74,6 @@ group Optionally, if Placer needs to be able to surface\nthat Outcome in future
     Placer-[hidden]>Fulfiller
     Placer <-> Fulfiller: Read Output Document
     Placer -> Placer : Save a copy. If needed, indicate that the Fulfiller's copy is the source of truth via Provenance.location, etc.\nNote that in many cases, the Event resource itself indicates origin. 
+end
 end
 @enduml
