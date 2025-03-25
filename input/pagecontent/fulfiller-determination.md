@@ -1,6 +1,6 @@
-There are several ways a fulfiller is determined.   
+This section provides guidance for several mechanisms by which a fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms]([url](https://www.hl7.org/fhir/exchanging.html)) may be used provided that they adhere to the guidance on representing a reqeust's state and for resource ownership.
 
-A placer may initiate and authorize:
+The ultimate fulfiller of an order may not be known at the time an order is first created. A placer may initiate and authorize:
 * A simple order, in which a placer creates a request and directs it to a specific performer who the placer is confident will make a best-effort attempt to fulfill the request. 
 * A simple referral, in which a placer creates a request for a specific intended performer, but the selected performer may decline to perform the requested service.
 * A request which a patient then uses to seek service at a place of their choosing.
