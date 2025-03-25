@@ -3,8 +3,7 @@ title Task at Fulfiller Overview
 
 autonumber
 
-group Pre-Coordination
-
+==Pre-Coordination==
 Placer --> Placer: Register Fulfiller as a client
 
 Fulfiller <-- Fulfiller: Register Placer as a Client
@@ -19,9 +18,9 @@ Placer --> Placer: Create an administrative subscription for the Fulfiller on Se
 
 note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\n Other subscriptions, like for Patient Demographics info, are also possible.\n\nNote that the subscription is just an identifier and need not be a surfacable resource.
 
-end
-group Create Request
 
+
+==Create Request==
 Placer -> Placer: Create Order, ServiceRequest
 
 Placer -> Fulfiller: Task.Create
@@ -42,9 +41,9 @@ group If Fulfiller will perform a more specific service
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: Create ServiceRequest with ServiceRequest.basedOn\nreferring to the Placer's ServiceRequest
 end
-end
-group Perform Service
 
+
+==Perform Service==
 group If fulfiller creating an output document
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: Performs Service, creates Output
@@ -68,5 +67,5 @@ group Optionally - if Placer needs to surface that outcome in future
     Placer -> Placer: Save a copy. If needed, indicate Fulfiller's document\n is source of truth via Provenance.location, etc. Note the output may also\ndirectly reference the performer.
    
 end
-end
+
 @enduml
