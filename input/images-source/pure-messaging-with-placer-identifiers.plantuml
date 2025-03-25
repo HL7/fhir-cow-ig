@@ -1,15 +1,16 @@
 @startuml
 title Referrals Outline - Messaging w/ Placer Identifiers
 
-== Pre-coordination==
+group Pre-Coordination
 
 Placer <--> Fulfiller: Coordinate business agreement
 
 Placer --> Fulfiller: Register client
 
 Fulfiller --> Placer: Register client
+end
 
-== Initial Notification ==
+group Initial Notification
 
 Placer -> Placer: Placer generates Request. Creates internal representation.
 Placer -> Fulfiller: Authenticates to Fulfiller
@@ -20,7 +21,7 @@ Placer -> Fulfiller: Sends message with MessageHeader.focus as a Task, and suppo
 Fulfiller <- Fulfiller: Creates their own internal representation.
 Fulfiller -> Placer: Acknowledges the request.
 
-note over Placer, Fulfiller: Note - may or may not accept. May or may not send back their own identifier. Can be a comm ack or a decision.
+note over Placer, Fulfiller: Note - the fulfiller may or may not accept at this stage, and may or may\nnot send back their own identifier. Can be a comm ack or a decision.
 
 group If potential fulfiller has further processing to do, like checking availability before accepting
     Fulfiller <- Fulfiller: Processes the Request
@@ -33,8 +34,10 @@ end
 group If placer has to accept a 'bid' from the potential fulfiller
     Placer -> Fulfiller: Send confirmation they should provide the service
 end
-||45||
-== Share Updates ==
+
+end
+
+group Share Updates
 
 group If placer has additional info come in
     Placer -> Fulfiller: Send status updates, additional info, etc.
@@ -43,12 +46,11 @@ end
 group If placer wants status updates and fulfiller can send
     Fulfiller -> Placer: Send status updates (scheduled, etc.)
 end
-
-||45||
-== Share Outcome ==
+end
+group Share Outcome
 
 Fulfiller <- Fulfiller: Generate outcome/result with internal identifier
 Fulfiller -> Placer: Notify of outcome via a Message with Task in focus, Task.Status updated, and Task.output referencing any output
 Placer -> Placer: Process outcome and create internal representation
-
+end
 @enduml
