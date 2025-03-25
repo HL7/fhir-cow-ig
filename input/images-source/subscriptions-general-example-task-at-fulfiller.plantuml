@@ -17,14 +17,12 @@ Fulfiller --> Placer: Inform Placer on their own channel
 
 Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which there is a Task designating the Fulfiller as the intended performer in Task.performer
 
-note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\n Other subscriptions, like for Patient Demographics info, are also possible.\n\n**Note** that the subscription is just an identifier and not be a surfacable resource.
+note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\n Other subscriptions, like for Patient Demographics info, are also possible.\n\nNote that the subscription is just an identifier and need not be a surfacable resource.
 
 end
 group Create Request
 
 Placer -> Placer: Create Order, ServiceRequest
-
-note over Placer, Fulfiller: ServiceRequest representing that order now available for query on the Placer's FHIR server
 
 Placer -> Fulfiller: Task.Create
 
