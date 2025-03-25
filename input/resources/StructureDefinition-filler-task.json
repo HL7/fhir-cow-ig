@@ -1,6 +1,6 @@
 {
     "resourceType": "StructureDefinition",
-    "id": "fulfiller-task",
+    "id": "placer-task",
     "extension" : [
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
@@ -12,12 +12,12 @@
         }
     ],
     "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task",
-    "name": "COWPlacerTask",
-    "title": "Shared Coordination Task (if at Placer)",
+    "name": "COWFillerTask",
+    "title": "Shared Coordination Task (if at Fulfiller)",
     "status": "active",
     "experimental": false,
     "date": "2025-03-03",
-    "description": "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource",
+    "description": "Minimum expectations for a Task resource when created at an order fulfiller. This profile is used to describe the 'please fullfil' request for either a known performer, or by one who is yet to be determined. Changes to the Task made by the fulfiller are obtained RESTfully by the placer either via polling, or as the result of a subscription notification about the updates of the Task resource",
     "kind": "resource",
     "abstract": false,
     "type": "Task",
