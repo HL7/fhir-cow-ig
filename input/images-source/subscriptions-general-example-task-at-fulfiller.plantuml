@@ -3,8 +3,7 @@ title Task at Fulfiller Overview
 
 autonumber
 
-== Pre-Coordination ==
-
+==Pre-Coordination==
 Placer --> Placer: Register Fulfiller as a client
 
 Fulfiller <-- Fulfiller: Register Placer as a Client
@@ -13,18 +12,16 @@ Placer --> Fulfiller: Inform Fulfiller of their channel on which to receive Subs
 
 Fulfiller <-- Fulfiller: Create an administrative subscription for the Placer on Tasks which the Placer creates 
 
-note over Placer, Fulfiller: TODO: need to think through more how to do the below if the Task is at the Fulfiller
 Fulfiller --> Placer: Inform Placer on their own channel
 
-Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which there is a Task designating the Fulfiller as the intended performer in Task.performer
+Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which\nthere is a Task designating the Fulfiller as the intended performer in Task.performer
 
-note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\n Other subscriptions, like for Patient Demographics info, are also possible.\n\n**Note** that the subscription is just an identifier and not be a surfacable resource.
+note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\nOther subscriptions, like for Patient Demographics info, are also possible.\nNote that the subscription is just an identifier and need not be a surfacable resource.
 
 
-== Create Request ==
+
+==Create Request==
 Placer -> Placer: Create Order, ServiceRequest
-
-note over Placer, Fulfiller: ServiceRequest representing that order now available for query on the Placer's FHIR server
 
 Placer -> Fulfiller: Task.Create
 
@@ -45,8 +42,8 @@ group If Fulfiller will perform a more specific service
     Fulfiller <- Fulfiller: Create ServiceRequest with ServiceRequest.basedOn\nreferring to the Placer's ServiceRequest
 end
 
-== Perform Service ==
 
+==Perform Service==
 group If fulfiller creating an output document
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: Performs Service, creates Output
@@ -70,4 +67,5 @@ group Optionally - if Placer needs to surface that outcome in future
     Placer -> Placer: Save a copy. If needed, indicate Fulfiller's document\n is source of truth via Provenance.location, etc. Note the output may also\ndirectly reference the performer.
    
 end
+
 @enduml
