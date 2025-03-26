@@ -75,17 +75,16 @@ A placer may accept that proposal by:
 
 ### Fulfiller Selection of a More Specific Service (Under Original Authority)
 
-**Example workflow**: a protocolling radiologist decides that a request for imaging should be performed as a specific procedure.
+Fulfillers, as specialists, may elect to perform a more specific service than what was originally requested by a placer. For example, a protocolling radiologist may determine that a request for imaging should be performed as a specific procedure. The more specific service may or may not be of interest to the placer. If the fulfiller needs to surface the Request corresponding to the more specific service they will perform, they may create a new Request with Request.replaces referencing the Placer’s Request. 
 
-In many cases, the more specific service may not be of interest to the placer. If the fulfiller needs to surface the Request corresponding to the more specific service they will perform, they may create a new Request with Request.replaces referencing the Placer’s Request. 
-
-Any output generated from this new service may still be linked in the Task.output of the shared status-tracking Task. Additionally, the output may be linked ‘back’ to the original Request by following the chain of references.
+Any output generated from this new service may still be linked in the Task.output of the Shared Coordination Task. Additionally, the output may be linked back to the original Request by following the chain of references.
 
 Such a scenario may also occur in the case that a procedure could not be completed as originally ordered. For example, if a request is created that a patient undergo a Nuclear Medicine rest/stress test, in some circumstances a patient may only be able to perform the rest portion. 
 
 ### Fulfiller Unable to Perform:
-In some scenarios, a fulfiller who initially accepted a request finds that they can no longer perform the requested service. Examples include when a specimen is dropped or if a bed didn’t open up. 
+In some scenarios, a fulfiller who initially accepted a request finds that they can no longer perform the requested service. Examples include when a specimen is dropped or if a bed in a long term care facility didn’t become available when expected. 
 
+Such scenarios may be represented like the below. The fulfiller may update their Shared Coordination Task to indicate that the attempt failed. A placer may then decide whether to cancel the request, to initiate Tasks to others to fulfill the request, etc.
 ```
 Request Resource:
     *	Status: active
