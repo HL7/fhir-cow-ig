@@ -28,7 +28,7 @@ This guide recommends two complementary options, though their use is optional wi
 1. Actors may leverage [SMART v2 scopes](https://hl7.org/fhir/smart-app-launch/) to provide finer-grained control of what another actor may access. For example, a Placer may indicate that a Fulfiller can query only for ServiceRequests of a particular category, such as ServiceRequests related social care referrals or Observation resources related to Labs.
 2. Senders of a notification may optionally include an [authorization hint](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) that the recipient may redeem while requesting an access token. Such an authorization hint (also called an authorization_base in some specifications) may be used by its creator to tailor the set of resources the actor presenting the authorization hint (and requesting an access token) may access. As an example, this can be used to limit a Service Provider to only obtaining information for patients for whom an authorization hint has been sent to them as part of a referral notification, rather than allowing them access to all patients in the database.  
 
-### Sharing Content When Intermediaries Are Present:
+### Sharing Content when Intermediaries are Present:
 
 Most examples in this guide assume that a fulfiller and a placer may communicate directly. In reality, there are often intermediaries. For example, a clinician may collect a specimen and send it to a community lab, only for the community lab to forward the specimen to a reference lab. 
 
