@@ -44,8 +44,6 @@ Fulfiller_A -> Coordinator: SubscriptionStatus notification on Task (B)
 
 Coordinator -> Coordinator: Update Task(A) 
 
-note over Coordinator, Placer: TODO - decide whether we need a profile for tracking status of individual requests
-
 Coordinator -> Placer: SubscriptionStatus notification indicating an\nupdate to their original Task (bid received or confirmed performer)
 
 group if placer must accept proposal:

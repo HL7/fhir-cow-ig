@@ -1,0 +1,54 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "cow-message-header",
+    "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+          "valueCode" : "oo"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+          "valueCode" : "trial-use"
+        }
+    ],
+    "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/message-header",
+    "name": "COWMessageHeader",
+    "title": "COW Message Header",
+    "status": "active",
+    "experimental": false,
+    "date": "2025-03-03",
+    "description": "Minimum expectations for a MessageHeader resource when used for Clinical Order Workflow. This profile is used to describe the use of FHIR Messaging when RESTful-based exchange is not possible between the Placer and the Fulfiller. The purpose of the constraints for the MessageHeader resource is to make sure that the rest of the CLinical Workflow requirements that may be relevant to a particular implementation or national/regional implementation guides are compatible with the RESTful-based exchange patterns.",
+    "kind": "resource",
+    "abstract": false,
+    "type": "MessageHeader",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MessageHeader",
+    "derivation": "constraint",
+    "differential": {
+        "element": [
+            {
+                "id": "MessageHeader.focus",
+                "path": "MessageHeader.focus",
+                "min": 1,
+                "max": 1,
+                "mustSupport": true,
+                "type": [
+                    {
+                        "code": "Reference",
+                        "targetProfile": [ 
+                            "http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task" 
+                        ]
+                    }
+                ]
+
+            },
+            {
+                "id": "MessageHeader.event",
+                "path": "MessageHeader.eventCoding",
+                "binding": {
+                    "strength": "extensible",
+                    "valueSet": "http://hl7.org/fhir/uv/cow/ValueSet/cow-message-header-event"
+                }
+            }      
+        ]
+    }
+}

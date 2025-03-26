@@ -1,6 +1,6 @@
-There are several ways a fulfiller is determined.   
+This section provides guidance for several mechanisms by which a fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms]([url](https://www.hl7.org/fhir/exchanging.html)) may be used provided that they adhere to the guidance on representing a reqeust's state and for resource ownership.
 
-A placer may initiate and authorize:
+The ultimate fulfiller of an order may not be known at the time an order is first created. A placer may initiate and authorize:
 * A simple order, in which a placer creates a request and directs it to a specific performer who the placer is confident will make a best-effort attempt to fulfill the request. 
 * A simple referral, in which a placer creates a request for a specific intended performer, but the selected performer may decline to perform the requested service.
 * A request which a patient then uses to seek service at a place of their choosing.
@@ -8,7 +8,7 @@ A placer may initiate and authorize:
 * A request that may be broadcasted to several potential performers, in which any of them may claim the request.
 * A request sent to several potential performers, where the requestor and patient will then review proposals or bids sent back by the performers before selecting a definite performer.
 * A request to a central coordinator who will assign the request to a performer and notify the requestor of who will fulfill the request.
-* A request to a central coordinator who will assign the request to a performer and additionally mediate further communication between the requestor and performer. (TODO - decide if including. Grahame paper).
+* A request to a central coordinator who will assign the request to a performer and additionally mediate further communication between the requestor and performer.
 
 ### Placer assigned
 
@@ -221,11 +221,11 @@ Some common reasons for a central coordinator include:
 
 Given the variability, this section is provided only for illustrative value. This section outlines two potential configurations (of several) based on the capabilities of the broker. The intent of the first example is that (with regards to exchange functionality) the Placer need be only minimally aware of whether they are interacting with a coordinator or with a fulfiller directly. 
 
-In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this exmaple, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to faciliate rewrites or for Placers to track Provenance on outputs, but may require greater pre-coordination to facilitate Client Registration.  
+In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this exmaple, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to faciliate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between placers and fulfillers.  
 
 Other IGs may build on top of this to include details of the endpoint discovery, handling holds the coordinator may place on an assigned Fulfiller, tracking authorization from a coordinator, etc. 
 
-Similar flows may be constructed using FHIR Subscriptions with the original Task hosted at the Placer or via FHIR messaging. 
+Similar flows may be constructed using FHIR messaging or using FHIR Subscriptions with the shared coordination Task hosted at the Placer. 
 
 <div class="panel panel-default">
   <div class="panel-heading">

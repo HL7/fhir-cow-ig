@@ -8,7 +8,7 @@
   "url" : "http://hl7.org/fhir/uv/cow/CodeSystem/cow-businessStatus",
   "version" : "0.5.0",
   "name" : "Clinical_Order_Workflow_Example_Codes",
-  "title" : "Clinical_Order_Workflow_Example_Codes",
+  "title" : "Clinical Order Workflow Example Codes",
   "status" : "active",
   "experimental" : false,
   "date" : "2025-03-10T07:46:45-07:00",
