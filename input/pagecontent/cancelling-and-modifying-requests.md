@@ -13,8 +13,6 @@ As general guidance, this guide recommends that [Request resource].replaces be u
 
 This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a new Task resource with a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
-TODO - add diagrams
-
 ```
 Request Resource
     * Status: Revoked
