@@ -39,9 +39,9 @@
                 },
                 "mustSupport" : true,
                 "isModifier" : false,
-                "isSummary" : true
-    
+                "isSummary" : true   
             }
+
         ]
     }
 }
