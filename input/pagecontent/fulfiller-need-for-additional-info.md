@@ -13,8 +13,8 @@ At the same time, a Placer may wish to narrow what set of resources a fulfiller 
 Likewise, a Placer may wish to limit a Fulfiller to accessing patient data only for patients to whom that Fulfiller is providing care.
 
 Both of these objectives can be accomplished using aspects of the Subscriptions framework. Analagous functionality may be implemented in exchanges using RESTful Tasks or Messaging + REST. See:
-* [Adding Queries to Notifications ]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html))
-* [Authorization within Notifications]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html)) and the [authorization-hint]([url](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html)) extension.
+* [Adding Queries to Notifications ](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html)
+* [Authorization within Notifications](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) and the [authorization-hint](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) extension.
 
 ### Requesting Additional Information Asynchronously via a Letter Flow with Status Update
 
@@ -41,8 +41,7 @@ If these activities must be tracked as part of coordinating the original request
 ```
 On the Shared CoordinationTask:
 * Task.businessStatus is a value such as "Fulfiller awaiting information"
-* Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, 
-Communications, CommunicationRequests, etc. 
+* Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, Communications, CommunicationRequests, etc. 
 
 For any Tasks created to record that action is needed:
 * Task.partOf referencing the shared coordination Task
