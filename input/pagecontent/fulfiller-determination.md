@@ -1,4 +1,4 @@
-This section provides guidance for several mechanisms by which a fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms]([url](https://www.hl7.org/fhir/exchanging.html)) may be used provided that they adhere to the guidance on representing a reqeust's state and for resource ownership.
+This section provides guidance for several mechanisms by which a fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms](https://www.hl7.org/fhir/exchanging.html) may be used provided that they adhere to the guidance on representing a request's state and for resource ownership.
 
 The ultimate fulfiller of an order may not be known at the time an order is first created. A placer may initiate and authorize:
 * A simple order, in which a placer creates a request and directs it to a specific performer who the placer is confident will make a best-effort attempt to fulfill the request. 

@@ -10,7 +10,7 @@ title: Clinical Order Workflows
 status: draft # draft | active | retired | unknown
 
 publisher:
-  name: HL7 International / Orders and Observations Work Group
+  name: HL7 International / Orders and Observations
   url: 'http://hl7.org/Special/committees/orders'
   email: oo@lists.hl7.org
 
@@ -36,6 +36,9 @@ releaseLabel: STU 1 Ballot # ci-build | draft | qa-preview | ballot | trial-use 
 #
 dependencies:
   hl7.fhir.extensions.r4: 4.0.1
+  hl7.fhir.uv.subscriptions-backport.r4:
+    version: 1.1.0
+    id: subscriptions
 #   hl7.fhir.us.core: 3.1.0
 #   hl7.fhir.us.mcode:
 #     id: mcode
@@ -126,7 +129,7 @@ pages:
   examples.md:
     title: Examples
     generation: markdown
-    ex3-grouped-dispense.md:
+    ex4-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
      

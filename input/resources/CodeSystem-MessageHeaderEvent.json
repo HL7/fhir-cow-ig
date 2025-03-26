@@ -12,7 +12,7 @@
   "status" : "active",
   "experimental" : false,
   "date" : "2025-03-10T07:46:45-07:00",
-  "publisher" : "HL7 International - Orders and Observations Work Group",
+  "publisher" : "HL7 International - Orders and Observations",
   "contact" : [{
     "name" : "HL7 International - Orders and Observations Work Group",
     "telecom" : [{

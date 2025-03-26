@@ -34,7 +34,7 @@
   }],
   "compose" : {
     "include" : [{
-      "system" : "http://hl7.org/fhir/uv/cow/CodeSystem/cow-businessStatus"
+      "system" : "http://hl7.org/fhir/uv/cow/CodeSystem/cow-message-header-event"
     }]
   }
 }

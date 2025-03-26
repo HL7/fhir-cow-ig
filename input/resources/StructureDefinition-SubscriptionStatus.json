@@ -1,0 +1,47 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "cow-subscription-status",
+    "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+          "valueCode" : "oo"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+          "valueCode" : "trial-use"
+        }
+    ],
+    "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/cow-subscription-status",
+    "name": "COWSubscriptionStatus",
+    "title": "COW Subscription Status",
+    "status": "active",
+    "experimental": false,
+    "date": "2025-03-03",
+    "description": "Minimum expectations for a SubscriptionStatus resource when used for Clinical Order Workflow. This profile is used to describe the use of administrative (pre-coordinated) subscription notifications for RESTful-based exchange between the Placer and the Fulfiller. The purpose of the constraints for the SubscriptionStatus resource is to make sure that additional requirements, which may be relevant to a particular implementation or national/regional implementation guides, are compatible with the RESTful-based exchange patterns.",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Parameters",
+    "baseDefinition": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4",
+    "derivation": "constraint",
+    "differential": {
+        "element": [
+            {
+                "id" : "Parameters.parameter:subscription.valueReference.identifier",
+                "path" : "Parameters.parameter.valueReference.identifier",
+                "short" : "Reference to the Subscription responsible for this notification. Logical reference is the only one supported",
+                "definition" : "The reference to the Subscription which generated this notification, using a logical reference",
+                "min" : 1,
+                "max" : "1",
+                "base" : {
+                    "path" : "Parameters.parameter.valueReference",
+                    "min" : 0,
+                    "max" : "1"
+                },
+                "mustSupport" : true,
+                "isModifier" : false,
+                "isSummary" : true   
+            }
+
+        ]
+    }
+}
