@@ -2,7 +2,7 @@
 
 'skinparam sequenceMessageAlign center
 title 
-	Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test 
+	Simple Lab Order Workflow with a single TSH (LOINC 3016-3) Test triggering an FT4 (LOINC 3024-7) Test
 	- generic Overview -
 end title
 hide footbox
@@ -33,12 +33,13 @@ group #eee Physician Workflow
 	Doc --> Placer: enter Specimen Information
 end
 
+
 group In Scope of this IG's Guidance
 	
 	Placer -> Placer: create ""ServiceRequest"" 
 	note left #lightgreen
 		**""ServiceRequest""**
-		|_ "".code"" = //2345-7//
+		|_ "".code"" = //3016-3//
 		|_ "".intent"" = """**Order**"""
 		|_ ""...""
 	end note
@@ -81,15 +82,15 @@ group In Scope of this IG's Guidance
 	group #eee Laboratory Workflow
 	
 		Filler -> Filler: exectute Order
-		Filler -> Filler: create a Reflex Order
+		Filler -> Filler: create a FT4 Reflex Order 
 		note right #lightblue
-			The Laboratory creates a Reflex Order which is triggered 
-			by a laboratory internal protocol
+			The Laboratory creates FT4 (LOINC 3024-7) a Reflex Order 
+			triggered by a laboratory internal protocol
 		end note
 
-		Filler -> Filler: execute reflex Test
+		Filler -> Filler: execute FT4 reflex Test
 		note right #lightblue
-			The Laboratory exectues the Reflex Order
+			The Laboratory exectues the FT4 Reflex Order
 		end note
 	end
 	
