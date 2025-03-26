@@ -32,7 +32,7 @@ This guide recommends two complementary options, though their use is optional wi
 
 Most examples in this guide assume that a fulfiller and a placer may communicate directly. In reality, there are often intermediaries. For example, a clinician may collect a specimen and send it to a community lab, only for the community lab to forward the specimen to a reference lab. 
 
-Such "chain care" is common. While it presents complexities, scenarios like this are also a motivation for many of the abstractions this guide recommends. Consider a model like the below, where a request originates from some "upstream" actor (such N-1), and a later fulfiller (such as Actor N+1) then needs information that an earlier actor possessed.
+Such "chain care" is common. While it presents complexities, scenarios like this are also a motivation for many of the abstractions this guide recommends. Consider a model like the below, where a request originates from some "upstream" actor (such as N-1), and a later fulfiller (such as actor N+1) then needs information that an earlier actor possessed.
 
 {% include img.html img="sharing-info-with-intermediaries.png" %}
 
@@ -42,4 +42,4 @@ In environments where the fulfillers and the placer may be unable to communicate
 
 Alternatively, actors in the chain can reduce the importance of references by including in the body of their notifications (whether that is a Message, a SubscriptionStatus notification, etc.) the information that they expect later parties in the chain will need in order to process a request. 
 
-These scenarios also further motivate the guidance that Tasks, rather than requests, be the focus of communication, as this ensures that Notification N-1 and Notification N in the diagram may of the same structure, and the Placer need not (necessarily) be aware of the organization downstream: each pair of actors need merely agree upon how they will coordinate the Shared Coordination Task for their pair. More complex exchanges may then be composed of the parts. 
+These scenarios further motivate the guidance that Tasks, rather than Requests, be the focus of communication, as this ensures that Notification N-1 and Notification N in the diagram may be of the same structure, and allow that a Placer need not (necessarily) be aware of the downstream details: each pair of actors need merely agree upon how they will coordinate their Shared Coordination Task. More complex exchanges may then be composed of the parts. 
