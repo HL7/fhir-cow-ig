@@ -21,7 +21,7 @@ Coordinator -> Coordinator: Create Internal Representation,check\nlist of potent
 Coordinator -> Coordinator: Determine by some criteria an\nintended performer (availability, etc.)
 
 Coordinator -> Placer: Inform Placer of potential performers
-note over Placer, Coordinator: SubscriptionStatus notification in this flow.\nTask (A).output of some kind? What? In some flows an\nappt. Organization?
+note over Placer, Coordinator: Details are left for later guides. This may be Task.output referencing PractitionerRole resources, Organizations, ActivityDefinitions, etc.  
 
 ||20||
 Placer -> Placer: Lookup endpoint for Fulfiller from\nearlier coordination or Coordinator response
@@ -29,11 +29,9 @@ Placer -> Placer: Lookup endpoint for Fulfiller from\nearlier coordination or Co
 Placer -> Fulfiller_A: Authenticate
 
 Placer -> Fulfiller_A: POST Task (B)
-
-note over Placer, Fulfiller_A: How to link this Task back to the earlier request. Just the ServiceRequest? 
 ||20||
-Placer -> Placer: Lookup endpoint for Fulfiller from earlier coord.
-Placer -> Fulfiller_B: Authenticate -- in this example, Client Registration has already occurred
+Placer -> Placer: Lookup endpoint for Fulfiller from earlier coordination
+Placer -> Fulfiller_B: Authenticate based on earlier Client Registration
 
 Placer -> Fulfiller_B: POST Task (C)
 ||20||
