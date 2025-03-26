@@ -10,7 +10,7 @@ title: Clinical Order Workflows
 status: draft # draft | active | retired | unknown
 
 publisher:
-  name: HL7 International / Orders and Observations Work Group
+  name: HL7 International / Orders and Observations
   url: 'http://hl7.org/Special/committees/orders'
   email: oo@lists.hl7.org
 
@@ -129,7 +129,7 @@ pages:
   examples.md:
     title: Examples
     generation: markdown
-    ex3-grouped-dispense.md:
+    ex4-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
      
