@@ -121,6 +121,7 @@ This section is provided for context and provides a brief overview of mechanisms
 * A bundle is sent between actors based on some Event. That bundle contains a MessageHeader resource and other resources of interest.
 * There is no requirement with FHIR Messaging that the resources within a Message Bundle have an independent and persistent existence, or that they be surfaceable in response to a FHIR query.
 * Messaging provides similar functionality to event-driven HL7 v2 exchanges, where the content of the messages to be exchanged are now resources rather than PID segments, ORC segments, etc. This mechanism therefore has similar considerations, like that the sender and receiver must make tight agreements about events of interest, message content, and identifiers. Senders should err on the side of sending content at a given event trigger that they expect the recipient *may* want, since there's no guarantee that a recipient can request or query for additional content later.
+
 **FHIR Subscriptions:**
 * These can also function in a manner similar to HL7 v2 (in which trading partners pre-coordinate events of interest, endpoints, and the content of messages). A Subscription may exist indicating that a party would like to receive content from a server when certain events occur. Upon these triggers, a subscription-notification bundle may be sent to the party desiring data.
 * Subscriptions includes two additional features that are potentially relevant for order, referral, and transfer workflows. 

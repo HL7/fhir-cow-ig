@@ -1,0 +1,17 @@
+@startuml
+	'skinparam linetype polyline
+	skinparam actorstyle awesome
+	
+	actor Placer
+	actor Filler
+	rectangle Request
+	rectangle Task
+	rectangle OutputEvents
+	
+	Request <-r- Task : "\t  Make Executable  \t"
+	Task -r-> OutputEvents : "\t Execution results in \t"
+	Placer -d-> Request: "Owns                  "
+	Filler -d-> OutputEvents: "Creates"
+	Placer -d-> Task: "(usually)\ncreate and\nmay update"
+	Filler -d-> Task: "accept / \n fulfill /    \n update   "
+@enduml

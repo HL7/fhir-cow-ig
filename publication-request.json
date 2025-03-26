@@ -1,0 +1,12 @@
+{
+    "package-id" : "hl7.fhir.uv.cow",
+    "version" : "1.0.0-ballot",
+    "milestone" : true,
+    "path": "http://hl7.org/fhir/uv/fhir-cow-ig/STU1",
+    "status" : "ballot",
+    "mode" : "milestone",
+    "sequence" : "STU 1.0",
+    "desc" : "STU 1.0 Ballot release",
+    "first": true,
+    "descmd" : "STU 1.0 Ballot release. This is the first release of the FHIR Clinical Order Workflows Implementation Guide"
+}
