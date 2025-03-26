@@ -5,7 +5,7 @@ This guide creates a basic representation of the state of a request for service 
 
 While the guide mainly focuses on RESTful exchange, it also outlines how actors wishing to leverage other paradigms, such as FHIR messaging, could do so while leveraging the same data-model in order to promote interoperability. For example, where the RESTful workflow approach conveys information using Tasks, an implementation leveraging Messaging could convey equivalent information via a Task resource in MessageHeader.focus.  Similarly, rules around what resource instances are controlled by which party should also be adhered to regardless of paradigm (e.g. the original Request should not be updated by the filler).
 
-The guide is intended only to provide a starting point on which other implementation guides may be built. Those other IGs may be tailored to particular care domains, such as specialist consults, social care referrals, placement in long term care facilities, requests for imaging, requests for medical equipment, etc., or built upon to meet the needs of specific jurisdictions, such as the United States, the EHDS, or the Netherlands. 
+The guide is intended only to provide a starting point on which other implementation guides may be built. Those other IGs may be tailored to particular care domains, such as specialist consults, social care referrals, placement in long term care facilities, requests for imaging, requests for medical equipment, etc., or built upon to meet the needs of specific jurisdictions, such as the United States or the Netherlands. 
 
 ### Structure of this Implementation Guide
 This guide is split into the below sections. 
