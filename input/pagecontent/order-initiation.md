@@ -12,7 +12,7 @@ Order initiation refers to the different activities that may exist or be require
 
   * To do: we can add sub-intents because they don't change the intent, they just refine it....
 
-* Orders can be created in `active` status, or may evolve from `draft` to `active` - an order instance may be created as "draft" and then be udpated to become "active"  ...
+* Orders can be created in `active` status, or may evolve from `draft` to `active` - an order instance may be created as "draft" and then be updated to become "active"  ...
 
 
 * Order intent may be, among others:
@@ -71,7 +71,7 @@ Protocols are sets of defined orders, possibly interdependent. Order sets may be
 * As group of orders, as defined in [grouping](order-grouping.html);
 * In a single request, if a designation or code exists for the order set. In this case, the order will be broken down:
   * at the order placer when seeking fulfillment - thus becoming a group order. 
-  * at the fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order; additional orchestration may be done by grouping fillder orders, with one task coordinating the orders, or several tasks - see order grouping.
+  * at the fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order; additional orchestration may be done by grouping filler orders, with one task coordinating the orders, or several tasks - see order grouping.
 
 
 

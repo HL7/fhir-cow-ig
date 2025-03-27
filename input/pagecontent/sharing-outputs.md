@@ -4,7 +4,7 @@ This section provides basic guidance for how these outputs may be communicated b
 
 Generally, the creator of an output  will make a resource representing that output available on their FHIR server and provide a reference in the shared Coordination Task's Task.output, wherever that coordinating Task is hosted.
 
-Placers may choose to create their own local representation of that content, and additionally, to host their own copy of that content on their own FHIR server so that its information is discoverable for others invovled in a patient's care. Provenance FHIR resources MAY be used to indicate that the originator of the latest version of the Output is the owner, though note that many Event resources will already implicitly indicate their source (such as in DiagnosticReport.performer and .resultsInterpreter).
+Placers may choose to create their own local representation of that content, and additionally, to host their own copy of that content on their own FHIR server so that its information is discoverable for others involved in a patient's care. Provenance FHIR resources MAY be used to indicate that the originator of the latest version of the Output is the owner, though note that many Event resources will already implicitly indicate their source (such as in DiagnosticReport.performer and .resultsInterpreter).
 
 
 ### Preliminary Results, Addenda, and Updates with FHIR Servers

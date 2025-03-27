@@ -18,7 +18,7 @@ Description: "Minimum expectations for a SubscriptionStatus resource when used f
 * parameter[notificationEvent].part[eventFocus].name = "focus" (exactly)
 * parameter[notificationEvent].part[eventFocus].name ^short = "Slice discriminator: the event focus"
 * parameter[notificationEvent].part[eventFocus].value[x] 1..1 MS
-* parameter[notificationEvent].part[eventFocus].value[x] only Reference (Task)
+* parameter[notificationEvent].part[eventFocus].value[x] only Reference (CoordinationTask)
 
 
 
@@ -49,8 +49,8 @@ Alias: $cow-businessStatus = http://hl7.org/fhir/uv/cow/ValueSet/cow-businessSta
 Profile: CoordinationTask
 Parent: Task
 Id: coordination-task
-Title: "Shared Coordination Task (if at Placer)"
-Description: "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
+Title: "Coordination Task"
+Description: "Minimum expectations for a Task resource when created for the purpose of managing the workflow of performing a request. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
 * ^version = "1.0.0"
 * ^status = #active
 * ^experimental = false
@@ -66,7 +66,8 @@ Description: "Minimum expectations for a Task resource when created at an order 
   * ^extension[=].extension[=].valueCode = #SHALL:handle
   * ^extension[=].extension[+].url = "actor"
   * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
-* businessStatus from $cow-businessStatus (example)
+* businessStatus 0..1 MS
+* businessStatus from $cow-businessStatus (example) 
   * ^extension[0].url = "http://hl7.org/fhir/StructureDefinition/obligation"
   * ^extension[=].extension[0].url = "code"
   * ^extension[=].extension[=].valueCode = #SHALL:populate-if-known

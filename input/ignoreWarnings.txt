@@ -3,3 +3,10 @@
 # Add warning and/or information messages here after you've confirmed that they aren't really a problem
 # (And include comments like this justifying why)
 # See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
+
+# === "The deprecation [of this valueset] in R5 was erroneous." -- https://chat.fhir.org/#narrow/channel/179165-committers/topic/deprecated.20valueset/near/418829938 ===
+# The message is coming from the base ActorDefinition resource
+Reference to deprecated ValueSet http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0
+
+# === Extension is inherited, no control over it.
+%The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated%
