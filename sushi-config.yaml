@@ -144,6 +144,12 @@ pages:
     ex4-meds-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
+    ex5-lab-order-flow-specimen-rejected.md:
+      title: Lab Order Flow with Specimen Rejected
+      generation: markdown
+    ex6-lab-order-flow-with-reference-lab.md:
+      title: Lab Order Flow with Reference Lab
+      generation: markdown
      
 
 
