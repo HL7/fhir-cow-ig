@@ -7,8 +7,9 @@
     "ci-build" : "http://build.fhir.org/ig/HL7/fhir-cow-ig",
     "introduction" : "The Clinical Order Workflow framework covers the workflow steps from initial order until order completion/close, including any order modifications, requests for additional information, and cancellations. This framework may be applied at minimum to the following domains:  \n\n- Laboratory (including specimen collection procedures, genomic, pathology)  \n- Durable Medical Equipment  \n- Specialty Referrals (including consultation/specialty providers, speech/occupational/physical therapy, and post-acute care/rehab/hospice)  \n- Nutrition  \n- Imaging - in coordination with Imaging Integration Work Group  \n- Social Services  \n- Procedures (surgery / EKG / pulmonary functions/vitals)  \n- Medication - in coordination with Pharmacy Work Group  \n- Administration of biological derived products (e.g. blood transfusion)  \n- Point of Care (including Patient Performed Testing)  \n\nThis Implementation Guide covers (but is not limited to) the following use cases:  \n\n1. Lab: cover reference lab forwarding, identifying copy to providers, result release restrictions  \n2. Social Service Referrals  \n3. Durable Medical Equipment  \n4. Handling of prior authorization, information for coverage / billing in orders",
     "status" : "ballot",
-    "mode" : "milestone",
+    "mode" : "working",
     "sequence" : "STU 1.0",
+    "category": "Care Management",
     "desc" : "STU 1.0 Ballot release",
     "first": true,
     "descmd" : "STU 1.0 Ballot release. This is the first release of the FHIR Clinical Order Workflows Implementation Guide"
