@@ -20,7 +20,14 @@ Description: "Minimum expectations for a SubscriptionStatus resource when used f
 * parameter[notificationEvent].part[eventFocus].value[x] 1..1 MS
 * parameter[notificationEvent].part[eventFocus].value[x] only Reference (CoordinationTask)
 
+Alias: $backport-subscription-notification-r4 = http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-notification-r4
 
+Profile:     COWSubscriptionNotification
+Parent:      $backport-subscription-notification-r4
+Id:          cow-subscription-notification
+Title:       "COW Subscription Notification"
+Description: "The backported SubscriptionNotification bundle shall contain the backported SubscriptionStatus resource"
+* entry[subscriptionStatus].resource only COWSubscriptionStatus
 
 Alias: $placer-task = http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task
 

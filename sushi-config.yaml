@@ -142,7 +142,7 @@ pages:
       title: Simple Lab Order Flow with Phlebotomist
       generation: markdown
     ex3-lab-order-flow-reflex-initiated-lab.md:
-      title: Prescription and Dispense with mandatory single dispense
+      title: Lab Order Workflow where a Reflex is imitated by the Laboratory
       generation: markdown
     ex4-meds-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
@@ -152,6 +152,9 @@ pages:
       generation: markdown
     ex6-lab-order-flow-with-reference-lab.md:
       title: Lab Order Flow with Reference Lab
+      generation: markdown
+    ex7-discharge-placement.md:
+      title: Post-Discharge Placement in SNF
       generation: markdown
      
 

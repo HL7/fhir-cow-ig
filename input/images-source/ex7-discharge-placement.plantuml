@@ -1,0 +1,180 @@
+@startuml
+
+'skinparam sequenceMessageAlign center
+title 
+	Patient Selection of Skilled Nursing Facility
+end title
+
+hide footbox
+
+skinparam Note<<resource>> {
+    'BackgroundColor Pink
+    FontName Consolas
+    FontSize 14
+    'FontStyle Bold
+    BorderColor Black
+}
+
+
+actor Prescriber as Doc
+participant "Patient" as Patient
+participant "Provider" as Provider
+participant "Facility A" as Facility_A
+participant "Facility B" as Facility_B
+participant "Home Care" as HC_Provider
+
+group #eee Ordering
+Patient--> Provider: Agrees following discussion with their\nprovider that skilled nursing would help with recovery
+end
+
+group Workflow
+
+Provider -> Provider: create local order and \n**ServiceRequest**\nfor Skilled Nursing 
+
+note left <<resource>> #lightgreen
+**ServiceRequest**
+|_ .id = **12345**
+|_ .groupIdentifier = **skilled-nursing-1**
+|_ .intent = **Order**
+|_ ...
+
+The provider may describe the patient's 
+care needs in supporting info.
+
+A provider may choose to create multiple
+ServiceRequests, either for related
+services or per fulfiller.
+end note
+
+
+note over Patient, Provider
+From here, the provider may notify multiple potential fulfillers.
+
+The Placer may use different pattern with each fulfiller based on their 
+pre-coordination.  
+
+end note
+||10||
+
+Provider -> Provider: create **Coordination Task A**
+Provider -> Facility_A: send SubscriptionStatus\nNotification to Facility A
+note left <<resource>> #pink
+**Task A** 
+|_ .id = **97531**
+|_ .Status: requested
+|_ .Performer: Facility **A**
+|_ .Focus: ServiceRequest 12345
+|_ .Code: request-fulfillment
+|_ .Intent: Order
+|_ ...
+end note 
+
+
+||20||
+
+Provider -> Facility_B: POST **Coordination Task B**
+Facility_B <<-> Provider: query for ServiceRequest 12345
+note over Facility_B #lightblue
+**Task B** 
+|_ .id = **86420**
+|_ .Status: requested
+|_ .Performer: Facility B
+|_ .Focus: ServiceRequest 12345
+|_ .Code: request-fulfillment
+|_ .Intent: Order
+|_ ...
+end note 
+
+
+
+Provider -> HC_Provider: POST **Coordination Task C**
+
+
+HC_Provider --> HC_Provider: Evaluate request.\nDetermine no availability.
+
+HC_Provider -> Provider: SubscriptionStatus Notification w/ Task update
+
+note right <<resource>> #orange
+**Task C** 
+|_ .id = **54321**
+|_ .Status: **rejected**
+|_ .Performer: Home Care Provider
+|_ .Focus: ServiceRequest 12345
+|_ .Code: request-fulfillment
+|_ .Intent: Order
+|_ ...
+end note
+
+
+Facility_B --> Facility_B: Determine info needed
+
+Facility_B -> Provider: POST **Communication**
+
+note over Facility_B #lightblue
+**Communication_B1** 
+|_ .id = **987543**
+|_ .partOf = Task B
+|_ .basedOn = ServiceRequest 12345
+|_ .Recipient = Provider
+|_ .Payload = message with question
+|_ ...
+
+**Task B**
+|_ .status = Received
+|_ .businessStatus = Awaiting Info
+|_...
+
+end note 
+
+Provider --> Provider: review request
+
+Provider --> Facility_B: Call to discuss
+
+note over Facility_B #lightblue
+Facility_B Agrees they could accept the patient
+
+**Task B**
+|_ .status = Accepted
+|_...
+end note 
+
+Facility_B -> Provider: SubscriptionStatus Notification w/ Task update
+
+Facility_A --> Facility_A: Review request.\nSpawn Tasks in their own\nsystem. Ultimately determine\nthey could accept
+
+Facility_A -> Provider: POST Update to\n**Coordination Task A**
+
+note right Provider #pink
+**Task A** 
+|_ .Status: **Accepted**
+|_ ...
+end note 
+
+
+note over Provider, Facility_A
+Provider now discusses with the patient.
+
+Facility A and Facility B have both indicated they 
+would take the patient.
+
+They decide on Facility B.
+end note
+
+note right Provider #pink
+**Task A** 
+|_ .Status: **Cancelled**
+|_ ...
+end note 
+
+Provider -> Facility_B: POST Update **Coordination Task B**
+
+note right <<resource>> #lightblue
+**Task B**
+|_ .status = Accepted
+|_ .businessStatus = **Selected**
+|_...
+
+end note 
+
+
+@enduml
