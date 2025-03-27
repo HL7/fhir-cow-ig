@@ -77,8 +77,13 @@ group In Scope of this IG's Guidance
 		|_ ""businessStatus"" is set appropriate
 	end note
 	
-	... wait for Specimen \nand\nexecution of ServiceRequest... 
-	
+	... wait for Specimen ... 
+	Filler -> Filler: Set ""Task"" to in-progress
+	note right #pink
+		**""Task""**
+		|_ "".status"" == """**in-progress**"""
+		|_ ""businessStatus"" is set appropriate
+	end note
 	group #eee Laboratory Workflow
 	
 		Filler -> Filler: exectute Order
@@ -92,15 +97,15 @@ group In Scope of this IG's Guidance
 		note right #lightblue
 			The Laboratory exectues the FT4 Reflex Order
 		end note
+		
+		Filler -> Filler: Create ""DiagnosticReport"" with all results
+		note right #pink
+			Result of Order execution is filled into ""DiagnosticReport""
+			**""DiagnosticReport""**
+			|_ "".basedOn"" = ""ServiceRequest""
+			|_ ""...""
+		end note
 	end
-	
-	Filler -> Filler: Create ""DiagnosticReport"" with all results
-	note right #pink
-		Result of Order execution is filled into ""DiagnosticReport""
-		**""DiagnosticReport""**
-		|_ "".basedOn"" = ""ServiceRequest""
-		|_ ""...""
-	end note
 	
 	Filler -> Filler: Update ""Task""
 	note right #pink
