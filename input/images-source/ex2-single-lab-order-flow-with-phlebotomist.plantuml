@@ -2,8 +2,8 @@
 
 'skinparam sequenceMessageAlign center
 title 
-	Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test and a Phlebotomist
-	- generic Overview -
+	Lab Order Workflow with a single Glucose (LOINC 2345-7) Test and a Phlebotomist
+	
 end title
 hide footbox
 
@@ -39,8 +39,8 @@ end
 
 group In Scope of this IG's Guidance 
 
-
 	group Creation of ServiceRequest
+	
 		Placer -> Placer: create ""ServiceRequest"" 
 		note left 
 			**""ServiceRequest""**
@@ -76,12 +76,20 @@ group In Scope of this IG's Guidance
 			|_ ""businessStatus"" is set appropriate
 		end note
 		
-		... wait for Patient to arrive \nand\nSpecimen is collected...
+		... wait for Patient to arrive ...
 		
 		group #eee Phlebotmist workflow
 			Phlebo --> Phlebo: Draw Sample
 			Phlebo --> Collector: enter Specimen Information
 		end
+
+		Collector -> Collector: Set to "in-progress
+		note right #pink
+			**""Collector Task""**
+			|_ "".status"" == """**in-progress**"""
+			|_ ""businessStatus"" is set appropriate
+		end note
+
 		
 		Collector -> Collector: create ""Specimen"" 
 		note right #pink
@@ -108,6 +116,7 @@ group In Scope of this IG's Guidance
 	end note
 
 	group Transmit Order to Laboratory 
+		
 		Placer -> Placer: create ""Lab Task"" 
 		note left 
 			**""ServiceRequest""**
@@ -133,15 +142,27 @@ group In Scope of this IG's Guidance
 			|_ ""businessStatus"" is set appropriate
 		end note
 		
-		... wait for Specimen \nand\nexecution of ServiceRequest...
+		... wait for Specimen ...
 		
-		Filler -> Filler: Create ""DiagnosticReport"" 
-		note right #lightgreen
-			Result of Order execution is filled into ""DiagnosticReport""
-			**""DiagnosticReport""**
-			|_ "".basedOn"" = ""ServiceRequest""
-			|_ ""...""
-		end note 
+		Filler -> Filler: Set ""Task"" to in-progress
+			note right #pink
+			**""Lab Task""**
+			|_ "".status"" == """**in-progress**"""
+			|_ ""businessStatus"" is set appropriate
+		end note
+
+		
+		group #eee Laboratory Workflow
+		
+			Filler -> Filler: Execute Order
+			Filler -> Filler: Create ""DiagnosticReport"" 
+			note right #lightgreen
+				Result of Order execution is filled into ""DiagnosticReport""
+				**""DiagnosticReport""**
+				|_ "".basedOn"" = ""ServiceRequest""
+				|_ ""...""
+			end note 
+		end
 	
 		Filler -> Filler: Update ""Lab Task""
 		note right #lightgreen
@@ -160,6 +181,7 @@ group In Scope of this IG's Guidance
 	end note
 	
 	group Finish ServiceRequest
+		
 		Placer -> Placer: Update ""ServiceRequest"" 
 		note left
 			**""ServiceRequest""**

@@ -2,8 +2,7 @@
 
 'skinparam sequenceMessageAlign center
 title 
-	Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test 
-	- generic Overview -
+	Lab Order Workflow with an unsufficient Sample
 end title
 hide footbox
 
@@ -76,23 +75,28 @@ group In Scope of this IG's Guidance
 		|_ ""businessStatus"" is set appropriate
 	end note
 	
-	... wait for Specimen ... 
+	... wait for Specimen \nand\nexecution of ServiceRequest... 
 	
 	Filler -> Filler: Set ""Task"" to in-progress
-		note right #pink
-		**""Lab Task""**
+	note right #pink
+		**""Task""**
 		|_ "".status"" == """**in-progress**"""
 		|_ ""businessStatus"" is set appropriate
 	end note
-
 	
 	group #eee Laboratory Workflow
-		Filler -> Filler: Execute Order
-		Filler -> Filler: Create ""DiagnosticReport"" 
+	
+		Filler -> Filler: Check Specimen Appopriateness
+		note right #lightblue
+			Specimen is Hemolyzed
+		end note
+		
+		Filler -> Filler: Update Specimen
 		note right #pink
-			Result of Order execution is filled into ""DiagnosticReport""
-			**""DiagnosticReport""**
-			|_ "".basedOn"" = ""ServiceRequest""
+			Update ""Specimen"" with Reject Reason 
+			**""Specimen""**
+			|_ "".status"" = """**unsatisfactory**"""
+			|_ "".condition"" = """**HEM**""" - hemolyzed
 			|_ ""...""
 		end note
 	end
@@ -100,12 +104,12 @@ group In Scope of this IG's Guidance
 	Filler -> Filler: Update ""Task""
 		note right #pink
 			**""Task""**
-			|_ "".output""->""DiagnosticReport"" 
-			|_ "".status"" = """**completed**"""
+			|_ "".output""->""Specimen"" 
+			|_ "".status"" = """**failed**"""
 		end note
 	
 	note over Placer, Filler #lightblue
-		The Order Placer System gets information that the Task is finished via
+		The Order Placer System gets information that the Task is failed via
 			- Subscription
 			- polling
 			- messaging
@@ -115,7 +119,7 @@ group In Scope of this IG's Guidance
 	Placer -> Placer: Update ""ServiceRequest"" 
 	note left #lightgreen
 		**""ServiceRequest""**
-		|_ "".status"" = """**completed**"""
+		|_ "".status"" = """**ended**"""
 	end note
 end
 
