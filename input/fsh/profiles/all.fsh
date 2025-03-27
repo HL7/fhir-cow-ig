@@ -23,7 +23,6 @@ Description: "Minimum expectations for a SubscriptionStatus resource when used f
 
 
 Alias: $placer-task = http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task
-Alias: $cow-message-header-event = http://hl7.org/fhir/uv/cow/ValueSet/cow-message-header-event
 
 Profile: COWMessageHeader
 Parent: MessageHeader
@@ -40,11 +39,8 @@ Description: "Minimum expectations for a MessageHeader resource when used for Cl
 * ^date = "2025-03-03"
 * focus 1..1 MS
 * focus only Reference(coordination-task)
-* eventCoding from $cow-message-header-event (extensible)
+* eventCoding from MessageHeaderEventCodes (extensible)
 
-
-
-Alias: $cow-businessStatus = http://hl7.org/fhir/uv/cow/ValueSet/cow-businessStatus
 
 Profile: CoordinationTask
 Parent: Task
@@ -65,8 +61,8 @@ Description: "Minimum expectations for a Task resource when created at an order 
   * ^extension[=].extension[0].url = "code"
   * ^extension[=].extension[=].valueCode = #SHALL:handle
   * ^extension[=].extension[+].url = "actor"
-  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
-* businessStatus from $cow-businessStatus (example)
+  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/filler"
+* businessStatus from BusinessStatus (example)
   * ^extension[0].url = "http://hl7.org/fhir/StructureDefinition/obligation"
   * ^extension[=].extension[0].url = "code"
   * ^extension[=].extension[=].valueCode = #SHALL:populate-if-known
@@ -81,12 +77,12 @@ Description: "Minimum expectations for a Task resource when created at an order 
   * ^extension[=].extension[0].url = "code"
   * ^extension[=].extension[=].valueCode = #SHALL:handle
   * ^extension[=].extension[+].url = "actor"
-  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/filler"
   * ^extension[+].url = "http://hl7.org/fhir/StructureDefinition/obligation"
   * ^extension[=].extension[0].url = "code"
   * ^extension[=].extension[=].valueCode = #SHALL:populate-if-known
   * ^extension[=].extension[+].url = "actor"
-  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/recipient"
+  * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/filler"
 * code 1.. MS
 * focus 1.. MS
 * focus only Reference(ServiceRequest)
@@ -101,6 +97,6 @@ Id: cancellation-request-task
 Title: "Cancellation Request Task"
 Description: "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
 
-* code = #abort
+* code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1.. MS

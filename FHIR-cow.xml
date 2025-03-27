@@ -5,18 +5,18 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="SearchParameter/activity-resource" key="SearchParameter-activity-resource" name="ActivityResource"/>
 <artifact id="StructureDefinition/cow-message-header" key="StructureDefinition-cow-message-header" name="COW Message Header"/>
 <artifact id="StructureDefinition/cow-subscription-status" key="StructureDefinition-cow-subscription-status" name="COW Subscription Status"/>
 <artifact id="StructureDefinition/cancellation-request-task" key="StructureDefinition-cancellation-request-task" name="Cancellation Request Task"/>
-<artifact id="CodeSystem/cow-businessStatus" key="CodeSystem-cow-businessStatus" name="Clinical Order Workflow Example Codes"/>
-<artifact id="ValueSet/cow-businessStatus" key="ValueSet-cow-businessStatus" name="Clinical Orders Workflow Business Status Codes"/>
-<artifact id="ValueSet/cow-message-header-event" key="ValueSet-cow-message-header-event" name="Clinical Orders Workflow Message Header Event Codes"/>
-<artifact id="CodeSystem/cow-message-header-event" key="CodeSystem-cow-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
+<artifact id="CodeSystem/business-status" key="CodeSystem-business-status" name="Clinical Order Workflow Example Codes"/>
+<artifact id="ValueSet/message-header-event" key="ValueSet-message-header-event" name="Clinical Orders Workflow - Message Header Event Codes"/>
+<artifact id="ValueSet/business-status" key="ValueSet-business-status" name="Clinical Orders Workflow Business Status Codes"/>
+<artifact id="CodeSystem/message-header-event" key="CodeSystem-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
 <artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Coordination Task"/>
+<artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="GroupOrIdentifier"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
-<artifact id="ActorDefinition/recipient" key="ActorDefinition-recipient" name="Recipient"/>
-<artifact id="SearchParameter/activity-resource" key="SearchParameter-activity-resource" name="activity-resource"/>
-<artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="group-or-identifier"/>
+<artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Recipient"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="artifacts" name="Artifacts Summary"/>
