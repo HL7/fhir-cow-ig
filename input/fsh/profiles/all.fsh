@@ -43,7 +43,7 @@ Alias: $cow-businessStatus = http://hl7.org/fhir/uv/cow/ValueSet/cow-businessSta
 Profile: CoordinationTask
 Parent: Task
 Id: coordination-task
-Title: "Shared Coordination Task (if at Placer)"
+Title: "Coordination Task"
 Description: "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
 * ^version = "1.0.0"
 * ^status = #active
