@@ -68,7 +68,7 @@ To allow for this, there are 2 additional search parameters (which are expected 
 
 To ensure the workflow management patterns apply, grouped requests are tracked in a way similar to single-item requests. 
 * Task.focus points to the Request or to the RequestOrchestration.
-  * In cases where a single fulfillment Task must reference several requests (requests with a common .groupIdentifier but no requestGroup), task.Focus must point to all the requests; See using Task [Task profile](using_task.html) for .
+  * In cases where a single fulfillment Task must reference several requests (requests with a common .groupIdentifier but no requestGroup), task.Focus must point to all the requests; See using Task [Task profile](using-task.html) for .
   * In very specific cases, the Task.focus may contain a logical reference to the requests' groupIdentifier. This is generally not recommended approach because the purpose is to track and traverse links across resources, and logical references break that possibility.
 
 * Requests to change an order follow the same patterns - the request to change points at the `.identifier`, `.groupIdentifier`, or `RequestGroup.identifier`.

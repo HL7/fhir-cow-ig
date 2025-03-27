@@ -11,12 +11,15 @@ status: draft # draft | active | retired | unknown
 
 publisher:
   name: HL7 International / Orders and Observations
-  url: 'http://hl7.org/Special/committees/orders'
+  url: http://www.hl7.org/Special/committees/orders
   email: oo@lists.hl7.org
 
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: oo
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+    valueCode: trial-use
+
     
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 
@@ -129,7 +132,16 @@ pages:
   examples.md:
     title: Examples
     generation: markdown
-    ex4-grouped-dispense.md:
+    ex1-simple-lab-order-flow.md:
+      title: Simple Lab Order Flow
+      generation: markdown
+    ex2-simple-lab-order-flow-with-phlebotomist.md:
+      title: Simple Lab Order Flow with Phlebotomist
+      generation: markdown
+    ex3-lab-order-flow-reflex-initiated-lab.md:
+      title: Prescription and Dispense with mandatory single dispense
+      generation: markdown
+    ex4-meds-grouped-dispense.md:
       title: Prescription and Dispense with mandatory single dispense
       generation: markdown
      

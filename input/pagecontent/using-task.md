@@ -1,3 +1,6 @@
+The Task 
+
+
 
 ### Tracking business status
 `Task.businessStatus` is the ...
@@ -26,7 +29,7 @@ The Task resource can be used to coordinate several requests, when they are grou
 
 In future releases of FHIR, `Task.focus` is being considered to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing task.focus to effectively point to several requests.
 
-See the example of [grouped dispense](ex3-grouped-dispense.html)
+See the example of [grouped dispense](ex4-meds-grouped-dispense.html)
 
 ```
 Profile: GroupCoordinationTask

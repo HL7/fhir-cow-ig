@@ -1,0 +1,15 @@
+@startuml
+' Define components
+skinparam Linetype ortho
+'skinparam actorStyle awesome
+
+rectangle "\n\n\nPlacer\n\n\n" as A #PaleGreen
+rectangle "\n\n\nFiller\n\n\n" as B #LightBlue
+
+A -r[hidden]-> B: "\nPerform Service X\n"
+A -r-> B: "\nPerform Service X\n"
+B -l-> A: "\nHere's the outcome\n"
+A -r[hidden]-> B: "\nPerform Service X\n"
+
+
+@enduml

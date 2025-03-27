@@ -6,5 +6,5 @@
 
 #### Example 
 <figure>
-  {% include ex3-grouped-dispense.svg %}
+  {% include ex4-meds-grouped-dispense.svg %}
 </figure>

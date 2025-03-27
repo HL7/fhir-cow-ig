@@ -15,13 +15,16 @@ This is equivalent to the normal flow through the step that an intended performe
 
 ```
 Request Resource
+    * id: Request1
     * Status: Revoked
-1..* Task:
+
+1..* Coordination Task:
     * Status: Cancelled
     * Code: Fulfill
     * Intent: Order
-    * Focus: <the Request>
-New Task:
+    * Focus: Request1
+    
+Cancellation Request Task:
     * Status: Requested
     * Code: Abort
     * Input: original Task

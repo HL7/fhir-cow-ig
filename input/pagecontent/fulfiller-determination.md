@@ -19,8 +19,7 @@ Based on the workflow of interest, the performer may or may not notify the reque
 {% include img.html img="request-simplest.png" %}
 
 
-Examples: 
-[Scenario 1 - Placer-assigned Lab order tracking with Task](ExampleScenario-scenario1-lab-order.html)
+
 
 ##### Task at Fulfiller
 

@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="current" defaultWorkgroup="oo" url="http://hl7.org/fhir/uv/cow">
-<version code="current" url=""/>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/1.0.0-ballot" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" url="http://hl7.org/fhir/uv/cow">
+<version code="current" url="http://build.fhir.org/ig/HL7/fhir-cow-ig"/>
+<version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cow/1.0.0-ballot"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
-<artifact id="ExampleScenario/scenario1-lab-order" key="ExampleScenario-scenario1-lab-order" name="Scenario 1: Placer-assigned Lab order tracking with Task"/>
+<artifact id="StructureDefinition/cow-message-header" key="StructureDefinition-cow-message-header" name="COW Message Header"/>
+<artifact id="StructureDefinition/cow-subscription-status" key="StructureDefinition-cow-subscription-status" name="COW Subscription Status"/>
+<artifact id="CodeSystem/cow-businessStatus" key="CodeSystem-cow-businessStatus" name="Clinical Order Workflow Example Codes"/>
+<artifact id="ValueSet/cow-businessStatus" key="ValueSet-cow-businessStatus" name="Clinical Orders Workflow Business Status Codes"/>
+<artifact id="ValueSet/cow-message-header-event" key="ValueSet-cow-message-header-event" name="Clinical Orders Workflow Message Header Event Codes"/>
+<artifact id="CodeSystem/cow-message-header-event" key="CodeSystem-cow-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
+<artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
+<artifact id="ActorDefinition/recipient" key="ActorDefinition-recipient" name="Recipient"/>
+<artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Shared Coordination Task (if at Placer)"/>
+<artifact id="SearchParameter/activity-resource" key="SearchParameter-activity-resource" name="activity-resource"/>
+<artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="group-or-identifier"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="background" name="Background - Scope and General Principles"/>
-<page key="cancelling-and-modifying-requests" name="Cancelling and modifying orders"/>
+<page key="cancelling-and-modifying-requests" name="Cancelling and Modifying Orders"/>
 <page key="index" name="Clinical Order Workflows - Home Page"/>
 <page key="core-concepts" name="Core Concepts"/>
-<page key="examples" name="Examples Index"/>
+<page key="examples" name="Examples"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>
-<page key="fulfiller-need-for-additional-info" name="Fulfiller need for additional Info"/>
+<page key="fulfiller-need-for-additional-info" name="Fulfillers Requesting Additional Information"/>
+<page key="order-grouping" name="Order Grouping"/>
 <page key="order-initiation" name="Order Initiation"/>
-<page key="order-grouping" name="Order grouping"/>
-<page key="sharing-outputs" name="Sharing outputs from an Order"/>
+<page key="ex3-lab-order-flow-reflex-initiated-lab" name="Prescription and Dispense with mandatory single dispense"/>
+<page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with mandatory single dispense"/>
+<page key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
+<page key="ex1-simple-lab-order-flow" name="Simple Lab Order Flow"/>
+<page key="ex2-simple-lab-order-flow-with-phlebotomist" name="Simple Lab Order Flow with Phlebotomist"/>
 <page key="toc" name="Table of Contents"/>
+<page key="using-task" name="Using Task"/>
 <page key="workflow-patterns" name="Workflow Patterns"/>
-<page key="workflow-state-overview" name="Workflow State overview"/>
+<page key="workflow-state-overview" name="Workflow State Overview"/>
 </specification>
