@@ -7,7 +7,7 @@
     "title" : "Placer",
     "status" : "active",
     "date" : "2025-03-07T16:20:30.239Z",
-    "description" : "COW Placer Actor",
+    "description" : "Order Placer Actor - generic actor representing the party that is placing an order",
     "jurisdiction" : [{
       "coding" : [{
         "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",

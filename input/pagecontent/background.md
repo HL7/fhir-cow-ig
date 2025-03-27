@@ -1,12 +1,12 @@
-This implementation guide is meant to provide a shared-base on which FHIR workflows for orders, referrals, and transfers may be built.
+This implementation guide is meant to provide a shared base for building FHIR workflows for orders, referrals, and transfers may be built.
 
 ### Goals
-Our goal in creating basic guidance, even if not directly implementable, is to help initiatives focused on referrals, orders, and transfers align on core mechanisms and exchange patterns to facilitate faster and cheaper interoperability. We hope to do so by:
-1. Reducing the number of decisions needed
-2. Highlighting abstractions that allow development for one domain to apply to others
-3. Creating shared nomenclature to help spec authors define and share goals quickly. 
+The goal of this Implementation Guide is not provide a specification that can be implementable directly, but to provide guidance and patterns to help implementers of referrals, orders, and transfers align on core mechanisms and exchange patterns to facilitate faster and more efficient interoperability. This guidance aims to:
+1. Reduce the ambiguity and decisions that are needed by providing working patterns;
+2. Highlighting abstractions that allow development across different domains
+3. Creating shared nomenclature to help specification authors define and share goals more efficiently. 
 
-IGs developed for particular care domains (such as social care referrals, durable medical equipment, nursing home placement, imaging, etc.) or for particular jurisdictions may assert conformance to this IG if they leverage a compatible representation of the status of a request for service and compatible exchange mechanismss.
+Implementation Guides developed for particular care domains (such as laboratory, pharmacy, social care referrals, durable medical equipment, nursing home placement, imaging, etc.) or for particular jurisdictions may assert conformance to this IG if they leverage compatible exchange mechanismss.
 
 ### Referrals, Orders, and Transfers
 Modern healthcare delivery includes a variety of stakeholders, settings, specialties, interventions, and equipment. This often leads to overloading of terms, and lack of understanding of commonalities among healthcare processes. One example of that is how the term `referral` is used.

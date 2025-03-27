@@ -1,6 +1,6 @@
 @startuml
 autonumber
-
+skinparam svgDimensionStyle false
 participant Placer order 10
 participant Coordinator order 20
 participant Fulfiller_A order 30 

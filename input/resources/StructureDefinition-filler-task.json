@@ -1,6 +1,6 @@
 {
     "resourceType": "StructureDefinition",
-    "id": "placer-task",
+    "id": "filler-task",
     "extension" : [
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
@@ -11,7 +11,7 @@
           "valueCode" : "trial-use"
         }
     ],
-    "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task",
+    "url": "http://hl7.org/fhir/uv/cow/StructureDefinition/filler-task",
     "name": "COWFillerTask",
     "title": "Shared Coordination Task (if at Fulfiller)",
     "status": "active",
