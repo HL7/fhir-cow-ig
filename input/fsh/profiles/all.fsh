@@ -14,6 +14,12 @@ Description: "Minimum expectations for a SubscriptionStatus resource when used f
 * parameter[subscription].valueReference.identifier ^base.min = 0
 * parameter[subscription].valueReference.identifier ^base.max = "1"
 * parameter[subscription].valueReference.identifier ^isModifier = false
+* parameter[notificationEvent].part[eventFocus] ^short = "Parameter pointing to the task which is the event focus"
+* parameter[notificationEvent].part[eventFocus].name = "focus" (exactly)
+* parameter[notificationEvent].part[eventFocus].name ^short = "Slice discriminator: the event focus"
+* parameter[notificationEvent].part[eventFocus].value[x] 1..1 MS
+* parameter[notificationEvent].part[eventFocus].value[x] only Reference (Task)
+
 
 
 Alias: $placer-task = http://hl7.org/fhir/uv/cow/StructureDefinition/placer-task
