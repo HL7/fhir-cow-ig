@@ -4,7 +4,7 @@ Order grouping
 
 In several cases and jurisdictions, there is a need to capture multiple orders that are entered at the same time.  
 Examples: 
-* Mutliple-line medication prescriptions
+* Multiple-line medication prescriptions
 * Custom diet orders comprised of different nutrition products
 * Groups of lab tests/panels that don't have a single orderable code
 

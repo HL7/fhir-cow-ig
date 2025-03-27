@@ -1,11 +1,11 @@
 ### Introduction
-This implementation guide provides basic guidance for how service-request fulfillment workflows, such as Orders, Referrals, and Transfers, may be facilitated in FHIR. It includes an overview of relevant FHIR exchange mechanisms, actor definitions, and core concepts to help promote alignment.
+This implementation guide provides basic guidance for how service-request fulfillment workflows, such as Orders, Prescriptions Referrals, and Transfers, may be facilitated in FHIR. It includes an overview of relevant FHIR exchange mechanisms, common actors and core concepts.
 
 This guide creates a basic representation of the state of a request for service in FHIR and outlines how actors involved in a request for service may coordinate and act on that request for service using a RESTful approach with either subscription notifications or polling. 
 
 While the guide mainly focuses on RESTful exchange, it also outlines how actors wishing to leverage other paradigms, such as FHIR messaging, could do so while leveraging the same data-model in order to promote interoperability. For example, where the RESTful workflow approach conveys information using Tasks, an implementation leveraging Messaging could convey equivalent information via a Task resource in MessageHeader.focus.  Similarly, rules around what resource instances are controlled by which party should also be adhered to regardless of paradigm (e.g. the original Request should not be updated by the filler).
 
-The guide is intended only to provide a starting point on which other implementation guides may be built. Those other IGs may be tailored to particular care domains, such as specialist consults, social care referrals, placement in long term care facilities, requests for imaging, requests for medical equipment, etc., or built upon to meet the needs of specific jurisdictions, such as the United States or the Netherlands. 
+The guide is intended only to provide a starting point on which other implementation guides may be built. Those other IGs may be tailored to particular care domains, such as specialist consults, social care referrals, placement in long term care facilities, requests for imaging, requests for medical equipment, etc., or built upon to meet the needs of specific jurisdictions, such as the United States, the EHDS, or the Netherlands. 
 
 ### Structure of this Implementation Guide
 This guide is split into the below sections. 
@@ -29,7 +29,7 @@ This guide draws inspiration from 360X, work by the Netherlands FHIR community i
 Some key challenges in the referral, orders, and transfer space, especially for cross-organization exchanges, are shown below. This IG provides at least partial guidance for all but endpoint discovery. 
 
 * Endpoint discovery - letting actors know to where an initial notification should be pushed, or from where additional information may be queried.
-* Sharing supporting information - it can be hard to supply all of the necessary and relevant background information with an order or referral today. For example - in HL7 v2, it's challenging to refer a patient for a surgical consult while communicating that it is based on a _particular_ set of imaging. This IG provides guidance on sharing supporint information, but does not address how a Fulfiller may communicate alongside its service catalogue what information it requires in order to process a request (such as order questionnaires).
+* Sharing supporting information - it can be hard to supply all of the necessary and relevant background information with an order or referral today. For example - in HL7 v2, it's challenging to refer a patient for a surgical consult while communicating that it is based on a _particular_ set of imaging. This IG provides guidance on sharing supporting information, but does not address how a Fulfiller may communicate alongside its service catalogue what information it requires in order to process a request (such as order questionnaires).
 * Requesting additional information - providers who receive a request for service may find that additional specific information is needed. That information may not already exist in the patient's chart, and often that information of interest is not _always_ necessary to a given type of service. 
 * Workflow management and tracking - coordinating which actor has the baton, monitoring the overall status of a referral, managing the earlier steps, etc.
 * Closing the loop - sharing the outcome (and partial outcomes), such as a consult note, an imaging result, a proposed plan of care, etc. 
@@ -69,3 +69,7 @@ This IG Contains the following dependencies on other IGs.
 ### Global Profiles
 
 {% include globals-table.xhtml %}
+
+### Intellectual Property
+
+{% include ip-statements.xhtml %}
