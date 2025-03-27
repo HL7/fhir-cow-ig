@@ -1,6 +1,8 @@
-Instance: group-or-identifier
+Instance: GroupOrIdentifier
 InstanceOf: SearchParameter
 Usage: #definition
+
+* id = "group-or-identifier"
 * status = #active
 * name = "GroupOrIdentifier"
 * description = "Single search that incides on both request.identifier or groupIdentifier"

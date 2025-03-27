@@ -10,3 +10,7 @@ Reference to deprecated ValueSet http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5
 
 # === Extension is inherited, no control over it.
 %The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated%
+
+# This release contains no examples yet
+The Implementation Guide contains no examples for this profile
+

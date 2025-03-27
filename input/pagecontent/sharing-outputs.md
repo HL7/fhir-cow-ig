@@ -14,4 +14,8 @@ In some contexts, a partial result may be shared from one system to another, or 
 For example - that update may be communicated with a Message that's been pre-defined to indicate a correction or update, or the originator of the Output document may receive a SubscriptionStatus notification that a copy of their document has been modified and should now be seen as the source of Truth. In that case, they SHOULD update their local copy and any provenance as
 needed. 
 
+<figure>
 {%include share-outputs.svg%}
+</figure>
+<br clear="all"/>
+

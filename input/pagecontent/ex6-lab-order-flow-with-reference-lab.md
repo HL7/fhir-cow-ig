@@ -23,5 +23,5 @@
 
 ### Example using Subscriptions with Task at Placer
 <figure>
-  {% include ex4-lab-order-flow-with-reference-lab.plantuml.svg %}
+  {% include ex6-lab-order-flow-with-reference-lab.svg %}
 </figure>
