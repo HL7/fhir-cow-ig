@@ -16,6 +16,8 @@ This section includes examples of how the patterns described elsewhere in this I
 |[Simple Lab Order Flow](ex1-simple-lab-order-flow.html)|A Simple Lab Order Workflow with a single Glucose Test|Placer Assigned||
 |[Simple Lab Order Flow with a Collection Center](ex2-simple-lab-order-flow-with-phlebotomist.html)|A Simple Lab Order Workflow with a single Glucose Test. Sample Collected at a collection Center|Placer Assigned||
 |[Lab Order Workflow where a Reflex is initated by the Laboratory](ex3-lab-order-flow-reflex-initiated-lab.html)|A Lab Order Workflow with a single Glucose Test which triggers because of Laboratory Protocol a Reflex test|Placer Assigned||
+|[Lab Order with involvment of a reference lab](ex4-lab-order-flow-with-reference-lab.html)|A Lab Order Workflow which involves a Reference Laboratory|Placer Assigned||
+|[Lab Order Flow with unsufficient sample](ex5-lab-order-flow-specimen-rejected.html)|A Lab Order Workflow where the sample is unsufficient|Placer Assigned||
 
 {:.table-bordered .table-sm .table-striped }
 
