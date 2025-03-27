@@ -31,7 +31,7 @@ end
 
 Placer -> Fulfiller: CancelationTask.Create
 note over Placer, Fulfiller
-	CancelationTask needs to the have the CancelationTask.status of requested, CancelationTask.code of abort and CancelationTask.focus is the "Original Task"
+	CancelationTask needs to the have the CancelationTask.status of requested,\nCancelationTask.code of abort and CancelationTask.focus is the "Original Task"
 end note
 	
 
