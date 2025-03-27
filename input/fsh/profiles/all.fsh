@@ -96,8 +96,8 @@ Profile: CancellationRequestTask
 Parent: Task
 Id: cancellation-request-task
 Title: "Cancellation Request Task"
-Description: "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
-
+Description: "A task to indicate a placer-initiated cancellation of a request fulfillment which is in-process, and when the fulfillment Task is on the filler side."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
-* focus 1.. MS
+* focus 1..1 MS
+* focus only Reference(CoordinationTask)
