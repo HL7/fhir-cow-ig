@@ -84,3 +84,17 @@ Description: "Minimum expectations for a Task resource when created at an order 
 * code 1.. MS
 * focus 1.. MS
 * focus only Reference(ServiceRequest)
+
+
+
+
+
+Profile: CancellationRequestTask
+Parent: Task
+Id: cancellation-request-task
+Title: "Cancellation Request Task"
+Description: "Minimum expectations for a Task resource when created at an order placer. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
+
+* code = #abort
+//* status = #requested
+* focus 1.. MS
