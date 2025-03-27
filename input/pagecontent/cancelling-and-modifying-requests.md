@@ -12,7 +12,7 @@ As general guidance, this guide recommends that [Request resource].replaces be u
 ### Placer Initiated Cancellations.
 
 
-This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [CancellationRequestTask](StructureDefinition-CancellationRequestTask.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [CancellationRequestTask](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
 
 ```
