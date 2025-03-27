@@ -50,7 +50,7 @@ Profile: CoordinationTask
 Parent: Task
 Id: coordination-task
 Title: "Coordination Task"
-Description: "Minimum expectations for a Task resource when created for the purpose of managing the workflow of performing a request. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
+Description: "Minimum expectations for a Task resource when created or updated for the purpose of managing the workflow for performing a request. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
 * ^version = "1.0.0"
 * ^status = #active
 * ^experimental = false
