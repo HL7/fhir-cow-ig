@@ -76,22 +76,33 @@ group In Scope of this IG's Guidance
 		|_ ""businessStatus"" is set appropriate
 	end note
 	
-	... wait for Specimen \nand\nexecution of ServiceRequest... 
+	... wait for Specimen ... 
 	
-	Filler -> Filler: Create ""DiagnosticReport"" 
-	note right #pink
-		Result of Order execution is filled into ""DiagnosticReport""
-		**""DiagnosticReport""**
-		|_ "".basedOn"" = ""ServiceRequest""
-		|_ ""...""
+	Filler -> Filler: Set ""Task"" to in-progress
+		note right #pink
+		**""Lab Task""**
+		|_ "".status"" == """**in-progress**"""
+		|_ ""businessStatus"" is set appropriate
 	end note
 
+	
+	group #eee Laboratory Workflow
+		Filler -> Filler: Execute Order
+		Filler -> Filler: Create ""DiagnosticReport"" 
+		note right #pink
+			Result of Order execution is filled into ""DiagnosticReport""
+			**""DiagnosticReport""**
+			|_ "".basedOn"" = ""ServiceRequest""
+			|_ ""...""
+		end note
+	end
+	
 	Filler -> Filler: Update ""Task""
-	note right #pink
-		**""Task""**
-		|_ "".output""->""DiagnosticReport"" 
-		|_ "".status"" = """**completed**"""
-	end note
+		note right #pink
+			**""Task""**
+			|_ "".output""->""DiagnosticReport"" 
+			|_ "".status"" = """**completed**"""
+		end note
 	
 	note over Placer, Filler #lightblue
 		The Order Placer System gets information that the Task is finished via
