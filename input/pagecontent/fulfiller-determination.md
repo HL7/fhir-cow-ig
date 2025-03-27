@@ -220,7 +220,7 @@ Some common reasons for a central coordinator include:
 
 Given the variability, this section is provided only for illustrative value. This section outlines two potential configurations (of several) based on the capabilities of the broker. The intent of the first example is that (with regards to exchange functionality) the Placer need be only minimally aware of whether they are interacting with a coordinator or with a fulfiller directly. 
 
-In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this exmaple, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to faciliate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between placers and fulfillers.  
+In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this example, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to facilitate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between placers and fulfillers.  
 
 Other IGs may build on top of this to include details of the endpoint discovery, handling holds the coordinator may place on an assigned Fulfiller, tracking authorization from a coordinator, etc. 
 
