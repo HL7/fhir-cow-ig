@@ -1,0 +1,47 @@
+@startuml
+title Placer initiated Cancelation of a in-progress Task when Task is at Fulfiller Overview
+
+autonumber
+
+==Create Request==
+Placer -> Placer: Create Order, ServiceRequest
+
+Placer -> Fulfiller: Task.Create
+
+note over Placer, Fulfiller: Task.basedOn is the ServiceRequest at the Placer. The Placer may include supporting information in\n ServiceRequest.info or in the Task if Fulfiller-specific
+
+Fulfiller -> Placer: Query ServiceRequest.supportingInfo, ServiceRequest.reason, etc.
+
+Fulfiller <- Fulfiller: Update Task.Status 'requested' => 'accepted'
+Fulfiller <- Fulfiller: Update Task.Status 'accepted' => 'in-progress'
+
+Fulfiller -> Placer: SubscriptionStatus notification - Task updated
+
+note over Placer, Fulfiller: Could also have that the Fulfiller makes a Plan, RequestOrchestration, etc. with Task.output\nA Placer could then update the Task to Accepted if they accept the Fulfiller's Proposal.
+
+Placer --> Placer: Update status of tracking if needed, such as ServiceRequest.status. 
+
+group If Fulfiller will perform a more specific service
+    Fulfiller -[hidden]> Placer:
+    Fulfiller <- Fulfiller: Create ServiceRequest with ServiceRequest.basedOn\nreferring to the Placer's ServiceRequest
+end
+
+
+==Cancelation initiated by Placer ==
+
+Placer -> Fulfiller: CancelationTask.Create
+note over Placer, Fulfiller
+	CancelationTask needs to the have the CancelationTask.status of requested, CancelationTask.code of abort and CancelationTask.focus is the "Original Task"
+end note
+	
+
+alt fulfiller accepts the cancellation
+    Fulfiller <- Fulfiller: Updates CancelationTask.status == accepted
+	Fulfiller  <- Fulfiller: Execution is aborted
+else cancellation is not accepted
+	Fulfiller <- Fulfiller: Updates CancelationTask.status == rejected
+	Fulfiller  <- Fulfiller: Execution continues
+end
+
+
+@enduml
