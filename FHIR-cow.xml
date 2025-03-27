@@ -13,8 +13,7 @@
 <artifact id="CodeSystem/cow-message-header-event" key="CodeSystem-cow-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
 <artifact id="ActorDefinition/recipient" key="ActorDefinition-recipient" name="Recipient"/>
-<artifact id="StructureDefinition/filler-task" key="StructureDefinition-filler-task" name="Shared Coordination Task (if at Fulfiller)"/>
-<artifact id="StructureDefinition/fulfiller-task" key="StructureDefinition-fulfiller-task" name="Shared Coordination Task (if at Placer)"/>
+<artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Shared Coordination Task (if at Placer)"/>
 <artifact id="SearchParameter/activity-resource" key="SearchParameter-activity-resource" name="activity-resource"/>
 <artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="group-or-identifier"/>
 <page key="NA" name="(NA)"/>
