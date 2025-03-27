@@ -1,0 +1,216 @@
+@startuml
+
+'skinparam sequenceMessageAlign center
+title 
+	Lab Order Workflow with involment of a Reference Lab 
+	- Herpes simplex virus Ab panel - Serum triggers a Herpes simplex virus Ab.IgM -
+end title
+hide footbox
+
+
+actor Physician as Doc
+participant "Order Placer System" as Placer
+participant "Order Filler 1\n//- Community Lab -//" as Filler1
+participant "Order Filler 2\n//- Reference Lab -//" as Filler2
+
+group #eee Physician Workflow\n - not in scope -
+	Doc --> Placer: Enter Order
+	Doc --> Doc: Draw Sample
+	Doc --> Placer: enter Specimen Information
+end
+
+group In Scope of this IG's Guidance
+
+	Placer -> Placer: create ""//Community Lab//"" ""ServiceRequest"" 
+	note left #lightgreen
+		//""Original""// **""ServiceRequest""**
+		|_ "".code"" = //43112-2//
+		|_ "".intent"" = """**Order**"""
+		|_ ""...""
+	end note
+	
+	Placer -> Placer: create ""//Original//"" ""Specimen"" 
+	note left #lightgreen
+		//""Original""// **""Specimen""**
+		|_ "".request"" -> //""Original""// ""ServiceRequest""
+		|_ "".type"" = **"""SER"""**
+		|_ ""...""
+	end note
+	
+	Placer -> Placer: create ""//Community Lab//"" ""Task"" 
+	note left #lightgreen
+		//""Original""// **""ServiceRequest""**
+		|_  "".status""="""**active**"""
+		//""Community Lab""// **""Task""**
+		|_  "".basedOn"" -> //""Original""// ""ServiceRequest""
+		|_  "".focus"" -> //""Original""// ""ServiceRequest""
+		|_  "".input"" -> //""Original""// ""Specimen""
+		|_ ""...""
+	end note 
+	
+	Placer -> Filler1: send ""//Community Lab//"" ""Task"" to **Community Lab** 
+	note right #lightblue
+		all needed data is accessed by Community Lab
+		ownership of ""Specimen"" might be transfered to Community Lab
+		Specimen gets a Asscension ID of the Community Lab
+	end note
+
+	Filler1 -> Filler1: Accept ""//Original//"" ""ServiceRequest"" 
+	note right #pink
+		//""Community Lab""// **""Task""**
+		|_ "".status"" == """**accepted**"""
+		|_ "".owner"" -> Order Filler
+		|_ ""businessStatus"" is set appropriate
+	end note
+	
+	... wait for Specimen ... 
+	
+	Filler1 -> Filler1: Set ""Task"" to in-progress
+	note right #pink
+		//""Community Lab""// **""Task""**
+		|_ "".status"" == """**in-progress**"""
+		|_ ""businessStatus"" is set appropriate
+	end note
+	
+	group #eee Community Lab Workflow\n - not in scope -
+		Filler1 -> Filler1: Create an Aliquot and a new Specimen
+		note right #pink
+			//""Aliquot""// **""Specimen""**
+			|_ "".parent"" -> //""Original""// ""Specimen""
+			|_ ""...""
+		end note
+		Filler1 -> Filler1: Execute the \nOriginal ServiceRequest
+		
+		Filler1 -> Filler1: Create Reference Lab Reflex Order\n because of Protocol  
+	end
+
+	Filler1 -> Filler1: create ""//Reference Lab//"" ""ServiceRequest""
+	note left #lightgreen
+		//""Reference Lab""// **""ServiceRequest""**
+		|_ "".code"" = //16944-1//
+		|_ "".intent"" = """**Order**"""
+		|_ ""...""
+	end note
+	
+	Filler1 -> Filler1: update Aliquot ""Specimen"" for Reference Lab
+	note left #lightgreen
+		//""Aliquot""// **""Specimen""**
+		|_ "".request"" -> //""Reference Lab""// ""ServiceRequest""
+		|_ "".type"" = **"""SER"""**
+		|_ ""...""
+	end note
+	
+	Filler1 -> Filler1: create ""//Reference Lab//"" ""Task"" 
+	note left #lightgreen
+		//""Reference Lab""// **""ServiceRequest""**
+		|_  "".status""="""**active**"""
+		//""Reference Lab""// **""Task""**
+		|_  "".basedOn"" -> //""Community Lab""// ""ServiceRequest"" 
+		|_  "".focus"" -> //""Reference Lab""// ""ServiceRequest""
+		|_  "".input"" -> //""Aliquot""// ""Specimen""
+		|_ ""...""
+	end note 
+	
+	Filler1 -> Filler2: send ""//Reference Lab//"" ""Task"" to **Reference Lab** 
+	note right #lightblue
+		all needed data is accessed by Reference Lab 
+		ownership of ""//Reference Lab//"" ""Specimen"" might be transfered to Reference Lab  
+		Accession ID is set to Reference Lab needs
+	end note
+
+	Filler2 -> Filler2: Accept ""//Reference Lab//"" ""ServiceRequest"" 
+	note right 
+		//""Reference Lab""// **""Task""**
+		|_ "".status"" == """**accepted**"""
+		|_ "".owner"" -> Reference Lab 
+		|_ ""businessStatus"" is set appropriate
+	end note
+	
+	... wait for Reference Lab Specimen ... 
+	
+	Filler1 -> Filler1: Set ""Task"" to in-progress
+	note right #pink
+		//""Reference Lab""// **""Task""**
+		|_ "".status"" == """**in-progress**"""
+		|_ ""businessStatus"" is set appropriate
+	end note
+
+	
+	group #eee Reference Lab Workflow\n - not in scope -
+		
+		Filler2 -> Filler2: Execute Order
+	
+		Filler2 -> Filler2: Create ""//Reference Lab//"" ""DiagnosticReport"" 
+		note right 
+			Result of Order execution 
+			is filled into ""DiagnosticReport""
+			//""Reference Lab""// **""DiagnosticReport""**
+			|_ "".basedOn"" = ""ServiceRequest""
+			|_ ""...""
+		end note
+	end
+	
+
+	
+	
+	Filler2 -> Filler2: Update ""//Reference Lab//"" ""Task""
+	note right 
+		Reference Lab **""Task""**
+		|_ "".output""->//""Reference Lab""// ""DiagnosticReport"" 
+		|_ "".status"" = """**completed**"""
+	end note
+	
+	note over Filler2, Filler1 #lightblue
+		The Community Lab gets information that the Reference Lab Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
+
+	group #eee Community Lab Workflow\n - not in scope -
+		Filler1 -> Filler1: Create ""//Community Lab//"" ""DiagnosticReport"" 
+		note right #pink
+			Result of Reference Lab execution 
+			and Community Lab execution
+			is added to ""DiagnosticReport""
+			
+			//""Community Lab""// **""DiagnosticReport""**
+			|_ "".basedOn"" = //""Original""// ""ServiceRequest""
+			|_ ""...""
+		end note
+	end
+	
+	Filler1 -> Filler1: Update ""//Reference Lab//"" ""erviceRequest"" 
+	note right #pink
+		//""Reference Lab""// **""ServiceRequest""**
+		|_ "".status"" = """**completed**"""
+	end note
+
+	Filler1 -> Filler1: Update ""//Community Lab//"" ""Task""
+	note right #pink
+		//""Community Lab""// **""Task""**
+		|_ "".output""-> //""Community Lab""// ""DiagnosticReport"" 
+		|_ "".status"" = """**completed**"""
+	end note
+	
+	note over Placer, Filler1 #lightblue
+		The Order Placer gets information that the Task is finished via
+			- Subscription
+			- polling
+			- messaging
+			- ...
+	end note
+
+	
+	Placer -> Placer: Update ""//Original//"" ""ServiceRequest"" 
+	note left #lightgreen
+		//""Original""// **""ServiceRequest""**
+		|_ "".status"" = """**completed**"""
+	end note
+end
+
+group #eee Result Reporting to Physician\n - not in scope -
+	Placer --> Doc: Report //""Community Lab""// ""DiagnosticReport""
+end
+@enduml
