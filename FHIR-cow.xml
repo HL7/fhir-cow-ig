@@ -7,6 +7,7 @@
 <artifactPageExtension value="-mappings"/>
 <artifact id="StructureDefinition/cow-message-header" key="StructureDefinition-cow-message-header" name="COW Message Header"/>
 <artifact id="StructureDefinition/cow-subscription-status" key="StructureDefinition-cow-subscription-status" name="COW Subscription Status"/>
+<artifact id="StructureDefinition/cancellation-request-task" key="StructureDefinition-cancellation-request-task" name="Cancellation Request Task"/>
 <artifact id="CodeSystem/cow-businessStatus" key="CodeSystem-cow-businessStatus" name="Clinical Order Workflow Example Codes"/>
 <artifact id="ValueSet/cow-businessStatus" key="ValueSet-cow-businessStatus" name="Clinical Orders Workflow Business Status Codes"/>
 <artifact id="ValueSet/cow-message-header-event" key="ValueSet-cow-message-header-event" name="Clinical Orders Workflow Message Header Event Codes"/>
@@ -26,6 +27,8 @@
 <page key="examples" name="Examples"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>
 <page key="fulfiller-need-for-additional-info" name="Fulfillers Requesting Additional Information"/>
+<page key="ex6-lab-order-flow-with-reference-lab" name="Lab Order Flow with Reference Lab"/>
+<page key="ex5-lab-order-flow-specimen-rejected" name="Lab Order Flow with Specimen Rejected"/>
 <page key="order-grouping" name="Order Grouping"/>
 <page key="order-initiation" name="Order Initiation"/>
 <page key="ex3-lab-order-flow-reflex-initiated-lab" name="Prescription and Dispense with mandatory single dispense"/>
