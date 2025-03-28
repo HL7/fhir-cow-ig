@@ -145,7 +145,7 @@ pages:
       title: Lab Order Workflow where a Reflex is imitated by the Laboratory
       generation: markdown
     ex4-meds-grouped-dispense.md:
-      title: Prescription and Dispense with mandatory single dispense
+      title: Prescription and Dispense with single dispense task
       generation: markdown
     ex5-lab-order-flow-specimen-rejected.md:
       title: Lab Order Flow with Specimen Rejected
