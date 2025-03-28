@@ -2,7 +2,7 @@ Alias: $m49.htm = http://unstats.un.org/unsd/methods/m49/m49.htm
 
 CodeSystem: Clinical_Order_Workflow_MHEvent_Codes
 Id: message-header-event
-Title: "Clinical_Order_Workflow_MessageHeaderEvent_Codes"
+Title: "Clinical Order Workflow MessageHeaderEvent Codes"
 Description: "The Event codes for the MessageHeader.event element needed for the order workflow"
 * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
 * ^extension.valueCode = #oo
