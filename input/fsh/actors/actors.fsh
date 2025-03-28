@@ -1,6 +1,5 @@
 Instance: placer
 InstanceOf: ActorDefinition
-Usage: #example
 * name = "PlacerActor"
 * title = "Placer"
 * status = #active
@@ -10,9 +9,8 @@ Usage: #example
 
 Instance: filler
 InstanceOf: ActorDefinition
-Usage: #example
 * name = "FillerActor"
-* title = "Recipient"
+* title = "Fulfiller"
 * status = #active
 * description = "COW Filler Actor"
 * type = #system
