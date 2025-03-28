@@ -30,6 +30,7 @@ Title: "Subscription Notification Type"
 Description: "The type of notification represented by the status message."
 * ^status = #active
 * ^experimental = false
+* ^url = "http://hl7.org/fhir/ValueSet/subscription-notification-type"
 * ^caseSensitive = true
 * ^content = #complete
 * #handshake "Handshake" "The status was generated as part of the setup or verification of a communications channel."
