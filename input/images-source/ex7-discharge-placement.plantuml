@@ -157,6 +157,12 @@ would take the patient.
 They decide on Facility B.
 end note
 
+Provider --> Patient: discuss options
+
+Patient --> Provider: decide Facility B fits goals best
+
+Provider -> Provider: Records decision
+
 note right Provider #pink
 **Task A** 
 |_ .Status: **Cancelled**
