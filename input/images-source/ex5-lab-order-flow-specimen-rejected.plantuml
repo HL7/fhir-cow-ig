@@ -32,7 +32,7 @@ group #eee Physician Workflow
 	Doc --> Placer: enter Specimen Information
 end
 
-group In Scope of this IG's Guidance
+group COW workflow
 
 	Placer -> Placer: create ""ServiceRequest"" 
 	note left #lightgreen
