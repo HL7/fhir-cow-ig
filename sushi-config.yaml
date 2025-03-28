@@ -41,7 +41,7 @@ releaseLabel: STU 1 Ballot # ci-build | draft | qa-preview | ballot | trial-use 
 #
 dependencies:
   hl7.fhir.extensions.r4: 4.0.1
-  hl7.fhir.extensions.r5: 5.0.0
+  hl7.fhir.extensions.r5: 4.0.1
   hl7.fhir.uv.subscriptions-backport.r4:
     version: 1.1.0
     id: subscriptions
@@ -172,7 +172,9 @@ pages:
 # For parameters defined by the FHIR Tools IG see:
 # http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
 #
-# parameters:
+parameters:
+  special-url: 
+    - http://hl7.org/fhir/ValueSet/subscription-notification-type
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #

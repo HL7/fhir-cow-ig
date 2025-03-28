@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/1.0.0-ballot" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" url="http://hl7.org/fhir/uv/cow">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/1.0.0-ballot" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" gitUrl="https://github.com/HL7/fhir-cow-ig" url="http://hl7.org/fhir/uv/cow">
 <version code="current" url="http://build.fhir.org/ig/HL7/fhir-cow-ig"/>
 <version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cow/1.0.0-ballot"/>
 <artifactPageExtension value="-definitions"/>
@@ -7,6 +7,7 @@
 <artifactPageExtension value="-mappings"/>
 <artifact id="SearchParameter/activity-resource" key="SearchParameter-activity-resource" name="ActivityResource"/>
 <artifact id="StructureDefinition/cow-message-header" key="StructureDefinition-cow-message-header" name="COW Message Header"/>
+<artifact id="StructureDefinition/cow-subscription-notification" key="StructureDefinition-cow-subscription-notification" name="COW Subscription Notification"/>
 <artifact id="StructureDefinition/cow-subscription-status" key="StructureDefinition-cow-subscription-status" name="COW Subscription Status"/>
 <artifact id="StructureDefinition/cancellation-request-task" key="StructureDefinition-cancellation-request-task" name="Cancellation Request Task"/>
 <artifact id="CodeSystem/business-status" key="CodeSystem-business-status" name="Clinical Order Workflow Example Codes"/>
@@ -15,8 +16,10 @@
 <artifact id="CodeSystem/message-header-event" key="CodeSystem-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
 <artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Coordination Task"/>
 <artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="GroupOrIdentifier"/>
+<artifact id="ValueSet/order-notification-status-type" key="ValueSet-order-notification-status-type" name="Order Notification Status Type"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
 <artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Recipient"/>
+<artifact id="CodeSystem/subscription-notification-status-type" key="CodeSystem-subscription-notification-status-type" name="Subscription Notification Type"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="artifacts" name="Artifacts Summary"/>
@@ -29,9 +32,10 @@
 <page key="fulfiller-need-for-additional-info" name="Fulfillers Requesting Additional Information"/>
 <page key="ex6-lab-order-flow-with-reference-lab" name="Lab Order Flow with Reference Lab"/>
 <page key="ex5-lab-order-flow-specimen-rejected" name="Lab Order Flow with Specimen Rejected"/>
+<page key="ex3-lab-order-flow-reflex-initiated-lab" name="Lab Order Workflow where a Reflex is imitated by the Laboratory"/>
 <page key="order-grouping" name="Order Grouping"/>
 <page key="order-initiation" name="Order Initiation"/>
-<page key="ex3-lab-order-flow-reflex-initiated-lab" name="Prescription and Dispense with mandatory single dispense"/>
+<page key="ex7-discharge-placement" name="Post-Discharge Placement in SNF"/>
 <page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with mandatory single dispense"/>
 <page key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
 <page key="ex1-simple-lab-order-flow" name="Simple Lab Order Flow"/>
