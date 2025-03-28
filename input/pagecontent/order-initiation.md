@@ -10,7 +10,7 @@ Order initiation refers to the different activities that may exist or be require
 
 * **`request.intent` is an immutable element, meaning that systems SHALL NOT update the intent of an order**. For creating a plan from a proposal, or an order from a plan or proposal, a new request resource instance **MUST** be created, basedOn the proposal/plan instance.  
 
-  * To do: we can add sub-intents because they don't change the intent, they just refine it....
+  * Note: some possible values for intent have a hierarchical relationship. This is meangful: while intent is immutable, it is possible to change from an intent to a 'sub-intent' because this doesn't change the intent, it just refines it.
 
 * Orders can be created in `active` status, or may evolve from `draft` to `active` - an order instance may be created as "draft" and then be updated to become "active"  ...
 
@@ -22,14 +22,17 @@ Order initiation refers to the different activities that may exist or be require
 
 
 #### Co-authoring
-In some cases, additional confirmation / sign-off is needed - this is common for special procedures, controlled substances.
-For the scope of this ImplementationGuide, we say that the order is not active until it is fully co-signed.  
+In some cases, additional confirmation / sign-off is needed - this is common for special procedures, controlled substances.  
+This ImplementationGuide currently addresses fulfillment of orders, and the co-authoring is therefore not in the primary scope.   
 
-TO DO: DO NOT SAY SIGNATURE
 
 
 #### Prior Auth
-Any 
+Prior Authorization is a common use case. Depending on the jurisdictions, it may happen as a rule, or may be required to prefent fraud, or to allow patients to decide considering also the costs, even if the processes and criteria are broadly different. This is also prior to execution and as such not a primary scope.
+
+Co-authoring, prior authorization are processes that include different participants and can be itself a type of "workflow" - sometimes predefined, sometimes *ad-hoc*. It is expectable that these two cases of pre-authoring may use the same mechanisms described in this specification.
+{:.stu-note}
+
 
 
 
@@ -43,7 +46,6 @@ In FHIR, requests express authorizations, and are not intended to be actionable 
 
 It is **not recommended** to consider orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
 
-<br>
 <br>
 <br>
 
@@ -77,6 +79,5 @@ Protocols are sets of defined orders, possibly interdependent. Order sets may be
 
 #### Decision Support in ordering
 
-One of the most common uses for Decision Support is to assist in ordering....
+One of the most common uses for Decision Support is to assist in ordering. While this implementation guide focuses on the order execution and tracking, this guidance is designed to be compatible with Decision Support Guidance, namely the [Clinical Practice Guidelines](https://hl7.org/fhir/uv/cpg/activityflow.html) and its workflows.
 
-The [Clinical Practice Guidelines](https://hl7.org/fhir/uv/cpg/activityflow.html) 

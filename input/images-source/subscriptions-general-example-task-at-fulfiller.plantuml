@@ -1,4 +1,5 @@
 @startuml
+skinparam svgDimensionStyle false
 title Task at Fulfiller Overview
 
 autonumber

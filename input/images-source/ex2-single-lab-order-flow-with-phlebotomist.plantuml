@@ -1,5 +1,5 @@
 @startuml
-
+skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
 	Lab Order Workflow with a single Glucose (LOINC 2345-7) Test and a Phlebotomist

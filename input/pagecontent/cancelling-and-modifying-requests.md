@@ -34,11 +34,6 @@ Request Resource
     * Code: fulfill
     * Intent: order
     * Focus: Request1
-
-Cancellation Request Task:
-    * Status: requested
-    * Code: abort
-    * .focus: task1
 ```
 Note that this guide makes no requirements around whether a Placer may cancel the ServiceRequest. This guide does not require that the Placer first check the status of the Coordination Task before cancelling the Request. Such requirements may be imposed via business agreements. Placers SHALL create or update a Coordination Task to indicate cancellation, in  addition to updating the ServiceRequest.status. 
  
@@ -76,11 +71,10 @@ Request Resource:
 Coordination Task:
     * status: rejected
     * focus: serviceRequest1
-Request Cancellation Task:
-    * status: ??
-    * code: abort
+Cancellation Request Task:
+    * Status: requested
+    * Code: abort
     * focus: serviceRequest1
-
 ```
 
 

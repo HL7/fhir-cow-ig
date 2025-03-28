@@ -4,14 +4,16 @@
 	
 	actor Placer
 	actor Filler
-	rectangle Request
-	rectangle Task
-	rectangle OutputEvents
+	rectangle "**Request**" as Request
+	rectangle "\t  **Task** \n(shared resource)" as Task
+	rectangle "Output\n**Events**" as OutputEvents
 	
-	Request <-r- Task : "\t  Make Executable  \t"
-	Task -r-> OutputEvents : "\t Execution results in \t"
+	Request <-r- Task : "   makes executable  "
+	Task -r-> OutputEvents : "  execution results in  "
 	Placer -d-> Request: "Owns                  "
+	Placer -r-> Filler: "     \t\t\t\t   "
 	Filler -d-> OutputEvents: "Creates"
 	Placer -d-> Task: "(usually)\ncreate and\nmay update"
 	Filler -d-> Task: "accept / \n fulfill /    \n update   "
+
 @enduml
