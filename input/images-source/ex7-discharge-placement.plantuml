@@ -1,8 +1,7 @@
 @startuml
-
 'skinparam sequenceMessageAlign center
 title 
-	Patient Selection of Skilled Nursing Facility
+	Post Discharge Placement
 end title
 
 hide footbox
@@ -16,8 +15,7 @@ skinparam Note<<resource>> {
 }
 
 
-actor Prescriber as Doc
-participant "Patient" as Patient
+actor "Patient" as Patient
 participant "Provider" as Provider
 participant "Facility A" as Facility_A
 participant "Facility B" as Facility_B
@@ -34,7 +32,6 @@ Provider -> Provider: create local order and \n**ServiceRequest**\nfor Skilled N
 note left <<resource>> #lightgreen
 **ServiceRequest**
 |_ .id = **12345**
-|_ .groupIdentifier = **skilled-nursing-1**
 |_ .intent = **Order**
 |_ ...
 
@@ -174,7 +171,5 @@ note right <<resource>> #lightblue
 |_ .businessStatus = **Selected**
 |_...
 
-end note 
-
-
+end note
 @enduml
