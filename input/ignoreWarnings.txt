@@ -14,5 +14,15 @@ Reference to deprecated ValueSet http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5
 # === This release contains no examples yet
 The Implementation Guide contains no examples for this profile
 
-# === ValueSet for subscription notification is not available in R4
+# === ValueSet for subscription notification is not available in R4, it is added to this IG
 Binding http://hl7.org/fhir/ValueSet/subscription-notification-type could not be located
+
+# === CodeSystem for task code is now active, and the binding is extensible. Warning is not applicable
+Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/task-code|4.0.1
+
+# === OID assignment for ActorDefinition profiles is not intended in the first ballot
+The resource ActorDefinition/filler could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource ActorDefinition/placer could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+
+# === These code systems are only for examples, THO alignment is premature
+Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)

@@ -1,6 +1,6 @@
 Often, potential Fulfillers find that they need additional data from the Placer to process a request for care. They may do so by:
 * Directly querying for information that a Placer already has, and which the Fulfiller is authorized to access. These requests for additional information are generally handled synchronously. For example - "Check insurance coverage" or "check patient's medication list". 
-* Sending a request to the Placer asking that they provide additional information which will require user effort to prepare. This often takes the form of a letter or other communication from the Fulfiller to the Placer, which a user at the Placer's organization then processes. Often, these should be accompanied with a businessStatus in the shared coordination Task indicating that the Fulfiller is waiting for information. For example, a Long Term Care facility may communicate they have a shared room available, and ask if that is acceptable based on the patient's needs and preferences.
+* Sending a request to the Placer asking that they provide additional information which will require user effort to prepare. This often takes the form of a letter or other communication from the Fulfiller to the Placer, which a user at the Placer's organization then processes. Often, these should be accompanied with a businessStatus in the shared Coordination Task indicating that the Fulfiller is waiting for information. For example, a Long Term Care facility may communicate they have a shared room available, and ask if that is acceptable based on the patient's needs and preferences.
 * A Fulfiller could even send Tasks or other instructions back to the Placer. For example, a surgeon may instruct that a lab test or imaging should be performed ahead of a surgical consult. 
 
 ### Supporting Direct Queries:
@@ -18,13 +18,13 @@ Both of these objectives can be accomplished using aspects of the Subscriptions 
 
 ### Requesting Additional Information Asynchronously via a Letter Flow with Status Update
 
-A Fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
+A Fulfiller may find that additional information is needed that may only be obtained by communicating with the Placer asynchronously. While waiting for this information, the Fulfiller SHOULD update the status of their shared Coordination Task to indicate this by updating Task.businessStatus to an appropriate status. 
 
 Fulfillers SHOULD specify that they are awaiting information using an appropriate Task.businessStatus.
 
 If desired, Fulfillers may register a record of communication that has occurred related to the Task, either via FHIR or out of band. For example:
 ```
-* Commmunication.partOf referencing the shared coordination
+* Commmunication.partOf referencing the shared Coordination Task
 * Communication.inResponseTo referencing an earlier communication, if present
 * Communication.basedOn referencing the ServiceRequest
 * Communication.Recipient
@@ -39,12 +39,12 @@ Often, Fulfillers may have some instructions for the Placer of a request: they m
 If these activities must be tracked as part of coordinating the original request for service, Fulfillers SHOULD coordinate these additional Tasks for the Fulfiller by updating Task.businessStatus to an appropriate status and by creating additional Task resources:
 
 ```
-On the Shared CoordinationTask:
+On the Coordination Task:
 * Task.businessStatus is a value such as "Fulfiller awaiting information"
 * Task.statusReason: 0..* codeable references that indicate what the Fulfiller needs. These could be Tasks, Communications, CommunicationRequests, etc. 
 
 For any Tasks created to record that action is needed:
-* Task.partOf referencing the shared coordination Task
+* Task.partOf referencing the shared Coordination Task
 * Task.performer specifying the party from whom action is needed (often the Placer of the original ServiceRequest 
 ```
 
