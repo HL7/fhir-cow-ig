@@ -12,5 +12,5 @@ InstanceOf: ActorDefinition
 * name = "FillerActor"
 * title = "Fulfiller"
 * status = #active
-* description = "COW Filler Actor"
+* description = "COW Filler Actor - generic actor representing the party that is fulfilling an order"
 * type = #system
