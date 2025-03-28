@@ -19,6 +19,37 @@ Description: "Minimum expectations for a SubscriptionStatus resource when used f
 * parameter[notificationEvent].part[eventFocus].name ^short = "Slice discriminator: the event focus"
 * parameter[notificationEvent].part[eventFocus].value[x] 1..1 MS
 * parameter[notificationEvent].part[eventFocus].value[x] only Reference (CoordinationTask)
+* parameter[type].valueCode from OrderNotificationStatusType
+
+
+
+
+CodeSystem: SubscriptionNotificationStatusTypes
+Id: subscription-notification-status-type
+Title: "Subscription Notification Type"
+Description: "The type of notification represented by the status message."
+* ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #complete
+* #handshake "Handshake" "The status was generated as part of the setup or verification of a communications channel."
+* #heartbeat "Heartbeat" "The status was generated to perform a heartbeat notification to the subscriber."
+* #event-notification "Event Notification" "The status was generated for an event to the subscriber."
+* #query-status "Query Status" "The status was generated in response to a status query/request."
+* #query-event "Query Event" "The status was generated in response to an event query/request."
+
+
+
+ValueSet: OrderNotificationStatusType
+Id: order-notification-status-type
+Title: "Order Notification Status Type"
+Description: "The type of notification represented by the status message."
+* ^experimental = false
+* ^immutable = true
+//* SubscriptionNotificationStatusTypes#event-notification 
+* include codes from system SubscriptionNotificationStatusTypes
+//* include codes from system http://hl7.org/fhir/subscription-notification-type
+
 
 Alias: $backport-subscription-notification-r4 = http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-notification-r4
 

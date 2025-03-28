@@ -1,4 +1,4 @@
-ValueSet: BusinessStatus
+ValueSet: VSBusinessStatus
 Title: "Clinical Orders Workflow Business Status Codes"
 Description: "This value set is the full expansion of the COW Business Status code system."
 * ^id = "business-status"
