@@ -1,8 +1,8 @@
 @startuml
-
+skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
-	Prescription and Dispense with mandatory single dispense task
+	Prescription and Dispense with single dispense task
 end title
 hide footbox
 
@@ -24,6 +24,24 @@ Doc --> Placer: Enter Order
 end
 
 group Workflow
+
+Placer -> Placer: create\n**""MedicationRequests""** 
+
+note left <<resource>> #lightgreen
+	**MedicationRequest**
+	|_ .id = **prescription-line1**
+	|_ .groupIdentifier = **prescription1**
+	|_ .medication = **Clavamox**
+	|_ .intent = "**Order**"
+	|_ ...
+
+	**MedicationRequest**
+	|_ .id = **prescription-line2**
+	|_ .groupIdentifier = **prescription1**
+	|_ .medication = **Azythromycin**
+	|_ .intent = "**order**"
+	|_ ...
+end note
 
 Placer -> Placer: create\n**""MedicationRequests""** 
 

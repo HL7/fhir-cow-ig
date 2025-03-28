@@ -1,4 +1,5 @@
 @startuml
+skinparam svgDimensionStyle false
 
 'skinparam sequenceMessageAlign center
 title 
@@ -19,7 +20,7 @@ group #eee Physician Workflow\n - not in scope -
 	Doc --> Placer: enter Specimen Information
 end
 
-group In Scope of this IG's Guidance
+group COW Workflow
 
 	Placer -> Placer: create ""//Community Lab//"" ""ServiceRequest"" 
 	note left #lightgreen
@@ -48,14 +49,14 @@ group In Scope of this IG's Guidance
 		|_ ""...""
 	end note 
 	
-	Placer -> Filler1: send ""//Community Lab//"" ""Task"" to **Community Lab** 
+	Placer -> Filler1: send ""//Community Lab//"" ""Task"" \nto **Community Lab** 
 	note right #lightblue
 		all needed data is accessed by Community Lab
 		ownership of ""Specimen"" might be transfered to Community Lab
 		Specimen gets a Asscension ID of the Community Lab
 	end note
 
-	Filler1 -> Filler1: Accept ""//Original//"" ""ServiceRequest"" 
+	Filler1 -> Filler1: Accept \n""//Original//"" ""ServiceRequest"" 
 	note right #pink
 		//""Community Lab""// **""Task""**
 		|_ "".status"" == """**accepted**"""
@@ -65,7 +66,7 @@ group In Scope of this IG's Guidance
 	
 	... wait for Specimen ... 
 	
-	Filler1 -> Filler1: Set ""Task"" to in-progress
+	Filler1 -> Filler1: Set ""Task"" in-progress
 	note right #pink
 		//""Community Lab""// **""Task""**
 		|_ "".status"" == """**in-progress**"""
@@ -73,7 +74,7 @@ group In Scope of this IG's Guidance
 	end note
 	
 	group #eee Community Lab Workflow\n - not in scope -
-		Filler1 -> Filler1: Create an Aliquot and a new Specimen
+		Filler1 -> Filler1: Create an Aliquot \nand a new Specimen Resource
 		note right #pink
 			//""Aliquot""// **""Specimen""**
 			|_ "".parent"" -> //""Original""// ""Specimen""
@@ -84,16 +85,16 @@ group In Scope of this IG's Guidance
 		Filler1 -> Filler1: Create Reference Lab Reflex Order\n because of Protocol  
 	end
 
-	Filler1 -> Filler1: create ""//Reference Lab//"" ""ServiceRequest""
-	note left #lightgreen
+	Filler1 -> Filler1: create \n""//Reference Lab//"" \n""ServiceRequest""
+	note right #pink
 		//""Reference Lab""// **""ServiceRequest""**
 		|_ "".code"" = //16944-1//
 		|_ "".intent"" = """**Order**"""
 		|_ ""...""
 	end note
 	
-	Filler1 -> Filler1: update Aliquot ""Specimen"" for Reference Lab
-	note left #lightgreen
+	Filler1 -> Filler1: update \n//""Aliquot"""// ""Specimen""  \nfor Reference Lab
+	note right #pink
 		//""Aliquot""// **""Specimen""**
 		|_ "".request"" -> //""Reference Lab""// ""ServiceRequest""
 		|_ "".type"" = **"""SER"""**
@@ -101,7 +102,7 @@ group In Scope of this IG's Guidance
 	end note
 	
 	Filler1 -> Filler1: create ""//Reference Lab//"" ""Task"" 
-	note left #lightgreen
+	note right #pink
 		//""Reference Lab""// **""ServiceRequest""**
 		|_  "".status""="""**active**"""
 		//""Reference Lab""// **""Task""**
@@ -111,14 +112,15 @@ group In Scope of this IG's Guidance
 		|_ ""...""
 	end note 
 	
-	Filler1 -> Filler2: send ""//Reference Lab//"" ""Task"" to **Reference Lab** 
+	Filler1 -> Filler2: send ""//Reference Lab//"" ""Task"" \nto **Reference Lab** 
 	note right #lightblue
 		all needed data is accessed by Reference Lab 
-		ownership of ""//Reference Lab//"" ""Specimen"" might be transfered to Reference Lab  
+		ownership of ""//Reference Lab//"" ""Specimen"" 
+		might be transfered to Reference Lab  
 		Accession ID is set to Reference Lab needs
 	end note
 
-	Filler2 -> Filler2: Accept ""//Reference Lab//"" ""ServiceRequest"" 
+	Filler2 -> Filler2: Accept \n""//Reference Lab//""\n""ServiceRequest"" 
 	note right 
 		//""Reference Lab""// **""Task""**
 		|_ "".status"" == """**accepted**"""
@@ -128,8 +130,8 @@ group In Scope of this IG's Guidance
 	
 	... wait for Reference Lab Specimen ... 
 	
-	Filler1 -> Filler1: Set ""Task"" to in-progress
-	note right #pink
+	Filler2 -> Filler2: Set ""Task"" to in-progress
+	note right
 		//""Reference Lab""// **""Task""**
 		|_ "".status"" == """**in-progress**"""
 		|_ ""businessStatus"" is set appropriate
@@ -140,8 +142,8 @@ group In Scope of this IG's Guidance
 		
 		Filler2 -> Filler2: Execute Order
 	
-		Filler2 -> Filler2: Create ""//Reference Lab//"" ""DiagnosticReport"" 
-		note right 
+		Filler2 -> Filler2: Create \n""//Reference Lab//"" \n""DiagnosticReport"" 
+		note  right 
 			Result of Order execution 
 			is filled into ""DiagnosticReport""
 			//""Reference Lab""// **""DiagnosticReport""**
@@ -153,8 +155,8 @@ group In Scope of this IG's Guidance
 
 	
 	
-	Filler2 -> Filler2: Update ""//Reference Lab//"" ""Task""
-	note right 
+	Filler2 -> Filler2: Update \n""//Reference Lab//"" ""Task""
+	note  right 
 		Reference Lab **""Task""**
 		|_ "".output""->//""Reference Lab""// ""DiagnosticReport"" 
 		|_ "".status"" = """**completed**"""
@@ -169,7 +171,7 @@ group In Scope of this IG's Guidance
 	end note
 
 	group #eee Community Lab Workflow\n - not in scope -
-		Filler1 -> Filler1: Create ""//Community Lab//"" ""DiagnosticReport"" 
+		Filler1 -> Filler1: Create \n""//Community Lab//"" \n""DiagnosticReport"" 
 		note right #pink
 			Result of Reference Lab execution 
 			and Community Lab execution
@@ -181,13 +183,13 @@ group In Scope of this IG's Guidance
 		end note
 	end
 	
-	Filler1 -> Filler1: Update ""//Reference Lab//"" ""erviceRequest"" 
+	Filler1 -> Filler1: Update \n""//Reference Lab//"" ""ServiceRequest"" 
 	note right #pink
 		//""Reference Lab""// **""ServiceRequest""**
 		|_ "".status"" = """**completed**"""
 	end note
 
-	Filler1 -> Filler1: Update ""//Community Lab//"" ""Task""
+	Filler1 -> Filler1: Update \n""//Community Lab//"" ""Task""
 	note right #pink
 		//""Community Lab""// **""Task""**
 		|_ "".output""-> //""Community Lab""// ""DiagnosticReport"" 
@@ -203,7 +205,7 @@ group In Scope of this IG's Guidance
 	end note
 
 	
-	Placer -> Placer: Update ""//Original//"" ""ServiceRequest"" 
+	Placer -> Placer: Update \n""//Original//"" ""ServiceRequest"" 
 	note left #lightgreen
 		//""Original""// **""ServiceRequest""**
 		|_ "".status"" = """**completed**"""
@@ -211,6 +213,6 @@ group In Scope of this IG's Guidance
 end
 
 group #eee Result Reporting to Physician\n - not in scope -
-	Placer --> Doc: Report //""Community Lab""// ""DiagnosticReport""
+	Placer --> Doc: Report \n//""Community Lab""// ""DiagnosticReport""
 end
 @enduml

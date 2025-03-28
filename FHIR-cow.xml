@@ -15,10 +15,10 @@
 <artifact id="ValueSet/business-status" key="ValueSet-business-status" name="Clinical Orders Workflow Business Status Codes"/>
 <artifact id="CodeSystem/message-header-event" key="CodeSystem-message-header-event" name="Clinical_Order_Workflow_MessageHeaderEvent_Codes"/>
 <artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Coordination Task"/>
+<artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Fulfiller"/>
 <artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="GroupOrIdentifier"/>
 <artifact id="ValueSet/order-notification-status-type" key="ValueSet-order-notification-status-type" name="Order Notification Status Type"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
-<artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Recipient"/>
 <artifact id="CodeSystem/subscription-notification-status-type" key="CodeSystem-subscription-notification-status-type" name="Subscription Notification Type"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
@@ -36,7 +36,7 @@
 <page key="order-grouping" name="Order Grouping"/>
 <page key="order-initiation" name="Order Initiation"/>
 <page key="ex7-discharge-placement" name="Post-Discharge Placement in SNF"/>
-<page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with mandatory single dispense"/>
+<page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with single dispense task"/>
 <page key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
 <page key="ex1-simple-lab-order-flow" name="Simple Lab Order Flow"/>
 <page key="ex2-simple-lab-order-flow-with-phlebotomist" name="Simple Lab Order Flow with Phlebotomist"/>

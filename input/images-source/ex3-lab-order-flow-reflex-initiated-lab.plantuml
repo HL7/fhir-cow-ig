@@ -1,5 +1,5 @@
 @startuml
-
+skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
 	Simple Lab Order Workflow with a single TSH (LOINC 3016-3) Test triggering an FT4 (LOINC 3024-7) Test

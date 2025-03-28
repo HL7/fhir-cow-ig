@@ -17,7 +17,7 @@
 - Ownership of Specimen Resource (Ownership should/could/might change with the physical location)
 - Transport of the Sample
 
-### Example using Subscriptions with Task at Placer
+### Example 
 <figure>
   {% include ex2-single-lab-order-flow-with-phlebotomist.svg %}
 </figure>

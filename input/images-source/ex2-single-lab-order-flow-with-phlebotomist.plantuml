@@ -1,5 +1,5 @@
 @startuml
-
+skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
 	Lab Order Workflow with a single Glucose (LOINC 2345-7) Test and a Phlebotomist
@@ -37,12 +37,12 @@ group #eee Physician Workflow
 	Doc --> Placer: Enter Order
 end
 
-group In Scope of this IG's Guidance 
+group COW workflow
 
 	group Creation of ServiceRequest
 	
 		Placer -> Placer: create ""ServiceRequest"" 
-		note left 
+		note left #lightgreen
 			**""ServiceRequest""**
 			|_ "".code"" = //2345-7//
 			|_ "".intent"" = """**Order**"""
@@ -54,7 +54,7 @@ group In Scope of this IG's Guidance
 	group Collection of Specimen
 		
 		Placer -> Placer: create ""Collection Task"" 
-		note left 
+		note left #lightgreen
 			**""ServiceRequest""**
 			|_  "".status""="""**active**"""
 			**""Task""**
@@ -69,7 +69,7 @@ group In Scope of this IG's Guidance
 		end note
 
 		Collector -> Collector: Accept ""ServiceRequest"" 
-		note right #pink
+		note right 
 			**""Collector Task""**
 			|_ "".status"" == """**accepted**"""
 			|_ "".owner"" -> Phlebotomist System 
@@ -84,7 +84,7 @@ group In Scope of this IG's Guidance
 		end
 
 		Collector -> Collector: Set to "in-progress
-		note right #pink
+		note right 
 			**""Collector Task""**
 			|_ "".status"" == """**in-progress**"""
 			|_ ""businessStatus"" is set appropriate
@@ -92,7 +92,7 @@ group In Scope of this IG's Guidance
 
 		
 		Collector -> Collector: create ""Specimen"" 
-		note right #pink
+		note right 
 			**""Specimen""**
 			|_ "".request"" -> ""ServiceRequest""
 			|_ "".type"" = **"""SER"""**
@@ -100,7 +100,7 @@ group In Scope of this IG's Guidance
 		end note
 		
 		Collector -> Collector: Update ""Collector Task""
-		note right #pink
+		note right 
 			**""Collector Task""**
 			|_ "".output""->""Specimen"" 
 			|_ "".status"" = """**completed**"""
@@ -118,7 +118,7 @@ group In Scope of this IG's Guidance
 	group Transmit Order to Laboratory 
 		
 		Placer -> Placer: create ""Lab Task"" 
-		note left 
+		note left #lightgreen
 			**""ServiceRequest""**
 			|_  "".status""="""**active**"""
 			**""Lab Task""**
@@ -135,7 +135,7 @@ group In Scope of this IG's Guidance
 		end note
 	
 		Filler -> Filler: Accept ""ServiceRequest"" 
-		note right #lightgreen
+		note right #pink
 			**""Lab Task""**
 			|_ "".status"" == """**accepted**"""
 			|_ "".owner"" -> Order Filler
@@ -156,7 +156,7 @@ group In Scope of this IG's Guidance
 		
 			Filler -> Filler: Execute Order
 			Filler -> Filler: Create ""DiagnosticReport"" 
-			note right #lightgreen
+			note right #pink
 				Result of Order execution is filled into ""DiagnosticReport""
 				**""DiagnosticReport""**
 				|_ "".basedOn"" = ""ServiceRequest""
@@ -165,7 +165,7 @@ group In Scope of this IG's Guidance
 		end
 	
 		Filler -> Filler: Update ""Lab Task""
-		note right #lightgreen
+		note right #pink
 			**""Lab Task""**
 			|_ "".output""->""DiagnosticReport"" 
 			|_ "".status"" = """**completed**"""
@@ -183,7 +183,7 @@ group In Scope of this IG's Guidance
 	group Finish ServiceRequest
 		
 		Placer -> Placer: Update ""ServiceRequest"" 
-		note left
+		note left #lightgreen
 			**""ServiceRequest""**
 			|_ "".status"" = """**completed**"""
 		end note

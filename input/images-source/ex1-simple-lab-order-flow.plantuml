@@ -1,5 +1,5 @@
 @startuml
-
+skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
 	Simple Lab Order Workflow with a single Glucose (LOINC 2345-7) Test 
@@ -33,7 +33,7 @@ group #eee Physician Workflow
 	Doc --> Placer: enter Specimen Information
 end
 
-group In Scope of this IG's Guidance
+group COW workflow
 
 	Placer -> Placer: create ""ServiceRequest"" 
 	note left #lightgreen

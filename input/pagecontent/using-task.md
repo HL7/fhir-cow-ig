@@ -1,23 +1,35 @@
-The Task 
+The Task resource is a FHIR resource dedicated to the management of workflows; 
+Except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
+**Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
 
+This ImplementationGuide introduces two specific types of Task that are important for the execution of workflows:
+* **Coordination Task** - the preferred way to keep track of statuses, and requested and performed activities (see [profile](StructureDefinition-coordination-task.html)).
+* **Cancellation Request Task** - the preferred way to request cancellation of a Request, or of another Task.  
 
-### Tracking business status
-`Task.businessStatus` is the ...
+<br>
 
+Some of the elements that support the key purposes of the Task resource:
 
-### Task.focus
+### Task creation and execution: **`Task.status`** 
+The Task status represents the status of the activity that is being performed. To support system interoperability, the `status` is limited to a set of values.  
 
+### Tracking workflow status: **`Task.businessStatus`**
+One of the core aspects in FHIR workflow is that FHIR distinguishes **status of authorization** and **status of execution**. While it is common to consider concepts like "status of the order", in FHIR the status of the order is simply whether an authorization is draft, active, not active, and completed.
+The Task resource and specifically `Task.businessStatus` is used to track the actual execution, assigning a code for the status.  
+
+### Focal resource: **`Task.focus`**
+Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task and its derivatives, inputs and outputs.   
 
 ### Task.input
-`Task.input` is used to get the relevant Data to execute the Request into the Filler system. Examples are the
+`Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
 - `Specimen` Resource
-- Ask at Order Entry Questions
+- `QuestionnaireResponse` Resource (for example ask at Order Entry Questions)
 - etc.
 
 
 ### Task.output
-`Task.output` is used to get the -if available- output of the Request from the Filler to the Placer. Examples of this outputs are
+`Task.output` is used to get - if and when available - the output of the Request from the Filler to the Placer. Examples of resources that are typical outputs are:
 - `DiagnosticReport`
 - `Questionaires`
 - `ImageStudy`
@@ -27,18 +39,19 @@ The Task
 ### Coordinating several requests
 The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). 
 
-In future releases of FHIR, `Task.focus` is being considered to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing task.focus to effectively point to several requests.
-
-See the example of [grouped dispense](ex4-meds-grouped-dispense.html)
+In future releases of FHIR, `Task.focus` is planned to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing task.focus to effectively point to several requests.
 
 ```
 Profile: GroupCoordinationTask
 Parent: Task
 * extension contains http://hl7.org/fhir/4.0/StructureDefinition/extension-Task.focus named focus 0..* MS
 ```
+See the example of [grouped dispense](ex4-meds-grouped-dispense.html). 
+
+
 
 <div markdown="1">
-Implementers are invited to provide feedback on the expansion of Task.focus, and point to use cases or needs - or alternatives - to addressing the coordination of several requests.
+Implementers are invited to provide feedback on the use of Task.focus, and point to input on the coordination of several requests.
 </div>
 {:.stu-note}
 

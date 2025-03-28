@@ -19,11 +19,14 @@ For example, if a hospital would like to coordinate transportation assistance fo
 
 * **Output Events** - requests for service may result in a variety of output events, each with their own representation in FHIR. For the purposes of this IG, we refer to these generically without specifying their form. Example outputs that could be generated include a DocumentReference for a Consult Note, a DiagnosticReport and set of Observations for a lab, a CarePlan describing proposed care, or even new ServiceRequests. In scenarios with FHIR servers, this IG specifies that Outputs may be linked back to an originating ServiceRequest via Task.Output, where the Tasks (eventually) point back to a ServiceRequest via Task.BasedOn and ServiceRequest.basedOn.  It is also possible that a request could result in no output (such as a request for transportation), or that a request could result in only a partial output. See the "Sharing outputs of referrals and orders" Workflow Patterns section for additional detail. This guide assumes that in most cases the (source of truth) Resource representing the Output is hosted on the Fulfiller's FHIR server, although the Placer may of course have a copy that they can in turn surface to others. 
 
-{% include img.html img="relation-of-placer-request-task-output-filler.png" %}
+<figure>
+{% include relation-of-placer-request-task-output-filler.svg %}
+</figure>
+
 
 ### Authorization and Authorization Base:
 
-As discussed in the Background section, actors in a RESTful exchange often wish to limit the set of resources that another actor may access (or the interactions they may initiate), with more granularity than what is provided with traditional OAuth 2.0 scopes. 
+As described in the Background section, actors in a RESTful exchange often wish to limit the set of resources that another actor may access (or the interactions they may initiate), with more granularity than what is provided with traditional OAuth 2.0 scopes. 
 
 This guide recommends two complementary options, though their use is optional within this IG:
 
