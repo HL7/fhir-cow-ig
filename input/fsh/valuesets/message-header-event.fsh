@@ -6,4 +6,5 @@ Description: "Value Set containing the codes from the COW Business Status code s
 * ^extension.valueCode = #oo
 * ^status = #active
 * ^experimental = false
-* include codes from system message-header-event
+* COWTempCodeSystem#new-order
+* COWTempCodeSystem#order-update 

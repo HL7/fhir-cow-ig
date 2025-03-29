@@ -6,4 +6,8 @@ Description: "This value set is the full expansion of the COW Business Status co
 * ^extension.valueCode = #oo
 * ^status = #active
 * ^experimental = false
-* include codes from system business-status
+* COWTempCodeSystem#visit-scheduled
+* COWTempCodeSystem#specimen-collected 
+* COWTempCodeSystem#awaiting-interpretation 
+* COWTempCodeSystem#preliminary-outcome 
+* COWTempCodeSystem#awaiting-information
