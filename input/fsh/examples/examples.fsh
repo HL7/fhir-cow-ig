@@ -83,7 +83,7 @@ Description: "COW example of a Subscription Notification, where the status only 
 Instance:    COWMessageHeaderExample
 InstanceOf:  COWMessageHeader
 Usage:       #example
-Title:       "COW MessageHeader Example"
+Title:       "COW MessageHeaderExample"
 Description: "COW example of a message header for an order update"
 * id       = "cow-message-header-example"
 * eventCoding       = http://hl7.org/fhir/uv/cow/CodeSystem/message-header-event#order-update

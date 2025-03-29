@@ -9,7 +9,7 @@
 <artifact id="Task/cow-cancellation-task-example" key="Task-cow-cancellation-task-example" name="COW Cancellation Task"/>
 <artifact id="Task/cow-coordination-task-example" key="Task-cow-coordination-task-example" name="COW Coordination Task"/>
 <artifact id="StructureDefinition/cow-message-header" key="StructureDefinition-cow-message-header" name="COW Message Header"/>
-<artifact id="MessageHeader/cow-message-header-example" key="MessageHeader-cow-message-header-example" name="COW MessageHeader Example"/>
+<artifact id="MessageHeader/cow-message-header-example" key="MessageHeader-cow-message-header-example" name="COW MessageHeaderExample"/>
 <artifact id="Parameters/cow-notification-status-example" key="Parameters-cow-notification-status-example" name="COW Notification Status"/>
 <artifact id="Bundle/cow-notification-status-only-example" key="Bundle-cow-notification-status-only-example" name="COW Notification: Status with Focus only"/>
 <artifact id="ServiceRequest/cow-service-request-example" key="ServiceRequest-cow-service-request-example" name="COW Service Request"/>
