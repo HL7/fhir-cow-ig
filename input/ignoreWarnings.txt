@@ -21,5 +21,5 @@ Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/task-code|4.0.1
 The resource ActorDefinition/filler could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 The resource ActorDefinition/placer could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
-# === These code systems are only for examples, THO alignment is premature
+# === There are two code systems, one is temporary with example codes, the other is necessary for the Subscription Backport to work in R4
 Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
