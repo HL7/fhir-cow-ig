@@ -46,7 +46,7 @@ This guide outlines how the following workflow aspects can be supported using FH
 
 * Order initiation - mechanisms that are important to consider before an order is active - while orthogonal to the order execution, order creation is a common need and some basic guidance is presented.  
 
-* Order grouping - superficial guidance on grouping (multi-item orders) - also orthogonal to the execution of the workflows, but guidance is given to ensure correct order execution and tracking for single- and multi-item orders.  
+* Order grouping - description on mechanisms for order grouping (multi-item orders) - also orthogonal to the execution of the workflows, but guidance is given to ensure correct order execution and tracking for single- and multi-item orders.  
 
 * Request notification – A Placer notifies a (potential) Fulfiller of a request, including necessary supporting information for assessing fulfillment.  
 
