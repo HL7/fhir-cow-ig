@@ -11,8 +11,6 @@ This guide considers Orders, Referrals and Transfers together, as the considerat
 
 Historically, these terms have been delineated by the extent to which responsibility for a patient's care was transitioned or delegated between providers. As care has become more collaborative, it is often challenging to draw bright line distinctions between these terms.  
 
-All of these workflows assume that some healthcare provider, while working with a patient, decides that some action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
-
 To help with discussions, brief descriptions and examples of each term are provided below.
 
 <table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
@@ -29,14 +27,13 @@ To help with discussions, brief descriptions and examples of each term are provi
           <ul>
             <li>Usually not service-specific</li>
             <li>Requestor usually does not expect an outcome after the coordination</li>
-            <li>Often changes day-to-day or primary responsibility for a patient's care
+            <li>Usually changing primary responsibility for a patient's care, often with patient movement
               <ul>
-                <li>Post-discharge placement</li>
-                <li>Burn Unit
+                <li>LTC - with functional status</li>
+                <li>Burn Unit - with specific tests</li>
               </ul>
             </li>
             <li>Often includes a patient summary. May include a more specific `reason for transfer`</li>
-            <li>Often involvs patient movement</li>
           </ul>
         </td>
         <td>
@@ -56,7 +53,7 @@ To help with discussions, brief descriptions and examples of each term are provi
               </ul>
             </li>
             <li>
-              May not be fully authorized at the moment of creation (a provide rmay approve, but payer follow-up may be needed).
+              May not be authorized at the moment of creation (insurance, etc.)
             </li>
             <li>
               Recipients sometimes refuse
@@ -70,18 +67,20 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>X-Ray 3 view knee</li>
               </ul>
             </li>
-            <li>General expectation is that the service will occur
+            <li>General expectation is that the service will occur and the overall performer is known
               <ul>
                 <li>Some lab in the network <em>will</em> perform this test</li>
               </ul>
             </li>
-            <li><em>Usually</em> recipients can't refuse to perform a service, although they may indicate they are unable to fulfill a request.
+            <li><em>Usually</em> the recipient can't refuse to perform a service, although depending on the business agreements, they may be allowed to modify the request, such as by selecting a more specific service to perform. Additionally, fulfillers may indicate they are not able to fulfill the request for some reason, such as a specimen's condition or quantity.
             </li>
           </ul>
         </td>
       </tr>
     </tbody>
   </table>
+
+These all involve a healthcare provider deciding that action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
 
 ### Key Differences in Implementations Today:
 
