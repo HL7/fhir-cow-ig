@@ -139,4 +139,4 @@ Description: "A task to indicate a placer-initiated cancellation of a request fu
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS
-* focus only Reference(CoordinationTask)
+//* focus only Reference(CoordinationTask)
