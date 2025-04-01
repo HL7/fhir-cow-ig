@@ -24,7 +24,7 @@ This guide is split into the below sections.
 ### Boundaries and Relationships
 This guide is universal-realm and does not reference any national base or core profiling. This guide leverages concepts from [FHIR-Workflow](https://hl7.org/fhir/workflow.html) and applies them to Order, Referral, and Transfer workflows. 
 
-* This implementation guide presents patterns that can be used in a variety of architectures, and does not intend to recommend or  any specific architecture of the involved systems.
+* This implementation guide presents patterns that can be used in a variety of architectures, and does not intend to recommend any specific architecture of the involved systems.
 * The recommendations in this implementation guide are designed for inter-system communication, not intra-system communication - while it is possible to use the same patterns and data structures inside a system, the goal is to support interoperability.  
 
 This guide draws inspiration from a growing number of different projects (past and ongoing), both by HL7 and by implementers. It provides guidance and content to support such projects, but in finding the common framework, it does not guarantee compatibility with such projects.
