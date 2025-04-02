@@ -11,7 +11,7 @@ This guide describes interactions between those requesting and those performing 
 ### Requests, Tasks, and Outputs Events:
 This section provides a brief overview of how FHIR resources are used to represent Request workflows. For more detail, see [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns). 
 
-* **Request resources** (e.g., ServiceRequest, DeviceRequest, MedicationRequest) are the FHIR representation of the request that a provider is creating, proposing, or authorizing. These request resources contain at least minimal information about the action to be performed, the overall status of the request, and links to supporting information. In this guide, the source-of-truth Request is always 'hosted' on the system in which the Request (or the proposed modification) originated. See the 'Cancelling and modifying requests' workflow pattern for details. A Placer may create a single Request, which any of several Fulfillers may perform, or a single Request per potential Fufliller.
+* **Request resources** (e.g., ServiceRequest, DeviceRequest, MedicationRequest) are the FHIR representation of the request that a provider is creating, proposing, or authorizing. These request resources contain at least minimal information about the action to be performed, the overall status of the request, and links to supporting information. In this guide, the source-of-truth Request is always 'hosted' on the system in which the Request (or the proposed modification) originated. See the 'Cancelling and modifying requests' workflow pattern for details. A Placer may create a single Request, which any of several Fulfillers may perform, or a single Request per potential Fulfiller.
   
 * **Task resources** play multiple roles. In this guide, Most notably, this guide uses Coordination Tasks to track status between a placer and a _specific_ *potential*, or *eventual* Fulfiller (when using FHIR servers). Multiple Task resources may point to the same Request, with one Coordination Task per placer-fulfiller pair. In cases where multiple Fulfillers may each contribute a partial output (e.g., pharmacies providing partial dispenses), Placers may create a Parent Coordination Task - modifiable only by the placer - in addition to the individual Coordination Tasks for each Fulfiller. Overall workflow status may be Tracked using <code>Request.status</code> and the presence of Outputs or, when a parent Task exists, via the parent <code>Task.businessStatus</code> and <code>Task.status</code>. Placers and fulfillers must pre-coordinate which system hosts the shared Coordination Task to ensure a consistent source of truth.
     * For example, a hospital arranging transportation assistance for a patient may create one "transportation ServiceRequest" for that patient and a Task per Transportation Provider, all referencing the same ServiceRequest. Alternatively, they may create or separate ServiceRequest/Task pairs per Fulfiller.
@@ -45,13 +45,13 @@ This type of “chain care” is common and introduces complexity—but also mot
 
 {% include img.html img="sharing-info-with-intermediaries.png" %}
 
-If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endoint discoverability, (dynamic) client registration, shared scopes and business rules, etc.
+If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endpoint discoverability, (dynamic) client registration, shared scopes and business rules, etc.
 
 Where direct communication isn't feasible, intermediaries may:
 * Store local representations of relevant data so they may provide it to downstream.
 * Proxy" requests from later actors to those upstream.
 
-In either of these scenarios, when forwarding requests, a party must rewrite references in the notificatoins they send to point to their own server, rather than actors upstream.
+In either of these scenarios, when forwarding requests, a party must rewrite references in the notifications they send to point to their own server, rather than actors upstream.
 
 Alternatively, actors in the chain can reduce dependency on references by including information they expect later parties will need with the notifications (whether that is a Message bundle, a SubscriptionStatus notification bundle, etc.).
 

@@ -86,7 +86,7 @@ These all involve a healthcare provider deciding that action should be taken by 
 
 In reviewing other locale and care-domain specific work, this specification's authors have noted two factors which frequently motivate the creation of new exchange specifications for orders and referrals. These are:
 1. Considerations for minimizing data access
-2. Accomodating interactions with systems that mayt not yet support robust (and highly available) FHIR servers
+2. Accommodating interactions with systems that may not yet support robust (and highly available) FHIR servers
 
 **Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
 

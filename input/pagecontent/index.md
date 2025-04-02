@@ -12,7 +12,7 @@ This guide is split into the below sections.
 
 - **Background** - explains how this guide is intended to be used, the challenges it addresses, and why orders, referrals, and transfer workflows are considered together. It also outlines key considerations for spec authors in this space and provides a brief survey of the exchange mechanisms this guide references. 
 
-- **Core Concepts** - describes actors and the key FHIR resourcesand concepts used in this guide. We suggest reading this section before proceeding further. This section also includes the basic model for representing the state of a Request from the time it is placed to its fulfillment. 
+- **Core Concepts** - describes actors and the key FHIR resources and concepts used in this guide. We suggest reading this section before proceeding further. This section also includes the basic model for representing the state of a Request from the time it is placed to its fulfillment. 
 
 - **Workflow Patterns** - contains an overview of common workflows relevant to orders, referrals, and transfers, and how these may be represented via the FHIR exchanges and state model described in the Core Concepts section. This includes how placers notify potential fulfillers of a Request, how fulfillers request additional information, and how Outputs may be shared. Each workflow is accompanied by a basic FHIR pattern or resources-description.
 
