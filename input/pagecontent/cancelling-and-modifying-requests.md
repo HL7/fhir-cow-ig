@@ -9,8 +9,7 @@ In such circumstances, the shared coordinating Task used by both the placer and 
 As general guidance, this guide recommends that [Request resource].replaces be used when one Request replaces another and use of Request resources and Tasks  with an intent of “Proposal” when one actor would like to suggest that the other authorize an action.
 
 
-### Placer Initiated Cancellations.
-
+### Placer Initiated Cancellations
 
 This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [CancellationRequestTask](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
@@ -19,7 +18,7 @@ Until the Fulfiller begins work (indicated by updating the Coordination Task to 
 
 Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
 
-The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY updat the status of the Coordination Task as well.   
+The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
 
 {%include cancelation-when-in-progress-example-task-at-fulfiller.svg%}
 
@@ -61,7 +60,7 @@ The filler may accept or reject that Cancellation by updating Cancellation Task.
 
 
 ### Fulfiller request to cancel the Request
-In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses the  Authorization Cancellation Request Task request the Placer to cancel their request.
+In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses the  [Authorization Cancellation Request Task](StructureDefinition-authorization-cancellation-request-task.html) to request from the Placer to cancel their request.
 
 ```
 Request Resource:
