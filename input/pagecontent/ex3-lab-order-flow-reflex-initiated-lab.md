@@ -14,7 +14,7 @@
 - `DiagnosticReport` is owned by the Order Filler
 - Order is accepted and is fulfilled 
 - Lab internal flow is **out of scope**
-- Lab will trigger a FT4 Reflex test caused by a Laboratory interal protocol. 
+- Lab will trigger a FT4 Reflex test caused by a Laboratory internal protocol. 
 - All needed data is accessible
 - All needed data around the Sample is in the `Specimen` like collection information (`Procedure`, collection date/time, body Site, ...)
 #### Not defined

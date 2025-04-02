@@ -1,21 +1,20 @@
-This section describes several patterns of interaction for order, referral, and transfer workflows, with a brief description of clinical scenarios in which they may apply.
+This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow; details are provided elsewhere. 
 
-The areas identified in this Implementation Guide are:
-
+The other pages in this section outline considerations for specific parts of a Request's lifecycle in FHIR. These include:
 * **Order initiation**:  
 This section addresses aspects of how orders are created that relate to FHIR workflows. Many details are left to implementers or more specific implementation guides. 
 
 * **Order grouping**  
-This section addresses how multiple requests for service (or multi-item requests) may be communicated and how dependencies between requests may be communicated and coordinated.
+How multiple requests for service (or multi-item requests) may be communicated and how dependencies between requests may be communicated and coordinated.
 
 * **Fulfiller determination**  
-After a request has been created, this section describes how a fulfiller for that service is selected. This could be direct assignment by a placer, assignment by a central triage or coordination office, or patient-selection.
+After a request has been created, how a fulfiller for that service is selected. This could be direct assignment by a placer, assignment by a central triage or coordination office, or patient-selection.
 
-* **Requests by a fulfiller for additional information**  
-This section  describes how potential fulfillers may request additional information about the requested service, which may be important to their determining if they will accept the request for service. 
+* **Requests by a Fulfiller for additional information**  
+How potential Fulfillers may ask for additional information about a Request, either while determining if they can fulfill the Request or later.
 
 * **Cancelling and modifying orders**  
-This section describes how placers and fulfillers may modify a request once it has been created. This includes:
+This section describes how Placers and Fulfillers may modify a request once it has been created. This includes:
     * A placer cancelling a request before service has begun
     * A placer requesting that an in-progress request for service be cancelled
     * A fulfiller proposing an alternative service back to the placer
@@ -23,16 +22,27 @@ This section describes how placers and fulfillers may modify a request once it h
     * A fulfiller informing a placer that they can no longer perform a service
 
 * **Sharing outputs from an order**  
-This section describes how the outputs from a request for service, such as a diagnostic result report, a consult note, or other content, may be linked back to the request and shared between actors. This section does not specify any requirements on the content of such outputs or when such outputs must be present. Instead, it specifies merely how they are linked across FHIR servers to aid discoverability. 
-
+How the outputs from a Request, such as a diagnostic result report or a consult note, may be linked back to the original Request and shared between actors. This includes how actors may make the Outputs discoverable for others involved in a patient's care later, even if the later actors can only contact the Placer. 
 
 <hr>
 <hr>
 <hr>
 
+### Overview Example - Coordination Task at Fulfiller with Optional Subscriptions
+The below is an overview of how a Request may be coordinated with the Coordination Task hosted at the Fulfiller. In this example, the Placer and the Fulfiller have pre-coordinated that the Placer is Subscribed to updates on Tasks that they originate. Note, however, that this is optional for the example: a Placer could query for updates on the Coordination Task at some expected date or ahead of their next visit with the patient. 
+
+Many details are deferred for more detailed discussions elsewhere in this guide or for later implementation guides. 
+
+<div>
+  {% include subscriptions-general-example-task-at-fulfiller.svg %} 
+</div>
+
+<hr>
+<hr>
+<hr>
 
 ### Overview Example - Subscriptions with Task at Placer
-The below is a general overview of how Subscriptions may be used with the coordinating Task hosted at the Placer. Many details are deferred for more detailed discussions elsewhere in this guide for for later implementation guides. 
+The below is a similar overview in which the Coordination Task is hosted at the Placer. In this example, the Placer and the Fulfiller have pre-coordinated that the Fulfiller is Subscribed to Tasks that the Placer creates for them in which the Fulfiller is the expected Task.performer. 
 
 <!--
 <figure>
@@ -42,14 +52,13 @@ The below is a general overview of how Subscriptions may be used with the coordi
 
 {% include svg.html img="subscriptions-general-example-task-at-placer.svg" %}
 
-### Overview Example - Subscriptions with Task at Fulfiller
-
-<div>
-  {% include subscriptions-general-example-task-at-fulfiller.svg %} 
-</div>
-
+<hr>
+<hr>
+<hr>
 
 ### Overview Example - Messaging
+Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfiller pre-coordinate their endpoints and events of interest, just as with Messaging. The key distinction is that (in this example, where we assume no FHIR servers may be queried RESTfully) the notifications must contain the information the Placer anticipates the Fulfiller will need. Just as in HL7 v2 messaging today, actors rely on shared identifiers and reliable messaging to coordinate State.
+
 <figure>
   {% include pure-messaging-with-placer-identifiers.svg %} 
 </figure>

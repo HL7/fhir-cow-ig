@@ -17,11 +17,13 @@ This is equivalent to the normal flow through the step that an intended performe
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
 
-Once the filler has begun work, Placers must request canellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
+Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
 
-The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY updat the status of the Coordination Task as well.   
+The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
 
+<figure>
 {%include cancelation-when-in-progress-example-task-at-fulfiller.svg%}
+</figure>
 
 ```
 Request Resource
