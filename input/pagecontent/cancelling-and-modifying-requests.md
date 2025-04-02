@@ -87,8 +87,10 @@ Please provide a comment with your ballot return.
 
 <div markdown="1">
 Question for balloters: Currently there are no formal constraints on the Task.focus element in the profiles created in the Implementation Guide. The intent as expressed in the definitions is that Task.focus, for the purposes described in the IG, is to be a reference to a Request resource. Not all resources that implement the [Request pattern](https://hl7.org/fhir/R4/request.html), however, are relevant as *the* Request resource for Clinical Order Workflows. The following are the ones currently considered relevant, and the ones not considered relevant:
+
 * Relevant: CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, ServiceRequest, SupplyRequest, VisionPrescription
 * Not relevant: Appointment, AppointmentResponse, CarePlan, Claim, Contract, CoverageEligibilityRequest, EnrollmentRequest, ImmunizationRecommendation, Task (special case)
+
 Please provide a comment with your ballot return.
 </div>
 {:.stu-note}
