@@ -15,9 +15,9 @@ The meaning of grouping determines how to implement such grouping in FHIR:
 
 
 
-* If the ordered items are authored in one single action, and they are not interdependent but share a same "entry action" or origin, they should have a common .requisition (for ServiceRequest) or .groupIdentifier (for all other Request resources). For these, the "prescription" may have one ID 
-  * single-item orders MAY have the .groupIdentifier filled in, for consistency. The SearchParameter .group-or-identifier allows searching  implementers may choose whether 
-{: .stu-note}
+* If the ordered items are authored in one single action, and they are not interdependent but share a same "entry action" or origin, they should have a common `requisition` (for ServiceRequest) or `groupIdentifier` (for all other Request resources). For these, the "prescription" may have one ID 
+  * single-item orders MAY have the `groupIdentifier` filled in, for consistency. The searchparameter `group-or-identifier` allows searching  implementers may choose whether 
+
 
 
 This allows an evolution: 
