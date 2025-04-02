@@ -8,16 +8,15 @@ In such circumstances, the shared coordinating Task used by both the placer and 
  
 As general guidance, this guide recommends that [Request resource].replaces be used when one Request replaces another and use of Request resources and Tasks  with an intent of “Proposal” when one actor would like to suggest that the other authorize an action.
 
+<a name="fulfCancel"></a>
+### Placer Initiated Cancellations
 
-### Placer Initiated Cancellations.
-
-
-This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [CancellationRequestTask](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
 
-Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
+Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code set to `abort`, a .status of `requested`, and the original Coordination Task in focus.
 
 The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
 
@@ -59,19 +58,17 @@ The filler may accept or reject that Cancellation by updating Cancellation Task.
 
   Note that even once a Task is in-progress, the Filler MAY choose to immediately accept requests for cancellation without user input, per business agreements.  
 
-
-
-
-### Fulfiller request to cancel
-In case a Fulfiller needs to request the cancellation of a request, the Cancellation Request Task is used to request the Placer to cancel their request.
+<a name="authCancel"></a>
+### Fulfiller request to cancel the Request
+In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) to request from the Placer to cancel their request.
 
 ```
 Request Resource:
-    * id: servicerequest1 
+    * id: serviceRequest1 
     * status: active
     * intent: order
 Coordination Task:
-    * status: rejected
+    * status: rejected/cancelled/failed
     * focus: serviceRequest1
 Cancellation Request Task:
     * Status: requested
@@ -79,7 +76,22 @@ Cancellation Request Task:
     * focus: serviceRequest1
 ```
 
+<div markdown="1">
+Question for balloters: There are two distinct use cases for cancellation: [Fulfillment Cancellation](#fulfCancel) and [Authorization Cancellation](#authCancel). Implementers are invited to provide feedback on creating two distinct profiles of Task for each of the use cases:
+* Fulfillment Cancellation Task, with `Task.focus` constrained to a reference to the Coordination Task profile
+* Authorization Cancellation Task, with `Task.focus` constrained to a Request resource (see the next ballot note about which specific resources are in scope).
 
+Please provide a comment with your ballot return.
+</div>
+{:.stu-note}
+
+<div markdown="1">
+Question for balloters: Currently there are no formal constraints on the Task.focus element in the profiles created in the Implementation Guide. The intent as expressed in the definitions is that Task.focus, for the purposes described in the IG, is to be a reference to a Request resource. Not all resources that implement the [Request pattern](https://hl7.org/fhir/R4/request.html), however, are relevant as *the* Request resource for Clinical Order Workflows. The following are the ones currently considered relevant, and the ones not considered relevant:
+* Relevant: CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, ServiceRequest, SupplyRequest, VisionPrescription
+* Not relevant: Appointment, AppointmentResponse, CarePlan, Claim, Contract, CoverageEligibilityRequest, EnrollmentRequest, ImmunizationRecommendation, Task (special case)
+Please provide a comment with your ballot return.
+</div>
+{:.stu-note}
 
 ### Fulfiller Decline to Perform:
 
@@ -96,10 +108,10 @@ Request Resource:
     * Intent: order
 ```
 
-If Fulfillers feel that no actor should fullfill a request, they may additionally send a proposal back to the Placer with:
+If Fulfillers feel that no actor should fulfill a request, they may additionally send a proposal back to the Placer with:
 
 ```
-CancellationRequest Task:
+AuthorizationCancellationRequest Task:
     * Status: Requested
     * Code: Abort
     * Intent: Proposal
