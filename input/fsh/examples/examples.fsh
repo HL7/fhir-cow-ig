@@ -64,6 +64,18 @@ Description: "Example of a COW cancellation task created by the placer"
 * code                = http://hl7.org/fhir/CodeSystem/task-code#abort
 * focus               = Reference(COWCoordinationTask)
 
+Instance:    COWAuthorizationCancellationTask
+InstanceOf:  AuthorizationCancellationRequestTask
+Usage:       #example
+Title:       "COW Cancellation Task"
+Description: "Example of a COW cancellation task created by the placer"
+* id                  = "cow-authorization-cancellation-task-example"
+* identifier.value    = "e5ffec7e-4b00-4a9b-88db-e9c848aed46c"
+* identifier.system   = "https://filler.example.org/lab"
+* status              = #requested
+* intent              = #proposal
+* code                = http://hl7.org/fhir/CodeSystem/task-code#abort
+* focus               = Reference(COWServiceRequest)
 
 Alias: $COWSubStatus = https://example.org/fhir/Subscription/COW/$status
 
