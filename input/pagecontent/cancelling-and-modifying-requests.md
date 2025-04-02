@@ -17,7 +17,7 @@ This is equivalent to the normal flow through the step that an intended performe
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
 
-Once the filler has begun work, Placers must request canellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
+Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code=Abort, a status of 'Requested', and the original Coordination Task in focus.
 
 The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY updat the status of the Coordination Task as well.   
 
@@ -60,8 +60,8 @@ The filler may accept or reject that Cancellation by updating Cancellation Task.
 
 
 
-### Fulfiller request to cancel
-In case a Fulfiller needs to request the cancellation of a request, the Cancellation Request Task is used to request the Placer to cancel their request.
+### Fulfiller request to cancel the Request
+In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses the  Authorization Cancellation Request Task request the Placer to cancel their request.
 
 ```
 Request Resource:
@@ -69,9 +69,9 @@ Request Resource:
     * status: active
     * intent: order
 Coordination Task:
-    * status: rejected
+    * status: rejected/cancelled/failed
     * focus: serviceRequest1
-Cancellation Request Task:
+Authorization Cancellation Request Task:
     * Status: requested
     * Code: abort
     * focus: serviceRequest1
@@ -94,10 +94,10 @@ Request Resource:
     * Intent: order
 ```
 
-If Fulfillers feel that no actor should fullfill a request, they may additionally send a proposal back to the Placer with:
+If Fulfillers feel that no actor should fulfill a request, they may additionally send a proposal back to the Placer with:
 
 ```
-CancellationRequest Task:
+AuthorizationCancellationRequest Task:
     * Status: Requested
     * Code: Abort
     * Intent: Proposal

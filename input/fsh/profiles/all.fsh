@@ -135,8 +135,19 @@ Profile: CancellationRequestTask
 Parent: Task
 Id: cancellation-request-task
 Title: "Cancellation Request Task"
-Description: "A task to indicate a placer-initiated cancellation of a request fulfillment which is in-process, and when the fulfillment Task is on the filler side."
+Description: "A task to indicate a placer-initiated cancellation of a request fulfillment which is in-process."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS
 * focus only Reference(CoordinationTask)
+
+
+Profile: AuthorizationCancellationRequestTask
+Parent: Task
+Id: authorization-cancellation-request-task
+Title: "Authorization Cancellation Request Task"
+Description: "A task to indicate a filler-initiated cancellation of a request, indicating that the service authorized should not be performed."
+* code = http://hl7.org/fhir/CodeSystem/task-code#abort
+//* status = #requested
+* focus 1..1 MS
+* focus only Reference(CommunicationRequest or DeviceRequest or NutritionOrder or ServiceRequest or MedicationRequest or SupplyRequest or VisionPrescription)
