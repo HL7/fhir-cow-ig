@@ -125,6 +125,8 @@ Description: "Minimum expectations for a Task resource when created or updated f
   * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/filler"
 * code 1.. MS
 * focus 1.. MS
+  * ^short = "This can only reference a Request resource."
+  * ^definition = "This is a reference to the Request resource that is being fulfilled."
 * focus only Reference(ServiceRequest)
 
 
@@ -138,16 +140,6 @@ Title: "Cancellation Request Task"
 Description: "A task to indicate a placer-initiated cancellation of a request fulfillment which is in-process."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
-* focus 1..1 MS
-* focus only Reference(CoordinationTask)
-
-
-Profile: AuthorizationCancellationRequestTask
-Parent: Task
-Id: authorization-cancellation-request-task
-Title: "Authorization Cancellation Request Task"
-Description: "A task to indicate a filler-initiated cancellation of a request, indicating that the service authorized should not be performed."
-* code = http://hl7.org/fhir/CodeSystem/task-code#abort
-//* status = #requested
-* focus 1..1 MS
-* focus only Reference(CommunicationRequest or DeviceRequest or NutritionOrder or ServiceRequest or MedicationRequest or SupplyRequest or VisionPrescription)
+* focus 1..1 MS 
+  * ^short = "This can only reference the CoordinationTask or a Request resource"
+  * ^definition = "If the Placer requests from the Filler to cancel a Coordination Task which is in-process, then the focus is a reference to the Coordination Task. If the Fulfiller requests from the Placer to cancel a Request resource that authorizes a particular service, then the focus is a reference that Request resource."

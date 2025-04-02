@@ -54,7 +54,7 @@ Description: "Example of a COW ServiceRequest for a Glucose lab test designated 
 Instance:    COWCancellationTask
 InstanceOf:  CancellationRequestTask
 Usage:       #example
-Title:       "COW Cancellation Task"
+Title:       "COW Fulfillment Cancellation Task"
 Description: "Example of a COW cancellation task created by the placer"
 * id                  = "cow-cancellation-task-example"
 * identifier.value    = "e5ffec7e-4b00-4a9b-88db-e9c848aed46c"
@@ -65,9 +65,9 @@ Description: "Example of a COW cancellation task created by the placer"
 * focus               = Reference(COWCoordinationTask)
 
 Instance:    COWAuthorizationCancellationTask
-InstanceOf:  AuthorizationCancellationRequestTask
+InstanceOf:  CancellationRequestTask
 Usage:       #example
-Title:       "COW Cancellation Task"
+Title:       "COW Authorization Cancellation Task"
 Description: "Example of a COW cancellation task created by the placer"
 * id                  = "cow-authorization-cancellation-task-example"
 * identifier.value    = "e5ffec7e-4b00-4a9b-88db-e9c848aed46c"
