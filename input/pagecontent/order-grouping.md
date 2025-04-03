@@ -1,5 +1,3 @@
-Order grouping
-
 ### Multi-item orders
 
 In several cases and jurisdictions, there is a need to capture multiple orders that are entered at the same time.  
