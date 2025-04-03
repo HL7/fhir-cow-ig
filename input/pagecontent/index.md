@@ -81,6 +81,8 @@ The following areas are important for designing full end-to-end workflows, but a
   
 * Outcome / result format and content of supporting resources - this IG provides guidance  on linking Outputs back to an original Request to support loop closure, but does not impose any requirements that such outputs exist or on their form or content.
 
+* Details about the information requirements to execute a workflow (e.g. which Specimen detail information is needed to execute a Laboratory test, which Patient detail Information is needed for a Referral, which detailed information is required regarding a MedicationRequest). This specification only adds constraints to ensure data exchange about workflows is interoperable. Details about needed information are domain-specific and usually jurisdiction-specific, and should be defined in specific Implementation Guides).
+
 ### Dependencies
 This IG Contains the following dependencies on other IGs.
 
