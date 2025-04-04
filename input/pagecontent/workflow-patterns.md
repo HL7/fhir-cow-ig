@@ -1,4 +1,9 @@
-This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow; details are provided elsewhere. 
+This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow; details are provided elsewhere.
+
+<div markdown="1">
+Note to balloters: Throughout this page there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
+</div>
+{:.stu-note}
 
 The other pages in this section outline considerations for specific parts of a Request's lifecycle in FHIR. These include:
 * **Order initiation**:  
@@ -33,9 +38,9 @@ The below is an overview of how a Request may be coordinated with the Coordinati
 
 Many details are deferred for more detailed discussions elsewhere in this guide or for later implementation guides. 
 
-<div>
+<figure>
   {% include subscriptions-general-example-task-at-fulfiller.svg %} 
-</div>
+</figure>
 
 <hr>
 <hr>
