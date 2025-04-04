@@ -55,3 +55,10 @@ Implementers are invited to provide feedback on the use of Task.focus, and point
 </div>
 {:.stu-note}
 
+<div markdown="1">
+Note to balloters: Throughout this implementation guide there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
+</div>
+{:.stu-note}
+
+
+
