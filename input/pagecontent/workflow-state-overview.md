@@ -2,6 +2,11 @@ This table outlines how a Request can be represented across its lifecycle, indep
 
 Not all states will apply to every workflow or use case, and implementations may not need to expose resources for every stage. Authors extending this guide may further refine these states using elements like <code>Task.businessStatus</code> to suit specific needs.
 
+<div markdown="1">
+Note to balloters: Throughout this implementation guide there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
+</div>
+{:.stu-note}
+
 ### Common workflow states
 
 | Workflow State to Represent | Request resource representation |Task resource representation | Event resources representation | Descriptions |
