@@ -11,8 +11,8 @@
 - Order is accepted and is fulfilled 
 - Lab internal flow is **out of scope**
 - All needed data is accessible
-- Phlebotmist knows where to send the sample to
-- Phlebotmist knows what to draw
+- Phlebotomist knows where to send the sample to
+- Phlebotomist knows what to draw
 #### Not defined
 - Ownership of Specimen Resource (Ownership should/could/might change with the physical location)
 - Transport of the Sample

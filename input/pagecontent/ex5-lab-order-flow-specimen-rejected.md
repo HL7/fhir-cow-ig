@@ -13,7 +13,7 @@
 - Order Result is reported via `DiagnosticReport`
 - Order is accepted and is started to be fulfilled 
 - Lab internal flow is **out of scope**
-- Lab detects an unsufficient samples
+- Lab detects an insufficient samples
 - All needed data is accessible
 - All needed data around the Sample is in the `Specimen` like collection information (`Procedure`, collection date/time, body Site, ...)
 #### Not defined

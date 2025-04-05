@@ -1,50 +1,59 @@
-This section provides an overview of FHIR resources may be used to faciliate requests for service. For those new to this space, this section may be best read alongside the Overview of Workflow Patterns page, which descirbes how the concepts described below may be applied to an end-to-end workflow. 
+This section provides an overview of FHIR resources used to support Request workflows. Readers new to the topic may find it helpful to review this alongside the Overview of Workflow Patterns page, which shows how these concepts apply to end-to-end workflows. 
 
 ### Actors:
 
-This guide describes actions between those who create requests for service and those who perform services. A variety of terms are used. For our purposes:
+This guide describes interactions between those requesting and those performing services. The following terms are used:
 
-* **Placer, (service) requestor, referrer, and prescriber** may all be considered equivalent for the purposes of this guide. We generally try to avoid the term "Requestor" to avoid ambiguity with the client-server interactions. 
-* **Performer and fulfiller** may be considered equivalent. In many contexts, these actors may also be thought of as *potential* fulfillers or performers. This is excluded in most places for brevity unless the distinction may lead to confusion.
-* **Patient** may refer either to the person to whom a service will be given or, in some workflow steps, their healthcare agent or some other non-healthcare decision maker helping to coordinate a patient's care. For example, a young patient's parent may help to coordinate where that patient will receive care, or a social worker may assist a patient with post-discharge placement.
+* **Placer, requestor, referrer, and prescriber** are treated as equivalent. We generally avoid "Requestor" to prevent confusion with client-server terminology.
+* **Performer and fulfiller** are also considered equivalent. These often refer to potential fulfillers, though we omit "potential" unless needed for clarity
+* **Patient** refers to the individual receiving care, but may also include their representative—such as a parent, healthcare agent, or social worker—when they participate in coordinating services.
 
 ### Requests, Tasks, and Outputs Events:
-This section provides a brief overview of how FHIR resources are used to represent a workflow. See the [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns) section for more details. 
+This section provides a brief overview of how FHIR resources are used to represent Request workflows. For more detail, see [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns). 
 
-* **Request** resources are the FHIR representation of the request for that a provider is creating, proposing, or authorizing. These request resources contain at least minimal information about the action to be performed, the overall status of the request, and links to supporting information. Examples include FHIR ServiceRequests and DeviceRequests. In this guide, the source-of-truth ServiceRequest is always 'hosted' on the system in which the request for service (or the proposed modification for service, etc.) originated. See the 'Cancelling and modifying requests' workflow pattern for more details. This guide supports that a placer may choose to create a single ServiceRequest, which any of several fulfillers may perform, or a single ServiceRequest per potential fufliller.
+* **Request resources** (e.g., ServiceRequest, DeviceRequest, MedicationRequest) are the FHIR representation of the request that a provider is creating, proposing, or authorizing. These request resources contain at least minimal information about the action to be performed, the overall status of the request, and links to supporting information. In this guide, the source-of-truth Request is always 'hosted' on the system in which the Request (or the proposed modification) originated. See the 'Cancelling and modifying requests' workflow pattern for details. A Placer may create a single Request, which any of several Fulfillers may perform, or a single Request per potential Fulfiller.
   
-* **Task** resources can serve many purposes. In this guide, a Coordination Task serves a core role of helping a placer and a _specific_ *potential*, or *eventual* fulfiller manage the status of a request (in scenarios where FHIR servers are used). Many Tasks MAY correspond to the same ServiceRequest, with a Coordination Tasks for each placer and (potential) fulfiller pair. In environments where several potential fillers may each contribute a partial output (such as multiple pharmacies each providing a partial dispense), Placers may also initiate a 'parent' Coordination Task that they own and only they may modify, in addition to the shared fulfiller-specific Coordination Tasks. The overall status of the workflow may be represented using Request.status and the presence of Outputs or, when a parent Task exists, via the parent Task.businessStatus and Task.status. 
+* **Task** resources can serve many purposes. In this guide, a Coordination Task serves a core role of helping a placer and a _specific_ *potential*, or *eventual* fulfiller manage the status of a request (in scenarios where FHIR servers are used). Many Tasks MAY correspond to the same ServiceRequest, with a Coordination Tasks for each placer and (potential) fulfiller pair. In environments where several potential fillers may each contribute a partial output (such as multiple pharmacies each providing a partial dispense), Placers may also initiate a 'parent' Coordination Task that they own and only they may modify, in addition to the shared fulfiller-specific Coordination Tasks. The overall status of the workflow may be represented using Request.status and the presence of Outputs or, when a parent Task exists, via the parent Task.businessStatus and Task.status. The page [using Task](using-task.html) provides additional guidance on the use of the Task resource.
 
 For example, if a hospital would like to coordinate transportation assistance for a patient, they may create a single "transportation ServiceRequest" for that patient, with one Task per potential provider of transportation (each of which references the same ServiceRequest), or separate ServiceRequest and Task resources per fulfiller. Placers and fulfillers must pre-coordinate where their shared Coordination Task will be hosted to ensure there is always an agreed upon source of truth. 
 
-* **Output Events** - requests for service may result in a variety of output events, each with their own representation in FHIR. For the purposes of this IG, we refer to these generically without specifying their form. Example outputs that could be generated include a DocumentReference for a Consult Note, a DiagnosticReport and set of Observations for a lab, a CarePlan describing proposed care, or even new ServiceRequests. In scenarios with FHIR servers, this IG specifies that Outputs may be linked back to an originating ServiceRequest via Task.Output, where the Tasks (eventually) point back to a ServiceRequest via Task.BasedOn and ServiceRequest.basedOn.  It is also possible that a request could result in no output (such as a request for transportation), or that a request could result in only a partial output. See the "Sharing outputs of referrals and orders" Workflow Patterns section for additional detail. This guide assumes that in most cases the (source of truth) Resource representing the Output is hosted on the Fulfiller's FHIR server, although the Placer may of course have a copy that they can in turn surface to others. 
-
+* **Output Events** represent the result of a request and can take many forms. This guide treats Outputs generically without prescribing structure, but specifies that Outputs may be associated to an originating Request via Task.Output (including via intermediate Task.basedOn and ServiceRequest.basedOn references). See the "Sharing outputs of referrals and orders" Workflow Patterns section for additional detail. This guide assumes that in most cases the (source of truth) Resource representing the Output is hosted on the Fulfiller's FHIR server, although the Placer may retain a copy that they can surface to others. 
+Examples include:
+    * Consult notes via DocumentReference
+    * DiagnosticReports and Observations
+    * CarePlans outlining proposed care
+    * New ServiceRequests
+ 
 <figure>
 {% include relation-of-placer-request-task-output-filler.svg %}
 </figure>
 
 
-### Authorization and Authorization Base:
+### Managing Access by Fulfillers:
 
 As described in the Background section, actors in a RESTful exchange often wish to limit the set of resources that another actor may access (or the interactions they may initiate), with more granularity than what is provided with traditional OAuth 2.0 scopes. 
 
 This guide recommends two complementary options, though their use is optional within this IG:
 
-1. Actors may leverage [SMART v2 scopes](https://hl7.org/fhir/smart-app-launch/) to provide finer-grained control of what another actor may access. For example, a Placer may indicate that a Fulfiller can query only for ServiceRequests of a particular category, such as ServiceRequests related to social care referrals or Observation resources related to Labs.
-2. Senders of a notification may optionally include an [authorization hint](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) that the recipient may redeem while requesting an access token. Such an authorization hint (also called an authorization_base in some specifications) may be used by its creator to tailor the set of resources the actor presenting the authorization hint (and requesting an access token) may access. As an example, this can be used to limit a Service Provider to only obtaining information for patients for whom an authorization hint has been sent to them as part of a referral notification, rather than allowing them access to all patients in the database.  
+1. Actors may leverage [SMART v2 scopes](https://hl7.org/fhir/smart-app-launch/) to provide finer-grained control of what another actor may access. For example, a Placer may indicate that a Fulfiller can query only for resources of a particular category, such as ServiceRequests related to social care referrals or Observation resources related to Labs.
+2. Senders of a notification may include an [authorization hint](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) that the recipient may redeem while requesting an access token. Such an authorization hint (also called an authorization_base in some specifications) may be used by its creator to tailor the set of resources the actor presenting the authorization hint may access. As an example, this can be used to limit a Service Provider to only obtaining information on patients for whom an authorization hint has been sent to them as part of a referral notification.  
 
 ### Sharing Content when Intermediaries are Present:
 
-Most examples in this guide assume that a fulfiller and a placer may communicate directly. In reality, there are often intermediaries. For example, a clinician may collect a specimen and send it to a community lab, only for the community lab to forward the specimen to a reference lab. 
+While many examples in this guide assume direct communication between a Placer and Fulfiller, real-world workflows often involve intermediaries. For example, a clinician may send a specimen to a community lab, which in turn forwards it to a reference lab.
 
-Such "chain care" is common. While it presents complexities, scenarios like this are also a motivation for many of the abstractions this guide recommends. Consider a model like the below, where a request originates from some "upstream" actor (such as N-1), and a later fulfiller (such as actor N+1) then needs information that an earlier actor possessed.
+This type of “chain care” is common and introduces complexity—but also motivates many of the abstractions recommended in this guide. Consider a scenario where a request originates from an upstream actor (e.g., N–1), but a downstream fulfiller (e.g., N+1) needs access to information held by an earlier actor.
 
 {% include img.html img="sharing-info-with-intermediaries.png" %}
 
-If the actors are able to communicate, and if references across notifications were preserved, the fulfiller may query the placer directly. Whether these actors can communicate depends on the broader exchange ecosystem. In environments with well known endpoints, extensive (or dynamic) client registration, broad agreement on scopes and business rules, etc., such direct communication may be possible. 
+If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endpoint discoverability, (dynamic) client registration, shared scopes and business rules, etc.
 
-In environments where the fulfillers and the placer may be unable to communicate, an intermediary may need to store local representations of information so they may provide it to later actors. Alternatively, actors may "proxy" requests from later actors to those upstream. In either of these scenarios, when forwarding requests, a party must rewrite references within the notification they create to point to their own server, rather than actors upstream.
+Where direct communication isn't feasible, intermediaries may:
+* Store local representations of relevant data so they may provide it to downstream.
+* Proxy" requests from later actors to those upstream.
 
-Alternatively, actors in the chain can reduce the importance of references by including in the body of their notifications (whether that is a Message, a SubscriptionStatus notification, etc.) the information that they expect later parties in the chain will need in order to process a request. 
+In either of these scenarios, when forwarding requests, a party must rewrite references in the notifications they send to point to their own server, rather than actors upstream.
 
-These scenarios further motivate the guidance that Tasks, rather than Requests, be the focus of communication, as this ensures that Notification N-1 and Notification N in the diagram may be of the same structure, and allow that a Placer need not (necessarily) be aware of the downstream details: each pair of actors need merely agree upon how they will coordinate their shared Coordination Task. More complex exchanges may then be composed of the parts. 
+Alternatively, actors in the chain can reduce dependency on references by including information they expect later parties will need with the notifications (whether that is a Message bundle, a SubscriptionStatus notification bundle, etc.).
+
+These patterns reinforce the guide’s recommendation to center communication around Tasks rather than Requests. Doing so ensures consistency across handoffs (e.g., Notification N–1 and N can follow the same structure), and allows each actor pair to coordinate around a shared Task without requiring full awareness of downstream workflows. Complex exchanges can then be composed from these modular interactions.

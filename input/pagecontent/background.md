@@ -1,17 +1,17 @@
-This implementation guide is meant to provide a shared base for building FHIR workflows for orders, referrals, and transfers may be built.
-
 ### Goals
-The goal of this Implementation Guide is not provide a specification that can be implementable directly, but to provide guidance and patterns to help implementers of referrals, orders, and transfers align on core mechanisms and exchange patterns to facilitate faster and more efficient interoperability. This guidance aims to:
-1. Reduce the ambiguity and decisions that are needed by providing working patterns;
-2. Highlighting abstractions that allow development across different domains
-3. Creating shared nomenclature to help specification authors define and share goals more efficiently. 
+This guide helps specification authors working on Orders, Referrals, and Transfers achieve interoperability more quickly and cost-effectively by:
 
-Implementation Guides developed for particular care domains (such as laboratory, pharmacy, social care referrals, durable medical equipment, nursing home placement, imaging, etc.) or for particular jurisdictions may assert conformance to this IG if they leverage compatible exchange mechanismss.
+* Highlighting abstractions that support reuse of functionality across care domains and jurisdictions
+* Reducing ambiguity through proven workflow patterns
+* Identifying key decision points
+* Establishing shared terminology to streamline collaboration
 
-### Referrals, Orders, and Transfers
-Modern healthcare delivery includes a variety of stakeholders, settings, specialties, interventions, and equipment. This often leads to overloading of terms, and lack of understanding of commonalities among healthcare processes. One example of that is how the term `referral` is used.
+### How Orders, Referrals, and Transfers Relate
+This guide considers Orders, Referrals and Transfers together, as the considerations for exchange are largely identical.
 
-One attempt to describe the different types of processes that may be called `referrals` can be as follows:
+Historically, these terms have been delineated by the extent to which responsibility for a patient's care was transitioned or delegated between providers. As care has become more collaborative, it is often challenging to draw bright line distinctions between these terms.  
+
+To help with discussions, brief descriptions and examples of each term are provided below.
 
 <table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
     <thead>
@@ -80,50 +80,51 @@ One attempt to describe the different types of processes that may be called `ref
     </tbody>
   </table>
 
-All of these workflows assume that some healthcare provider, while working with a patient, decides that some action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
+These all involve a healthcare provider deciding that action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
 
 ### Key Differences in Implementations Today:
 
-In reviewing other locale and care-domain specific work, this IG's authors have noted two factors which frequently motivate the creation of new exchange specifications for orders and referrals. These are:
+In reviewing other locale and care-domain specific work, this specification's authors have noted two factors which frequently motivate the creation of new exchange specifications for orders and referrals. These are:
 1. Considerations for minimizing data access
-2. Accomodating interactions with systems that mayt not yet support robust (and highly available) FHIR servers
+2. Accommodating interactions with systems that may not yet support robust (and highly available) FHIR servers
 
-**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the creator of a request for service and the potential performers of that service. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential fulfiller query for any information necessary to process the request. Often, these groups also provide guidance for controlling what a potential fullfiller may query within a data-category: this could incldue limiting a non-healthcare service provider to accessing only a subset of ServiceRequests, such as those related to transport assistance, or preventing service providers from querying about the volume of requests that were sent to their competitor, by allowing them to access service request data only for those patients for whom they have received a referral.
+**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
 
 **Groups prioritizing (2)** often focus on FHIR Messaging, which leads to considerations similar to those in HL7 v2 around broadcast interfaces and whether to include all information a fulfiller _might_ need to process a request in the notification.
 
-This guide aims to support both groups. This guide can be seen as providing a roadmap for those prioritizing (2) to move towards RESTful exchanges as their broader exchange ecosystems develop. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity, and that, often, a specialist receiving a referral is in the best position to know what data is relevant. This guide provides a brief description in the Core Concepts page for how placers may optionally limit a service provider to accessing data only to those patients for whom they have received a referral. 
+This guide is designed to support both groups. For those focused on (2), it offers a path toward RESTful exchanges as the ecosystem develops. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity. Often, a specialist receiving a referral is in the best position to know what data is relevant. The Core Concepts section provides a brief description for how Placers may limit Fulfillers access to data to those for whom they have received a Request. 
 
 ### Pre-Coordination Needed for Push-Based Exchanges
-A core focus for this guide is describing how notifications may be communicated between the actors involved in an order, referral, or transfer, and providing guidance to help authors of more specific guides manage these notifications in a consistent way.
+A core aim of this guide is to help specification authors manage notifications for orders, referrals, and transfers in a consistent way. 
 
 FHIR provides several mechanisms by which notifications may be sent between two actors. Regardless of the specific FHIR mechanism chosen, all 'push' based exchanges require pre-coordination to define:
-* The endpoints to which content should be pushed.
-* The events of interest for the exchange - e.g. the workflow steps at which notifications be sent between the parties
-* The expected payload of the notifications, both in terms of structure and semantic content. For example - a notification may be sent between two parties that is entirely self-contained, and which implicitly communicates a notification ("a result has been generated for this patient") and it's content ("no abnormal findings found"). This is analogous to HL7 v2 exchanges. Alternatively, a notification might indicate "data is ready - retrieve the data when needed based on the pre-coordinated mechanism or content in this notification".   
-* Operational business agreements - the actors involved in an exchange must agree to business practices, such as whether a fulfiller must confirm their ability to perform a service, when and how a placer may cancel or modify a request for service after a fulfiller has accepted it, etc. 
-* Procedures for error correction and remediation - whether the sender or the receiver bears responsibility for addressing a given error, how to coordinate chart corrections, service desks, etc. 
+* Endpoints - where notifications should be sent
+* Events of interest - which workflow steps trigger notifications 
+* Payload expectations - both for structure and content. For example - a message may be sent between two parties that serves as both notification ("a result has been generated for this patient") and it's content ("no abnormal findings found"). This is analogous to HL7 v2 exchanges. Alternatively, a notification might indicate simply that data is available for retrieval if needed.   
+* Operational agreements - including policies on request whether a Fulfiller must confirm their ability to fulfill a Request, when and how a Placer may cancel or modify a Request after it has been accepted, etc. 
+* Error handling and remediation - responsibilities for correcting errors, coordinating chart updates, and involving support desks.
 
-Implementations may choose to address these in different ways. 
+Implementers may approach these coordination points differently, but each must be addressed for reliable push-based exchange.
 
 ### Brief Survey of Mechanisms for Pushing FHIR Content 
-This section is provided for context and provides a brief overview of mechanisms available to push content from one actor to antoehr via FHIR. 
+This section provides context on the main FHIR-based mechanisms for pushing content between actors.
 
-**POST of a resource (RESTful FHIR Creates or Updates):**
+**RESTful POST of Resources (Creates or Updates)**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
-* Actors need to pre-coordinate where the FHIR resources of interest (serving as the source-of-truth) will be hosted within the exchange ecosystem, when the resources should be posted, who may update them, and under what circumstances.
-* Note that posting of a resource may require more complex supporting transactions. For example, to support a Placer POSTing a ServiceRequest, the placer and fulfiller must coordinate on the expectations for the FHIR ID used for the ServiceRequest.subject (such as whether the Client is expected to first perform a patient.$match to obtain the target server's FHIR ID for the patient, or if instead the Server should be capable of performing a match themselves).
+* Actors must pre-coordinate where the definitive instances of shared FHIR resources will be hosted, when they should be exchanged, who can update them, and under what circumstances.
+* Note that more complex transactions may be needed. For example, if a placer attempted to POST a ServiceRequest (which is not advised in this guide), the parties must agree on how to reference the patient; e.g. whether the client must use $match to obtain the recipient's Patient ID, or if the server will perform matching.
 
 **Batch or Transaction bundles:**
 * These may operate similar to the RESTful Create and Update described above, but provide a mechanism for a client to submit several transactions as a set, which can reduce network traffic. This guide does not explore this option in detail.
 
 **FHIR Messaging:**
-* A bundle is sent between actors based on some Event. That bundle contains a MessageHeader resource and other resources of interest.
-* There is no requirement with FHIR Messaging that the resources within a Message Bundle have an independent and persistent existence, or that they be surfaceable in response to a FHIR query.
-* Messaging provides similar functionality to event-driven HL7 v2 exchanges, where the content of the messages to be exchanged are now resources rather than PID segments, ORC segments, etc. This mechanism therefore has similar considerations, like that the sender and receiver must make tight agreements about events of interest, message content, and identifiers. Senders should err on the side of sending content at a given event trigger that they expect the recipient *may* want, since there's no guarantee that a recipient can request or query for additional content later.
+* Event-driven exchange using a Bundle with a <code>MessageHeader</code> and related resources.
+* Resources in the message are not required to persist or be queryable.
+* Messaging is conceptually similar to HL7 v2, requiring tight coordination on events, message content, and identifiers.
+* Senders should include all potentially relevant information, as recipients may not be able to retrieve more later.
 
 **FHIR Subscriptions:**
-* These can also function in a manner similar to HL7 v2 (in which trading partners pre-coordinate events of interest, endpoints, and the content of messages). A Subscription may exist indicating that a party would like to receive content from a server when certain events occur. Upon these triggers, a subscription-notification bundle may be sent to the party desiring data.
-* Subscriptions includes two additional features that are potentially relevant for order, referral, and transfer workflows. 
-    * The first is that a data-holder may make a "SubscriptionTopic" available to which authorized data requestors may then subscribe for updates. This is not required, as record holders may choose instead to create subscriptions administratively and out-of-band, but can be helpful if both actors support it. Dynamic subscriptions allow a Data requestor to  specify their own endpoint and select their events of interest and desired data format for messages from a menu of options chosen by the data holder. 
-    * The second is a standard mechanism for a data holder to indicate to a potential recipient how they could query for specific additional information later. For example, if a patient's insurance may change between the time a referral is created and when a service will be performed, subscriptions provide a way for a referrer to inform a fulfiller of how they can obtain the patient's Coverage information later, closer to when it is needed.    
+* These can also function in a manner similar to HL7 v2. A Subscription records that a party would like to receive content from a server on a specified channel when certain events occur. A <code>subscription-notification</code> bundle is sent when these triggers occur.
+* Subscriptions provide two optional features that support order, referral, and transfer workflows: 
+    * SubscriptionTopics: a data-holder MAY make a <code>SubscriptionTopic</code> available to which authorized data requestors may subscribe for updates. Such "dynamic subscriptions" let an actor specify their own endpoint, events of interest, and desired format from a menu of options chosen by the data holder. This is purely optional within Subscriptions: administrators may instead discuss updates out of band and manually configure Subscriptions, just as administrators do for HL7v2 interfaces today. 
+    * Query guidance: <code>subscription-notifications</code> can include instructions for how a recipient may query for additional information later. For instance, if insurance coverage might change between when a referral is created and when service should be provided, the <code>subscription-notification</code> sent for the referral can guide a Fulfiller on how to retrieve updated Coverage data if or when it is needed later.    

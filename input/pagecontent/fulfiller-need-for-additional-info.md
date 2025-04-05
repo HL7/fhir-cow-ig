@@ -3,6 +3,11 @@ Often, potential Fulfillers find that they need additional data from the Placer 
 * Sending a request to the Placer asking that they provide additional information which will require user effort to prepare. This often takes the form of a letter or other communication from the Fulfiller to the Placer, which a user at the Placer's organization then processes. Often, these should be accompanied with a businessStatus in the shared Coordination Task indicating that the Fulfiller is waiting for information. For example, a Long Term Care facility may communicate they have a shared room available, and ask if that is acceptable based on the patient's needs and preferences.
 * A Fulfiller could even send Tasks or other instructions back to the Placer. For example, a surgeon may instruct that a lab test or imaging should be performed ahead of a surgical consult. 
 
+<div markdown="1">
+Note to balloters: Throughout this page there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
+</div>
+{:.stu-note}
+
 ### Supporting Direct Queries:
 Fulfillers can perform RESTful queries against Placer's FHIR servers to obtain information that they suspect is already available.
 
