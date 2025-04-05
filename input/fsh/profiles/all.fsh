@@ -137,9 +137,9 @@ Profile: CancellationRequestTask
 Parent: Task
 Id: cancellation-request-task
 Title: "Cancellation Request Task"
-Description: "A task to indicate a placer-initiated cancellation of a request fulfillment which is in-process."
+Description: "A task to indicate a placer-initiated cancellation of a request fulfillment."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS 
   * ^short = "This can only reference the CoordinationTask or a Request resource"
-  * ^definition = "If the Placer requests from the Filler to cancel a Coordination Task which is in-process, then the focus is a reference to the Coordination Task. If the Fulfiller requests from the Placer to cancel a Request resource that authorizes a particular service, then the focus is a reference that Request resource."
+  * ^definition = "If the Placer requests from the Filler to cancel a Coordination Task, then the focus is a reference to the Coordination Task. If the Fulfiller requests from the Placer to cancel a Request resource that authorizes a particular service, then the focus is a reference that Request resource."
