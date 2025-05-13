@@ -45,7 +45,7 @@ group If Placer will review bids
     Placer -[hidden]>Fulfiller:
     Placer --> Placer : Review. Cancel tasks to other potential fulfillers as needed
     Placer -> Placer : Update Task.status, Task.businessStatus, etc. 
-    Placer -> Fulfiller : SubscriptionStatus notification \nindicating status isupdated and they 'won' the bid
+    Placer -> Fulfiller : SubscriptionStatus notification \nindicating status is updated and they 'won' the bid
 
 end
 
