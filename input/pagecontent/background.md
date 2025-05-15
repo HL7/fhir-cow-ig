@@ -29,7 +29,7 @@ To help with discussions, brief descriptions and examples of each term are provi
             <li>Requestor usually does not expect an outcome after the coordination</li>
             <li>Usually changing primary responsibility for a patient's care, often with patient movement
               <ul>
-                <li>LTC - with functional status</li>
+                <li>Long-Term Care (LTC)- with functional status</li>
                 <li>Burn Unit - with specific tests</li>
               </ul>
             </li>
@@ -44,7 +44,7 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>Surgical Consult</li>
                 <li>Referral for physical therapy</li>
                 <li>Referral to psychiatry</li>
-                <li>Authorization to see OB/MFM</li>
+                <li>Authorization to see Obstetrics (OB)/Maternal-Fetal Medicine (MFM)</li>
               </ul>
             </li>
             <li>May be evaluative:
