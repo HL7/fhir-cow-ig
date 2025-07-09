@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/1.0.0-ballot" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" gitUrl="https://github.com/HL7/fhir-cow-ig" url="http://hl7.org/fhir/uv/cow">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/2025May" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" gitUrl="https://github.com/HL7/fhir-cow-ig" url="http://hl7.org/fhir/uv/cow">
 <version code="current" url="http://build.fhir.org/ig/HL7/fhir-cow-ig"/>
-<version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cow/1.0.0-ballot"/>
+<version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cow/2025May"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
@@ -30,14 +30,15 @@
 <artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Example Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
-<page key="artifacts" name="Artifacts Summary"/>
 <page key="background" name="Background - Scope and General Principles"/>
 <page key="cancelling-and-modifying-requests" name="Cancelling and Modifying Orders"/>
 <page key="index" name="Clinical Order Workflows - Home Page"/>
 <page key="core-concepts" name="Core Concepts"/>
+<page key="downloads" name="Downloads"/>
 <page key="examples" name="Examples"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>
 <page key="fulfiller-need-for-additional-info" name="Fulfillers Requesting Additional Information"/>
+<page key="artifacts" name="IG Artifacts"/>
 <page key="ex6-lab-order-flow-with-reference-lab" name="Lab Order Flow with Reference Lab"/>
 <page key="ex5-lab-order-flow-specimen-rejected" name="Lab Order Flow with Specimen Rejected"/>
 <page key="ex3-lab-order-flow-reflex-initiated-lab" name="Lab Order Workflow where a Reflex is imitated by the Laboratory"/>

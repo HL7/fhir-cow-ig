@@ -156,7 +156,11 @@ pages:
     ex7-discharge-placement.md:
       title: Post-Discharge Placement in SNF
       generation: markdown
-     
+
+    artifacts.xml: 
+      title: IG Artifacts
+    downloads.md: 
+      title: Downloads
 
 
 #  order-content.xml:
