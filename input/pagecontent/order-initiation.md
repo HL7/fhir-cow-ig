@@ -32,7 +32,6 @@ This ImplementationGuide currently addresses fulfillment of orders, so this co-a
 #### Prior Auth
 Prior Authorization is a common use case. Depending on the jurisdictions, it may happen as a rule, or may be required to prevent fraud, or to allow patients to decide considering also the costs, even if the processes and criteria are broadly different. This is also prior to execution and as such not a primary scope.
 
-Co-authoring, prior authorization can include different participants and can be predefined or *ad-hoc* processes. While this is not the focus of the present edition of this guidance, Implementers are invited to provide input on their needs, for consistent guidance where possible.
 {:.stu-note}
 
 
