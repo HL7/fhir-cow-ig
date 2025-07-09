@@ -50,7 +50,7 @@ If direct communication is possible, and if references across notifications were
 
 Where direct communication isn't feasible, intermediaries may:
 * Store local representations of relevant data so they may provide it to downstream.
-* Proxy" requests from later actors to those upstream.
+* Proxy requests from later actors to those upstream.
 
 In either of these scenarios, when forwarding requests, a party must rewrite references in the notifications they send to point to their own server, rather than actors upstream.
 

@@ -1,11 +1,11 @@
 The Task resource is a FHIR resource dedicated to the management of workflows; 
-Except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
+except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
 
-This ImplementationGuide introduces two specific types of Task that are important for the execution of workflows:
+This Implementation Guide introduces two specific types of Task that are important for the execution of workflows:
 * **Coordination Task** - the preferred way to keep track of statuses, and requested and performed activities (see [profile](StructureDefinition-coordination-task.html)).
-* **Cancellation Request Task** - the preferred way to request cancellation of a Request, or of another Task.  
+* **Cancellation Request Task** - the preferred way to request cancellation of a Request, or of another Task (see [profile](StructureDefinition-cancellation-request-task.html)).  
 
 <br>
 
@@ -39,7 +39,7 @@ Tasks can be used for tracking and coordinating the execution of requests. `Task
 ### Coordinating several requests
 The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). 
 
-In future releases of FHIR, `Task.focus` is planned to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing task.focus to effectively point to several requests.
+In future releases of FHIR, `Task.focus` is planned to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing Task.focus to effectively point to several requests.
 
 ```
 Profile: GroupCoordinationTask
