@@ -1,5 +1,5 @@
 @startuml
-skinparam svgDimensionStyle false
+'skinparam svgDimensionStyle false
 title Task at Fulfiller Overview
 
 autonumber
@@ -9,7 +9,7 @@ Placer --> Placer: Register Fulfiller as a client
 
 Fulfiller <-- Fulfiller: Register Placer as a Client
 
-Placer --> Fulfiller: Inform Fulfiller of their channel on which to receive SubscpriptionStauts-notification bundles
+Placer --> Fulfiller: Inform Fulfiller of their channel on which to receive SubscriptionStatus-notification bundles
 
 Fulfiller <-- Fulfiller: Create an administrative subscription for the Placer on Tasks which the Placer creates 
 
