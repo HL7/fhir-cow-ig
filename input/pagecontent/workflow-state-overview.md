@@ -10,34 +10,6 @@ In this example, the placer and the fulfiller's business agreement requires that
 
 {% include img.html img="request-accept.png" %}
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">Task at Fulfiller with Subscriptions<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig5" data-toggle="collapse">+</button></div>
-  </div>
-  <div id="fig5" class="panel-collapse collapse">
-    <div class="panel-body">
-        <figure>
-        {%include subscriptions-with-acceptance-task-at-fulfiller.svg%}
-        </figure>
-        <br clear="all"/>
-    </div>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">Task at Placer with Subscriptions<button type="button" class="btn btn-default" style="float: right;" data-target="#fig4" data-toggle="collapse">+</button></div>
-  </div>
-  <div id="fig4" class="panel-collapse collapse">
-    <div class="panel-body">
-        <figure>
-        {%include subscriptions-with-acceptance-task-at-placer.svg%}
-        </figure>
-        <br clear="all"/>
-    </div>
-  </div>
-</div>
-
 | Workflow State to Represent                               | Request resource representation                                            |Task resource representation                                                                                                                                                                                                                                                                          | Event resources representation      | Descriptions |
 | -----------------------------                             | -----------------------------                                              | -----------------------------                                                                                                                                                                                                                                                                        | -----------------------------       | -----------------------------| 
 | Request placed and performer selected                     | Request:<br>- Status: active<br>- Intent: order                            | Coordination Task:<br>- Status: requested<br>- Owner: [specified]<br>- Code: fulfill<br>- Intent: order                                                                                                                                                                                              | *Not set*                           | This state can be a starting point for systems where the authorization of a request and the selection of a performer are done at the same time.  |
@@ -54,20 +26,6 @@ In this example, the placer and the fulfiller's business agreement requires that
 This flow differs from the previous flow in that multiple potential fulfillers are informed of the request. Potential fulfillers may respond with information about their ability to perform the service, before the patient and their provider ultimately choose a performer. 
 
 {% include img.html img="request-bid.png" %}
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Placer Example<button type="button" class="btn btn-default" style="float: right;" data-target="#fig9" data-toggle="collapse">+</button></div>
-  </div>
-  <div id="fig9" class="panel-collapse collapse">
-    <div class="panel-body">
-        <figure>
-        {%include subscriptions-bid-task-at-placer.svg%}
-        </figure>
-        <br clear="all"/>
-    </div>
-  </div>
-</div>
 
 | Workflow State to Represent                               | Request resource representation                                            |Task resource representation                                                                                                                                                                                                                                                                         | Event resources representation      | Descriptions |
 | -----------------------------                             | -----------------------------                                              | -----------------------------                                                                                                                                                                                                                                                                       | -----------------------------       | -----------------------------| 
@@ -91,20 +49,6 @@ Examples:
 * A patient may discuss with their primary care provider that they would like to see a specialist, such as OB/MFM, an orthopedist, a psychologist, etc. The GP may authorize this service without having a specific performer in mind, and may rely on the patient to then find a specialist.  
 
 {% include img.html img="request-patient.png" %}
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">Subscriptions - Task at Fulfiller Example <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig7" data-toggle="collapse">+</button></div>
-  </div>
-  <div id="fig7" class="panel-collapse collapse">
-    <div class="panel-body">
-        <figure>
-        {%include subscriptions-task-at-fulfiller-patient.svg%}
-        </figure>
-        <br clear="all"/>
-    </div>
-  </div>
-</div>
 
 TODO: is this better without the Coordination Task at the Placer? This does make it clear no one else has started.
 
