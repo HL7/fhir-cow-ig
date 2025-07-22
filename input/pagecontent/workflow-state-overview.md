@@ -8,7 +8,9 @@ TODO - should we combine this with the Fulfiller Selection page?
 
 In this example, the placer and the fulfiller's business agreement requires that the fulfiller confirm whether they can perform the desired service.
 
+<br>
 {% include img.html img="request-accept.png" %}
+<br>
 
 | Workflow State to Represent                               | Request resource representation                                            |Task resource representation                                                                                                                                                                                                                                                                          | Event resources representation      | Descriptions |
 | -----------------------------                             | -----------------------------                                              | -----------------------------                                                                                                                                                                                                                                                                        | -----------------------------       | -----------------------------| 
@@ -25,7 +27,9 @@ In this example, the placer and the fulfiller's business agreement requires that
 ### Request to Bid to Multiple Fulfillers:
 This flow differs from the previous flow in that multiple potential fulfillers are informed of the request. Potential fulfillers may respond with information about their ability to perform the service, before the patient and their provider ultimately choose a performer. 
 
+<br>
 {% include img.html img="request-bid.png" %}
+<br>
 
 | Workflow State to Represent                               | Request resource representation                                            |Task resource representation                                                                                                                                                                                                                                                                         | Event resources representation      | Descriptions |
 | -----------------------------                             | -----------------------------                                              | -----------------------------                                                                                                                                                                                                                                                                       | -----------------------------       | -----------------------------| 
@@ -48,7 +52,9 @@ Examples:
 * A provider may determine that a patient would benefit from receiving care in a long term care facility, and authorize that level of service. The patient and their family may consider several care facilities before deciding which they like.
 * A patient may discuss with their primary care provider that they would like to see a specialist, such as OB/MFM, an orthopedist, a psychologist, etc. The GP may authorize this service without having a specific performer in mind, and may rely on the patient to then find a specialist.  
 
+<br>
 {% include img.html img="request-patient.png" %}
+<br>
 
 TODO: is this better without the Coordination Task at the Placer? This does make it clear no one else has started.
 
