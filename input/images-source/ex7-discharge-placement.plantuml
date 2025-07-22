@@ -2,7 +2,7 @@
 skinparam svgDimensionStyle false
 'skinparam sequenceMessageAlign center
 title 
-	Post Discharge Placement
+	Example with Multiple Potential Fulfillers and Bidding
 end title
 
 hide footbox
@@ -20,8 +20,15 @@ actor "Patient" as Patient
 participant "Provider" as Provider
 participant "Facility A" as Facility_A
 participant "Facility B" as Facility_B
-participant "Home Care" as HC_Provider
+participant "Home Nursing" as HC_Provider
 
+==Pre-coordination==
+
+Provider <--> HC_Provider: Register as clients, share service catalogues, share endpoints,\nand establish any administrative-subscriptions
+
+||20||
+
+==In Workflow==
 group #eee Ordering
 Patient--> Provider: Agrees following discussion with their\nprovider that skilled nursing would help with recovery
 end
@@ -46,46 +53,56 @@ end note
 
 
 note over Patient, Provider
-From here, the provider may notify multiple potential fulfillers.
-
-The Placer may use different pattern with each fulfiller based on their 
-pre-coordination.  
+From here, the provider may notify multiple potential fulfillers. In this example
+multiple methods are used, but generally there would be one mechanism defined
+for the use-case. 
 
 end note
 ||10||
 
-Provider -> Provider: create **Coordination Task A**
+Provider -> Provider: create **Bid Task A**
 Provider -> Facility_A: send SubscriptionStatus\nNotification to Facility A
 note left <<resource>> #pink
-**Task A** 
+**Bid Task A** 
 |_ .id = **97531**
 |_ .Status: requested
-|_ .Performer: Facility **A**
+|_ .Owner: Facility **A**
 |_ .Focus: ServiceRequest 12345
 |_ .Code: request-fulfillment
-|_ .Intent: Order
+|_ .Intent: Bid
 |_ ...
 end note 
 
 
 ||20||
 
-Provider -> Facility_B: POST **Coordination Task B**
-Facility_B <<-> Provider: query for ServiceRequest 12345
+Provider -> Facility_B: POST **Bid Task B**
+
 note over Facility_B #lightblue
-**Task B** 
+**Bid Task B** 
 |_ .id = **86420**
 |_ .Status: requested
-|_ .Performer: Facility B
+|_ .Owner: Facility **B**
 |_ .Focus: ServiceRequest 12345
 |_ .Code: request-fulfillment
-|_ .Intent: Order
+|_ .Intent: Bid
 |_ ...
 end note 
 
+Facility_B <<-> Provider: query for ServiceRequest 12345
 
+Provider -> HC_Provider: POST **Bid Task C**
 
-Provider -> HC_Provider: POST **Coordination Task C**
+note right <<resource>> #orange
+**Bid Task C** 
+|_ .id = **54321**
+|_ .Status: requested
+|_ .Owner: Home Care Provider
+|_ .Focus: ServiceRequest 12345
+|_ .Code: request-fulfillment
+|_ .Intent: Bid
+|_ ...
+end note
 
 
 HC_Provider --> HC_Provider: Evaluate request.\nDetermine no availability.
@@ -93,34 +110,29 @@ HC_Provider --> HC_Provider: Evaluate request.\nDetermine no availability.
 HC_Provider -> Provider: SubscriptionStatus Notification w/ Task update
 
 note right <<resource>> #orange
-**Task C** 
+**Bid Task C** 
 |_ .id = **54321**
 |_ .Status: **rejected**
-|_ .Performer: Home Care Provider
+|_ .Owner: Home Care Provider
 |_ .Focus: ServiceRequest 12345
 |_ .Code: request-fulfillment
-|_ .Intent: Order
+|_ .Intent: Bid
 |_ ...
 end note
 
 
-Facility_B --> Facility_B: Determine info needed
+Facility_B --> Facility_B: Determine additional\ninfo needed
 
-Facility_B -> Provider: POST **Communication**
+Facility_B -> Facility_B: Update Task.input to indicate additional information needed
+
+Facility_B -> Provider: Send SubscriptionStatus notification
 
 note over Facility_B #lightblue
-**Communication_B1** 
-|_ .id = **987543**
-|_ .partOf = Task B
-|_ .basedOn = ServiceRequest 12345
-|_ .Recipient = Provider
-|_ .Payload = message with question
-|_ ...
 
-**Task B**
+**Bid Task B**
 |_ .status = Received
 |_ .businessStatus = Awaiting Info
-|_...
+|_ .input = value or reference to information needed,\nsuch as a Communication or Questionnaire
 
 end note 
 
@@ -131,7 +143,7 @@ Provider --> Facility_B: Call to discuss
 note over Facility_B #lightblue
 Facility_B Agrees they could accept the patient
 
-**Task B**
+**Bid Task B**
 |_ .status = Accepted
 |_...
 end note 
@@ -140,11 +152,11 @@ Facility_B -> Provider: SubscriptionStatus Notification w/ Task update
 
 Facility_A --> Facility_A: Review request.\nSpawn Tasks in their own\nsystem. Ultimately determine\nthey could accept
 
-Facility_A -> Provider: POST Update to\n**Coordination Task A**
+Facility_A -> Provider: POST Update to\n**Bid Task A**
 
 note right Provider #pink
-**Task A** 
-|_ .Status: **Accepted**
+**Bid Task A** 
+|_ .Status: **accepted**
 |_ ...
 end note 
 
@@ -164,19 +176,14 @@ Patient --> Provider: decide Facility B fits goals best
 
 Provider -> Provider: Records decision
 
-note right Provider #pink
-**Task A** 
-|_ .Status: **Cancelled**
-|_ ...
-end note 
-
-Provider -> Facility_B: POST Update **Coordination Task B**
+Provider -> Facility_B: POST (and Create) **Coordination Task B** \n(Separate from bidding Task)
 
 note right <<resource>> #lightblue
-**Task B**
-|_ .status = Accepted
-|_ .businessStatus = **Selected**
-|_...
+**Coordination Task B**
+|_ .status = accepted
+|_ .owner = Facility B
+|_ .focus = ServiceRequest 12345
+|_ .intent = order
 
 end note
 @enduml
