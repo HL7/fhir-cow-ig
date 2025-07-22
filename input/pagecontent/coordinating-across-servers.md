@@ -4,7 +4,8 @@ While support for targetted queries is a key feature of FHIR, it introduces opti
 
 TODO - add sections on:
 * Provenance
-* Move some of the background about messages vs subscriptions here
+* Move some of the background about messages vs subscriptions here?
+
 
 ### Managing Access by Fulfillers:
 Actors in a RESTful exchange often wish to limit the set of resources that another actor may access (or the interactions they may initiate), with more granularity than what is provided with traditional OAuth 2.0 scopes. This can sometimes encourage groups to rely on Messages rather than permitting RESTful exchange.
@@ -14,7 +15,8 @@ This guide provides two options to consider, though their use is optional within
 1. Actors may leverage [SMART v2 scopes](https://hl7.org/fhir/smart-app-launch/) to provide finer-grained control of what another actor may access. For example, a Placer may indicate that a Fulfiller can query only for resources of a particular category, such as ServiceRequests related to social care referrals or Observation resources related to Labs.
 2. Senders of a notification may include an [authorization hint](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/StructureDefinition-notification-authorization-hint.html) that the recipient may redeem while requesting an access token. Such an authorization hint (also called an authorization_base in some specifications) may be used by its creator to tailor the set of resources the actor presenting the authorization hint may access. As an example, this can be used to limit a Service Provider to only obtaining information on patients for whom an authorization hint has been sent to them as part of a referral notification.  
 
-### Sharing Content when Intermediaries are Present:
+
+### Sharing Content When Intermediaries are Present:
 
 While many examples in this guide assume direct communication between a Placer and Fulfiller, real-world workflows often involve intermediaries. For example, a clinician may send a specimen to a community lab, which in turn forwards it to a reference lab.
 
