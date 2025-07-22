@@ -5,7 +5,7 @@ This page describes how the FHIR exchanges modeled in this implementation guide 
 #### Traditional HL7 v2 Message:
 In a traditional HL7 v2 message the 'notification' of an event carries with it the content necessary to process that event. A standard HL7 v2 Order message might look like the below:
 
-'''
+```
 MSH|^~\&|HARTFORD CLINIC||||20250721221212|RISTECHMAM|ORM^O01|334310.49|T
 PID|1||202751^^^EPI^MR||TEST^JULIE^^^^^D||19660319|F||White|1818 UNIVERSITY AVE,^^MADISON^WI^53703^US^PERM^^DANE|DANE|(608)251-9999^P^H^^^608^2519999|||M||29100|806-26-7615|||NOT HISPANIC
 PV1|1|OP|^^^^^^^^EMH BREAST IMAGING^^||||1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|||||||||||29100|||||||||||||||||||||||||20180507110328|||||||V
@@ -14,7 +14,8 @@ OBR|1|901911^EPC|199|IMG605^BI MAMMOGRAM SCREENING BILATERAL^IMGEAP|R|2018050711
 ZPF|1|BI^IMG BI PROCEDURES|||||^^^^^^^^EMH BREAST IMAGING
 PRT|1|SP||OPO||||EMH Medical Clinic^^urn:examp:cec.play^^^EPC^XX^^^urn:examp:cec.play
 DG1|1|I10|Z12.31^Encounter for screening mammogram for malignant neoplasm of breast^I10|Encounter for screening mammogram for malignant neoplasm of breast||W
-'''
+```
+
 Breaking this down, the message:
 * Includes a message header segment (MSH) that indicates the type of message (an ORM), information about the sender of the message, the time the message was sent, etc.
 * Contains details on the requested service (the OBR - Observation Request). The Common Order segment (ORC) indicates that this message is for a new order.
@@ -23,7 +24,7 @@ Breaking this down, the message:
 #### Comparison to a FHIR Message:
 Although this Implementation Guide does not define specific message bundles,  it is easy to imagine how a [FHIR message bundle]([url](https://hl7.org/fhir/messaging.html)) similar to the HL7 v2 message could be constructed.
 
-'''
+```
 Bundle 
   * type == message
 {
@@ -51,7 +52,7 @@ ServiceRequest 4567:
   * code: 26175-0 MG Breast - bilateral screening
   * ,
 }
-'''
+```
 This results in an overall 'package' of informatoin that is in many respects analagous to the HL7 v2 message, though parties must make a substantial effort to coordinate the details. 
 
 #### Comparison to a Subscription-Status Notification:
@@ -60,7 +61,7 @@ are available, and that some information may then be retrievable 'restfully'. Th
 
 Alternatively, a Subscription-Status notification could also be used to send a full payload with the notification. 
 
-'''
+```
 Bundle
   * type == subscription-notification
 
@@ -78,8 +79,7 @@ SubscriptionStatus:
   * .
 
 }
-
-'''
+```
 
 ### Where the formats diverge:
 FHIR allows decoupling the notification of an event from communication of the details of that event, as the Subscription example shows. When FHIR servers are available, recipients of a notification can attempt to query
