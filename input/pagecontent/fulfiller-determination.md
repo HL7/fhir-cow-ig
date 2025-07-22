@@ -18,14 +18,9 @@ Based on the workflow of interest, the performer may or may not notify the reque
 
 {% include img.html img="request-simplest.png" %}
 
-
-
-
-##### Task at Fulfiller
-
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig2" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Fulfiller with Subscriptions<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig2" data-toggle="collapse">+</button></div>
   </div>
   <div id="fig2" class="panel-collapse collapse">
     <div class="panel-body">
@@ -36,8 +31,6 @@ Based on the workflow of interest, the performer may or may not notify the reque
     </div>
   </div>
 </div>
-
-#### Example using Task at Placer with Subscriptions
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -53,11 +46,9 @@ Based on the workflow of interest, the performer may or may not notify the reque
   </div>
 </div>
 
-#### Example using Messaging (Relying on Identifiers)
-
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Messaging <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig3" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Messaging (relying on identifiers) <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig3" data-toggle="collapse">+</button></div>
   </div>
   <div id="fig3" class="panel-collapse collapse">
     <div class="panel-body">
@@ -73,7 +64,6 @@ Based on the workflow of interest, the performer may or may not notify the reque
 
 <hr>
 
-
 ### Request with acceptance
 
 When a requestor can't be certain of whether the fulfiller will be willing to perform a service (based on availability, insurance, etc.), they may ask the fulfiller to confirm that they accept the proposed service. If the performer declines to perform the service (or fails to respond within a pre-coordinated period), the requestor may choose to follow up with other potential performers. 
@@ -82,7 +72,7 @@ When a requestor can't be certain of whether the fulfiller will be willing to pe
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Task at Fulfiller<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig5" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Task at Fulfiller with Subscriptions<button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig5" data-toggle="collapse">+</button></div>
   </div>
   <div id="fig5" class="panel-collapse collapse">
     <div class="panel-body">
@@ -108,11 +98,9 @@ When a requestor can't be certain of whether the fulfiller will be willing to pe
   </div>
 </div>
 
-#### Example using Messaging (Relying on Identifiers)
-
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Messaging <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig6" data-toggle="collapse">+</button></div>
+    <div class="panel-title">Messaging (relying on identifiers) <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig6" data-toggle="collapse">+</button></div>
   </div>
   <div id="fig6" class="panel-collapse collapse">
     <div class="panel-body">
@@ -137,8 +125,6 @@ Examples:
 
 {% include img.html img="request-patient.png" %}
 
-##### Example with Subscriptions with Task at Fulfiller
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">Subscriptions - Task at Fulfiller <button type="button" class="btn btn-default top-align-text" style="float: right;" data-target="#fig7" data-toggle="collapse">+</button></div>
@@ -154,7 +140,6 @@ Examples:
 </div>
 
 <hr>
-
 
 ### Request with multiple performers
 
