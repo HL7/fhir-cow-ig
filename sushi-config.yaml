@@ -79,6 +79,9 @@ pages:
   using-task.md:
     title: Using Tasks
     generation: markdown
+  comparing-with-HL7-v2-orders.md:
+    title: Comparing with HL7 v2 Orders
+    generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
     generation: markdown
@@ -194,6 +197,7 @@ menu:
     Key Resources and Coordinating Across Servers: core-concepts.html
     Representing Workflow States: workflow-state-overview.html
     Using Tasks: using-task.html
+    Comparing with HL7 v2 Orders: comparing-with-HL7-v2-orders.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
     # Fulfiller Selection:
