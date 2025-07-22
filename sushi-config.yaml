@@ -207,12 +207,12 @@ menu:
     #   Request with Multiple Performers, Bid: request-with-multiple-potential-performers-with-bidding.html
     #   Requests to a Central Service: requests-to-central-coordinator.html
     #   Patient-Mediated Requests: patient-mediated-requests.html
-    Order initiation: order-initiation.html
-    Order grouping: order-grouping.html
-    Fulfiller determination: fulfiller-determination.html
-    Fulfiller requests for additional Info: fulfiller-need-for-additional-info.html
-    Cancelling and modifying requests: cancelling-and-modifying-requests.html
-    Sharing outputs of referrals and orders: sharing-outputs.html
+    Order Initiation: order-initiation.html
+    Order Grouping: order-grouping.html
+    Fulfiller Determination: fulfiller-determination.html
+    Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
+    Cancelling and Modifying Requests: cancelling-and-modifying-requests.html
+    Sharing Outputs of Referrals and Orders: sharing-outputs.html
     
   Examples: examples.html
   Artifacts: artifacts.html
