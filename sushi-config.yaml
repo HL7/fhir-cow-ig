@@ -77,7 +77,7 @@ pages:
     title: Workflow State Overview
     generation: markdown
   using-task.md:
-    title: Using Task
+    title: Using Tasks
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
@@ -191,8 +191,8 @@ menu:
   Table of Contents: toc.html
   Background: background.html
   Core Concepts: 
-    Concepts: core-concepts.html
-    Workflow State overview: workflow-state-overview.html
+    Key Resources and Coordinating Across Servers: core-concepts.html
+    Representing Workflow States: workflow-state-overview.html
     Using Tasks: using-task.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
