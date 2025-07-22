@@ -19,10 +19,10 @@ DG1|1|I10|Z12.31^Encounter for screening mammogram for malignant neoplasm of bre
 Breaking this down, the message:
 * Includes a message header segment (MSH) that indicates the type of message (an ORM), information about the sender of the message, the time the message was sent, etc.
 * Contains details on the requested service (the OBR - Observation Request). The Common Order segment (ORC) indicates that this message is for a new order.
-* Gives that order context via identifiers for the patient the ordr relates to (in PID), identifiers for the patient's visit (in PV1), and information related to the diagnosis that gave rise to the request (in DG1). 
+* Gives that order context via identifiers for the patient the order relates to (in PID), identifiers for the patient's visit (in PV1), and information related to the diagnosis that gave rise to the request (in DG1). 
 
 #### Comparison to a FHIR Message:
-Although this Implementation Guide does not define specific message bundles,  it is easy to imagine how a [FHIR message bundle]([url](https://hl7.org/fhir/messaging.html)) similar to the HL7 v2 message could be constructed.
+Although this implementation guide does not define specific message bundles, it is easy to imagine how a [FHIR message bundle]([url](https://hl7.org/fhir/messaging.html)) similar to the HL7 v2 message could be constructed.
 
 ```
 Bundle 
@@ -57,9 +57,9 @@ This results in an overall 'package' of informatoin that is in many respects ana
 
 #### Comparison to a Subscription-Status Notification:
 An analagous 'package' of information can be communicated via a [Subscription framework]([url](https://hl7.org/fhir/subscriptions.html)). The only real distinction is that Subscriptions lend themselves to the idea that FHIR servers
-are available, and that some information may then be retrievable 'restfully'. This creates an option to have a notification reference content, without necessarily including all of that content in the bundle. 
+are available, and that some information may then be retrievable via RESTful queries. This creates an option to have a notification reference content without necessarily including all of that content in the bundle. 
 
-Alternatively, a Subscription-Status notification could also be used to send a full payload with the notification. 
+Note that FHIR subscriptions do not implicitly require that clients be able to dynamically create subscriptions on the fly. A Subscription created via administrator configuration after asking a recipient about what data is of interest, the events of interest, etc. is in spirit very similar to an HL7 v2 message feed, especially if the parties decide to include full payloads with the notifications. 
 
 ```
 Bundle
