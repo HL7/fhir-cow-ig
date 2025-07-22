@@ -154,7 +154,7 @@ pages:
       title: Lab Order Flow with Reference Lab
       generation: markdown
     ex7-discharge-placement.md:
-      title: Post-Discharge Placement in SNF
+      title: Post-Discharge Assistance
       generation: markdown
      
 
@@ -193,6 +193,7 @@ menu:
   Core Concepts: 
     Concepts: core-concepts.html
     Workflow State overview: workflow-state-overview.html
+    Using Tasks: using-task.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
     # Fulfiller Selection:
