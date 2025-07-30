@@ -197,7 +197,7 @@ menu:
   Table of Contents: toc.html
   Background: background.html
   Core Concepts: 
-    Key Resources: core-concepts.html
+    Glossary and Key Resources: core-concepts.html
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
     Details of Using Tasks: using-task.html
