@@ -4,7 +4,7 @@ Other pages in this section dive into specific resources in more depth.
 
 ### Actors:
 
-This guide describes interactions between those requesting and those performing services. The following terms are used:
+This guide describes interactions between providers who request that some action be taken and other actors who fulfill those requests. The following terms are used:
 
 * **Placer, requestor, referrer, and prescriber** are treated as equivalent. We generally avoid "Requestor" to prevent confusion with client-server terminology.
 * **Performer, fulfiller, and service provider** are also considered equivalent. Note that these often refer to *potential* fulfillers of a request. 
@@ -32,7 +32,24 @@ For example, if a hospital would like to coordinate transportation assistance fo
 The details of what outputs are required for a given workflow and their content are left to implementers and later implementation guides. Outputs may directly reference Request resources that led to their creation via the basedOn element. Outputs may also be associated to an originating Request via Task.Output (including via intermediate Task.basedOn and Request.basedOn references). See the "Sharing outputs of referrals and orders" Workflow Patterns section for additional detail. In environments with RESTful FHIR exchanges, the source of truth Resource representing the Output is generally hosted on the Fulfiller's FHIR server, although the Placer may retain a copy that they can surface to others. 
 
 **In summary** a Request represents a provider's authorization or proposal that some action should be taken (e.g. "the patient should take beta blockers for high blood pressure"). Outputs document that action was taken (e.g. "a pharmacy dispensed the patient beta-blockers, based on the provider's request"). If the Placer and the Fulfiller of a request need to coordinate the fullfilment of that that request, they do so via Tasks (e.g. if a provider would like a particular pharmacy to provide the patient with beta-blockers, they create a Task for them to do so).   
- 
-<figure>
+
+Note that most requests due require some amount of coordination - it can be tempting to try to have just the request (such as a MedicationRequest for beta blockers) and the fulfillment (a pharmacy deciding, based on the MedicationRequest, to dispense the medication to the patient, which they could then surface as a MedicationDispense). Likewise, if a patient needs imaging while admitted, it may seem superfluous to have a Task when all parties _know_ that the in-house radiology department will fullfill the request. The parties may then try to track the overall status via only the Request.status element.
+
+This breaks down in more complex scenarios, especially those where:
+* A fulfiller may need to confirm their ability to fulfill a request.
+* Several fulfillers may need to coordinate
+* There are multiple potential fulfillers
+* The information needed by a fulfiller is not fully known by the placer
+* The status of the execution of a requst by a particular fulfiller should be tracked separately from the status of the overall request.
+
+For the sake of a consistent data model, and to provide a clear growth-path if workflows become more complex, this IG therefore recommends use of Task resources even in comparatively simple workflows. 
+
+figure>
 {% include relation-of-placer-request-task-output-filler.svg %}
 </figure>
+
+### Notifications:
+This guide uses the term **notification** to refer to any 'push' mechanism by which a party becomes aware of a request. This should not be confused with SubscriptionStatus notifications in FHIR, although these are one valid option.
+
+A party may become aware of a request via a Messaging protocol, or by a patient informing that party of the request. This guide also makes a distinction between 'notifications' and the actual communication of a message; a notification may simply inform a a party that a Request has been created, but require that the party follow up via RESTful query for details.  
+
