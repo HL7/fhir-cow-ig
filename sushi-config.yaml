@@ -70,8 +70,8 @@ pages:
   background.md:
     title: Background - Scope and General Principles
     generation: markdown
-  core-concepts.md:
-    title: Core Concepts
+  glossary-and-key-resources.md:
+    title: Glossary and Key Resources
     generation: markdown
   coordinating-across-servers.md:
     title: Coordinating Across Servers
@@ -197,7 +197,7 @@ menu:
   Table of Contents: toc.html
   Background: background.html
   Core Concepts: 
-    Glossary and Key Resources: core-concepts.html
+    Glossary and Key Resources: glossary-and-key-resources.html
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
     Details of Using Tasks: using-task.html
