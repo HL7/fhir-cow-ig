@@ -1,6 +1,6 @@
 @startuml
 autonumber
-
+svgDimensionStyle true
 participant Placer order 10
 participant Coordinator order 20
 participant Fulfiller_A order 30 
@@ -21,7 +21,7 @@ Coordinator -> Coordinator: Create Internal Representation,check\nlist of potent
 Coordinator -> Coordinator: Determine by some criteria an\nintended performer (availability, etc.)
 
 Coordinator -> Placer: Inform Placer of potential performers
-note over Placer, Coordinator: Details are left for later guides. This may be Task.output referencing PractitionerRole resources, Organizations, ActivityDefinitions, etc.  
+note over Placer, Coordinator: Details are left for later guides. This may be Task.output referencing\nPractitionerRole resources, Organizations, ActivityDefinitions, etc.  
 
 ||20||
 Placer -> Placer: Lookup endpoint for Fulfiller from\nearlier coordination or Coordinator response
@@ -61,3 +61,4 @@ Fulfiller_A --> Fulfiller_A: Proceed to perform service
 
 ||20||
 @enduml
+
