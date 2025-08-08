@@ -200,7 +200,7 @@ menu:
     Glossary and Key Resources: glossary-and-key-resources.html
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
-    Details of Using Tasks and Requests Together: details-of-using-task-and-requests.html
+    Details of Using Tasks and Requests: details-of-using-task-and-requests.html
     Task and Request Grouping: order-grouping.html
     Comparing with HL7 v2 Orders: comparing-with-HL7-v2-orders.html
   Workflow Patterns: 
@@ -355,5 +355,6 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
 
 
