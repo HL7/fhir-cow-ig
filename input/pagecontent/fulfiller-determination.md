@@ -207,7 +207,7 @@ Given the variability, this section is provided only for illustrative value. Thi
 
 In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this example, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to facilitate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between placers and fulfillers.  
 
-Other IGs may build on top of this to include details of the endpoint discovery, handling holds the coordinator may place on an assigned Fulfiller, tracking authorization from a coordinator, etc. 
+Other IGs may build on top of this to include details like endpoint discovery, adding holds to an assigned Fulfiller, tracking authorization from a coordinator, etc. 
 
 Similar flows may be constructed using FHIR messaging or using FHIR Subscriptions with the shared coordination Task hosted at the Placer. 
 
@@ -240,4 +240,5 @@ Similar flows may be constructed using FHIR messaging or using FHIR Subscription
 </div>
 
 <hr>
+
 
