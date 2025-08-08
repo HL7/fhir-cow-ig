@@ -79,8 +79,8 @@ pages:
   workflow-state-overview.md:
     title: Workflow State Overview
     generation: markdown
-  using-task.md:
-    title: Using Tasks
+  details-of-using-task-and-requests.md:
+    title: Details of Using Tasks and Requests
     generation: markdown
   order-grouping.md:
     title: Task Grouping and Related Requests
@@ -200,7 +200,7 @@ menu:
     Glossary and Key Resources: glossary-and-key-resources.html
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
-    Details of Using Tasks: using-task.html
+    Details of Using Tasks and Requests Together: details-of-using-task-and-requests.html
     Task and Request Grouping: order-grouping.html
     Comparing with HL7 v2 Orders: comparing-with-HL7-v2-orders.html
   Workflow Patterns: 
@@ -355,4 +355,5 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
 
