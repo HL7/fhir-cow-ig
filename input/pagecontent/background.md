@@ -1,5 +1,5 @@
 ### Goals
-This guide helps specification authors working on Orders, Referrals, and Transfers achieve interoperability more quickly and cost-effectively by:
+This guide is intended to help specification authors working on Orders, Referrals, and Transfers workflows achieve interoperability more quickly and cost-effectively by:
 
 * Highlighting abstractions that support reuse of functionality across care domains and jurisdictions
 * Reducing ambiguity through proven workflow patterns
@@ -7,8 +7,6 @@ This guide helps specification authors working on Orders, Referrals, and Transfe
 * Establishing shared terminology to streamline collaboration
 
 ### How Orders, Referrals, and Transfers Relate
-This guide considers Orders, Referrals and Transfers together, as the considerations for exchange are largely identical.
-
 Historically, these terms have been delineated by the extent to which responsibility for a patient's care was transitioned or delegated between providers. As care has become more collaborative, it is often challenging to draw bright line distinctions between these terms.  
 
 To help with discussions, brief descriptions and examples of each term are provided below.
@@ -82,18 +80,6 @@ To help with discussions, brief descriptions and examples of each term are provi
 
 These all involve a healthcare provider deciding that action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
 
-### Key Differences in Implementations Today:
-
-In reviewing other locale and care-domain specific work, this specification's authors have noted two factors which frequently motivate the creation of new exchange specifications for orders and referrals. These are:
-1. Considerations for minimizing data access
-2. Accommodating interactions with systems that may not yet support robust (and highly available) FHIR servers
-
-**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
-
-**Groups prioritizing (2)** often focus on FHIR Messaging, which leads to considerations similar to those in HL7 v2 around broadcast interfaces and whether to include all information a fulfiller _might_ need to process a request in the notification.
-
-This guide is designed to support both groups. For those focused on (2), it offers a path toward RESTful exchanges as the ecosystem develops. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity. Often, a specialist receiving a referral is in the best position to know what data is relevant. The Core Concepts section provides a brief description for how Placers may limit Fulfillers access to data to those for whom they have received a Request. 
-
 ### Pre-Coordination Needed for Push-Based Exchanges
 A core aim of this guide is to help specification authors manage notifications for orders, referrals, and transfers in a consistent way. 
 
@@ -128,3 +114,4 @@ This section provides context on the main FHIR-based mechanisms for pushing cont
 * Subscriptions provide two optional features that support order, referral, and transfer workflows: 
     * SubscriptionTopics: a data-holder MAY make a <code>SubscriptionTopic</code> available to which authorized data requestors may subscribe for updates. Such "dynamic subscriptions" let an actor specify their own endpoint, events of interest, and desired format from a menu of options chosen by the data holder. This is purely optional within Subscriptions: administrators may instead discuss updates out of band and manually configure Subscriptions, just as administrators do for HL7v2 interfaces today. 
     * Query guidance: <code>subscription-notifications</code> can include instructions for how a recipient may query for additional information later. For instance, if insurance coverage might change between when a referral is created and when service should be provided, the <code>subscription-notification</code> sent for the referral can guide a Fulfiller on how to retrieve updated Coverage data if or when it is needed later.    
+
