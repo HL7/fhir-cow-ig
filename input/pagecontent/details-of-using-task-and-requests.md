@@ -41,7 +41,7 @@ An additional useful function of `Task.owner` is to indicate to the recipient of
 `Task.performer` in R5 and later versions may be used to indicate parties who _were_ previously involved in a Task's execution. This should not be confused with the actor who is currently responsible. In workflows that create Output Events, such as a DiagnosticReport, these actors may also be found from the Event. 
 
 ### Indicating the Actionability of a Request:
-In and of itself (and perhaps confusingly given the name), a FHIR Request does not indicate an instruction to perform an action. The Request resource represents a provider's authorization that the care should occur under their authority. This guide recommends that Task resources be used to indicate a provider's intent that another actor fulfill the request. See the overview in the [Glossary and Key Resources])(./glossary-and-key-resources.html) page for details. 
+In and of itself (and perhaps confusingly given the name), a FHIR Request does not indicate an instruction to perform an action. The Request resource represents a provider's authorization that the care should occur under their authority. This guide recommends that Task resources be used to indicate a provider's intent that another actor fulfill the request. See the overview in the [Glossary and Key Resources](./glossary-and-key-resources.html) page for details. 
 
 Implementation Guide authors creating workflow-specific guides should pay special attention to the [Request.intent](https://hl7.org/fhir/request-definitions.html#Request.intent) element, and note that this element is immutable on a given resource. If a provider would like to propose a given service, they may do so with a Request resource with a `.intent` of 'proposal'. For this to become actionable within FHIR, another Request resource must be created with a `.intent` with an appropriate value from the [request-intent valueset](https://hl7.org/fhir/valueset-request-intent.html).    
 
@@ -60,6 +60,7 @@ Parent: Task
 Request resources often lead to Event resources such as DiagnosticReports or other content. Providers often wish to ensure that other members of the patient's care team are made aware of these outputs. For example, a patient's Oncologist may order a lab test, and wish to ensure that the patient's Primary Care Provider is given a copy of the result. 
 
 These intended CC recipients may be communciated via [CommunicationRequest resources](https://hl7.org/fhir/communicationrequest.html). When Placers wish to ensure that an Output is communicated to a specific destination for a CC provider, Placers SHOULD use a PractitionerRole resource in `CommunicationRequest.recipient`. Multiple CommunicationRequest resources can correspond to a single single Workflow Request resource; for example, the Placer may indicate that there are specific providers they intend to notify of a result themselves via a CommunicationReqeust resource with `.informationProvider` set to the Placer. This can serve a helpful function of informing the Fulfiller that they do not need to notify those recipients of the Output.  
+
 
 
 
