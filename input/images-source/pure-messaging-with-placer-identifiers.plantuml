@@ -1,5 +1,6 @@
 @startuml
-title Referrals Outline - Messaging w/ Placer Identifiers
+skinparam svgDimensionStyle true
+title Referrals Outline - Messaging with Placer Identifiers
 
 
 ==Pre-Coordination==
@@ -53,3 +54,4 @@ Fulfiller -> Placer: Notify of outcome via a Message with Task in focus, Task.St
 Placer -> Placer: Process outcome and create internal representation
 
 @enduml
+
