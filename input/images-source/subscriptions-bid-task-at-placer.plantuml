@@ -1,5 +1,5 @@
 @startuml
-skinparam svgDimensionStyle true
+skinparam svgDimensionStyle false
 autonumber
 
 participant Placer order 10
@@ -45,5 +45,6 @@ Placer -> Fulfiller_B: SubscriptionStatus notification on Task status change
 
 Fulfiller_A <-- Fulfiller_A: proceed to fulfill Request
 @enduml
+
 
 
