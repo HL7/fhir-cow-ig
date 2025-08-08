@@ -1,7 +1,7 @@
 @startuml
 autonumber
-'skinparam svgDimensionStyle false
-'skinparam sequenceMessageAlign center
+skinparam svgDimensionStyle true
+skinparam sequenceMessageAlign center
 
 
 == Pre-Coordination==
@@ -76,3 +76,4 @@ group Optionally, if Placer needs to be able to surface\nthat Outcome in future
 end
 
 @enduml
+
