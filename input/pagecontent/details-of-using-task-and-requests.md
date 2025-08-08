@@ -56,5 +56,10 @@ Parent: Task
 * extension contains http://hl7.org/fhir/4.0/StructureDefinition/extension-Task.focus named focus 0..* MS
 ```
 
+### Directing How Outputs Should be Distributed
+Request resources often lead to Event resources such as DiagnosticReports or other content. Providers often wish to ensure that other members of the patient's care team are made aware of these outputs. For example, a patient's Oncologist may order a lab test, and wish to ensure that the patient's Primary Care Provider is given a copy of the result. 
+
+These intended CC recipients may be communciated via [CommunicationRequest resources](https://hl7.org/fhir/communicationrequest.html). When Placers wish to ensure that an Output is communicated to a specific destination for a CC provider, Placers SHOULD use a PractitionerRole resource in `CommunicationRequest.recipient`. Multiple CommunicationRequest resources can correspond to a single single Workflow Request resource; for example, the Placer may indicate that there are specific providers they intend to notify of a result themselves via a CommunicationReqeust resource with `.informationProvider` set to the Placer. This can serve a helpful function of informing the Fulfiller that they do not need to notify those recipients of the Output.  
+
 
 
