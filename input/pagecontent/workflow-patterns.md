@@ -1,6 +1,6 @@
-This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow; details are provided elsewhere.
+This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow, with details for specific scenarios described in other Workflow Patterns pages.
 
-The other pages in this section outline considerations for specific parts of a Request's lifecycle in FHIR. These include:
+These include:
 * **Order initiation**:  
 This section addresses aspects of how orders are created that relate to FHIR workflows. Many details are left to implementers or more specific implementation guides. 
 
@@ -25,9 +25,9 @@ This section describes how Placers and Fulfillers may modify a request once it h
 How the outputs from a Request, such as a diagnostic result report or a consult note, may be linked back to the original Request and shared between actors. This includes how actors may make the Outputs discoverable for others involved in a patient's care later, even if the later actors can only contact the Placer. 
 
 ### Overview Example - Coordination Task at Fulfiller with Optional Subscriptions
-The below is an overview of how a Request may be coordinated with the Coordination Task hosted at the Fulfiller. In this example, the Placer and the Fulfiller have pre-coordinated that the Placer is Subscribed to updates on Tasks that they originate. Note, however, that this is optional for the example: a Placer could query for updates on the Coordination Task at some expected date or ahead of their next visit with the patient. 
+The example below is an example of how a Request may be coordinated with the Coordination Task hosted at the Fulfiller. In this example, the Placer and the Fulfiller have pre-coordinated that the Placer is Subscribed to updates on Tasks that they originate. Note, however, that this is optional for the example: a Placer could query for updates on the Coordination Task at some expected date or ahead of their next visit with the patient. 
 
-Many details are deferred for more detailed discussions elsewhere in this guide or for later implementation guides. 
+Many details are deferred for more detailed discussions elsewhere in this guide and for later implementation guides. 
 
 {% include subscriptions-general-example-task-at-fulfiller.svg %} 
 
@@ -47,5 +47,6 @@ The below is a similar overview in which the Coordination Task is hosted at the 
 Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfiller pre-coordinate their endpoints and events of interest, just as with Messaging. The key distinction is that (in this example, where we assume no FHIR servers may be queried RESTfully) the notifications must contain the information the Placer anticipates the Fulfiller will need. Just as in HL7 v2 messaging today, actors rely on shared identifiers and reliable messaging to coordinate State.
 
 {% include pure-messaging-with-placer-identifiers.svg %} 
+
 
 
