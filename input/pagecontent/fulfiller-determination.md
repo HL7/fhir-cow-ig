@@ -60,9 +60,6 @@ Based on the workflow of interest, the performer may or may not notify the reque
   </div>
 </div>
 
-<hr>
-
-<hr>
 
 ### Request with acceptance
 
@@ -112,7 +109,6 @@ When a requestor can't be certain of whether the fulfiller will be willing to pe
   </div>
 </div>
 
-<hr>
 
 ### Patient-mediated requests
 Many orders and referrals take the form that a provider 'authorizes' that care with another provider may occur, but the patient (or their agent) then manages the coordination of that care. Once the patient has selected a performer, that performer may wish to query additional information (including the authorization) and to share information with the original requestor. 
@@ -240,5 +236,6 @@ Similar flows may be constructed using FHIR messaging or using FHIR Subscription
 </div>
 
 <hr>
+
 
 
