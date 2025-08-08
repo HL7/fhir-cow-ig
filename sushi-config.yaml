@@ -82,6 +82,9 @@ pages:
   using-task.md:
     title: Using Tasks
     generation: markdown
+  order-grouping.md:
+    title: Task Grouping and Related Requests
+    generation: markdown
   comparing-with-HL7-v2-orders.md:
     title: Comparing with HL7 v2 Orders
     generation: markdown
@@ -90,9 +93,6 @@ pages:
     generation: markdown
     order-initiation.md:
       title: Order Initiation
-      generation: markdown
-    order-grouping.md:
-      title: Order Grouping
       generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
@@ -116,10 +116,10 @@ pages:
       #   title: Requests to a Central Coordinator
       #   generation: markdown
     fulfiller-need-for-additional-info.md:
-      title: Fulfillers Requesting Additional Information
+      title: Requesting Additional Information
       generation: markdown
     cancelling-and-modifying-requests.md:
-      title: Cancelling and Modifying Orders
+      title: Cancelling and Modifying Requests and Tasks
       generation: markdown
     sharing-outputs.md:
       title: Sharing Outputs from an Order or Referral
@@ -201,6 +201,7 @@ menu:
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
     Details of Using Tasks: using-task.html
+    Task and Request Grouping: order-grouping.html
     Comparing with HL7 v2 Orders: comparing-with-HL7-v2-orders.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
@@ -212,7 +213,6 @@ menu:
     #   Requests to a Central Service: requests-to-central-coordinator.html
     #   Patient-Mediated Requests: patient-mediated-requests.html
     Order Initiation: order-initiation.html
-    Order Grouping: order-grouping.html
     Fulfiller Determination: fulfiller-determination.html
     Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
     Cancelling and Modifying Requests: cancelling-and-modifying-requests.html
@@ -355,3 +355,4 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
