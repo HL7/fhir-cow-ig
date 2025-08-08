@@ -1,27 +1,27 @@
 @startuml
-skinparam svgDimensionStyle false
-title Placer initiated Cancelation of a in-progress Task when Task is at Fulfiller Overview
+skinparam svgDimensionStyle true
+title Placer initiated Cancelation of an in-progress Task when Task is at Fulfiller
 
 autonumber
 
 ==Create Request==
 Placer -> Placer: Create Order, ServiceRequest
-
+||15||
 Placer -> Fulfiller: Task.Create
-
+||15||
 note over Placer, Fulfiller: Task.basedOn is the ServiceRequest at the Placer. The Placer may include supporting information in\n ServiceRequest.info or in the Task if Fulfiller-specific
-
+||15||
 Fulfiller -> Placer: Query ServiceRequest.supportingInfo, ServiceRequest.reason, etc.
-
+||15||
 Fulfiller <- Fulfiller: Update Task.Status 'requested' => 'accepted'
 Fulfiller <- Fulfiller: Update Task.Status 'accepted' => 'in-progress'
-
+||15||
 Fulfiller -> Placer: SubscriptionStatus notification - Task updated
-
+||15||
 note over Placer, Fulfiller: Could also have that the Fulfiller makes a Plan, RequestOrchestration, etc. with Task.output\nA Placer could then update the Task to Accepted if they accept the Fulfiller's Proposal.
-
+||15||
 Placer --> Placer: Update status of tracking if needed, such as ServiceRequest.status. 
-
+||15||
 group If Fulfiller will perform a more specific service
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: Create ServiceRequest with ServiceRequest.basedOn\nreferring to the Placer's ServiceRequest
@@ -29,13 +29,14 @@ end
 
 
 ==Cancelation initiated by Placer ==
-
+||15||
 Placer -> Fulfiller: CancelationTask.Create
+||15||
 note over Placer, Fulfiller
 CancelationTask needs to the have the CancelationTask.status of requested,
 CancelationTask.code of abort and CancelationTask.focus is the "Original Task"
 end note
-	
+||15||	
 
 alt fulfiller accepts the cancellation
     Fulfiller <- Fulfiller: Updates CancelationTask.status == accepted
