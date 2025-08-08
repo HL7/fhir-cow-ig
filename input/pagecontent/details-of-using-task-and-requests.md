@@ -46,7 +46,7 @@ In and of itself (and perhaps confusingly given the name), a FHIR Request does n
 Implementation Guide authors creating workflow-specific guides should pay special attention to the [Request.intent](https://hl7.org/fhir/request-definitions.html#Request.intent) element, and note that this element is immutable on a given resource. If a provider would like to propose a given service, they may do so with a Request resource with a `.intent` of 'proposal'. For this to become actionable within FHIR, another Request resource must be created with a `.intent` with an appropriate value from the [request-intent valueset](https://hl7.org/fhir/valueset-request-intent.html).    
 
 ### Coordinating related requests
-The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). See the [Task and Request Grouping](./order-grouping.html) page for details.
+The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). See the [Task and Request Grouping](./order-grouping.html) page for details and the example of a [grouped mediations dispense](ex4-meds-grouped-dispense.html). 
 
 In future releases of FHIR, `Task.focus` is planned to expand to 0..* in support of the cases where there is a need to coordinate several requests. For supporting this in R4 and R5, implementers can use a built-in extension mechanism that "imports" an element as an extension. In this case, the task.focus element is imported as an additional extension on Task, thus allowing task.focus to effectively point to several requests.
 
@@ -55,5 +55,6 @@ Profile: GroupCoordinationTask
 Parent: Task
 * extension contains http://hl7.org/fhir/4.0/StructureDefinition/extension-Task.focus named focus 0..* MS
 ```
-See the example of [grouped dispense](ex4-meds-grouped-dispense.html). 
+
+
 
