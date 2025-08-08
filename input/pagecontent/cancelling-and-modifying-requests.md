@@ -1,15 +1,19 @@
-This section describes how an order may be cancelled or modified after creation. This can refer to several workflows, which may overlap:
+This section describes how an order may be cancelled or modified after creation. This can refer to several workflows, which may overlap.
 
-1. A Placer may decide that they are no longer interested in the outcome of a Request they previously authorized, and may cancel their authorization. Absent business agreements to the contrary, this could occur before or after a fulfiller has begun work.
-2. A Placer may decide that a Fulfiller should no longer fulfill a Request. Absent business agreements to the contrary, this could occur before or after a fulfiller has begun work. This guide includes a mechanism for Placers and Fulfillers to coordinate if needed.
-3. A Placer may decide that a request they initiated should not be performed, by anyone, and may wish to ensure the original Request is not acted upon.
-4. A Placer may wish to cancel a portion of an original Request. 
-5. A Placer may wish to change their original Request. For example, a provider may indicate that they would now like a CT without contrast, rather than a CT with contrast.
-6. A Fulfiller may indicate that they will not fulfill a request.
-7. A Fulfiller may indicate that they will not Fulfill a request, and that in their opinion, the original Request is contraindicated and should be cancelled.
-8. A Fulfiller may propose that an alternative service should be performed. 
-9. A Fulfiller may indicate that they have attempted, but failed to fullfill a Request. For example, a specimen may have been dropped.
-10. A Fulfiller may perform an alternative service under the authority of the original Request
+A Placer may:
+
+1. Decide that they are no longer interested in the outcome of a Request they previously authorized, and may cancel their authorization. Absent business agreements to the contrary, this could occur before or after a fulfiller has begun work.
+2. Decide that a Fulfiller should no longer fulfill a Request. Absent business agreements to the contrary, this could occur before or after a fulfiller has begun work. This guide includes a mechanism for Placers and Fulfillers to coordinate if needed.
+3. Decide that a request they initiated should not be performed, by anyone, and may wish to ensure the original Request is not acted upon.
+4. Wish to cancel a portion of an original Request. 
+5. Wish to change their original Request. For example, a provider may indicate that they would now like a CT without contrast, rather than a CT with contrast.
+
+Likewise a Fulfiller may:
+1. Indicate that they will not fulfill a request.
+2. Indicate that they will not Fulfill a request, and that in their opinion, the original Request is contraindicated and should be cancelled.
+3. Propose that an alternative service should be performed. 
+4. Indicate that they have attempted to fullfill a Request, but failed. For example, a specimen may have been dropped.
+5. Perform an alternative service under the authority of the original Request
 
 
 Within COW, Request resource SHALL only be directly modified by the party which instantiated that resource. Parties may send Request and Task resources with an `.intent` of “Proposal” when they would like to suggest that another party change or cancel one of their Requests. If these changes are accepted, the original Request may be updated or a new Request may be created, optionally with `Request.replaces` referring back to the original Request.
@@ -163,6 +167,7 @@ If business agreements allow, a fulfiller may perform a service that is differen
 Any output generated from this new service may still be linked in the Task.output of the shared Coordination Task. Additionally, the output may be linked back to the original Request by following the chain of references.
 
 This also presents an alternative option if a Fulfiller could only  partially fulfill a request. For example, if a request is created that a patient undergo a Nuclear Medicine rest/stress test, and a patient can only complete the rest portion, the Fulfiller may indicate that they performed this alternative Procedure in `Task.output` of the Coordination Task and update `Task.status` and `Task.statusReason` to indicate partial fulfillment. Placers may decide whether this fulfills their original Request, and update `Request.status` if so, or initiate additional Tasks. 
+
 
 
 
