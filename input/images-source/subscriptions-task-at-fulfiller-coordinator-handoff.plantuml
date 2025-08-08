@@ -1,6 +1,6 @@
 @startuml
 autonumber
-svgDimensionStyle true
+skinparam svgDimensionStyle false
 participant Placer order 10
 participant Coordinator order 20
 participant Fulfiller_A order 30 
@@ -61,4 +61,5 @@ Fulfiller_A --> Fulfiller_A: Proceed to perform service
 
 ||20||
 @enduml
+
 
