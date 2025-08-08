@@ -1,5 +1,5 @@
 @startuml
-skinparam svgDimensionStyle false
+skinparam svgDimensionStyle true
 title Task at Fulfiller Overview
 
 autonumber
@@ -70,3 +70,4 @@ group Optionally - if Placer needs to surface that outcome in future
 end
 
 @enduml
+
