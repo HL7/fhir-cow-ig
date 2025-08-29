@@ -2,6 +2,15 @@ The Task resource is a FHIR resource dedicated to the management of workflows;
 Except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
+The Task resource can convey the information for facilitating, steering or documenting the execution:
+- Intended Performer - the coded entity that is expected to execute the Request
+  - `.requesterPerformer` on `Task`
+  - `.perfomerType` and `.performer` this is also available in the Request Pattern
+-  Performer - the entity that actually performed the Request
+   - In R5 and later `.performer` on `Task`
+   - In R4 this would be a pre-adopted extension
+- Owner - the entity that is responsible for the executing, delegating, rejecting...
+  - In R4 and later the `.owner` on `Task`
 
 This ImplementationGuide introduces two specific types of Task that are important for the execution of workflows:
 * **Coordination Task** - the preferred way to keep track of statuses, and requested and performed activities (see [profile](StructureDefinition-coordination-task.html)).
@@ -59,6 +68,7 @@ Implementers are invited to provide feedback on the use of Task.focus, and point
 Note to balloters: Throughout this implementation guide there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
 </div>
 {:.stu-note}
+
 
 
 
