@@ -157,6 +157,10 @@ pages:
       title: Post-Discharge Placement in SNF
       generation: markdown
      
+  artifacts.xml: 
+    title: IG Artifacts
+  downloads.md:
+    title: Downloads
 
 
 #  order-content.xml:
@@ -211,6 +215,8 @@ menu:
     
   Examples: examples.html
   Artifacts: artifacts.html
+  Support:
+    Downloads: downloads.html
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
