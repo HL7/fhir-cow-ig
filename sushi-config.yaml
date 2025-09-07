@@ -68,7 +68,7 @@ pages:
     title: Clinical Order Workflows - Home Page
     generation: markdown
   background.md:
-    title: Background - Scope and General Principles
+    title: Background - Goals and General Principles
     generation: markdown
   core-concepts.md:
     title: Core Concepts
@@ -156,7 +156,7 @@ pages:
     ex7-discharge-placement.md:
       title: Post-Discharge Placement in SNF
       generation: markdown
-     
+
   artifacts.xml: 
     title: IG Artifacts
   downloads.md:
@@ -217,6 +217,7 @@ menu:
   Artifacts: artifacts.html
   Support:
     Downloads: downloads.html
+
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
