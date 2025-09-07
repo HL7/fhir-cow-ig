@@ -13,7 +13,7 @@ Fulfiller <-- Fulfiller: Register Placer as a client
 Placer <-- Fulfiller: inform Placer of the FHIR endpoint on which SubscriptionStatus-notifications should be sent
 
 
-Placer --> Placer: Create administrative subscription for fulfiller on Tasks where they are Task.performer
+Placer --> Placer: Create an administrative subscription for the Fulfiller on Tasks for which they are designated as the Owner of the task
 ||20||
 
 
