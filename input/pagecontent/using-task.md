@@ -70,5 +70,12 @@ Note to balloters: Throughout this implementation guide there are references to 
 {:.stu-note}
 
 
+### Mangaging Sub-Tasks in a Workflow
 
+Except for the existence of a Coordination Task, this implementation guide does not impose requirements for what additional Tasks are created in a workflow or when this occurs. Authors of workflow-specific implementation guides may choose to define this.
 
+Implementation guide authors should be aware of three points when specifying further Tasks:
+
+1. The Task.owner element represents the party who currently has the baton for the Task. Task.performer represents parties who were previously involved in performing the request. If a workflow requires that is needed to tie actors to particular Task.outputs or workflow events, multiple Tasks can be beneficial.  
+2. Sub-tasks that are created in relation to the overall Coordination Task SHOULD refer back to the Coordination Task via Task.partOf.  
+3. The Placer may not need details on all of the individual steps taken by the Fulfiller. Parties are encouraged to ensure that a workflow's overall status of execution may be understood from the overall Coordination Task. This includes linking any Event outputs resulting from the fulfillment of the Request to the Coordination Task's Task.output. This could include, for example, DiagnosticReports, Procedures, Questionnaires, ImagingStudy resources, etc.
