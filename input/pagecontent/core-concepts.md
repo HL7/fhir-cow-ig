@@ -23,8 +23,12 @@ Examples include:
     * DiagnosticReports and Observations
     * CarePlans outlining proposed care
     * New ServiceRequests
- 
-{% include img.html img="relation-of-placer-request-task-output-filler.svg" caption="Figure 3.2.1 - Typical relations between Placer, Filler and key resources"%}
+
+<figure>
+  {% include relation-of-placer-request-task-output-filler.svg %}
+  <figcaption>Figure 3.2.1 - Typical relations between Placer, Filler and key resources</figcaption>
+</figure>
+ <p></p>
 
 
 ### Managing Access by Fulfillers:
