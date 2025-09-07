@@ -42,7 +42,7 @@ While many examples in this guide assume direct communication between a Placer a
 
 This type of “chain care” is common and introduces complexity—but also motivates many of the abstractions recommended in this guide. Consider a scenario where a request originates from an upstream actor (e.g., N–1), but a downstream fulfiller (e.g., N+1) needs access to information held by an earlier actor.
 
-{% include img.html img="sharing-info-with-intermediaries.png" %}
+{% include img.html img="sharing-info-with-intermediaries.png" caption="Figure 3.4.1 - Example options for sharing info across intermediaries"%}
 
 If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endpoint discoverability, (dynamic) client registration, shared scopes and business rules, etc.
 
