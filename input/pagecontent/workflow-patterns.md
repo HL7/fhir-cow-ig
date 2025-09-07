@@ -29,9 +29,7 @@ This section describes how Placers and Fulfillers may modify a request once it h
 * **Sharing outputs from an order**  
 How the outputs from a Request, such as a diagnostic result report or a consult note, may be linked back to the original Request and shared between actors. This includes how actors may make the Outputs discoverable for others involved in a patient's care later, even if the later actors can only contact the Placer. 
 
-<hr>
-<hr>
-<hr>
+<br>
 
 ### Overview Example - Coordination Task at Fulfiller with Optional Subscriptions
 The below is an overview of how a Request may be coordinated with the Coordination Task hosted at the Fulfiller. In this example, the Placer and the Fulfiller have pre-coordinated that the Placer is Subscribed to updates on Tasks that they originate. Note, however, that this is optional for the example: a Placer could query for updates on the Coordination Task at some expected date or ahead of their next visit with the patient. 
@@ -42,9 +40,7 @@ Many details are deferred for more detailed discussions elsewhere in this guide 
   {% include subscriptions-general-example-task-at-fulfiller.svg %} 
 </figure>
 
-<hr>
-<hr>
-<hr>
+<br>
 
 ### Overview Example - Subscriptions with Task at Placer
 The below is a similar overview in which the Coordination Task is hosted at the Placer. In this example, the Placer and the Fulfiller have pre-coordinated that the Fulfiller is Subscribed to Tasks that the Placer creates for them in which the Fulfiller is the expected Task.performer. 
@@ -57,9 +53,7 @@ The below is a similar overview in which the Coordination Task is hosted at the 
 
 {% include svg.html img="subscriptions-general-example-task-at-placer.svg" %}
 
-<hr>
-<hr>
-<hr>
+<br>
 
 ### Overview Example - Messaging
 Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfiller pre-coordinate their endpoints and events of interest, just as with Messaging. The key distinction is that (in this example, where we assume no FHIR servers may be queried RESTfully) the notifications must contain the information the Placer anticipates the Fulfiller will need. Just as in HL7 v2 messaging today, actors rely on shared identifiers and reliable messaging to coordinate State.
