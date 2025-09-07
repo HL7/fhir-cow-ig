@@ -56,7 +56,7 @@ The below is a similar overview in which the Coordination Task is hosted at the 
 <br>
 
 ### Overview Example - Messaging
-Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfiller pre-coordinate their endpoints and events of interest, just as with Messaging. The key distinction is that (in this example, where we assume no FHIR servers may be queried RESTfully) the notifications must contain the information the Placer anticipates the Fulfiller will need. Just as in HL7 v2 messaging today, actors rely on shared identifiers and reliable messaging to coordinate State.
+Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfiller pre-coordinate their endpoints and events of interest, just as with Subscription. The key distinction is that (in this example, where we assume no FHIR servers may be queried RESTfully) the notifications must contain the information the Placer anticipates the Fulfiller will need. Just as in HL7 v2 messaging today, actors rely on shared identifiers and reliable messaging to coordinate State.
 
 <figure>
   {% include pure-messaging-with-placer-identifiers.svg %} 
