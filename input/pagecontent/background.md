@@ -6,8 +6,11 @@ This guide helps specification authors working on Orders, Referrals, and Transfe
 * Identifying key decision points
 * Establishing shared terminology to streamline collaboration
 
+This guide was motivated by the various activities globally and seeks to align these efforts. Materials used in the drafting of this guide include, as a non-exhaustive list, the work by BSeR, the NL TA Notified Pull, AU Sparked. Requirements include those from different initiatives such as HL7 Belgium, IHE/GEMINI (Pharmacy, PaLM, Radiology).
+
+
 ### How Orders, Referrals, and Transfers Relate
-This guide considers Orders, Referrals and Transfers together, as the considerations for exchange are largely identical.
+Clinical order workflow (COW) aims to address orders placed in or directed to clinical settings. The term "order' is taken in this context to include what many groups may term "referrals" and "transfers", as the considerations for exchange and managing the request are largely identical.
 
 Historically, these terms have been delineated by the extent to which responsibility for a patient's care was transitioned or delegated between providers. As care has become more collaborative, it is often challenging to draw bright line distinctions between these terms.  
 
@@ -45,6 +48,7 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>Referral for physical therapy</li>
                 <li>Referral to psychiatry</li>
                 <li>Authorization to see Obstetrics (OB)/Maternal-Fetal Medicine (MFM)</li>
+                <li>SDOH (Social Determinants Of Health)</li>
               </ul>
             </li>
             <li>May be evaluative:
