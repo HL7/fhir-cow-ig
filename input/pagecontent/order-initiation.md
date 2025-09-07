@@ -40,13 +40,15 @@ Co-authoring, prior authorization can include different participants and can be 
 
 #### Actionable orders
 
-In FHIR, requests express authorizations, and are not intended to be actionable *per se*. An order becomes actionable if:
+In FHIR, requests express authorizations, and are not intended to be actionable *per se*. An order becomes actionable if one of the following is fulfilled:
 
 * it's tagged as actionable (using the ["actionable" tag](https://hl7.org/fhir/valueset-common-tags.html) in [`meta.tag`](https://build.fhir.org/valueset-common-tags.html))
 * there's a Task pointing to the request telling to fulfill it
 * there's a message or operation that implies it is to be actioned  
 
-It is **not recommended** to consider orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
+The FHIR Specification **recommends against** considering orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.  
+
+The Goal of the COW Implementation Guide is to describe how to express workflows for actionable Orders using the Task Resource as mentioned in the second bullet point."
 
 
 #### Ordering from Service/Product Catalogs
