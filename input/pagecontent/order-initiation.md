@@ -72,9 +72,9 @@ The interaction with catalogs may exist before or during the creation and update
 
 Protocols are sets of defined orders, possibly interdependent. Order sets may be ordered:
 * As group of orders, as defined in [grouping](order-grouping.html);
-* In a single request, if a designation or code exists for the order set. In this case, the order will be broken down:
-  * at the order placer when seeking fulfillment - thus becoming a group order. 
-  * at the fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order; additional orchestration may be done by grouping filler orders, with one task coordinating the orders, or several tasks - see order grouping.
+* In a single request, if one single designation or code exists for the order set. In this case, the order set may be broken down:
+  * at the order placer when seeking fulfillment - thus becoming a [group order](order-grouping.html). 
+  * at the fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order set; additional orchestration may be done by grouping filler orders, with one task coordinating the orders, or several tasks - see order grouping.
 
 
 
