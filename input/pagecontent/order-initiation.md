@@ -25,14 +25,14 @@ Order initiation refers to the different activities that may exist or be require
 #### Co-authoring
 In some cases, additional confirmation / sign-off is needed - this is common for special procedures, controlled substances.  
 In other cases, order creation follows different steps - resulting in co-authoring of the order. 
-This ImplementationGuide currently addresses fulfillment of orders, so this co-authoring is therefore not in the primary scope.   
+This Implementation Guide currently addresses fulfillment of orders, so this co-authoring is therefore not in the primary scope.   
 
 
 
 #### Prior Auth
 Prior Authorization is a common use case. Depending on the jurisdictions, it may happen as a rule, or may be required to prevent fraud, or to allow patients to decide considering also the costs, even if the processes and criteria are broadly different. This is also prior to execution and as such not a primary scope.
 
-Co-authoring, prior authorization can include different participants and can be predefined or *ad-hoc* processes. While this is not the focus of the present edition of this guidance, Implementers are invited to provide input on their needs, for consistent guidance where possible.
+Co-authoring, prior authorization can include different participants and can be predefined or *ad-hoc* processes. While this is not the focus of the present edition of this guidance, implementers are invited to provide input on their needs, for consistent guidance where possible.
 {:.stu-note}
 
 
@@ -40,14 +40,14 @@ Co-authoring, prior authorization can include different participants and can be 
 
 #### Actionable orders
 
-In FHIR, requests express authorizations, and are not intended to be actionable *per se*. An order becomes actionable if:
+In FHIR, requests express authorizations, and are not intended to be actionable *per se*. An order becomes actionable if one of the following is fulfilled:
 
 * it's tagged as actionable (using the ["actionable" tag](https://hl7.org/fhir/valueset-common-tags.html) in [`meta.tag`](https://build.fhir.org/valueset-common-tags.html))
 * there's a Task pointing to the request telling to fulfill it
 * there's a message or operation that implies it is to be actioned  
 
-It is **not recommended** to consider orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
-
+The FHIR Specification **recommends against** considering orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
+The Goal of the COW Implementation Guide is to describe how to express workflows for actionable Orders using the Task Resource as mentioned in the second bullet point.
 
 #### Ordering from Service/Product Catalogs
 In many systems, the "orderable" items are established in a catalog - sometimes referred to as a "formulary" for Medications. The service catalogs may present different types of functionalities on the services, like searching, clustering, or providing details on the orderable items.  
@@ -59,7 +59,7 @@ In many systems, the "orderable" items are established in a catalog - sometimes 
 
 The availability of catalogs and interactions with catalog services are a common dependency but are out of scope of this guidance.  They are mentioned here to acknowledge that:
 
-The interaction with catalogs may exist before or during the creation and update of orders. Catalog information can be downloaded and synchronized in advance, or may be queried for example before ordering, changing or   validating orders, or for checking or fulfilling orders. This interaction is orthogonal to the scope of this ImplementationGuide. For more details about order catalogs, users are invited to consult the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
+The interaction with catalogs may exist before or during the creation and update of orders. Catalog information can be downloaded and synchronized in advance, or may be queried for example before ordering, changing or   validating orders, or for checking or fulfilling orders. This interaction is orthogonal to the scope of this Implementation Guide. For more details about order catalogs, users are invited to consult the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
 
 * HL7 is producing guidance on order catalogs, namely the [Order Catalog Implementation Guide](https://hl7.org/fhir/uv/order-catalog).
 
