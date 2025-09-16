@@ -16,15 +16,15 @@ Placer --> Placer : Create local representation, ServiceRequest
 
 Placer -> Coordinator: POST Task (A)
 
-Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential fulfillers for service
+Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential Fulfillers for service
 
 Coordinator -> Fulfiller_A: POST Task (B) with rewritten URIs from Task (A)
 
-note over Coordinator, Fulfiller_A: Note: it is not required that the communication between the Coordinator\nand the Fullfillers be the same mechanism as that between the Placer and Coordinator
+note over Coordinator, Fulfiller_A: Note: it is not required that the communication between the Coordinator\nand the Fulfillers be the same mechanism as that between the Placer and Coordinator
 
 Coordinator -> Fulfiller_B: POST Task (C) with rewritten URIs from Task (A)
 
-Fulfiller_A <- Fulfiller_A: Process requst, create internal representation. 
+Fulfiller_A <- Fulfiller_A: Process request, create internal representation. 
 
 group if additional information needed:
 
@@ -46,7 +46,7 @@ Coordinator -> Coordinator: Update Task(A)
 
 Coordinator -> Placer: SubscriptionStatus notification indicating an\nupdate to their original Task (bid received or confirmed performer)
 
-group if placer must accept proposal:
+group if Placer must accept proposal:
 
     Placer -> Placer: review proposal
 

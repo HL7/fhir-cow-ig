@@ -41,14 +41,14 @@ care needs in supporting info.
 
 A provider may choose to create multiple
 ServiceRequests, either for related
-services or per fulfiller.
+services or per Fulfiller.
 end note
 
 
 note over Patient, Provider
-From here, the provider may notify multiple potential fulfillers.
+From here, the provider may notify multiple potential Fulfillers.
 
-The Placer may use different pattern with each fulfiller based on their 
+The Placer may use different pattern with each Fulfiller based on their 
 pre-coordination.  
 
 end note

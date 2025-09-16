@@ -4,8 +4,8 @@ autonumber
 skinparam svgDimensionStyle false
 title Request with Fulfiller Acceptance (Subscriptions - Task at Placer)
 == 1. Create Request ==
-    Placer -> Placer: Create Order, ServiceRequest, Task **per (potential) fulfiller**
-    Placer -> Placer: Create Subscription for Task on potential fulfiller's channel
+    Placer -> Placer: Create Order, ServiceRequest, Task **per (potential) Fulfiller**
+    Placer -> Placer: Create Subscription for Task on potential Fulfiller's channel
     Placer -> Fulfiller: POST SubscriptionStatus Notification bundle 
     
     note over Placer, Fulfiller
@@ -18,7 +18,7 @@ title Request with Fulfiller Acceptance (Subscriptions - Task at Placer)
     Task.basedOn is the ServiceRequest at the Placer. 
     Can include additional supporting info in ServiceRequest.info 
     or in the SubscriptionStatus with SubscriptionStatus.relatedQuery 
-    if fulfiller specific.
+    if Fulfiller specific.
     endnote
 
     note over Placer, Fulfiller
@@ -35,7 +35,7 @@ title Request with Fulfiller Acceptance (Subscriptions - Task at Placer)
     endnote
 
 group If Placer will review bids 
-    Placer --> Placer: Review Cancel tasks to other potential fulfiller's as needed
+    Placer --> Placer: Review Cancel tasks to other potential Fulfiller's as needed
     Placer -> Placer: Update Task.status, Task.businessStatus, etc.
     Placer -> Fulfiller: SubscriptionStatus Notification indicating status is updated and they 'won' the bid
     end 

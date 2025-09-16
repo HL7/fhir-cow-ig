@@ -13,20 +13,20 @@ Fulfiller <-- Fulfiller: Register Placer as a client
 Placer <-- Fulfiller: inform Placer of the FHIR endpoint on which SubscriptionStatus-notifications should be sent
 
 
-Placer --> Placer: Create administrative subscription for fulfiller on Tasks where they are Task.performer
+Placer --> Placer: Create administrative subscription for Fulfiller on Tasks where they are Task.performer
 ||20||
 
 
 == Create Request == 
 
-Placer -> Placer : Create Order, ServiceRequest, Task\n**per (potential) fulfiller**
+Placer -> Placer : Create Order, ServiceRequest, Task\n**per (potential) Fulfiller**
 
 Placer -> Fulfiller: POST SubscriptionStatus notification bundle
 
 note over Placer,Fulfiller
 SubscriptionStatus.notificationEvent.focus is the Task. 
 
-The placer may include the ServiceRequest and references from .supportingInfo in 
+The Placer may include the ServiceRequest and references from .supportingInfo in 
 .additionalContext
 end note
 
@@ -43,7 +43,7 @@ Fulfiller -> Placer : Update Task. businessStatus from 'requested' to 'accepted'
 
 group If Placer will review bids
     Placer -[hidden]>Fulfiller:
-    Placer --> Placer : Review. Cancel tasks to other potential fulfillers as needed
+    Placer --> Placer : Review. Cancel tasks to other potential Fulfillers as needed
     Placer -> Placer : Update Task.status, Task.businessStatus, etc. 
     Placer -> Fulfiller : SubscriptionStatus notification \nindicating status is updated and they 'won' the bid
 

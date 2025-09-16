@@ -13,7 +13,7 @@ Placer -> Placer: Update Task and Service Request.status == Completed
 ||10||
 
 note over Placer, Fulfiller
-    Interim statuses are also possible if a placer needs to review the outcome before 
+    Interim statuses are also possible if a Placer needs to review the outcome before 
     confirming the service is complete (like deciding whether to continue therapy). 
     endnote
 ||10||

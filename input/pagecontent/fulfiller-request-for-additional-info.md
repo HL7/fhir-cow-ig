@@ -9,7 +9,7 @@ Fulfillers can perform RESTful queries against Placer's FHIR servers to obtain i
 
 Placers may choose to indicate in their initial notifications how related information for a patient could be obtained. For example, it may not be obvious to a Fulfiller what combination of queries would allow them to obtain a patient's insurance information and consent from a Placer.
 
-At the same time, a Placer may wish to narrow what set of resources a fulfiller has access to; a Placer may wish to let a Fulfiller query for information related to ServiceRequests that have been assigned *to them*, without allowing the Fulfiller to see *all* ServiceRequests for a given service, including those that they've sent to the Fulfiller's competitor.
+At the same time, a Placer may wish to narrow what set of resources a Fulfiller has access to; a Placer may wish to let a Fulfiller query for information related to ServiceRequests that have been assigned *to them*, without allowing the Fulfiller to see *all* ServiceRequests for a given service, including those that they've sent to the Fulfiller's competitor.
 
 Likewise, a Placer may wish to limit a Fulfiller to accessing patient data only for patients to whom that Fulfiller is providing care.
 

@@ -9,7 +9,7 @@ Placer -> Placer: Create Order. ServiceRequest **and Task** Available for Query
 Placer -> Fulfiller: Message with Event for new Referral including references to ServiceRequest, Task, and supporting Info at Placer
 
 note over Placer, Fulfiller
-Task.basedOn points back to the ServiceRequest on the fulfiller's server. 
+Task.basedOn points back to the ServiceRequest on the Fulfiller's server. 
 Can include additional supporting info in ServiceRequest.info or in the Task if Fulfiller-specific
 endnote
 
@@ -41,7 +41,7 @@ group Optionally, if Placer needs to be able to surface that content in future:
     Placer -> Placer: Create / surface copy of output document with Meta.source == Fulfiller's document as source of truth
     
     note over Placer, Fulfiller
-    The DocumentReference, DiagnosticReport, etc. can also point back to the original ServiceRequest on the placer's system
+    The DocumentReference, DiagnosticReport, etc. can also point back to the original ServiceRequest on the Placer's system
     endnote
     
     group If Placer may later addend/modify that document:

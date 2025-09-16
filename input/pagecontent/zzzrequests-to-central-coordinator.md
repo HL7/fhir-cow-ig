@@ -7,6 +7,6 @@ Some common reasons for a central coordinator include:
 * Managing waitlists
 * Facilitating some parts of the exchange like endpoint discovery and client registration
 
-Later sections of this guide include details for a FHIR implementation to minimize the extent to which a requestor must be 'aware' of whether they are interacting with a central coordinator or a fulfiller. 
+Later sections of this guide include details for a FHIR implementation to minimize the extent to which a requestor must be 'aware' of whether they are interacting with a central coordinator or a Fulfiller. 
 
 {% include img.html img="request-central.png" %}

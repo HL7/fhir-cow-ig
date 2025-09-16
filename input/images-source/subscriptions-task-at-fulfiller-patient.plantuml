@@ -16,7 +16,7 @@ Placer -> Placer : Create local representation, ServiceRequest
 Placer -> Patient: Make ServiceRequest available to patient\n(paper req, QR code, patient portal, etc.)
 
 
-Patient -> Fulfiller: Patient may shop around. Finds fulfiller
+Patient -> Fulfiller: Patient may shop around. Finds Fulfiller
 
 ||20||
 

@@ -29,7 +29,7 @@ group if business agreement allows Fulfiller to accept:
     Fulfiller -> Placer: SubscriptionStatus notification to Placer with updated Task
 end
 ||20||
-group if placer needs to review proposal:
+group if Placer needs to review proposal:
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: prepare proposal
     Fulfiller -> Placer: SubscriptionStatus notification with updated Task
