@@ -68,7 +68,7 @@ pages:
     title: Clinical Order Workflows - Home Page
     generation: markdown
   background.md:
-    title: Background - Scope and General Principles
+    title: Background - Goals and General Principles
     generation: markdown
   core-concepts.md:
     title: Core Concepts
