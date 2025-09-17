@@ -13,18 +13,18 @@ This section addresses aspects of how orders are created that relate to FHIR wor
 How multiple requests for service (or multi-item requests) may be communicated and how dependencies between requests may be communicated and coordinated.
 
 * **Fulfiller determination**  
-After a request has been created, how a fulfiller for that service is selected. This could be direct assignment by a placer, assignment by a central triage or coordination office, or patient-selection.
+After a request has been created, how a Fulfiller for that service is selected. This could be direct assignment by a Placer, assignment by a central triage or coordination office, or patient-selection.
 
 * **Requests by a Fulfiller for additional information**  
 How potential Fulfillers may ask for additional information about a Request, either while determining if they can fulfill the Request or later.
 
 * **Cancelling and modifying orders**  
 This section describes how Placers and Fulfillers may modify a request once it has been created. This includes:
-    * A placer cancelling a request before service has begun
-    * A placer requesting that an in-progress request for service be cancelled
-    * A fulfiller proposing an alternative service back to the placer
-    * A fulfiller electing to perform a more specific service under their own authority
-    * A fulfiller informing a placer that they can no longer perform a service
+    * A Placer cancelling a request before service has begun
+    * A Placer requesting that an in-progress request for service be cancelled
+    * A Fulfiller proposing an alternative service back to the Placer
+    * A Fulfiller electing to perform a more specific service under their own authority
+    * A Fulfiller informing a Placer that they can no longer perform a service
 
 * **Sharing outputs from an order**  
 How the outputs from a Request, such as a diagnostic result report or a consult note, may be linked back to the original Request and shared between actors. This includes how actors may make the Outputs discoverable for others involved in a patient's care later, even if the later actors can only contact the Placer. 

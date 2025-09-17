@@ -1,10 +1,10 @@
-This section provides guidance for several mechanisms by which a fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms](https://www.hl7.org/fhir/exchanging.html) may be used provided that they adhere to the guidance on representing a request's state and for resource ownership.
+This section provides guidance for several mechanisms by which a Fulfiller may become aware of a request. Examples are provided that leverage pure REST, Subscriptions and Messaging. However, although this guidance is supplied, other [exchange mechanisms](https://www.hl7.org/fhir/exchanging.html) may be used provided that they adhere to the guidance on representing a request's state and for resource ownership.
 
-The ultimate fulfiller of an order may not be known at the time an order is first created. A placer may initiate and authorize:
-* A simple order, in which a placer creates a request and directs it to a specific performer who the placer is confident will make a best-effort attempt to fulfill the request. 
-* A simple referral, in which a placer creates a request for a specific intended performer, but the selected performer may decline to perform the requested service.
+The ultimate Fulfiller of an order may not be known at the time an order is first created. A Placer may initiate and authorize:
+* A simple order, in which a Placer creates a request and directs it to a specific performer who the Placer is confident will make a best-effort attempt to fulfill the request. 
+* A simple referral, in which a Placer creates a request for a specific intended performer, but the selected performer may decline to perform the requested service.
 * A request which a patient then uses to seek service at a place of their choosing.
-* A request which a placer directs to an expected performer, with the option that a patient may elect to receive the service elsewhere.
+* A request which a Placer directs to an expected performer, with the option that a patient may elect to receive the service elsewhere.
 * A request that may be broadcasted to several potential performers, in which any of them may claim the request.
 * A request sent to several potential performers, where the requestor and patient will then review proposals or bids sent back by the performers before selecting a definite performer.
 * A request to a central coordinator who will assign the request to a performer and notify the requestor of who will fulfill the request.
@@ -12,7 +12,7 @@ The ultimate fulfiller of an order may not be known at the time an order is firs
 
 ### Placer assigned
 
-In the most simple flow, the placer creates a request and indicates the specific fulfiller that should perform it. In this scenario, the placer is confident - based on pre-coordinated business and IT agreements, availability, etc. - that the performer won't decline the request.
+In the most simple flow, the Placer creates a request and indicates the specific Fulfiller that should perform it. In this scenario, the Placer is confident - based on pre-coordinated business and IT agreements, availability, etc. - that the performer won't decline the request.
 
 Based on the workflow of interest, the performer may or may not notify the requestor of an 'outcome' at a later time. 
 
@@ -76,7 +76,7 @@ Based on the workflow of interest, the performer may or may not notify the reque
 
 ### Request with acceptance
 
-When a requestor can't be certain of whether the fulfiller will be willing to perform a service (based on availability, insurance, etc.), they may ask the fulfiller to confirm that they accept the proposed service. If the performer declines to perform the service (or fails to respond within a pre-coordinated period), the requestor may choose to follow up with other potential performers. 
+When a requestor can't be certain of whether the Fulfiller will be willing to perform a service (based on availability, insurance, etc.), they may ask the Fulfiller to confirm that they accept the proposed service. If the performer declines to perform the service (or fails to respond within a pre-coordinated period), the requestor may choose to follow up with other potential performers. 
 
 {% include img.html img="request-accept.png" %}
 
@@ -158,11 +158,11 @@ Examples:
 
 ### Request with multiple performers
 
-Sometimes, a requestor may choose to immediately notify several potential performers that a service has been requested. If the requestor and the patient do not have a preference around who will perform the service, it may be that the first potential fulfiller to indicate availability may functionally 'claim' that service.
+Sometimes, a requestor may choose to immediately notify several potential performers that a service has been requested. If the requestor and the patient do not have a preference around who will perform the service, it may be that the first potential Fulfiller to indicate availability may functionally 'claim' that service.
 
 {% include img.html img="request-claim.png" %}
 
-This can be accomplished by leveraging the Request-with-Acceptance flow, and keeping a separate task per potential fulfiller. For brevity, only one flow is described here. 
+This can be accomplished by leveraging the Request-with-Acceptance flow, and keeping a separate task per potential Fulfiller. For brevity, only one flow is described here. 
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -183,7 +183,7 @@ This can be accomplished by leveraging the Request-with-Acceptance flow, and kee
 
 ### Request with multiple performers with bidding
 
-Alternatively (and more often), a requestor may notify one or more potential fulfillers that they have a which must be performed. Those potential fulfillers may respond back with a 'bid' describing the service they could perform. The details of that 'bid' will vary by care-domain, but may indicate the performer's availability, the details of a more specific service they would perform, cost, information about the specific performer who may provide the service, etc.
+Alternatively (and more often), a requestor may notify one or more potential Fulfillers that they have a which must be performed. Those potential Fulfillers may respond back with a 'bid' describing the service they could perform. The details of that 'bid' will vary by care-domain, but may indicate the performer's availability, the details of a more specific service they would perform, cost, information about the specific performer who may provide the service, etc.
 
 The requestor and the patient may then review the information received from potential performers and then decide which specific performer will be used. 
 
@@ -218,9 +218,9 @@ Some common reasons for a central coordinator include:
 
 {% include img.html img="request-central.png" %}
 
-Given the variability, this section is provided only for illustrative value. This section outlines two potential configurations (of several) based on the capabilities of the broker. The intent of the first example is that (with regards to exchange functionality) the Placer need be only minimally aware of whether they are interacting with a coordinator or with a fulfiller directly. 
+Given the variability, this section is provided only for illustrative value. This section outlines two potential configurations (of several) based on the capabilities of the broker. The intent of the first example is that (with regards to exchange functionality) the Placer need be only minimally aware of whether they are interacting with a coordinator or with a Fulfiller directly. 
 
-In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this example, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to facilitate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between placers and fulfillers.  
+In the second flow, the coordinator may identify relevant service providers, triage the request, and even assign the request. In this example, once the assignment has occurred, the Placer then interacts directly with the designated Fulfiller. This saves on the need for the Coordinator to facilitate rewrites or for Placers to track the source of outputs, but may require greater pre-coordination to facilitate client registration, endpoint discovery, etc. between Placers and Fulfillers.  
 
 Other IGs may build on top of this to include details of the endpoint discovery, handling holds the coordinator may place on an assigned Fulfiller, tracking authorization from a coordinator, etc. 
 

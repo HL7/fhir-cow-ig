@@ -4,14 +4,14 @@ This guide requires that in circumstances where FHIR servers are prevalent and w
 
 A Request resource SHALL only ever be directly modified by the party which instantiated that resource. 
 
-In such circumstances, the shared coordinating Task used by both the placer and fulfiller may be hosted on either the placer’s FHIR server or the fulfiller's FHIR server as the circumstances demand. Trading partners must decide as part of their pre-coordinated activity where the shared status-tracking Task will be hosted.
+In such circumstances, the shared coordinating Task used by both the Placer and Fulfiller may be hosted on either the Placer’s FHIR server or the Fulfiller's FHIR server as the circumstances demand. Trading partners must decide as part of their pre-coordinated activity where the shared status-tracking Task will be hosted.
  
 As general guidance, this guide recommends that [Request resource].replaces be used when one Request replaces another and use of Request resources and Tasks  with an intent of “Proposal” when one actor would like to suggest that the other authorize an action.
 
 <a name="fulfCancel"></a>
 ### Placer Initiated Cancellations
 
-This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a placer sends a cancellation request to the fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a Placer sends a cancellation request to the Fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
@@ -38,7 +38,7 @@ Request Resource
 ```
 Note that this guide makes no requirements around whether a Placer may cancel the ServiceRequest. This guide does not require that the Placer first check the status of the Coordination Task before cancelling the Request. Such requirements may be imposed via business agreements. Placers SHALL create or update a Coordination Task to indicate cancellation, in  addition to updating the ServiceRequest.status. 
  
-Also note that even once a Coordination Task is in-progress, Fillers may choose to immediately accept requests for cancellation per business agreements; user input at the fulfiller is not required.  
+Also note that even once a Coordination Task is in-progress, Fillers may choose to immediately accept requests for cancellation per business agreements; user input at the Fulfiller is not required.  
 
 
 Upon receiving the request, the filler accepts or rejects the cancellation by updating the cancellation request task `.status`.  
@@ -97,7 +97,7 @@ Please provide a comment with your ballot return.
 
 ### Fulfiller Decline to Perform:
 
-This flow is equivalent to the normal flow up to the point that a placer first notifies a potential fulfiller of a service request. In this flow, a fulfiller declines to perform the service, and may or may not specify a reason. 
+This flow is equivalent to the normal flow up to the point that a Placer first notifies a potential Fulfiller of a service request. In this flow, a Fulfiller declines to perform the service, and may or may not specify a reason. 
 
 ```
 Request Resource:
@@ -122,9 +122,9 @@ AuthorizationCancellationRequest Task:
 
 ### Fulfiller Proposal for Particular or Alternative Service
 
-This flow is equivalent to the normal flow through the step that a placer notifies an intended performer of an available service request. The potential fulfiller in this flow then notifies the placer of a proposal for a specific or alternative service. 
+This flow is equivalent to the normal flow through the step that a Placer notifies an intended performer of an available service request. The potential Fulfiller in this flow then notifies the Placer of a proposal for a specific or alternative service. 
 
-This could be expected (such as a bid) or a proposed modification to the original request for which the fulfiller seeks approval (as in many cases, the placer need not be aware of the specifics of what the Fulfiller is performing).
+This could be expected (such as a bid) or a proposed modification to the original request for which the Fulfiller seeks approval (as in many cases, the Placer need not be aware of the specifics of what the Fulfiller is performing).
 
 ```
 Request Resource (Original):
@@ -138,7 +138,7 @@ Task:
     * Code: Fulfill
     * Focus: initial-request
     * Output (0..*)  
-      * Type: Alternative (exact valueset TBD)
+      * Type: Alternative (exact value set TBD)
       * Value: a new Request resource (proposed) – see below
 
 Request Resource (proposed):
@@ -146,22 +146,22 @@ Request Resource (proposed):
     * Intent: Proposal
 ```
 
-A placer may accept that proposal by:
+A Placer may accept that proposal by:
 1. Optionally – creating a new Request that matches the proposal, updating the status of their original Request to Revoked, and indicating in Request.replaces on the new request that it is a replacement. This Request may include the proposal in Request.basedOn
-2. Sending a Task back to the fulfiller with Task.Focus set to the replacement Request or proposal and an intent of Order.
+2. Sending a Task back to the Fulfiller with Task.Focus set to the replacement Request or proposal and an intent of Order.
 
 ### Fulfiller Selection of a More Specific Service (Under Original Authority)
 
-Fulfillers, as specialists, may elect to perform a more specific service than what was originally requested by a placer. For example, a protocolling radiologist may determine that a request for imaging should be performed as a specific procedure. The more specific service may or may not be of interest to the placer. If the fulfiller needs to surface the Request corresponding to the more specific service they will perform, they may create a new Request with Request.replaces referencing the Placer’s Request. 
+Fulfillers, as specialists, may elect to perform a more specific service than what was originally requested by a Placer. For example, a protocolling radiologist may determine that a request for imaging should be performed as a specific procedure. The more specific service may or may not be of interest to the Placer. If the Fulfiller needs to surface the Request corresponding to the more specific service they will perform, they may create a new Request with Request.replaces referencing the Placer’s Request. 
 
 Any output generated from this new service may still be linked in the Task.output of the shared Coordination Task. Additionally, the output may be linked back to the original Request by following the chain of references.
 
 Such a scenario may also occur in the case that a procedure could not be completed as originally ordered. For example, if a request is created that a patient undergo a Nuclear Medicine rest/stress test, in some circumstances a patient may only be able to perform the rest portion. 
 
 ### Fulfiller Unable to Perform:
-In some scenarios, a fulfiller who initially accepted a request finds that they can no longer perform the requested service. Examples include when a specimen is dropped or if a bed in a long term care facility didn’t become available when expected. 
+In some scenarios, a Fulfiller who initially accepted a request finds that they can no longer perform the requested service. Examples include when a specimen is dropped or if a bed in a long term care facility didn’t become available when expected. 
 
-Such scenarios may be represented like the below. The fulfiller may update their shared Coordination Task to indicate that the attempt failed. A placer may then decide whether to cancel the request, to initiate Tasks to others to fulfill the request, etc.
+Such scenarios may be represented like the below. The Fulfiller may update their shared Coordination Task to indicate that the attempt failed. A Placer may then decide whether to cancel the request, to initiate Tasks to others to fulfill the request, etc.
 ```
 Request Resource:
     *  Status: active

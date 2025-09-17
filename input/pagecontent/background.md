@@ -75,7 +75,7 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>Some lab in the network <em>will</em> perform this test</li>
               </ul>
             </li>
-            <li><em>Usually</em> the recipient can't refuse to perform a service, although depending on the business agreements, they may be allowed to modify the request, such as by selecting a more specific service to perform. Additionally, fulfillers may indicate they are not able to fulfill the request for some reason, such as a specimen's condition or quantity.
+            <li><em>Usually</em> the recipient can't refuse to perform a service, although depending on the business agreements, they may be allowed to modify the request, such as by selecting a more specific service to perform. Additionally, Fulfillers may indicate they are not able to fulfill the request for some reason, such as a specimen's condition or quantity.
             </li>
           </ul>
         </td>
@@ -91,9 +91,9 @@ In reviewing other locale and care-domain specific work, this specification's au
 1. Considerations for minimizing data access
 2. Accommodating interactions with systems that may not yet support robust (and highly available) FHIR servers
 
-**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
+**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what Fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
 
-**Groups prioritizing (2)** often focus on FHIR Messaging, which leads to considerations similar to those in HL7 v2 around broadcast interfaces and whether to include all information a fulfiller _might_ need to process a request in the notification.
+**Groups prioritizing (2)** often focus on FHIR Messaging, which leads to considerations similar to those in HL7 v2 around broadcast interfaces and whether to include all information a Fulfiller _might_ need to process a request in the notification.
 
 This guide is designed to support both groups. For those focused on (2), it offers a path toward RESTful exchanges as the ecosystem develops. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity. Often, a specialist receiving a referral is in the best position to know what data is relevant. The Core Concepts section provides a brief description for how Placers may limit Fulfillers access to data to those for whom they have received a Request. 
 
@@ -115,7 +115,7 @@ This section provides context on the main FHIR-based mechanisms for pushing cont
 **RESTful POST of Resources (Creates or Updates)**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
 * Actors must pre-coordinate where the definitive instances of shared FHIR resources will be hosted, when they should be exchanged, who can update them, and under what circumstances.
-* Note that more complex transactions may be needed. For example, if a placer attempted to POST a ServiceRequest (which is not advised in this guide), the parties must agree on how to reference the patient; e.g. whether the client must use $match to obtain the recipient's Patient ID, or if the server will perform matching.
+* Note that more complex transactions may be needed. For example, if a Placer attempted to POST a ServiceRequest (which is not advised in this guide), the parties must agree on how to reference the patient; e.g. whether the client must use $match to obtain the recipient's Patient ID, or if the server will perform matching.
 
 **Batch or Transaction bundles:**
 * These may operate similar to the RESTful Create and Update described above, but provide a mechanism for a client to submit several transactions as a set, which can reduce network traffic. This guide does not explore this option in detail.

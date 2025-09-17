@@ -55,7 +55,7 @@ Instance:    COWCancellationTask
 InstanceOf:  CancellationRequestTask
 Usage:       #example
 Title:       "COW Fulfillment Cancellation Task"
-Description: "Example of a COW cancellation task created by the placer in order to indicate to the fulfiller that their execution of the request needs to be cancelled."
+Description: "Example of a COW cancellation task created by the Placer in order to indicate to the Fulfiller that their execution of the request needs to be cancelled."
 * id                  = "cow-cancellation-task-example"
 * identifier.value    = "e5ffec7e-4b00-4a9b-88db-e9c848aed46c"
 * identifier.system   = "https://placer.example.org/cpoe"
@@ -68,7 +68,7 @@ Instance:    COWAuthorizationCancellationTask
 InstanceOf:  CancellationRequestTask
 Usage:       #example
 Title:       "COW Authorization Cancellation Task"
-Description: "Example of a COW cancellation task created by the fulfiller in order to request from the placer that the authorized service is cancelled."
+Description: "Example of a COW cancellation task created by the Fulfiller in order to request from the Placer that the authorized service is cancelled."
 * id                  = "cow-authorization-cancellation-task-example"
 * identifier.value    = "62f22c58-44d5-41ef-858b-f5722866b5cd"
 * identifier.system   = "https://filler.example.org/lab"

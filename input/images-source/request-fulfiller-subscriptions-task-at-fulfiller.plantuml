@@ -10,7 +10,7 @@ title Request with Fulfiller Acceptance (Subscriptions - Task at Fulfiller)
     Placer -> Fulfiller: Task.Create
     note over Placer, Fulfiller
     Task.basedOn is the ServiceRequest at the Placer. Can include additional supporting info in ServiceRequest.info 
-    or in the SubscriptionStatus with SubscriptionStatus.relatedQuery if fulfiller specific.
+    or in the SubscriptionStatus with SubscriptionStatus.relatedQuery if Fulfiller specific.
     endnote
     note over Placer, Fulfiller
     Placer can end the Subscription to a given Fulfiller
@@ -38,7 +38,7 @@ opt If Fulfiller will perform a more specific service
 end
     
 == 2. Perform Service == 
-group If fulfiller creating an output document
+group If Fulfiller creating an output document
     Fulfiller <- Fulfiller: Performs Service, creates Output Document
     Fulfiller <- Fulfiller: Updates Task B - Task.output == Outcome document
 end

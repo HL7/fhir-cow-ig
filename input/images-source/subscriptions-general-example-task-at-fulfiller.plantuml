@@ -45,7 +45,7 @@ end
 
 
 ==Perform Service==
-group If fulfiller creating an output document
+group If Fulfiller creating an output document
     Fulfiller -[hidden]> Placer:
     Fulfiller <- Fulfiller: Performs Service, creates Output
     Fulfiller <- Fulfiller: Updates Task.output == Output
@@ -55,7 +55,7 @@ Fulfiller <- Fulfiller: Update Task.businessStatus
 
 Fulfiller -> Placer: SubscriptionStatus Notification for Task update
 
-group Optionally, if placer needs to be able to review the output
+group Optionally, if Placer needs to be able to review the output
     Fulfiller -[hidden]> Placer:
     Placer -> Fulfiller: Reads output via Task.output
 end

@@ -3,7 +3,7 @@ Implementers often consider how to give to the order filler all the information 
 How to make that information available depends on a few aspects:
 
 * Whether that information is limited and can be determined upfront?
-* The relationship between order placer and order filler (for that specific order context)
+* The relationship between order Placer and order Fulfiller (for that specific order context)
 
 
 

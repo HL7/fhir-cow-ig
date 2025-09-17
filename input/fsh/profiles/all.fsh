@@ -137,7 +137,7 @@ Profile: CancellationRequestTask
 Parent: Task
 Id: cancellation-request-task
 Title: "Cancellation Request Task"
-Description: "A task to indicate a placer-initiated cancellation of a request fulfillment."
+Description: "A task to indicate a Placer-initiated cancellation of a request fulfillment."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS 

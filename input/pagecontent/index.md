@@ -16,7 +16,7 @@ This guide is split into the below sections.
 
 - **Core Concepts** - describes actors and the key FHIR resources and concepts used in this guide. We suggest reading this section before proceeding further. This section also includes the basic model for representing the state of a Request from the time it is placed to its fulfillment. 
 
-- **Workflow Patterns** - contains an overview of common workflows relevant to orders, referrals, and transfers, and how these may be combined and represented in the FHIR exchanges and state model described in the Core Concepts section. This includes how placers notify potential fulfillers of a Request, how fulfillers request additional information, and how Outputs may be shared. Each workflow is accompanied by a basic FHIR pattern or resources description.
+- **Workflow Patterns** - contains an overview of common workflows relevant to orders, referrals, and transfers, and how these may be combined and represented in the FHIR exchanges and state model described in the Core Concepts section. This includes how Placers notify potential Fulfillers of a Request, how Fulfillers request additional information, and how Outputs may be shared. Each workflow is accompanied by a basic FHIR pattern or resources description.
 
 - **Examples** - this section provides informative guidance for how the concepts developed in this guide may be applied to specific care domains. It includes basic examples such as lab ordering and resulting and post-discharge placement for patients needing ongoing care. These scenarios use various FHIR exchange mechanisms to validate and demonstrate the robustness of the chosen approach.
 
@@ -34,9 +34,9 @@ Several challenges affect referrals, orders, and transfers—particularly in cro
 
 * **Workflow management and tracking** – tracking the status of execution; coordinating responsibilities, tracking request status, and managing earlier steps in the process.
   
-* **Sharing supporting information** – it's often difficult to include all relevant background with a request. For example, HL7 v2 struggles to associate a surgical consult with a specific imaging study. This guide offers ways to share supporting data, though it doesn’t cover how fulfillers communicate their information requirements (e.g., via order questionnaires).
+* **Sharing supporting information** – it's often difficult to include all relevant background with a request. For example, HL7 v2 struggles to associate a surgical consult with a specific imaging study. This guide offers ways to share supporting data, though it doesn’t cover how Fulfillers communicate their information requirements (e.g., via order questionnaires).
   
-* **Requesting additional information** – fulfillers may need information not already in the chart and not always required for similar services, making ad hoc follow-ups necessary.
+* **Requesting additional information** – Fulfillers may need information not already in the chart and not always required for similar services, making ad hoc follow-ups necessary.
 
 * **Closing the loop** – ensuring outcomes (e.g., consult notes, imaging results, care plans) are shared back with the initiating provider.
 
@@ -52,13 +52,13 @@ This guide outlines how the following workflow aspects can be supported using FH
   
 * **Request notification** – A Placer notifies a (potential) Fulfiller of a request, including necessary supporting information for assessing fulfillment.
   
-* **Information requests from performers** – May include RESTful queries, letters requiring action by the placer, or instructions (e.g., to order a pre-service blood test).
+* **Information requests from performers** – May include RESTful queries, letters requiring action by the Placer, or instructions (e.g., to order a pre-service blood test).
   
 * **Coordination of fulfillment** – Between the Placer, patient, and potential Fulfillers to determine who will fulfill the request.
   
 * **Request updates from Placers** – Such as cancellations, added information, or patient demographic changes.
   
-* **Status updates from fulfillers** – Communicating progress or changes in request handling.
+* **Status updates from Fulfillers** – Communicating progress or changes in request handling.
   
 * **Outcome sharing** – Including results, consult notes, or notifications that a request could not be completed.
 
@@ -71,7 +71,7 @@ The following areas are important for designing full end-to-end workflows, but a
   
 * **Provider directories** – Identifying providers, their affiliations, and electronic endpoints.
   
-* **Service catalogs** - what tests, procedures, or other services a fulfiller can perform, and what information they would require to perform a service or to assess their ability to perform a service (such as their order-specific questions).
+* **Service catalogs** - what tests, procedures, or other services a Fulfiller can perform, and what information they would require to perform a service or to assess their ability to perform a service (such as their order-specific questions).
   
 * **Decision support and prior authorization** - this IG provides only minimal guidance on workflow steps that occur before the creation of an actionable request for service.
   

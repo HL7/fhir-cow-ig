@@ -8,7 +8,7 @@ Placer <--> Fulfiller: Precoordinate events / topics of interest
 Placer -> Placer: Create Order. ServiceRequest Available for Query
 Placer -> Fulfiller: Task.create
 
-note over Placer, Fulfiller: Task.basedOn points back to the ServiceRequest on the fulfiller's server.\nCan include additional supporting info in ServiceRequest.info or in the Task if Fulfiller-specific.\nPlacer can cancel that task whenever they want.
+note over Placer, Fulfiller: Task.basedOn points back to the ServiceRequest on the Fulfiller's server.\nCan include additional supporting info in ServiceRequest.info or in the Task if Fulfiller-specific.\nPlacer can cancel that task whenever they want.
 
 Fulfiller -> Placer: Query ServiceRequest.supportingInfo, ServiceRequest.reason, etc.
 Fulfiller <- Fulfiller: Update Task.businessStatus 'requested' => Accepted
@@ -47,7 +47,7 @@ Placer -> Placer: Update ServiceRequest.status == Completed
 
 group Optionally if Placer needs to be able to surface that content in future
     Placer -> Placer: Create / surface copy of output document with Meta.source == Fulfiller's document as source of truth
-    note over Placer, Fulfiller: the DocumentReference, DiagnosticReport, etc. can also point back to the original ServiceRequest on the placer's system
+    note over Placer, Fulfiller: the DocumentReference, DiagnosticReport, etc. can also point back to the original ServiceRequest on the Placer's system
     group If Placer may later addend/ modify that document
         Placer -> Placer: Placer updates their copy, Meta.source, and Provenance
         Placer -> Fulfiller: Sends Message back to Fulfiller. Event for Correction. Have the Fulfiller's Output document as .focus, and include their correction.

@@ -16,7 +16,7 @@ Placer --> Placer : Create local representation, ServiceRequest
 
 Placer -> Coordinator: POST Task (A)
 
-Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential fulfillers for service
+Coordinator -> Coordinator: Create Internal Representation,check\nlist of potential Fulfillers for service
 
 Coordinator -> Coordinator: Determine by some criteria an\nintended performer (availability, etc.)
 
