@@ -4,7 +4,7 @@ except in very simple workflows, it is expectable that the Task resource will be
 
 The Task resource can convey the information for facilitating, steering or documenting the execution:
 - Intended Performer - the coded entity that is expected to execute the Request
-  - `.requesterPerformer` on `Task`
+  - `.requestedPerformer` on `Task`
   - `.perfomerType` and `.performer` this is also available in the Request Pattern
 -  Performer - the entity that actually performed the Request
    - In R5 and later `.performer` on `Task`
@@ -76,6 +76,6 @@ Except for the existence of a Coordination Task, this implementation guide does 
 
 Implementation guide authors should be aware of three points when specifying further Tasks:
 
-1. The Task.owner element represents the party who currently has the baton for the Task. Task.performer represents parties who were previously involved in performing the request. If a workflow requires that is needed to tie actors to particular Task.outputs or workflow events, multiple Tasks can be beneficial.  
-2. Sub-tasks that are created in relation to the overall Coordination Task SHOULD refer back to the Coordination Task via Task.partOf.  
-3. The Placer may not need details on all of the individual steps taken by the Fulfiller. Parties are encouraged to ensure that a workflow's overall status of execution may be understood from the overall Coordination Task. This includes linking any Event outputs resulting from the fulfillment of the Request to the Coordination Task's Task.output. This could include, for example, DiagnosticReports, Procedures, Questionnaires, ImagingStudy resources, etc.
+1. The `Task.owner` element represents the party who currently has the baton for the Task. `Task.performer` represents parties who were previously involved in performing the request. If a workflow requires that is needed to tie actors to particular `Task.outputs` or workflow events, multiple Tasks can be beneficial.  
+2. Sub-tasks that are created in relation to the overall Coordination Task SHOULD refer back to the Coordination Task via `Task.partOf`.  
+3. The Placer may not need details on all of the individual steps taken by the Fulfiller. Parties are encouraged to ensure that a workflow's overall status of execution may be understood from the overall Coordination Task. This includes linking any Event outputs resulting from the fulfillment of the Request to the Coordination Task's `Task.output`. This could include, for example, DiagnosticReports, Procedures, Questionnaires, ImagingStudy resources, etc.
