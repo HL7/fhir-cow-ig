@@ -46,8 +46,10 @@ In FHIR, requests express authorizations, and are not intended to be actionable 
 * there's a Task pointing to the request telling to fulfill it
 * there's a message or operation that implies it is to be actioned  
 
-The FHIR Specification **recommends against** considering orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.
-The Goal of the COW Implementation Guide is to describe how to express workflows for actionable Orders using the Task Resource as mentioned in the second bullet point.
+The FHIR Specification **recommends against** considering orders actionable outside these scenarios, as it may prevent system expansion and/or break interoperability with systems that follow FHIR workflow recommendations.  
+
+The Goal of the COW Implementation Guide is to describe how to express workflows for actionable Orders using the Task Resource as mentioned in the second bullet point."
+
 
 #### Ordering from Service/Product Catalogs
 In many systems, the "orderable" items are established in a catalog - sometimes referred to as a "formulary" for Medications. The service catalogs may present different types of functionalities on the services, like searching, clustering, or providing details on the orderable items.  
@@ -70,9 +72,9 @@ The interaction with catalogs may exist before or during the creation and update
 
 Protocols are sets of defined orders, possibly interdependent. Order sets may be ordered:
 * As group of orders, as defined in [grouping](order-grouping.html);
-* In a single request, if a designation or code exists for the order set. In this case, the order will be broken down:
-  * at the order Placer when seeking fulfillment - thus becoming a group order. 
-  * at the Fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order; additional orchestration may be done by grouping Fulfiller orders, with one task coordinating the orders, or several tasks - see order grouping.
+* In a single request, if one single designation or code exists for the order set. In this case, the order set may be broken down:
+  * at the order Placer when seeking fulfillment - thus becoming a [group order](order-grouping.html). 
+  * at the Fulfiller side, upon initiating fulfillment. In this case, the orchestration is done by one Task for the entire order set; additional orchestration may be done by grouping Fulfiller orders, with one task coordinating the orders, or several tasks - see [order grouping](order-grouping.html).
 
 
 

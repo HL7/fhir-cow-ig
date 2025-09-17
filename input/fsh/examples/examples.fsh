@@ -21,7 +21,7 @@ Instance:    COWCoordinationTask
 InstanceOf:  CoordinationTask
 Usage:       #example
 Title:       "COW Coordination Task"
-Description: "Example of a COW 'please fullfil' coordination task"
+Description: "Example of a COW 'please fulfill' coordination task"
 * id                  = "cow-coordination-task-example"
 * identifier.value    = "f085e001-2e55-4ae0-aa1b-f5e17ec42d91"
 * identifier.system   = "https://placer.example.org/cpoe"

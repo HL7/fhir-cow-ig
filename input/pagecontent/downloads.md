@@ -1,26 +1,16 @@
-### Package
+This page provides a list of download packages that may be helpful for implementers and other readers of this implementation guide.
 
-This is the technical package containing the artifacts in this Implementation Guide:
+**NOTE:** This FHIR implementation guide (and all other FHIR IGs) have links to content in the FHIR core specification and, in most cases, to other IGs. While it is possible to download these specifications and navigate them locally, hyperlinks *between* specifications will always refer to the web-hosted version of the specification. 
+If you are working offline, you'll need to look up the corresponding page in your local copy when navigating such
+links.
 
-* [IG Package](package.tgz)
+Download the entire implementation guide for local browsing [here](full-ig.zip).  
 
-### Definitions
+Download the FHIR core specification [here]({{site.data.fhir.path}}fhir-spec.zip).  
 
-In addition to the above, we have provided format-specific _definitions_:
-
-* [XML](definitions.xml.zip)
-* [JSON](definitions.json.zip)
-* [TTL](definitions.ttl.zip)
-
-These files should be the first choice whenever generating any implementation artifacts since they contain all of the rules about what makes these profiles valid.
-Implementers will still need to be familiar with the content of the specification and profiles that apply in order to make a conformant implementation.
-See the overview on [validating FHIR profiles and resources](http://hl7.org/fhir/validation.html) for more information about validating profiles and how to use these artifacts.
+| **Artifact Definitions** | [XML](definitions.xml.zip) | [JSON](definitions.json.zip) | [Turtle](definitions.ttl.zip) |
+|--------------------------|----------------------------|------------------------------|--------------------------------|
+| **Examples**             | [XML](examples.xml.zip)    | [JSON](examples.json.zip)    | [Turtle](examples.ttl.zip)     |
 
 
-### Examples
-
-All examples used in this Implementation Guide:
-
-* [XML](examples.xml.zip)
-* [JSON](examples.json.zip)
-* [TTL](examples.ttl.zip)
+{% include cross-version-analysis-inline.xhtml %}
