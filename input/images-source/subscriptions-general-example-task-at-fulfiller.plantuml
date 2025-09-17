@@ -15,7 +15,7 @@ Fulfiller <-- Fulfiller: Create an administrative subscription for the Placer on
 
 Fulfiller --> Placer: Inform Placer on their own channel
 
-Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which\nthere is a Task designating the Fulfiller as the intended performer in Task.performer
+Placer --> Placer: Create an administrative subscription for the Fulfiller on ServiceRequests for which there is a Task designating the fulfiller as the Owner of the task
 
 note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\nOther subscriptions, like for Patient Demographics info, are also possible.\nNote that the subscription is just an identifier and need not be a surfacable resource.
 

@@ -47,7 +47,7 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>Referral for physical therapy</li>
                 <li>Referral to psychiatry</li>
                 <li>Authorization to see Obstetrics (OB)/Maternal-Fetal Medicine (MFM)</li>
-                <li>SDOH referral for community services</li>
+                <li>SDOH (Social Determinants Of Health)</li>
               </ul>
             </li>
             <li>May be evaluative:

@@ -67,7 +67,7 @@ Profile: COWMessageHeader
 Parent: MessageHeader
 Id: cow-message-header
 Title: "COW Message Header"
-Description: "Minimum expectations for a MessageHeader resource when used for Clinical Order Workflow. This profile is used to describe the use of FHIR Messaging when RESTful-based exchange is not possible between the Placer and the Fulfiller. The purpose of the constraints for the MessageHeader resource is to make sure that the rest of the CLinical Workflow requirements that may be relevant to a particular implementation or national/regional implementation guides are compatible with the RESTful-based exchange patterns."
+Description: "Minimum expectations for a MessageHeader resource when used for Clinical Order Workflow. This profile is used to describe the use of FHIR Messaging when RESTful-based exchange is not possible between the Placer and the Fulfiller. The purpose of the constraints for the MessageHeader resource is to make sure that the rest of the Clinical Workflow requirements that may be relevant to a particular implementation or national/regional implementation guides are compatible with the RESTful-based exchange patterns."
 * ^extension[0].url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
 * ^extension[=].valueCode = #oo
 * ^extension[+].url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
@@ -85,7 +85,7 @@ Profile: CoordinationTask
 Parent: Task
 Id: coordination-task
 Title: "Coordination Task"
-Description: "Minimum expectations for a Task resource when created or updated for the purpose of managing the workflow for performing a request. This profile is used to describe the 'please fullfil' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
+Description: "Minimum expectations for a Task resource when created or updated for the purpose of managing the workflow for performing a request. This profile is used to describe the 'please fulfill' request from either a known performer, or by one who is yet to be determined. The information is obtained RESTfully by the recipient either via polling, or as the result of a subscription notification about the existence of the Task resource"
 * ^version = "1.0.0"
 * ^status = #active
 * ^experimental = false
@@ -127,7 +127,7 @@ Description: "Minimum expectations for a Task resource when created or updated f
 * focus 1.. MS
   * ^short = "This can only reference a Request resource."
   * ^definition = "This is a reference to the Request resource that is being fulfilled."
-* focus only Reference(ServiceRequest)
+* focus only Reference(ServiceRequest or DeviceRequest or MedicationRequest or NutritionOrder or SupplyRequest or VisionPrescription)
 
 
 
@@ -143,3 +143,5 @@ Description: "A task to indicate a Placer-initiated cancellation of a request fu
 * focus 1..1 MS 
   * ^short = "This can only reference the CoordinationTask or a Request resource"
   * ^definition = "If the Placer requests from the Filler to cancel a Coordination Task, then the focus is a reference to the Coordination Task. If the Fulfiller requests from the Placer to cancel a Request resource that authorizes a particular service, then the focus is a reference that Request resource."
+* focus only Reference(ServiceRequest or DeviceRequest or MedicationRequest or NutritionOrder or SupplyRequest or VisionPrescription or CoordinationTask)
+

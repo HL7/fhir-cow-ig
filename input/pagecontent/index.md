@@ -12,15 +12,15 @@ The guide is intended to serve as a starting point on which other implementation
 ### Structure of this Implementation Guide
 This guide is split into the below sections. 
 
-- **Background** - explains how this guide is intended to be used, the challenges it addresses, and why orders, referrals, and transfer workflows are considered together. It also outlines key considerations for spec authors in this space and provides a brief survey of the exchange mechanisms this guide references. 
+- **[Background](background.html)** - explains how this guide is intended to be used, the challenges it addresses, and why orders, referrals, and transfer workflows are considered together. It also outlines key considerations for spec authors in this space and provides a brief survey of the exchange mechanisms this guide references. 
 
-- **Core Concepts** - describes actors and the key FHIR resources and concepts used in this guide. We suggest reading this section before proceeding further. This section also includes the basic model for representing the state of a Request from the time it is placed to its fulfillment. 
+- **[Core Concepts](core-concepts.html)** - describes actors and the key FHIR resources and concepts used in this guide. We suggest reading this section before proceeding further. This section also includes the basic model for representing the state of a Request from the time it is placed to its fulfillment. 
 
-- **Workflow Patterns** - contains an overview of common workflows relevant to orders, referrals, and transfers, and how these may be combined and represented in the FHIR exchanges and state model described in the Core Concepts section. This includes how Placers notify potential Fulfillers of a Request, how Fulfillers request additional information, and how Outputs may be shared. Each workflow is accompanied by a basic FHIR pattern or resources description.
+- **[Workflow Patterns](workflow-patterns.html)** - contains an overview of common workflows relevant to orders, referrals, and transfers, and how these may be combined and represented in the FHIR exchanges and state model described in the Core Concepts section. This includes how Placers notify potential Fulfillers of a Request, how Fulfillers request additional information, and how Outputs may be shared. Each workflow is accompanied by a basic FHIR pattern or resources description.
 
-- **Examples** - this section provides informative guidance for how the concepts developed in this guide may be applied to specific care domains. It includes basic examples such as lab ordering and resulting and post-discharge placement for patients needing ongoing care. These scenarios use various FHIR exchange mechanisms to validate and demonstrate the robustness of the chosen approach.
+- **[Examples](examples.html)** - this section provides informative guidance for how the concepts developed in this guide may be applied to specific care domains. It includes basic examples such as lab ordering and resulting and post-discharge placement for patients needing ongoing care. These scenarios use various FHIR exchange mechanisms to validate and demonstrate the robustness of the chosen approach.
 
-- **Resource profiles** - Reusable resource profiles used as part of this base guidance. 
+- **[Resource profiles](artifacts.html)** - Reusable resource profiles used as part of this base guidance. 
 
 ### Boundaries and Relationships
 * This guide is universal-realm and does not reference any national base or core profiling. This guide leverages concepts from [FHIR-Workflow](https://hl7.org/fhir/workflow.html) and applies them to Order, Referral, and Transfer workflows. 

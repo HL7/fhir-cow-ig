@@ -10,10 +10,10 @@
 	
 	Request <-r- Task : "   makes executable  "
 	Task -r-> OutputEvents : "  execution results in  "
-	Placer -d-> Request: "Owns                  "
+	Placer -d-> Request: "create /\nown     "
 	Placer -r-> Filler: "     \t\t\t\t   "
-	Filler -d-> OutputEvents: "Creates"
-	Placer -d-> Task: "(usually)\ncreate and\nmay update"
+	Filler -d-> OutputEvents: "create  /\n own   "
+	Placer -d-> Task: "create /\n update"
 	Filler -d-> Task: "accept / \n fulfill /    \n update   "
 
 @enduml
