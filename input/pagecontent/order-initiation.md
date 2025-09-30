@@ -29,8 +29,8 @@ This Implementation Guide currently addresses fulfillment of orders, so this co-
 
 
 
-#### Prior Auth
-Prior Authorization is a common use case. Depending on the jurisdictions, it may happen as a rule, or may be required to prevent fraud, or to allow patients to decide considering also the costs, even if the processes and criteria are broadly different. This is also prior to execution and as such not a primary scope.
+#### Prior Authorization
+In several cases, before the order can be operationalized, a series of steps may be required. Prior Authorization as a cost control mechanism is one of those common use cases which may happen as part of order initiation. 
 
 Co-authoring, prior authorization can include different participants and can be predefined or *ad-hoc* processes. While this is not the focus of the present edition of this guidance, implementers are invited to provide input on their needs, for consistent guidance where possible.
 {:.stu-note}
@@ -81,4 +81,5 @@ Protocols are sets of defined orders, possibly interdependent. Order sets may be
 #### Decision Support in ordering
 
 One of the most common uses for Decision Support is to assist in ordering. While this implementation guide focuses on the order execution and tracking, this guidance is designed to be compatible with Decision Support Guidance, namely the [Clinical Practice Guidelines](https://hl7.org/fhir/uv/cpg/activityflow.html) and its workflows.
+
 
