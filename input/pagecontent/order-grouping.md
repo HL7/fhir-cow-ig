@@ -42,7 +42,7 @@ This approach simply adds a groupIdentifier to the orders, indicating they are s
 
 The use of a "grouping" / "orchestration" resource is reserved to situations where the different ordered items are not independent. These items cannot have their statuses individually changed - the change happens at the group level.
 This is a common case where procedures have dependencies, or medications that must be taken together.  
-**In FHIR, request orchestration is done with an additional resource. There is no "Parent" group resource "containing" the orders.**
+**In FHIR, request orchestration is done with the use of RequestGroup which points to the individual requests.**
 
 
 <figure>
@@ -69,4 +69,5 @@ To ensure the workflow management patterns apply, grouped requests are tracked i
   * In very specific cases, the Task.focus may contain a logical reference to the requests' groupIdentifier. This is generally not recommended approach because the purpose is to track and traverse links across resources, and logical references break that possibility.
 
 * Requests to change an order follow the same patterns - the request to change points at the `.identifier`, `.groupIdentifier`, or `RequestGroup.identifier`.
+
 
