@@ -11,7 +11,6 @@ PID|1||202751^^^EPI^MR||TEST^JULIE^^^^^D||19660319|F||White|1818 UNIVERSITY AVE,
 PV1|1|OP|^^^^^^^^EMH BREAST IMAGING^^||||1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|||||||||||29100|||||||||||||||||||||||||20180507110328|||||||V
 ORC|NW|901911^EPC|199||Arrived||^^^^^R||20250721221212|RISTECHMAM^RADIOLOGY^BREAST^IMAGING TECHNOLOGIST^||1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|^^^^^^^^EMH BREAST IMAGING|(555)555-5555^^^^^555^5555555|||||||||||||||I
 OBR|1|901911^EPC|199|IMG605^BI MAMMOGRAM SCREENING BILATERAL^IMGEAP|R|20180507110329|||||Anc Perform|||||1000^FAMILY MEDICINE^PHYSICIAN^^^^^^PROVID^^^^PROVID|(555)555-5555^^^^^555^5555555|||||||MG|Arrived||^^^^^R|||||||||20180507110500
-ZPF|1|BI^IMG BI PROCEDURES|||||^^^^^^^^EMH BREAST IMAGING
 PRT|1|SP||OPO||||EMH Medical Clinic^^urn:examp:cec.play^^^EPC^XX^^^urn:examp:cec.play
 DG1|1|I10|Z12.31^Encounter for screening mammogram for malignant neoplasm of breast^I10|Encounter for screening mammogram for malignant neoplasm of breast||W
 ```
@@ -53,7 +52,7 @@ ServiceRequest 4567:
   * ,
 }
 ```
-This results in an overall 'package' of informatoin that is in many respects analagous to the HL7 v2 message, though parties must make a substantial effort to coordinate the details. 
+This results in an overall 'package' of information that is in many respects analagous to the HL7 v2 message, though parties must make a substantial effort to coordinate the details. 
 
 #### Comparison to a Subscription-Status Notification:
 An analagous 'package' of information can be communicated via a [Subscription framework]([url](https://hl7.org/fhir/subscriptions.html)). The only real distinction is that Subscriptions lend themselves to the idea that FHIR servers
@@ -77,7 +76,6 @@ SubscriptionStatus:
         * . 
   * NotificationAuthorizationHint: abc9876
   * .
-
 }
 ```
 
