@@ -59,7 +59,7 @@ To help with discussions, brief descriptions and examples of each term are provi
               May not be authorized at the moment of creation (insurance, etc.)
             </li>
             <li>
-              Recipients sometimes refuse
+              Fulfillers sometimes refuse
             </li>
           </ul>
         </td>
@@ -75,7 +75,7 @@ To help with discussions, brief descriptions and examples of each term are provi
                 <li>Some lab in the network <em>will</em> perform this test</li>
               </ul>
             </li>
-            <li><em>Usually</em> the recipient can't refuse to perform a service, although depending on the business agreements, they may be allowed to modify the request, such as by selecting a more specific service to perform. Additionally, Fulfillers may indicate they are not able to fulfill the request for some reason, such as a specimen's condition or quantity.
+            <li><em>Usually</em> the fulfiller can't refuse to perform a service, although depending on the business agreements, they may be allowed to modify the request, such as by selecting a more specific service to perform. Additionally, Fulfillers may indicate they are not able to fulfill the request for some reason, such as a specimen's condition or quantity.
             </li>
           </ul>
         </td>
@@ -115,7 +115,7 @@ This section provides context on the main FHIR-based mechanisms for pushing cont
 **RESTful POST of Resources (Creates or Updates)**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
 * Actors must pre-coordinate where the definitive instances of shared FHIR resources will be hosted, when they should be exchanged, who can update them, and under what circumstances.
-* Note that more complex transactions may be needed. For example, if a Placer attempted to POST a ServiceRequest (which is not advised in this guide), the parties must agree on how to reference the patient; e.g. whether the client must use $match to obtain the recipient's Patient ID, or if the server will perform matching.
+* Note that more complex transactions may be needed. For example, if a Placer attempts to POST a Task (in the case where the Task is at the Fulfiller), the parties must agree on how to reference the patient; e.g. whether the Placer must use $match to obtain the Fulfiller's Patient resource, or if the Fulfiller will resolve a Patient resource reference to the Placer's server.
 
 **Batch or Transaction bundles:**
 * These may operate similar to the RESTful Create and Update described above, but provide a mechanism for a client to submit several transactions as a set, which can reduce network traffic. This guide does not explore this option in detail.
@@ -124,10 +124,10 @@ This section provides context on the main FHIR-based mechanisms for pushing cont
 * Event-driven exchange using a Bundle with a <code>MessageHeader</code> and related resources.
 * Resources in the message are not required to persist or be queryable.
 * Messaging is conceptually similar to HL7 v2, requiring tight coordination on events, message content, and identifiers.
-* Senders should include all potentially relevant information, as recipients may not be able to retrieve more later.
+* Message senders should include all potentially relevant information, as message recipients may not be able to retrieve more later.
 
 **FHIR Subscriptions:**
 * These can also function in a manner similar to HL7 v2. A Subscription records that a party would like to receive content from a server on a specified channel when certain events occur. A <code>subscription-notification</code> bundle is sent when these triggers occur.
 * Subscriptions provide two optional features that support order, referral, and transfer workflows: 
     * SubscriptionTopics: a data-holder MAY make a <code>SubscriptionTopic</code> available to which authorized data requestors may subscribe for updates. Such "dynamic subscriptions" let an actor specify their own endpoint, events of interest, and desired format from a menu of options chosen by the data holder. This is purely optional within Subscriptions: administrators may instead discuss updates out of band and manually configure Subscriptions, just as administrators do for HL7v2 interfaces today. 
-    * Query guidance: <code>subscription-notifications</code> can include instructions for how a recipient may query for additional information later. For instance, if insurance coverage might change between when a referral is created and when service should be provided, the <code>subscription-notification</code> sent for the referral can guide a Fulfiller on how to retrieve updated Coverage data if or when it is needed later.    
+    * Query guidance: <code>subscription-notifications</code> can include instructions for how a notification recipient (e.g. a Fulfiller getting a <code>subscription-notification</code> about a Task and a ServiceRequest being available at the Placer's FHIR server) may query for additional information later. For instance, if insurance coverage might change between when a referral is created and when service should be provided, the <code>subscription-notification</code> sent for the referral can guide a Fulfiller on how to retrieve updated Coverage data if or when it is needed later.
