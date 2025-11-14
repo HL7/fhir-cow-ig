@@ -100,7 +100,7 @@ This guide is designed to support both groups. For those focused on (2), it offe
 ### Pre-Coordination Needed for Push-Based Exchanges
 A core aim of this guide is to help specification authors to enable workflow related exchanges for orders, referrals, and transfers in a consistent way. 
 
-FHIR provides several mechanisms by which `push`-based payloads may be sent between two actors. Regardless of the specific FHIR mechanism chosen, all 'push'-based exchanges require pre-coordination to define:
+FHIR provides several mechanisms by which `push`-based payloads may be sent between two actors. Regardless of the specific FHIR mechanism chosen, all `push`-based exchanges require pre-coordination to define:
 * Endpoints - where the information should be sent
 * Events of interest - which workflow steps trigger the need for information exchange 
 * Payload expectations - both for structure and content. For example - a message may be sent between two parties that serves as both notification ("a result has been generated for this patient") and it's content ("no abnormal findings found"). This is analogous to HL7 v2 exchanges. Alternatively, a notification might indicate simply that data is available for retrieval if needed.   
