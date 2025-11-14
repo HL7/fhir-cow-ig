@@ -55,7 +55,26 @@ For additional information on this topic, architects and implementation guide au
 If intermediaries act purely as brokers for exchange, Placers and Fulfillers must coordinate which party will host resources relevant to managing the workflow. For example, a Placer and Fulfiller must  agree whether the Coordination Task that acts as their shared source of truth will be hosted at a FHIR server designated by the Placer or one designated by the Fulfiller.    
 Intermediaries acting as intermediate record holder for the exchange introduce an additional option, which is that they may themselves host workflow resources. 
 
-|  | **From Fulfiller Perspective: Task at Placer** | **From Fulfiller Perspective: Task at Fulfiller** |
-|---|---|---|
-| **From Placer Perspective: Task at Placer** | Intermediary may be a broker or an intermediate record holder. The intermediary must rewrite references so each actor may function as when they communicate directly.| Intermediary must extract Task information from Placer and create a duplicate at Fulfiller. They must also reflect any changes to the Fulfiller's Task back to the Placer's Task. |
-| **From Placer Perspective: Task at Fulfiller**| The Task used as the shared source of truth between the Placer and Fulfiller is at the Intermediary| Intermediary may be a broker or an intermediate record holder. The intermediary must rewrite references so each actor may function as when they communicate directly. |
+
+<table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>From Fulfiller Perspective: Task at Placer</th>
+        <th>From Fulfiller Perspective: Task at Fulfiller</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>From Placer Perspective: Task at Placer</b></td>
+        <td>Intermediary may be a broker or an intermediate record holder. The intermediary must rewrite references so each actor may function as when they communicate directly.</td>
+        <td>Intermediary must extract Task information from Placer and create a duplicate at Fulfiller. They must also reflect any changes to the Fulfiller's Task back to the Placer's Task. </td>
+      </tr>
+      <tr>
+        <td><b>From Placer Perspective: Task at Fulfiller</b></td>
+        <td>The Task used as the shared source of truth between the Placer and Fulfiller is at the Intermediary</td>
+        <td>Intermediary may be a broker or an intermediate record holder. The intermediary must rewrite references so each actor may function as when they communicate directly.</td>
+      </tr>
+    </tbody>
+  </table>
+
