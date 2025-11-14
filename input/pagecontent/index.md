@@ -86,16 +86,16 @@ The following areas are important for designing full end-to-end workflows, but a
 ### Dependencies
 This IG Contains the following dependencies on other IGs.
 
-{% include dependency-table.xhtml %}
+{% lang-fragment dependency-table.xhtml %}
 
 ### Cross Version Analysis
 
-{% capture cross-version-analysis %}{% include cross-version-analysis.xhtml %}{% endcapture %}{{ cross-version-analysis | remove: '<p>' | remove: '</p>'}}
+{% capture cross-version-analysis %}{% lang-fragment cross-version-analysis.xhtml %}{% endcapture %}{{ cross-version-analysis | remove: '<p>' | remove: '</p>'}}
 
 ### Global Profiles
 
-{% include globals-table.xhtml %}
+{% lang-fragment globals-table.xhtml %}
 
 ### Intellectual Property
 
-{% include ip-statements.xhtml %}
+{% lang-fragment ip-statements.xhtml %}

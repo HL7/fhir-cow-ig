@@ -13,4 +13,4 @@ Download the FHIR core specification [here]({{site.data.fhir.path}}fhir-spec.zip
 | **Examples**             | [XML](examples.xml.zip)    | [JSON](examples.json.zip)    | [Turtle](examples.ttl.zip)     |
 
 
-{% include cross-version-analysis-inline.xhtml %}
+{% lang-fragment cross-version-analysis-inline.xhtml %}
