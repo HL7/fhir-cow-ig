@@ -62,21 +62,21 @@ The following areas are important for designing full end-to-end workflows, but a
 * **Scheduling** - confirming the time slot, location, provider, and materials with which a service will be performed
 * **Authentication, authorization, and auditing** - this guide assumes the use of OAuth 2.0 protocols and includes high-level access-control considerations but does not detail client/user/server authentication or scope management.
 * **Outcome / result format and content of supporting resources** - this IG provides guidance  on linking Outputs back to an original Request to support loop closure, but does not impose any requirements that such outputs exist or on their form or content.
-* **Details about the information requirements to execute a workflow** (e.g. which Specimen detail information is needed to execute a Laboratory test, which Patient detail Information is needed for a Referral, which detailed information is required regarding a MedicationRequest). This specification only adds constraints to ensure data exchange about workflows is interoperable. Details about needed information are domain-specific and usually jurisdiction-specific, and should be defined in specific Implementation Guides).
+* **Details about the information requirements to execute a workflow** (e.g. which Specimen detail information is needed to execute a Laboratory test, which Patient detail Information is needed for a Referral, which detailed information is required regarding a MedicationRequest). This specification only adds constraints to ensure data exchange about workflows is interoperable. Details about needed information are domain-specific and usually jurisdiction-specific, and should be defined in specific Implementation Guides.
 
 ### Dependencies
 This IG Contains the following dependencies on other IGs.
 
-{% include dependency-table.xhtml %}
+{% lang-fragment dependency-table.xhtml %}
 
 ### Cross Version Analysis
 
-{% capture cross-version-analysis %}{% include cross-version-analysis.xhtml %}{% endcapture %}{{ cross-version-analysis | remove: '<p>' | remove: '</p>'}}
+{% capture cross-version-analysis %}{% lang-fragment cross-version-analysis.xhtml %}{% endcapture %}{{ cross-version-analysis | remove: '<p>' | remove: '</p>'}}
 
 ### Global Profiles
 
-{% include globals-table.xhtml %}
+{% lang-fragment  globals-table.xhtml %}
 
 ### Intellectual Property
 
-{% include ip-statements.xhtml %}
+{% lang-fragment ip-statements.xhtml %}
