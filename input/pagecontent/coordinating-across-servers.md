@@ -55,7 +55,6 @@ For additional information on this topic, architects and implementation guide au
 If intermediaries act purely as brokers for exchange, Placers and Fulfillers must coordinate which party will host resources relevant to managing the workflow. For example, a Placer and Fulfiller must  agree whether the Coordination Task that acts as their shared source of truth will be hosted at a FHIR server designated by the Placer or one designated by the Fulfiller.    
 Intermediaries acting as intermediate record holder for the exchange introduce an additional option, which is that they may themselves host workflow resources. 
 
-
 <table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
     <thead>
       <tr>
