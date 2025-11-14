@@ -4,7 +4,6 @@ While support for targeted queries is a key feature of FHIR, it introduces optio
 
 TODO - add sections on:
 * Provenance
-* Move some of the background about messages vs subscriptions here?
 
 ### Managing Access by Fulfillers:
 Actors in a RESTful exchange often wish to limit the set of resources that another actor may access (or the interactions they may initiate), with more granularity than what is provided with traditional OAuth 2.0 scopes. This can sometimes encourage groups to rely on Messages rather than permitting RESTful exchange.
@@ -16,9 +15,13 @@ This guide provides two options to consider, though their use is optional within
 
 ### Resolving References:
 
-If relying on one party creating Tasks or other resources at another party's FHIR server, Architects and Implementation Guide Authors are advised to specify how References will be handled and how these requests will be orchestrated. This may not be needed for all exchanges, such as those relying on Messaging or SubscriptionStatus notifications with the Task hosted on the Placer's own FHIR server.
+The choice of exchange mechanism impacts how supporting information may be communicated between systems. By 'exchange mechanism', we mean whether actors use FHIR messaging, FHIR subscriptions with a Task at the Placer, or the posting of Task resources to a downstream system
 
-If a guide relies on one party's ability to Create a Task on another's system, the actors must coordinate on whether References in the Task, such as to the Patient, would be:
+**If the exchange relies on FHIR messaging**, with no expectation that FHIR servers are available for follow-up query, then all information necessary to process the request must be included in the message. A sender of a message and the recipient of a message must also pre-coordinate on shared business identifiers so that the recipient can interpret the contents of the message.
+
+**If the exchange relies on subscription status notifications triggered for a Task at the Placer's system**, then the Task will likely reference other information on the Placer's system (leaving aside the question of chained care - see the next section). It is expected in these scenarios that the recipient of a notification can use business identifiers and other data elements on the resources from the Placer's system to perform appropriate matching in their own system; for example, a Task at the Placer's system may reference a particular Patient resource in the Placer system. The recipient of the notification would be expected to use data from that Patient resource to determine whether that patient already exists within the recipient system, and to match to them if so.
+
+**If relying on one party creating Tasks or other resources at another party's FHIR server**, Architects and Implementation Guide Authors are advised to specify how References will be handled and how these requests will be orchestrated. The actors must coordinate on whether References in the Task, such as to the Patient, would be:
 - [Logical references]([url](https://hl7.org/fhir/references.html#logical)) (i.e. those relying only on identifiers with which the other system could perform a lookup against its own database)
 - Communicated as [Contained resources]([url](https://hl7.org/fhir/references.html#contained)), which essentially serve in this scenario as an enhanced version of a logical reference to facilitate more complex lookup by the recipient.
 - References back to the originator's FHIR server. For example, a Placer may create a Task at a Fulfiller that refers back to the Placer's Patient Resource and Service Request. A Fulfiller could then query these to determine how they relate to objects in the Fulfiller's own database.
