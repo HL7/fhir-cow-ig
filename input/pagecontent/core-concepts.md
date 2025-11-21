@@ -30,6 +30,8 @@ Examples include:
 </figure>
  <p></p>
 
+### Notifications:
+This guide uses the term notification to refer to any `push` mechanism by which a party becomes aware of a request. This should not be confused with `SubscriptionStatus` notifications in FHIR, although these are one valid option. A party may become aware of a request via a Messaging protocol, or by a patient informing that party of the request. This guide also makes a distinction between 'notifications' and the actual communication of information; in some cases a notification may simply inform a party that a Request has been created, but require that the party follow up via RESTful query for details, while in other cases a single exchange may contain both the notification and the information.
 
 ### Managing Access by Fulfillers:
 

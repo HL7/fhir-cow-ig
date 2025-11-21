@@ -98,11 +98,11 @@ In reviewing other locale and care-domain specific work, this specification's au
 This guide is designed to support both groups. For those focused on (2), it offers a path toward RESTful exchanges as the ecosystem develops. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity. Often, a specialist receiving a referral is in the best position to know what data is relevant. The Core Concepts section provides a brief description for how Placers may limit Fulfillers access to data to those for whom they have received a Request. 
 
 ### Pre-Coordination Needed for Push-Based Exchanges
-A core aim of this guide is to help specification authors manage notifications for orders, referrals, and transfers in a consistent way. 
+A core aim of this guide is to help specification authors to enable workflow related exchanges for orders, referrals, and transfers in a consistent way. 
 
-FHIR provides several mechanisms by which notifications may be sent between two actors. Regardless of the specific FHIR mechanism chosen, all 'push' based exchanges require pre-coordination to define:
-* Endpoints - where notifications should be sent
-* Events of interest - which workflow steps trigger notifications 
+FHIR provides several mechanisms by which `push`-based payloads may be sent between two actors. Regardless of the specific FHIR mechanism chosen, all `push`-based exchanges require pre-coordination to define:
+* Endpoints - where the information should be sent
+* Events of interest - which workflow steps trigger the need for information exchange 
 * Payload expectations - both for structure and content. For example - a message may be sent between two parties that serves as both notification ("a result has been generated for this patient") and it's content ("no abnormal findings found"). This is analogous to HL7 v2 exchanges. Alternatively, a notification might indicate simply that data is available for retrieval if needed.   
 * Operational agreements - including policies on request whether a Fulfiller must confirm their ability to fulfill a Request, when and how a Placer may cancel or modify a Request after it has been accepted, etc. 
 * Error handling and remediation - responsibilities for correcting errors, coordinating chart updates, and involving support desks.
