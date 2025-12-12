@@ -38,8 +38,8 @@ This type of “chain care” is common and introduces complexity—but also mot
 If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endpoint discoverability, (dynamic) client registration, shared scopes and business rules, service and business agreements, etc.
 
 Where direct communication isn't feasible, intermediaries may:
-* Act as **intermediate record holders** that store local representations of relevant data so they may provide it to downstream systems. 
-* Act as **brokers** that proxy requests from later actors to those upstream, while maintaining little or minimal state themselves.
+* Act as **intermediate record holders** that store local representations of relevant data so they may provide it to involved systems. 
+* Act as **brokers** that proxy requests from later actors to prior ones, while maintaining little or minimal state themselves.
 
 In either of these scenarios, when forwarding requests, a party must rewrite references in the notifications they send to point to their own server, rather than actors upstream.
 
