@@ -70,8 +70,8 @@ pages:
   background.md:
     title: Background - Scope and General Principles
     generation: markdown
-  glossary-and-key-resources.md:
-    title: Glossary and Key Resources
+  core-concepts.md:
+    title: Core Concepts
     generation: markdown
   coordinating-across-servers.md:
     title: Coordinating Across Servers
@@ -196,8 +196,8 @@ menu:
   Home: index.html
   Table of Contents: toc.html
   Background: background.html
-  Core Concepts: 
-    Glossary and Key Resources: glossary-and-key-resources.html
+  Overview: 
+    Core Concepts: core-concepts.html
     Coordinating Across Servers: coordinating-across-servers.html
     Representing Workflow States: workflow-state-overview.html
     Details of Using Tasks and Requests: details-of-using-task-and-requests.html
@@ -355,6 +355,7 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
 
 
 
