@@ -79,11 +79,8 @@ pages:
   workflow-state-overview.md:
     title: Workflow State Overview
     generation: markdown
-  details-of-using-task-and-requests.md:
-    title: Details of Using Tasks and Requests
-    generation: markdown
-  order-grouping.md:
-    title: Task Grouping and Related Requests
+  intro-to-tasks-requests-and-events.md:
+    title: Intro to Tasks, Requests, and Events
     generation: markdown
   comparing-with-HL7-v2-orders.md:
     title: Comparing with HL7 v2 Orders
@@ -96,6 +93,9 @@ pages:
       generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
+      generation: markdown
+    grouped-related-and-dependent-orders.md:
+      title: Grouped, Related, and Dependent Orders
       generation: markdown
       # placer-assignment.md:
       #   title: Placer assignment
@@ -121,8 +121,11 @@ pages:
     cancelling-and-modifying-requests.md:
       title: Cancelling and Modifying Requests and Tasks
       generation: markdown
-    sharing-outputs.md:
-      title: Sharing Outputs from an Order or Referral
+    tracking-workflow-progress.md
+      title: Tracking Workflow Progress
+      generation: markdown
+    sharing-content.md:
+      title: Sharing Supporting Information and Outputs
       generation: markdown
       
 
@@ -198,10 +201,8 @@ menu:
   Background: background.html
   Overview: 
     Core Concepts: core-concepts.html
-    Coordinating Across Servers: coordinating-across-servers.html
+    Intro to Tasks, Requests, and Events: intro-to-tasks-requests-and-events.html
     Representing Workflow States: workflow-state-overview.html
-    Details of Using Tasks and Requests: details-of-using-task-and-requests.html
-    Task and Request Grouping: order-grouping.html
     Comparing with HL7 v2 Orders: comparing-with-HL7-v2-orders.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
@@ -214,9 +215,11 @@ menu:
     #   Patient-Mediated Requests: patient-mediated-requests.html
     Order Initiation: order-initiation.html
     Fulfiller Determination: fulfiller-determination.html
+    Grouped, Related, and Dependent Orders: grouped-related-and-dependent-orders.html
     Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
     Cancelling and Modifying Requests: cancelling-and-modifying-requests.html
-    Sharing Outputs of Referrals and Orders: sharing-outputs.html
+    Tracking Workflow Progress: tracking-workflow-progress.html
+    Sharing Supporting Information and Outputs: sharing-content.html
     
   Examples: examples.html
   Artifacts: artifacts.html
@@ -355,6 +358,7 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
 
 
 
