@@ -121,7 +121,7 @@ pages:
     cancelling-and-modifying-requests.md:
       title: Cancelling and Modifying Requests and Tasks
       generation: markdown
-    tracking-workflow-progress.md
+    tracking-workflow-progress.md:
       title: Tracking Workflow Progress
       generation: markdown
     sharing-content.md:
@@ -358,6 +358,7 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
 
 
 
