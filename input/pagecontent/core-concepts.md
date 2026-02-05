@@ -9,6 +9,8 @@ This guide describes interactions between providers who request that some action
 * **Placer, requestor, referrer, and prescriber** are treated as equivalent. We generally avoid "Requestor" to prevent confusion with client-server terminology.
 * **Performer, fulfiller, and service provider** are also considered equivalent. Note that these often refer to *potential* fulfillers of a request. 
 * **Patient** refers to the individual receiving care, but may also include their representative—such as a parent, healthcare agent, or social worker—when they participate in coordinating services.
+* **Workflow Intermediaries** - an actor who helps to facilitate the workflow, but who does not actually fulfill the request. This may be an actor who completes an intermediate workflow step. As an example, a community lab is a Workflow Intermediary when it receives a specimen that was collected in an office visit, then sends it on to a reference lab to perform the actual test. As an additional example, a referral for a surgical consult may be sent to some centralized capacity management or waitlist service, which may prioritize and route the request.   
+* **Exchange Intermediaries** - when present, these facilitate communication by routing notifications and brokering requests. For example, in exchange ecosystems where pair-wise client registration is difficult between all parties, placers and fulfillers might join a network that proxies requests. A workflow intermediary may also be an exchange intermediary.  
 
 ### Requests, Tasks, and Outputs Events:
 This section provides a brief overview of how FHIR resources are used to represent Request workflows. For more detail, see [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns). 
@@ -46,7 +48,7 @@ This breaks down in more complex scenarios, especially those where:
 * The information needed by a fulfiller is not fully known by the placer
 * The status of the execution of a requst by a particular fulfiller should be tracked separately from the status of the overall request.
 
-For the sake of a consistent data model and to provide a clear path as workflows become more complex, this IG recommends use of Task resources even in comparatively simple workflows. 
+For the sake of a consistent data model and to provide a clear path as workflows become more complex, this guide recommends use of Task resources even in comparatively simple workflows. 
 
 <figure>
 {% include relation-of-placer-request-task-output-filler.svg %}
@@ -56,4 +58,7 @@ For the sake of a consistent data model and to provide a clear path as workflows
 This guide uses the term **notification** to refer to any 'push' mechanism by which a party becomes aware of a request. This should not be confused with SubscriptionStatus notifications in FHIR, although these are one valid option.
 
 A party may become aware of a request via a Messaging protocol, or by a patient informing that party of the request. This guide also makes a distinction between 'notifications' and the actual communication of a message; a notification may simply inform a a party that a Request has been created, but require that the party follow up via RESTful query for details.  
+
+### Resolving References:
+Authors of more specific implementation guides have discretion in deciding what information should be included with a notification, and which information may be requested by later actors as needed in response to a notification. See the [Sharing Supporting Information and Outputs page](./sharing-content.html) page for considerations, especially if intermediaries will be present. 
 
