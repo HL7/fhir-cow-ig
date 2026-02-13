@@ -17,9 +17,6 @@ Systems should know what task.outputs to count (resource types, status) - this i
   * Note that this also requires access to the outputs (see above).  
 
 
-#### Example: Physiotherapy - count number of sessions
-For a patient that has undergone 4 out of 10 planned physiotherapy sessions,  
-
 ### Explicitly track progress with task.output as a Ratio
 
 In cases where a ratio is expected and can be determined, (for example when there is a need for n out of m instances are completed or a percentage of progress towards completion) and this ratio can be persisted.   
