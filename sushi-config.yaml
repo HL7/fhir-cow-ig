@@ -115,8 +115,11 @@ pages:
     cancelling-and-modifying-requests.md:
       title: Cancelling and Modifying Orders
       generation: markdown
-    sharing-outputs.md:
-      title: Sharing Outputs from an Order or Referral
+    sharing-content.md:
+      title: Sharing Content
+      generation: markdown
+    tracking-progress.md:
+      title: Tracking Workflow Progress
       generation: markdown
       
 
@@ -211,7 +214,8 @@ menu:
     Fulfiller determination: fulfiller-determination.html
     Fulfiller requests for additional Info: fulfiller-need-for-additional-info.html
     Cancelling and modifying requests: cancelling-and-modifying-requests.html
-    Sharing outputs of referrals and orders: sharing-outputs.html
+    Sharing content: sharing-content.html
+    Tracking workflow progress: tracking-progress.html 
     
   Examples: examples.html
   Artifacts: artifacts.html
