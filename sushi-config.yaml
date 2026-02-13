@@ -194,9 +194,10 @@ menu:
   Home: index.html
   Table of Contents: toc.html
   Background: background.html
-  Core Concepts: 
-    Concepts: core-concepts.html
-    Workflow State overview: workflow-state-overview.html
+  Overview: 
+    Core Concepts: core-concepts.html
+    Requests, Events, and Tasks: requests-events-tasks.html
+    Workflow States: workflow-state-overview.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
     # Fulfiller Selection:
