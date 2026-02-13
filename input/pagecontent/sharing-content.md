@@ -1,3 +1,13 @@
+### Sharing Inputs
+
+
+#### Requesting Additional Information
+
+
+### Sharing Intermediate Outputs 
+
+
+### Sharing Outputs
 Many types of referrals and orders will involve the creation of output resources, either as a final product or as part of an intermediate workflow step. This could include a results report, individual observations, a proposed plan of care, a consult note, etc. 
 
 This section provides basic guidance for how these outputs may be communicated between the Fulfiller and the Placer. 
@@ -7,7 +17,7 @@ Generally, the creator of an output  will make a resource representing that outp
 Placers may choose to create their own local representation of that content, and additionally, to host their own copy of that content on their own FHIR server so that its information is discoverable for others involved in a patient's care. Provenance FHIR resources MAY be used to indicate that the originator of the latest version of the Output is the owner, though note that many Event resources will already implicitly indicate their source (such as in DiagnosticReport.performer and .resultsInterpreter).
 
 
-### Preliminary Results, Addenda, and Updates with FHIR Servers
+#### Preliminary Results, Addenda, and Updates with FHIR Servers
 
 In some contexts, a partial result may be shared from one system to another, or a later actor in the chain of care may decide to modify an earlier result. When this occurs, the actor may do so by updating their local representation of the earlier output, updating their FHIR resources for that content, and updating the Provenance, if recorded, to indicate that they are now the source of truth. The actor may notify others in the chain of the update based on their business agreements and using mechanisms described in this guide. 
 
@@ -18,4 +28,12 @@ needed.
 {%include share-outputs.svg%}
 </figure>
 <br clear="all"/>
+
+
+
+
+### Effect of intermediaries 
+
+
+### Access Controls 
 
