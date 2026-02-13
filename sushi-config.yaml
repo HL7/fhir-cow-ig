@@ -73,11 +73,11 @@ pages:
   core-concepts.md:
     title: Core Concepts
     generation: markdown
-  workflow-state-overview.md:
-    title: Workflow State Overview
-    generation: markdown
   requests-events-tasks.md:
     title: Requests, Events, and Tasks
+    generation: markdown
+  workflow-state-overview.md:
+    title: Workflow State Overview
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
