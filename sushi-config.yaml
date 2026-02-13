@@ -118,6 +118,9 @@ pages:
     sharing-outputs.md:
       title: Sharing Outputs from an Order or Referral
       generation: markdown
+    tracking-progress.md:
+      title: Tracking Workflow Progress
+      generation: markdown
       
 
     
