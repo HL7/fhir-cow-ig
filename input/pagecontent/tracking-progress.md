@@ -1,4 +1,4 @@
-Clinical orders can varying life-cycles. In general progress is tracked via `Task.status`, `Task.businessStatus`, and `Task.statusReason`. In cases where the progress can be ''coded'' systems should use the `.businessStatus` element in the Coordination Task to represent that progress status e.g. `collection-complete` or `mandatory-program-complete`.
+Clinical orders can have varying life-cycles. In general progress is tracked via `Task.status`, `Task.businessStatus`, and `Task.statusReason`. In cases where the progress can be ''coded'' systems should use the `.businessStatus` element in the Coordination Task to represent that progress status e.g. `collection-complete` or `mandatory-program-complete`.
 
 If further detail on progress is needed, the mechanism depends on whether there is a need to persist and exchange the progress, or whether the stakeholders can consult the relevant resources to determine progress from those resources.
 
