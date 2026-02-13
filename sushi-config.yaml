@@ -76,8 +76,8 @@ pages:
   workflow-state-overview.md:
     title: Workflow State Overview
     generation: markdown
-  using-task.md:
-    title: Using Task
+  requests-events-tasks.md:
+    title: Requests, Events, and Tasks
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
