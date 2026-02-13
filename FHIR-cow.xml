@@ -46,11 +46,12 @@
 <page key="order-initiation" name="Order Initiation"/>
 <page key="ex7-discharge-placement" name="Post-Discharge Placement in SNF"/>
 <page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with single dispense task"/>
+<page key="requests-events-tasks" name="Requests, Events, and Tasks"/>
 <page key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
 <page key="ex1-simple-lab-order-flow" name="Simple Lab Order Flow"/>
 <page key="ex2-simple-lab-order-flow-with-phlebotomist" name="Simple Lab Order Flow with Phlebotomist"/>
 <page key="toc" name="Table of Contents"/>
-<page key="using-task" name="Using Task"/>
+<page deprecated="true" key="using-task" name="Using Task"/>
 <page key="workflow-patterns" name="Workflow Patterns"/>
 <page key="workflow-state-overview" name="Workflow State Overview"/>
 </specification>
