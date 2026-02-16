@@ -73,11 +73,11 @@ pages:
   core-concepts.md:
     title: Core Concepts
     generation: markdown
+  requests-events-tasks.md:
+    title: Requests, Events, and Tasks
+    generation: markdown
   workflow-state-overview.md:
     title: Workflow State Overview
-    generation: markdown
-  using-task.md:
-    title: Using Task
     generation: markdown
   workflow-patterns.md:
     title: Workflow Patterns
@@ -194,9 +194,10 @@ menu:
   Home: index.html
   Table of Contents: toc.html
   Background: background.html
-  Core Concepts: 
-    Concepts: core-concepts.html
-    Workflow State overview: workflow-state-overview.html
+  Overview: 
+    Core Concepts: core-concepts.html
+    Requests, Events, and Tasks: requests-events-tasks.html
+    Workflow States: workflow-state-overview.html
   Workflow Patterns: 
     Overview of Workflow Patterns: workflow-patterns.html
     # Fulfiller Selection:
