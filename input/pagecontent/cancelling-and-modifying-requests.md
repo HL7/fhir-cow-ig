@@ -53,10 +53,7 @@ The filler may accept or reject that Cancellation by updating Cancellation Task.
  
 * Before there is a Coordination Task, the Placer MAY simply change the request.status.
   * When there is already a Coordination Task, it is necessary to issue a cancellation notice/request: the Placer SHALL create or update a Cancellation Request Task, in addition to updating the ServiceRequest.status. 
-
-  Note that this guide makes no requirements around whether a Placer may cancel the ServiceRequest. This guide does not require that the Placer first check the status of the coordination task before cancelling the Service Request. Such requirements may be imposed via business agreements. 
-
-  Note that even once a Task is in-progress, the Filler MAY choose to immediately accept requests for cancellation without user input, per business agreements.  
+  
 
 <a name="authCancel"></a>
 ### Fulfiller request to cancel the Request
