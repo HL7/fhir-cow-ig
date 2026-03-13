@@ -1,10 +1,5 @@
 This page provides an overview of how Requests may be coordinated across actors using a variety of exchange patterns. This is illustrative and meant to convey one end-to-end flow; details are provided elsewhere.
 
-<div markdown="1">
-Note to balloters: Throughout this page there are references to a "performer of a Task". In FHIR R4, the Task resource only has an `owner` element, however FHIR R5 has also added a `performer` element. HL7 invites balloters to provide input on whether the `owner` element is sufficient to represent the performer concept, or if they may be different in some use cases.
-</div>
-{:.stu-note}
-
 The other pages in this section outline considerations for specific parts of a Request's lifecycle in FHIR. These include:
 * **Order initiation**:  
 This section addresses aspects of how orders are created that relate to FHIR workflows. Many details are left to implementers or more specific implementation guides. 
