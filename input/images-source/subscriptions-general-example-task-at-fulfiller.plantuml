@@ -20,7 +20,6 @@ Placer --> Placer: Create an administrative subscription for the Fulfiller on Se
 note over Placer, Fulfiller: Fulfiller can be notified if supporting info is added\nOther subscriptions, like for Patient Demographics info, are also possible.\nNote that the subscription is just an identifier and need not be a surfacable resource.
 
 
-
 ==Create Request==
 Placer -> Placer: Create Order, ServiceRequest
 
@@ -33,8 +32,6 @@ Fulfiller -> Placer: Query ServiceRequest.supportingInfo, ServiceRequest.reason,
 Fulfiller <- Fulfiller: Update Task.businessStatus 'requested' => 'accepted'
 
 Fulfiller -> Placer: SubscriptionStatus notification - Task updated
-
-note over Placer, Fulfiller: Could also have that the Fulfiller makes a Plan, RequestOrchestration, etc. with Task.output\nA Placer could then update the Task to Accepted if they accept the Fulfiller's Proposal.
 
 Placer --> Placer: Update status of tracking if needed, such as ServiceRequest.status. 
 
@@ -70,3 +67,4 @@ group Optionally - if Placer needs to surface that outcome in future
 end
 
 @enduml
+

@@ -8,7 +8,7 @@ This section addresses aspects of how orders are created that relate to FHIR wor
 How multiple requests for service (or multi-item requests) may be communicated and how dependencies between requests may be communicated and coordinated.
 
 * **Fulfiller determination**  
-After a request has been created, how a Fulfiller for that service is selected. This could be direct assignment by a Placer, assignment by a central triage or coordination office, or patient-selection.
+After a request has been created, how a Fulfiller for that service is selected. This could be direct assignment by a Placer, assignment by a central triage or coordination office, patient-selection, or a bidding process.
 
 * **Requests by a Fulfiller for additional information**  
 How potential Fulfillers may ask for additional information about a Request, either while determining if they can fulfill the Request or later.
@@ -57,4 +57,5 @@ Equivalent flows can be constructed via FHIR Messaging. The Placer and the Fulfi
 <figure>
   {% include pure-messaging-with-placer-identifiers.svg %} 
 </figure>
+
 
