@@ -85,17 +85,7 @@ To help with discussions, brief descriptions and examples of each term are provi
 
 These all involve a healthcare provider deciding that action should be taken by another provider or healthcare organization. The receiving party may or may not be allowed, based on the business agreements, to reject or to modify the request for service, and the initiating party may or may not expect to receive some information back during or after the service.
 
-### Key Differences in Implementations Today:
-
-In reviewing other locale and care-domain specific work, this specification's authors have noted two factors which frequently motivate the creation of new exchange specifications for orders and referrals. These are:
-1. Considerations for minimizing data access
-2. Accommodating interactions with systems that may not yet support robust (and highly available) FHIR servers
-
-**Groups prioritizing (1)** have tended to focus on RESTful exchange and on minimizing the set of data which is first transmitted between the Placers of a Request and the potential Fulfillers. This occasionally extends to the point of including no supporting information with the initial notification, and instead requiring that a potential Fulfiller query for any information necessary to process the request. These groups may also restrict what Fulfillers can query—for example, by allowing Fulfillers access to only certain types of Requests (e.g., transport services), or by limiting visibility to patients for whom a referral has been received.
-
-**Groups prioritizing (2)** often focus on FHIR Messaging, which leads to considerations similar to those in HL7 v2 around broadcast interfaces and whether to include all information a Fulfiller _might_ need to process a request in the notification.
-
-This guide is designed to support both groups. For those focused on (2), it offers a path toward RESTful exchanges as the ecosystem develops. This also reduces implementation burden for vendors (and therefore, lock-in and silos) by providing a data model which may be represented using either paradigm. Groups prioritizing (1) should be mindful that limiting access can require pre-coordination which leads to implementation complexity. Often, a specialist receiving a referral is in the best position to know what data is relevant. The Core Concepts section provides a brief description for how Placers may limit Fulfillers access to data to those for whom they have received a Request. 
+This guide is designed to support both groups using FHIR messaging and those using RESTful mechanisms, including those leveraging the Subscriptions framework. This reduces lock-in, silos, and implementation burden for vendors, by providing a data model which may be represented using either paradigm.
 
 ### Pre-Coordination Needed for Push-Based Exchanges
 A core aim of this guide is to help specification authors to enable workflow related exchanges for orders, referrals, and transfers in a consistent way. 
@@ -108,6 +98,8 @@ FHIR provides several mechanisms by which `push`-based payloads may be sent betw
 * Error handling and remediation - responsibilities for correcting errors, coordinating chart updates, and involving support desks.
 
 Implementers may approach these coordination points differently, but each must be addressed for reliable push-based exchange.
+
+Integration architects often need to balance two competing interests. On one hand, there is value to minimizing the set of data shared until that information is necessary from a privacy perspective. On the other hand, placers may need to supply downstream systems with all information that they need to process a request. A sender may not know what information is most relevant to a downstream specialist, and there is value in reducing the frequency with which a downstream system must call-back for additional information. Depending on the broader exchange environment, it may also be difficult for the ultimate fulfillers of a request to communicate with the original placers. Environments like these encourage including more information with the initial notification. The Core Concepts section provides additional information for how Placers can [manage Fulfiller access](./core-concepts.html#managing-access-by-fulfillers).
 
 ### Brief Survey of Mechanisms for Pushing FHIR Content 
 This section provides context on the main FHIR-based mechanisms for pushing content between actors.
