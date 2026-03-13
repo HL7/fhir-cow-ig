@@ -45,7 +45,7 @@ Tasks can be used for tracking and coordinating the execution of requests. `Task
 - etc.
 
 ### Task Completion
-When the Coordination Task is marked as completed, this is a notification for the Placer to take action on the status of the Request. In most cases this means that the Placer is expected to set the Request.status to "completed". Based on business rules and the content of the Coordination Task and its related Resources the Placer may decide (via an automated process, or based on user interaction) to keep the Request active and create a new Coordination Task to continue fulfillment. An example for "requesting" an order to be marked as completed can be done by updating the Coordination Task - set Task.status to "completed" and Task.statusReason to a code like "completion-requested" or similar. 
+When the _Coordination Task_ is marked as completed, this is a notification for the Placer to take action on the status of the Request. In most cases this means that the Placer is expected to set the `Request.status` to `completed`. Based on business rules and the content of the _Coordination Task_ and its related Resources the Placer may decide (via an automated process, or based on user interaction) to keep the Request active and create a new _Coordination Task_ to continue fulfillment. An example for "requesting" an order to be marked as completed can be done by updating the _Coordination Task_ - set `Task.status` to `completed` and `Task.statusReason` to a code like `order-completion-requested` or similar. 
 
 ### Coordinating several requests
 The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). 
