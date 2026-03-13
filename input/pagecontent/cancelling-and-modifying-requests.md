@@ -83,7 +83,7 @@ This implementation guide does not place any constraints on the modifications a 
 
 In scenarios where a new Request is needed, due to Business Rules, Placers are encouraged to use the [Request.replaces](https://hl7.org/fhir/request-definitions.html#Request.replaces) element. 
 
-TODO - add guidance on how the Tasks are re-pointed to the new Request or if new Tasks are generated.
+Note that this also implies a new Coordination Task, with all relevant supporting information from the original Coordination Task.input again referenced. If the Fulfiller created their own sub-tasks off of the original Coordination Task, they may indicate that these sub-tasks also fulfill requirements relatd to the new Request and Coordination Task.    
 
 
 <a name="authCancel"></a>
