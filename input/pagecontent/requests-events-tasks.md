@@ -1,5 +1,5 @@
 The Task resource is a FHIR resource dedicated to the management of workflows; 
-except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
+except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs. 
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
 The Task resource can convey the information for facilitating, steering or documenting the execution:
@@ -18,7 +18,7 @@ This Implementation Guide introduces two specific types of Task that are importa
 
 <br>
 
-Some of the elements that support the key purposes of the Task resource:
+Some of the elements that support the key purposes of the Task resource are:
 
 ### Task creation and execution: **`Task.status`** 
 The Task status represents the status of the activity that is being performed. To support system interoperability, the `status` is limited to a set of values.  
@@ -44,6 +44,8 @@ Tasks can be used for tracking and coordinating the execution of requests. `Task
 - `ImageStudy`
 - etc.
 
+### Task Completion
+When the _Coordination Task_ is marked as completed, this is a notification for the Placer to take action on the status of the Request. In most cases this means that the Placer is expected to set the `Request.status` to `completed`. Based on business rules and the content of the _Coordination Task_ and its related Resources the Placer may decide (via an automated process, or based on user interaction) to keep the Request active and create a new _Coordination Task_ to continue fulfillment. An example for "requesting" an order to be marked as completed can be done by updating the _Coordination Task_ - set `Task.status` to `completed` and `Task.statusReason` to a code like `order-completion-requested` or similar. 
 
 ### Coordinating several requests
 The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). 
