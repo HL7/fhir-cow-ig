@@ -28,7 +28,7 @@ One of the core aspects in FHIR workflow is that FHIR distinguishes **status of 
 The Task resource and specifically `Task.businessStatus` is used to track the actual execution, assigning a code for the status.  
 
 ### Focal resource: **`Task.focus`**
-Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task and its derivatives, inputs and outputs.   
+Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task or Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
 
 ### Task.input
 `Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
@@ -79,3 +79,4 @@ Implementation guide authors should be aware of three points when specifying fur
 1. The `Task.owner` element represents the party who currently has the baton for the Task. `Task.performer` represents parties who were previously involved in performing the request. If a workflow requires that is needed to tie actors to particular `Task.outputs` or workflow events, multiple Tasks can be beneficial.  
 2. Sub-tasks that are created in relation to the overall Coordination Task SHOULD refer back to the Coordination Task via `Task.partOf`.  
 3. The Placer may not need details on all of the individual steps taken by the Fulfiller. Parties are encouraged to ensure that a workflow's overall status of execution may be understood from the overall Coordination Task. This includes linking any Event outputs resulting from the fulfillment of the Request to the Coordination Task's `Task.output`. This could include, for example, DiagnosticReports, Procedures, Questionnaires, ImagingStudy resources, etc.
+
