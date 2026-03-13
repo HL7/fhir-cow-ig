@@ -32,7 +32,7 @@ note left <<resource>> #lightgreen
 	|_ .id = **prescription-line1**
 	|_ .groupIdentifier = **prescription1**
 	|_ .medication = **Clavamox**
-	|_ .intent = "**Order**"
+	|_ .intent = "**order**"
 	|_ ...
 
 	**MedicationRequest**
@@ -50,7 +50,7 @@ note left <<resource>> #lightgreen
 	|_ .id = **prescription-line1**
 	|_ .groupIdentifier = **prescription1**
 	|_ .medication = **Clavamox**
-	|_ .intent = "**Order**"
+	|_ .intent = "**order**"
 	|_ ...
 
 	**MedicationRequest**
@@ -75,9 +75,9 @@ Filler -> Filler: Create Task
 
 note right <<resource>>#pink
 	**Task**
-	|_  .basedOn"" -> **prescription-line1**
+	|_  .basedOn -> **prescription-line1**
 	|_  .extension[basedOn] -> **prescription-line2**
-	|_  .focus"" -> **prescription-line1**
+	|_  .focus -> **prescription-line1**
 	|_  .extension[focus] -> **prescription-line2**
 	|_ ...
 end note 
@@ -102,9 +102,9 @@ Filler -> Filler: Update Task
 
 note right <<resource>>#pink
 	**Task**
-	|_  .basedOn"" -> **prescription-line1**
+	|_  .basedOn -> **prescription-line1**
 	|_  .extension[basedOn] -> **prescription-line2**
-	|_  .focus"" -> **prescription-line1**
+	|_  .focus -> **prescription-line1**
 	|_  .extension[focus] -> **prescription-line2**
 	|_  .output -> **dispense1**
 	|_  .output -> **dispense2**
@@ -119,6 +119,7 @@ note over Placer, Filler #lightblue
 		- messaging
 		- ...
 end note
+
 
 
 @enduml
