@@ -101,8 +101,8 @@ Implementers may approach these coordination points differently, but each must b
 
 Integration architects often need to balance two competing interests. On one hand, there is value to minimizing the set of data shared until that information is necessary from a privacy perspective. On the other hand, placers may need to supply downstream systems with all information that they need to process a request. A sender may not know what information is most relevant to a downstream specialist, and there is value in reducing the frequency with which a downstream system must call-back for additional information. Depending on the broader exchange environment, it may also be difficult for the ultimate fulfillers of a request to communicate with the original placers. Environments like these encourage including more information with the initial notification. The Core Concepts section provides additional information for how Placers can [manage Fulfiller access](./core-concepts.html#managing-access-by-fulfillers).
 
-### Brief Survey of Mechanisms for Pushing FHIR Content 
-This section provides context on the main FHIR-based mechanisms for pushing content between actors.
+### Overview of Mechanisms for Pushing FHIR Content
+This section provides a brief overview of the main FHIR-based mechanisms for pushing content between actors. The descriptions below are not exhaustive — each mechanism has its own detailed specification that should be consulted for a complete understanding of its capabilities and constraints.
 
 **RESTful POST of Resources (Creates or Updates)**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
@@ -112,13 +112,13 @@ This section provides context on the main FHIR-based mechanisms for pushing cont
 **Batch or Transaction bundles:**
 * These may operate similar to the RESTful Create and Update described above, but provide a mechanism for a client to submit several transactions as a set, which can reduce network traffic. This guide does not explore this option in detail.
 
-**FHIR Messaging:**
+**[FHIR Messaging](https://hl7.org/fhir/messaging.html):**
 * Event-driven exchange using a Bundle with a <code>MessageHeader</code> and related resources.
 * Resources in the message are not required to persist or be queryable.
 * Messaging is conceptually similar to HL7 v2, requiring tight coordination on events, message content, and identifiers.
 * Message senders should include all potentially relevant information, as message recipients may not be able to retrieve more later.
 
-**FHIR Subscriptions:**
+**[FHIR Subscriptions](https://hl7.org/fhir/subscriptions.html):**
 * These can also function in a manner similar to HL7 v2. A Subscription records that a party would like to receive content from a server on a specified channel when certain events occur. A <code>subscription-notification</code> bundle is sent when these triggers occur.
 * Subscriptions provide two optional features that support order, referral, and transfer workflows: 
     * SubscriptionTopics: a data-holder MAY make a <code>SubscriptionTopic</code> available to which authorized data requestors may subscribe for updates. Such "dynamic subscriptions" let an actor specify their own endpoint, events of interest, and desired format from a menu of options chosen by the data holder. This is purely optional within Subscriptions: administrators may instead discuss updates out of band and manually configure Subscriptions, just as administrators do for HL7v2 interfaces today. 

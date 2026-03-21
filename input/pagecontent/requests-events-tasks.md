@@ -2,6 +2,8 @@ The Task resource is a FHIR resource dedicated to the management of workflows;
 except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs. 
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
+While the main focus of this IG is on Tasks originating from Requests, nothing in this IG prevents Tasks without Requests.
+
 The Task resource can convey the information for facilitating, steering or documenting the execution:
 - Intended Performer - the coded entity that is expected to execute the Request
   - `.requestedPerformer` on `Task`
@@ -29,6 +31,16 @@ The Task resource and specifically `Task.businessStatus` is used to track the ac
 
 ### Focal resource: **`Task.focus`**
 Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task or Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
+
+
+### **`Task.basedOn`**
+Unlike `Task.focus`, which identifies the resource being acted upon or fulfilled by the Task, `Task.basedOn` references a higher-level authorization that triggered the creation of the Task. `Task.basedOn` is never the same as `Task.focus`.
+
+`Task.basedOn` is relevant when the authorization context differs from the direct target of the Task's action. For example, a Task to suspend a MedicationRequest may have `Task.focus` set to the MedicationRequest being suspended, while `Task.basedOn` references the ServiceRequest that authorized the suspension. Similarly, a Cancellation Request Task may focus on the Task or Request being cancelled, while `Task.basedOn` points to the clinical order that prompted the cancellation.
+
+For straightforward fulfillment Tasks, the order being fulfilled is always communicated via `Task.focus`. `Task.basedOn` may provide the additional "why" — the broader authorization or plan that justified the Task's creation.
+
+
 
 ### Task.input
 `Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
