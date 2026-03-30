@@ -2,23 +2,9 @@
 
 When placing a clinical order, the Placer may need to share relevant clinical information as inputs to the order. These inputs provide context that the Fulfiller needs to carry out the requested service. For example, when prescribing nursing care, a Placer may share the patient's current medication list so that the nursing care provider has the information needed to safely administer and monitor medications.
 
-### Sharing Information about clinical order
-#### Sharing Information at the time of order
+### Sharing additional information about a clinical order
 
-There are two major use cases when there is a RESTful exchange established between the Placer and Filler: `Task` at the Placer or `Task` at the Fulfiller.
-
-When the `Task` is at the Fulfiller the expectation is that the Fulfiller will do a search on the Placer's FHIR Server to obtain the necessary information about the clinical order. This allows the Fulfiller what information is relevant for the order subject to the appropriate access control rules. 
-
-When the `Task` is at the Placer there is an implicit (or explicit) subscription of the Fulfiller  to the Placer for the `Task`. In this case the Placer can provided the necessary information within the subscription notification `Bundle`. This allows the placing of the order and the necessary information in a single exchange, where the Placer determines what the initially provided information is. 
-
-In summary, when the Placer wants to provide information in a single exchange at the time of order, they should use the following bundle types:
-
-* Subscription Notification Bundle for a RESTful exchange when `Task` is at Placer
-* Message Bundle for a messaging exchange.
-
-
-#### Additional Information unsolicited by placer
-
+#### Provided by placer unsolicited
 
 Placers may provide supporting information alongside a request or its coordination task. As a guide, if the supporting information relates to why the request was authorized or what is authorized, it is associated with the Request resource (via `Request.supportingInfo`). Conversely, if the supporting information relates to how the request should be fulfilled, it is supplied with the Task (via `Task.input`).
 
@@ -26,7 +12,7 @@ For example, a Placer may wish to indicate that they received confirmation from 
 
 Fulfiller systems may also update the Coordination Task's inputs with details of how they are fulfilling the request. For example, a Fulfiller may ask that a patient complete a Questionnaire and then track that this was used as input for their fulfillment of the related Request.
 
-#### Additional Information requested by filler
+#### Request for additional information by fulfiller
 
 In some cases, a Fulfiller may determine that they need additional information from the Placer before they can proceed with fulfilling a request. See the [Fulfillers requesting additional information](fulfiller-need-for-additional-info.html) pattern for details on how this is handled.
 
