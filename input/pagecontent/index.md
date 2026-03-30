@@ -47,40 +47,25 @@ Several challenges affect referrals, orders, and transfers—particularly in cro
 This guide outlines how the following workflow aspects can be supported using FHIR:
 
 * **Order initiation** - mechanisms that are important to consider before an order is active - while orthogonal to the order execution, order creation is a common need and some basic guidance is presented.
-  
 * **Order grouping** - description on mechanisms for order grouping (multi-item orders) - also orthogonal to the execution of the workflows, but guidance is given to ensure correct order execution and tracking for single- and multi-item orders.
-  
 * **Request notification** – A Placer notifies a (potential) Fulfiller of a request, including necessary supporting information for assessing fulfillment.
-  
-* **Information requests from performers** – May include RESTful queries, letters requiring action by the Placer, or instructions (e.g., to order a pre-service blood test).
-  
+* **Information requests from performers** – May include RESTful queries, letters requiring action by the placer, or instructions (e.g., to order a pre-service blood test).
 * **Coordination of fulfillment** – Between the Placer, patient, and potential Fulfillers to determine who will fulfill the request.
-  
 * **Request updates from Placers** – Such as cancellations, added information, or patient demographic changes.
-  
-* **Status updates from Fulfillers** – Communicating progress or changes in request handling.
-  
+* **Status updates from fulfillers** – Communicating progress or changes in request handling.
 * **Outcome sharing** – Including results, consult notes, or notifications that a request could not be completed.
 
 #### Aspects not detailed in this IG:
 The following areas are important for designing full end-to-end workflows, but are not covered in depth in this guide:
 
 * **Client registration** - registering a client with an authorization server and identifying the set of data a client may access and the actions it may take (collectively "scopes") to carry out a set of workflows per a business agreement.
-   
 * **Patient matching** – it is mentioned, as approaches vary by jurisdiction and available identifiers and doesn't impact the other mechanisms.
-  
 * **Provider directories** – Identifying providers, their affiliations, and electronic endpoints.
-  
-* **Service catalogs** - what tests, procedures, or other services a Fulfiller can perform, and what information they would require to perform a service or to assess their ability to perform a service (such as their order-specific questions).
-  
+* **Service catalogs** - what tests, procedures, or other services a fulfiller can perform, and what information they would require to perform a service or to assess their ability to perform a service (such as their order-specific questions).
 * **Decision support and prior authorization** - this IG provides only minimal guidance on workflow steps that occur before the creation of an actionable request for service.
-  
 * **Scheduling** - confirming the time slot, location, provider, and materials with which a service will be performed
-  
 * **Authentication, authorization, and auditing** - this guide assumes the use of OAuth 2.0 protocols and includes high-level access-control considerations but does not detail client/user/server authentication or scope management.
-  
 * **Outcome / result format and content of supporting resources** - this IG provides guidance  on linking Outputs back to an original Request to support loop closure, but does not impose any requirements that such outputs exist or on their form or content.
-
 * **Details about the information requirements to execute a workflow** (e.g. which Specimen detail information is needed to execute a Laboratory test, which Patient detail Information is needed for a Referral, which detailed information is required regarding a MedicationRequest). This specification only adds constraints to ensure data exchange about workflows is interoperable. Details about needed information are domain-specific and usually jurisdiction-specific, and should be defined in specific Implementation Guides.
 
 ### Dependencies

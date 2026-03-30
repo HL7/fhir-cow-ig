@@ -1,5 +1,5 @@
 The Task resource is a FHIR resource dedicated to the management of workflows; 
-except in very simple workflows, it is expectable that the Task resource will be used in most data exchanges when there are workflow needs. 
+except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs. 
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
 The Task resource can convey the information for facilitating, steering or documenting the execution:
@@ -18,7 +18,7 @@ This Implementation Guide introduces two specific types of Task that are importa
 
 <br>
 
-Some of the elements that support the key purposes of the Task resource:
+Some of the elements that support the key purposes of the Task resource are:
 
 ### Task creation and execution: **`Task.status`** 
 The Task status represents the status of the activity that is being performed. To support system interoperability, the `status` is limited to a set of values.  
@@ -28,7 +28,7 @@ One of the core aspects in FHIR workflow is that FHIR distinguishes **status of 
 The Task resource and specifically `Task.businessStatus` is used to track the actual execution, assigning a code for the status.  
 
 ### Focal resource: **`Task.focus`**
-Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task and its derivatives, inputs and outputs.   
+Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task or Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
 
 ### Task.input
 `Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
@@ -44,6 +44,8 @@ Tasks can be used for tracking and coordinating the execution of requests. `Task
 - `ImageStudy`
 - etc.
 
+### Task Completion
+When the _Coordination Task_ is marked as completed, this is a notification for the Placer to take action on the status of the Request. In most cases this means that the Placer is expected to set the `Request.status` to `completed`. Based on business rules and the content of the _Coordination Task_ and its related Resources the Placer may decide (via an automated process, or based on user interaction) to keep the Request active and create a new _Coordination Task_ to continue fulfillment. An example for "requesting" an order to be marked as completed can be done by updating the _Coordination Task_ - set `Task.status` to `completed` and `Task.statusReason` to a code like `order-completion-requested` or similar. 
 
 ### Coordinating several requests
 The Task resource can be used to coordinate several requests, when they are grouped but not orchestrated (i.e. they are part of the same group, but are not interdependent). 
@@ -79,3 +81,4 @@ Implementation guide authors should be aware of three points when specifying fur
 1. The `Task.owner` element represents the party who currently has the baton for the Task. `Task.performer` represents parties who were previously involved in performing the request. If a workflow requires that is needed to tie actors to particular `Task.outputs` or workflow events, multiple Tasks can be beneficial.  
 2. Sub-tasks that are created in relation to the overall Coordination Task SHOULD refer back to the Coordination Task via `Task.partOf`.  
 3. The Placer may not need details on all of the individual steps taken by the Fulfiller. Parties are encouraged to ensure that a workflow's overall status of execution may be understood from the overall Coordination Task. This includes linking any Event outputs resulting from the fulfillment of the Request to the Coordination Task's `Task.output`. This could include, for example, DiagnosticReports, Procedures, Questionnaires, ImagingStudy resources, etc.
+
