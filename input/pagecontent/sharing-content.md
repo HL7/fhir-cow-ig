@@ -7,7 +7,7 @@ When placing a clinical order, the Placer may need to share relevant clinical in
 
 There are two major use cases when there is a RESTful exchange established between the Placer and Filler: `Task` at the Placer or `Task` at the Fulfiller.
 
-When the `Task` is at the Fulfiller the expectation is that the Fulfiller will do a search on the Placer's FHIR Server to obtain the necessary information about the clinical order. This allows the Fulfiller what information is relevant for the order subject to the appropriate access control rules. 
+When the `Task` is at the Fulfiller the expectation is that the Fulfiller will do a search on the Placer's FHIR Server to obtain the necessary information about the clinical order. This allows the Fulfiller to access the information that is relevant to the order, subject to the appropriate access control rules. 
 
 When the `Task` is at the Placer there is an implicit (or explicit) subscription of the Fulfiller  to the Placer for the `Task`. In this case the Placer can provided the necessary information within the subscription notification `Bundle`. This allows the placing of the order and the necessary information in a single exchange, where the Placer determines what the initially provided information is. 
 
