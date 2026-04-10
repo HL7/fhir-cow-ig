@@ -4,11 +4,13 @@ This section provides an overview of FHIR resources used to support Request work
 
 This guide describes interactions between those requesting and those performing services. The following terms are used:
 
-* **Placer, requestor, referrer, and prescriber** are treated as equivalent. We generally avoid "Requestor" to prevent confusion with client-server terminology.
-* **Performer and Fulfiller** are also considered equivalent. These often refer to potential Fulfillers, though we omit "potential" unless needed for clarity
+* **Placer**, **requestor**, **referrer**, and **prescriber** are treated as equivalent. We generally avoid "Requestor" to prevent confusion with client-server terminology.
+* **Performer** and **Fulfiller** are also considered equivalent. These often refer to potential Fulfillers, though we omit "potential" unless needed for clarity
 * **Patient** refers to the individual receiving care, but may also include their representative—such as a parent, healthcare agent, or social worker—when they participate in coordinating services.
 
-In many real-world scenarios there may be additional parties that would like to be informed when certain workflows are occurring, even if they may not be assigned actions to perform by the Placer or Fulfiller in that workflow. For example, an infection control department may wish to know when certain tests for infectious diseases are placed. This implementation guide dos not impose any constraints on how these parties are informed: they may receive notifications via subscriptions, poll, or use some other method. The mechanism by which these secondary consumers are informed of the request may be the same mechanism by which the Fulfiller was made aware. In those cases, the secondary consumer can exam the content of the notification, such as Task.owner, to determine whether any actions are explicitly requested from them.  
+There may be entities throughout a specific workflow that are present between the requestor and the performer for various business, architectural, technological, or other reasons. Such *intermediaries* are not represented by a distinct role, as they may take upon different types of responsibilities. 
+
+In many real-world scenarios there may be additional parties that would like to be informed when certain workflows are occurring, even if they may not be assigned actions to perform by the Placer or Fulfiller in that workflow. For example, an infection control department may wish to know when certain tests for infectious diseases are placed. This implementation guide dos not impose any constraints on how these parties are informed: they may receive notifications via subscriptions, poll, or use some other method. The mechanism by which these secondary consumers are informed of the request may be the same mechanism by which the Fulfiller was made aware. In those cases, the secondary consumer can examine the content of the notification, such as Task.owner, to determine whether any actions are explicitly requested from them.  
 
 ### Requests, Tasks, and Outputs Events:
 This section provides a brief overview of how FHIR resources are used to represent Request workflows. For more detail, see [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns). 
