@@ -10,7 +10,7 @@ The meaning of grouping determines how to implement such grouping in FHIR:
 |---|---|----|----|---|
 | Separate orders |Request.identifier|Request.identifier|||
 | Single ordering session,<br>independent items|Request.identifier |Request.groupIdentifier ||| 
-| Single ordering session,<br>tightly related or<br>interdependent items|Request.identifier |Request..groupIdentifier<br>RequestOrchestration.identifier<br>RequestOrchestration.groupIdentifier ||| 
+| Single ordering session,<br>tightly related or<br>interdependent items|Request.identifier |Request.groupIdentifier<br>RequestGroup.identifier<br>RequestGroup.groupIdentifier ||| 
 ||.| | | | 
 
 
