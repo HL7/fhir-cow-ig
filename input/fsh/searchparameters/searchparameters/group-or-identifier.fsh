@@ -18,7 +18,8 @@ Usage: #definition
 * base[+] = #NutritionOrder
 * base[+] = #RequestGroup
 * base[+] = #ServiceRequest
+* base[+] = #SupplyRequest
 * base[+] = #VisionPrescription
 * type = #token
-* expression = "Appointment.identifier | CarePlan.identifier | Claim.identifier | CommunicationRequest.groupIdentifier | CommunicationRequest.identifier | CoverageEligibilityRequest.identifier | DeviceRequest.groupIdentifier | DeviceRequest.identifier | EnrollmentRequest.identifier | MedicationRequest.groupIdentifier | MedicationRequest.identifier | NutritionOrder.identifier | RequestGroup.groupIdentifier | RequestGroup.identifier | ServiceRequest.requisition | ServiceRequest.identifier | VisionPrescription.identifier"
+* expression = "Appointment.identifier | CarePlan.identifier | Claim.identifier | CommunicationRequest.groupIdentifier | CommunicationRequest.identifier | CoverageEligibilityRequest.identifier | DeviceRequest.groupIdentifier | DeviceRequest.identifier | EnrollmentRequest.identifier | MedicationRequest.groupIdentifier | MedicationRequest.identifier | NutritionOrder.identifier | RequestGroup.groupIdentifier | RequestGroup.identifier | ServiceRequest.requisition | ServiceRequest.identifier | SupplyRequest.identifier | VisionPrescription.identifier"
 //* processingMode = #normal
