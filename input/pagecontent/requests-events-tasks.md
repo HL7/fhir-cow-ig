@@ -1,5 +1,91 @@
-The Task resource is a FHIR resource dedicated to the management of workflows; 
-except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs. 
+The Task resource is a FHIR resource dedicated to the management of workflows; except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs.  
+
+FHIR distinguishes between an **authorization** for care (Requests), the **record of care that was performed** (Events), and the **management of workflow execution** (Tasks). This page provides an overview of each of these concepts and the FHIR resources associated with them.
+
+## Requests
+
+A FHIR Request represents a provider's authorization that a particular activity should occur. It captures what is being requested and why, but does not in itself constitute an instruction to act. Request resources follow the [FHIR Request pattern](https://hl7.org/fhir/request.html).
+
+The following table lists the FHIR resources that follow the Request pattern:
+
+<table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
+  <thead>
+    <tr class="header">
+      <th>Resource</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://hl7.org/fhir/appointment.html">Appointment</a></td><td>A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s)</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/appointmentresponse.html">AppointmentResponse</a></td><td>A reply to an appointment request for a patient and/or practitioner(s)</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/careplan.html">CarePlan</a></td><td>Healthcare plan for a patient or group</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/claim.html">Claim</a></td><td>A request for adjudication and/or authorization of a set of healthcare-related services</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/communicationrequest.html">CommunicationRequest</a></td><td>A request for information to be sent to a receiver</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/coverageeligibilityrequest.html">CoverageEligibilityRequest</a></td><td>A request for insurance coverage or pre-authorization</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/devicerequest.html">DeviceRequest</a></td><td>A request for a device to be used or provided to a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/enrollmentrequest.html">EnrollmentRequest</a></td><td>A request for enrollment in an insurance plan</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/immunizationrecommendation.html">ImmunizationRecommendation</a></td><td>Guidance or a proposal for a patient's immunization</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/medicationrequest.html">MedicationRequest</a></td><td>Authorization for medication supply and administration instructions</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/nutritionorder.html">NutritionOrder</a></td><td>Diet, formula, or supplement order or request</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/R4/requestgroup.html">RequestGroup</a> (R4) / <a href="https://hl7.org/fhir/requestorchestration.html">RequestOrchestration</a> (R5)</td><td>A group of related requests that can be used to capture intended activities that have inter-dependencies. Note: this resource was renamed from RequestGroup to RequestOrchestration in R5 to clarify that its purpose is to orchestrate the execution of related requests, not to act as a container or grouper</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/servicerequest.html">ServiceRequest</a></td><td>A request for a service such as diagnostics, consultations, or treatments</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/supplyrequest.html">SupplyRequest</a></td><td>A request for supply of a device or substance</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/visionprescription.html">VisionPrescription</a></td><td>A prescription for vision correction products</td></tr>
+  </tbody>
+</table>
+
+## Events
+
+A FHIR Event represents the record of something that has occurred — a clinical act that has been performed or is being performed. Events are typically created as a result of fulfilling a Request, and follow the [FHIR Event pattern](https://hl7.org/fhir/event.html).
+
+The following table lists the FHIR resources that follow the Event pattern:
+
+<table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse' class="table">
+  <thead>
+    <tr class="header">
+      <th>Resource</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://hl7.org/fhir/chargeitem.html">ChargeItem</a></td><td>Record of a billable item or service</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/claimresponse.html">ClaimResponse</a></td><td>Response to a claim or pre-authorization</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/clinicalimpression.html">ClinicalImpression</a></td><td>A clinical assessment performed on a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/communication.html">Communication</a></td><td>Record of information transferred between parties</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/composition.html">Composition</a></td><td>A set of healthcare-related information assembled into a single document</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/condition.html">Condition</a></td><td>A clinical condition, problem, or diagnosis</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/consent.html">Consent</a></td><td>Record of a healthcare consumer's choices or policy authority</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/coverageeligibilityresponse.html">CoverageEligibilityResponse</a></td><td>Response to eligibility or benefit inquiry</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/detectedissue.html">DetectedIssue</a></td><td>Record of a clinical issue detected during care</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/diagnosticreport.html">DiagnosticReport</a></td><td>Findings and interpretations of diagnostic tests</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/documentreference.html">DocumentReference</a></td><td>Reference to a document</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/encounter.html">Encounter</a></td><td>An interaction during which services are provided to the patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/enrollmentresponse.html">EnrollmentResponse</a></td><td>Response to an enrollment request</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/episodeofcare.html">EpisodeOfCare</a></td><td>An association of a patient with an organization for a period of time for care</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit</a></td><td>Remittance resource combining claim and adjudication information</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/familymemberhistory.html">FamilyMemberHistory</a></td><td>Record of a family member's medical history relevant to the patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/guidanceresponse.html">GuidanceResponse</a></td><td>The formal response to a request for clinical decision support guidance</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/imagingstudy.html">ImagingStudy</a></td><td>A set of images produced in a single study</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/immunization.html">Immunization</a></td><td>Record of an immunization event</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/medicationadministration.html">MedicationAdministration</a></td><td>Record of a medication being administered</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/medicationdispense.html">MedicationDispense</a></td><td>Record of dispensing a medication</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/medicationstatement.html">MedicationStatement</a></td><td>Record of medication being taken by a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/observation.html">Observation</a></td><td>Measurements and simple assertions about a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/paymentnotice.html">PaymentNotice</a></td><td>Notice of a payment status</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/paymentreconciliation.html">PaymentReconciliation</a></td><td>Reconciliation of payment amounts</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/procedure.html">Procedure</a></td><td>An action performed on or for a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/questionnaireresponse.html">QuestionnaireResponse</a></td><td>A structured set of answers to a set of questions</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/riskassessment.html">RiskAssessment</a></td><td>Assessment of likely outcomes for a patient</td></tr>
+    <tr><td><a href="https://hl7.org/fhir/supplydelivery.html">SupplyDelivery</a></td><td>Record of delivery of a supply</td></tr>
+  </tbody>
+</table>
+
+## Tasks
+
+The Task resource is a FHIR resource dedicated to the management of workflows;
+except in very simple workflows, it is expected that the Task resource will be used in most data exchanges when there are workflow needs.  
+
+
 **Designers and implementers of systems implementing workflows using FHIR resources are highly recommended to review the [Task resource](https://hl7.org/fhir/Task) pages**.
 
 The Task resource can convey the information for facilitating, steering or documenting the execution:
