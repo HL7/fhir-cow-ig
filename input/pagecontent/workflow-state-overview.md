@@ -18,5 +18,19 @@ Not all states will apply to every workflow or use case, and implementations may
 | Complete          | Request:<br>- Status: completed<br>- Intent: order  | Task:<br>- Status: completed<br>- Performer: [specified]<br>- Code: fulfill<br>- Intent: order<br>- 0..* Output (DiagnosticReport, Observations, DocumentReference, CarePlan, etc.)   | Complete (if service has an output) | |
 {: .grid .table-striped}
 
+### Cancellation and rejection states
+
+The following states support the patterns described in [Cancelling and Modifying Requests](cancelling-and-modifying-requests.html), where a Request is cancelled by the Placer, or declined, not performed, or replaced by a proposal from the Fulfiller.
+
+| Workflow State to Represent | Request resource representation |Task resource representation | Event resources representation | Descriptions |
+| ----------------------------- | -----------------------------| -----------------------------| -----------------------------| -----------------------------| 
+| Placer cancelled (before work has begun) | Request:<br>- Status: revoked<br>- Intent: order | Coordination Task:<br>- Status: cancelled<br>- Code: fulfill<br>- Intent: order<br>- Focus: [the Request] | *Not set* | |
+| Placer requested cancellation (work has begun) | Request:<br>- Status: active<br>- Intent: order | Coordination Task:<br>- Status: in-progress (MAY be on-hold)<br><br>Cancellation Request Task:<br>- Status: requested<br>- Code: abort<br>- Focus: [the Coordination Task] | *Not applicable* | |
+| Fulfiller declined | Request:<br>- Status: active<br>- Intent: order | Task:<br>- Status: rejected<br>- Performer: [specified]<br>- Code: fulfill<br>- Intent: order | *Not set* | |
+| Fulfiller unable to perform | Request:<br>- Status: active<br>- Intent: order | Task:<br>- Status: failed<br>- Performer: [specified]<br>- Code: fulfill<br>- Intent: order | *Not applicable* | |
+| Fulfiller requested cancellation of the Request | Request:<br>- Status: active<br>- Intent: order | Coordination Task:<br>- Status: rejected / cancelled / failed<br><br>Cancellation Request Task:<br>- Status: requested<br>- Code: abort<br>- Focus: [the Request] | *Not applicable* | |
+| Fulfiller proposed an alternative | Original Request:<br>- Status: active<br>- Intent: order<br><br>Proposed Request:<br>- Status: active<br>- Intent: proposal | Task:<br>- Status: rejected<br>- StatusReason: alternative proposal<br>- Focus: [the original Request]<br>- 0..* Output: [the proposed Request] | *Not set* | |
+{: .grid .table-striped}
+
 
 <br>
