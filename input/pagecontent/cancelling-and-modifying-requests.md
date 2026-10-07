@@ -45,12 +45,6 @@ Also note that even once a Coordination Task is in-progress, Fillers may choose 
 
 Upon receiving the request, the filler accepts or rejects the cancellation by updating the cancellation request task `.status`.  
 
-
-Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the coordination Task.status --> Cancelled.  
- 
-
-Once the filler has begun work, Placers MUST request cancellation by creating and communicating a Cancellation Request Task. This Cancellation Request task has .code=Abort, and the original Coordination Task in focus and a status of Requested.   
-
 The filler may accept or reject that Cancellation by updating Cancellation Task.status to Accepted or Rejected, and they MAY update the Coordination Task to On Hold.  
  
 * Before there is a Coordination Task, the Placer MAY simply change the request.status.  
