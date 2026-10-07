@@ -30,7 +30,7 @@ title Request with Fulfiller Acceptance (Subscriptions - Task at Placer)
     Fulfiller -> Placer: Update Task.businessStatus'requested' => 'accepted' (or supply Plan, etc. for Bid)
     
     note over Placer, Fulfiller
-    Could also have that the Fulfiller makes a Plan / RequestOrchestration with task.input
+    Could also have that the Fulfiller makes a Plan / RequestGroup (RequestOrchestration in R5) with task.input
     Then the Placer can update Task B to Accepted if they accept the Fulfiller's Proposal. 
     endnote
 
