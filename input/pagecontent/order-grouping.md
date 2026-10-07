@@ -1,15 +1,15 @@
-Clinical orders are often related to other orders: they may be entered together, depend on each other, replace one another, or be split into further requests during fulfillment. This page describes the core patterns for such grouped, related, and dependent orders: the relationships between orders; the grouping of orders, actions, and outcomes; the resources and elements used for grouping; and how multiple fulfillers may coordinate. Implementers are encouraged to follow these patterns, so that grouped, related, and dependent orders can be tracked consistently and in the same way as single orders. Approaches that deviate from these patterns may make the tracking of such orders more complex and less interoperable.
+*Clinical orders are often related to other orders: they may be entered together, depend on each other, replace one another, or be split into further requests during fulfillment. This page describes the core patterns for such grouped, related, and dependent orders: the relationships between orders; the grouping of orders, actions, and outcomes; the resources and elements used for grouping; and how multiple fulfillers may coordinate. Implementers are encouraged to follow these patterns, so that grouped, related, and dependent orders can be tracked consistently and in the same way as single orders. Approaches that deviate from these patterns may make the tracking of such orders more complex and less interoperable.*
 
 ### Relationships between orders
 
-Orders can be related in several typical ways, each supported by elements of the Request resources:
-* **Grouped** – requests that belong to the same order have the same `.groupIdentifier` (or `ServiceRequest.requisition`).
-* **Replaces** – a request that replaces another request references it in `.replaces`.
-* **Based on** – a request that is created to fulfill, or as a consequence of, another request references it in `.basedOn`.
+*Orders can be related in several typical ways, each supported by elements of the Request resources:*
+* **Grouped** – *requests that belong to the same order have the same `.groupIdentifier` (or `ServiceRequest.requisition`).*
+* **Replaces** – *a request that replaces another request references it in `.replaces`.*
+* **Based on** – *a request that is created to fulfill, or as a consequence of, another request references it in `.basedOn`.*
 
 ### Grouping of orders
 
-Orders can be grouped in different ways – unrelated, independent, or interdependent (see below). Typical scenarios include:
+*Orders can be grouped in different ways – unrelated, independent, or interdependent (see below). Typical scenarios include:*
 * protocol orders that are issued and split into sub-orders;
 * protocols that create grouped requests;
 * a Placer requests a single item, and derived requests are created at the Fulfiller side (e.g. lab reflex testing);
@@ -71,17 +71,17 @@ This is a common case where procedures have dependencies, or medications that mu
 
 ### Grouping of actions
 
-The execution of requests can be grouped, at the Placer or at the Fulfiller side – for example, for convenience, several requests may be performed together. Within a workflow, the work for a request may also be split into sub-tasks that are managed as part of the overall Task.
+*The execution of requests can be grouped, at the Placer or at the Fulfiller side – for example, for convenience, several requests may be performed together. Within a workflow, the work for a request may also be split into sub-tasks that are managed as part of the overall Task.*
 
 ### Grouping of outcomes
 
-The outcomes of grouped requests may also be grouped – for example, when the results of several requests are reported together.
+*The outcomes of grouped requests may also be grouped – for example, when the results of several requests are reported together.*
 
 ### Grouping resources and relationships
 
-The boundaries of a group, and the relationships within it, can be represented with:
+*The boundaries of a group, and the relationships within it, can be represented with:*
 * grouping resources:
-  * RequestGroup (RequestOrchestration in R5) – for interdependent requests (see above);
+  * RequestGroup (RequestOrchestration in R5) *– for interdependent requests (see above)*;
   * CarePlan;
   * Bundle;
 * relationships between resources:
@@ -111,11 +111,11 @@ To ensure the workflow management patterns apply, grouped requests are tracked i
 
 ### Coordination among multiple fulfillers
 
-Several Fulfillers may coordinate while fulfilling a grouped request – or a single request. This collaboration on the execution may be planned, for example when the work is divided between Fulfillers in advance, or unplanned, when the need arises during fulfillment.
+*Several Fulfillers may coordinate while fulfilling a grouped request – or a single request. This collaboration on the execution may be planned, for example when the work is divided between Fulfillers in advance, or unplanned, when the need arises during fulfillment.*
 
 ### Examples
 
-The following examples describe, functionally, how grouped, related, and dependent orders occur in practice.
+*The following examples describe, functionally, how grouped, related, and dependent orders occur in practice.*
 
 #### MRI with contrast
 
