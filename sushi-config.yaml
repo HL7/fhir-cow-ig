@@ -86,7 +86,7 @@ pages:
       title: Order Initiation
       generation: markdown
     order-grouping.md:
-      title: Order Grouping
+      title: Grouped, Related, and Dependent Orders
       generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
@@ -211,7 +211,7 @@ menu:
     #   Requests to a Central Service: requests-to-central-coordinator.html
     #   Patient-Mediated Requests: patient-mediated-requests.html
     Order Initiation: order-initiation.html
-    Order Grouping: order-grouping.html
+    Grouped, Related, and Dependent Orders: order-grouping.html
     Fulfiller Determination: fulfiller-determination.html
     Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
     Cancelling and Modifying Requests: cancelling-and-modifying-requests.html

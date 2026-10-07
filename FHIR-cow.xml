@@ -38,11 +38,11 @@
 <page key="examples" name="Examples"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>
 <page key="fulfiller-need-for-additional-info" name="Fulfillers Requesting Additional Information"/>
+<page key="order-grouping" name="Grouped, Related, and Dependent Orders"/>
 <page key="artifacts" name="IG Artifacts"/>
 <page key="ex6-lab-order-flow-with-reference-lab" name="Lab Order Flow with Reference Lab"/>
 <page key="ex5-lab-order-flow-specimen-rejected" name="Lab Order Flow with Specimen Rejected"/>
 <page key="ex3-lab-order-flow-reflex-initiated-lab" name="Lab Order Workflow where a Reflex is imitated by the Laboratory"/>
-<page key="order-grouping" name="Order Grouping"/>
 <page key="order-initiation" name="Order Initiation"/>
 <page key="ex7-discharge-placement" name="Post-Discharge Placement in SNF"/>
 <page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with single dispense task"/>
