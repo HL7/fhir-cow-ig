@@ -21,6 +21,8 @@
 <artifact deprecated="true" id="CodeSystem/message-header-event" key="CodeSystem-message-header-event" name="Clinical Order Workflow MessageHeaderEvent Codes"/>
 <artifact id="ValueSet/message-header-event" key="ValueSet-message-header-event" name="Clinical Orders Workflow - Message Header Event Codes"/>
 <artifact id="ValueSet/business-status" key="ValueSet-business-status" name="Clinical Orders Workflow Business Status Codes"/>
+<artifact id="ValueSet/cow-task-code" key="ValueSet-cow-task-code" name="Clinical Orders Workflow Task Code Value Set"/>
+<artifact id="CodeSystem/cow-task-code" key="CodeSystem-cow-task-code" name="Clinical Orders Workflow Task Codes"/>
 <artifact id="StructureDefinition/coordination-task" key="StructureDefinition-coordination-task" name="Coordination Task"/>
 <artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Fulfiller"/>
 <artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="GroupOrIdentifier"/>
