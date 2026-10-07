@@ -1,4 +1,4 @@
-### Sharing inputs
+### Sharing inputs at time of ordering
 
 When placing a clinical order, the Placer may need to share relevant clinical information as inputs to the order. These inputs provide context that the Fulfiller needs to carry out the requested service. For example, when prescribing nursing care, a Placer may share the patient's current medication list so that the nursing care provider has the information needed to safely administer and monitor medications.
 
