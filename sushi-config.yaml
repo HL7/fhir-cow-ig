@@ -40,8 +40,8 @@ releaseLabel: STU 1 Ballot # ci-build | draft | qa-preview | ballot | trial-use 
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.fhir.extensions.r4: 4.0.1
-  hl7.fhir.extensions.r5: 4.0.1
+  hl7.fhir.uv.extensions.r4: 5.2.0
+  hl7.fhir.uv.xver-r5.r4: 0.1.0
   hl7.fhir.uv.subscriptions-backport.r4:
     version: 1.1.0
     id: subscriptions
@@ -115,8 +115,8 @@ pages:
     cancelling-and-modifying-requests.md:
       title: Cancelling and Modifying Orders
       generation: markdown
-    sharing-outputs.md:
-      title: Sharing Outputs from an Order or Referral
+    sharing-content.md:
+      title: Sharing Content
       generation: markdown
     tracking-progress.md:
       title: Tracking Workflow Progress
@@ -210,13 +210,13 @@ menu:
     #   Request with Multiple Performers, Bid: request-with-multiple-potential-performers-with-bidding.html
     #   Requests to a Central Service: requests-to-central-coordinator.html
     #   Patient-Mediated Requests: patient-mediated-requests.html
-    Order initiation: order-initiation.html
-    Order grouping: order-grouping.html
-    Fulfiller determination: fulfiller-determination.html
-    Fulfiller requests for additional Info: fulfiller-need-for-additional-info.html
-    Cancelling and modifying requests: cancelling-and-modifying-requests.html
-    Sharing outputs of referrals and orders: sharing-outputs.html
-    Tracking workflow progress: tracking-progress.html
+    Order Initiation: order-initiation.html
+    Order Grouping: order-grouping.html
+    Fulfiller Determination: fulfiller-determination.html
+    Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
+    Cancelling and Modifying Requests: cancelling-and-modifying-requests.html
+    Sharing Content: sharing-content.html
+    Tracking Workflow Progress: tracking-progress.html
     
   Examples: examples.html
   Artifacts: artifacts.html

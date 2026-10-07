@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/2025May" ciUrl="http://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" gitUrl="https://github.com/HL7/fhir-cow-ig" url="http://hl7.org/fhir/uv/cow">
-<version code="current" url="http://build.fhir.org/ig/HL7/fhir-cow-ig"/>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cow/2025May" ciUrl="https://build.fhir.org/ig/HL7/fhir-cow-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="oo" gitUrl="https://github.com/HL7/fhir-cow-ig" url="http://hl7.org/fhir/uv/cow">
+<version code="current" url="https://build.fhir.org/ig/HL7/fhir-cow-ig"/>
 <version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cow/2025May"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
@@ -47,10 +47,12 @@
 <page key="ex7-discharge-placement" name="Post-Discharge Placement in SNF"/>
 <page key="ex4-meds-grouped-dispense" name="Prescription and Dispense with single dispense task"/>
 <page key="requests-events-tasks" name="Requests, Events, and Tasks"/>
-<page key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
+<page key="sharing-content" name="Sharing Content"/>
+<page deprecated="true" key="sharing-outputs" name="Sharing Outputs from an Order or Referral"/>
 <page key="ex1-simple-lab-order-flow" name="Simple Lab Order Flow"/>
 <page key="ex2-simple-lab-order-flow-with-phlebotomist" name="Simple Lab Order Flow with Phlebotomist"/>
 <page key="toc" name="Table of Contents"/>
+<page key="tracking-progress" name="Tracking Workflow Progress"/>
 <page deprecated="true" key="using-task" name="Using Task"/>
 <page key="workflow-patterns" name="Workflow Patterns"/>
 <page key="workflow-state-overview" name="Workflow State Overview"/>
