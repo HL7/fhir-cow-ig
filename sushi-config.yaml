@@ -182,6 +182,7 @@ pages:
 parameters:
   special-url: 
     - http://hl7.org/fhir/ValueSet/subscription-notification-type
+  auto-oid-root: 2.16.840.1.113883.4.642.40.99
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
