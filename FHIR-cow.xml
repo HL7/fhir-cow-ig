@@ -27,7 +27,8 @@
 <artifact id="ValueSet/order-notification-status-type" key="ValueSet-order-notification-status-type" name="Order Notification Status Type"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
 <artifact id="CodeSystem/subscription-notification-status-type" key="CodeSystem-subscription-notification-status-type" name="Subscription Notification Type"/>
-<artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Example Codes"/>
+<artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Business Status Codes"/>
+<artifact id="CodeSystem/cow-message-header-event" key="CodeSystem-cow-message-header-event" name="Temp Clinical Order Workflow Message Header Event Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="background" name="Background - Goals and General Principles"/>
