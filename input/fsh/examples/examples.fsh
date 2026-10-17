@@ -65,7 +65,7 @@ Description: "Example of a COW cancellation task created by the Placer in order 
 * focus               = Reference(COWCoordinationTask)
 
 Instance:    COWAuthorizationCancellationTask
-InstanceOf:  CancellationRequestTask
+InstanceOf:  OrderStatusChangeRequestTask
 Usage:       #example
 Title:       "COW Authorization Cancellation Task"
 Description: "Example of a COW cancellation task created by the Fulfiller in order to request from the Placer that the authorized service is cancelled."

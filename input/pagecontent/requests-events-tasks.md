@@ -12,9 +12,10 @@ The Task resource can convey the information for facilitating, steering or docum
 - Owner - the entity that is responsible for the executing, delegating, rejecting...
   - In R4 and later the `.owner` on `Task`
 
-This Implementation Guide introduces two specific types of Task that are important for the execution of workflows:
+This Implementation Guide introduces three specific types of Task that are important for the execution of workflows:
 * **Coordination Task** - the preferred way to keep track of statuses, and requested and performed activities (see [profile](StructureDefinition-coordination-task.html)).
-* **Cancellation Request Task** - the preferred way to request cancellation of a Request, or of another Task (see [profile](StructureDefinition-cancellation-request-task.html)).  
+* **Cancellation Request Task** - the preferred way to request cancellation of a Coordination Task (see [profile](StructureDefinition-cancellation-request-task.html)).  
+* **Order Status Change Request Task** - the preferred way to request a change of status of a Request, such as abort, suspend, resume, or mark complete (see [profile](StructureDefinition-order-status-change-request-task.html)).  
 
 <br>
 
@@ -28,7 +29,7 @@ One of the core aspects in FHIR workflow is that FHIR distinguishes **status of 
 The Task resource and specifically `Task.businessStatus` is used to track the actual execution, assigning a code for the status.  
 
 ### Focal resource: **`Task.focus`**
-Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task or Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
+Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task to be cancelled; for an Order Status Change Request Task, it will reference the Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
 
 ### Task.input
 `Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
