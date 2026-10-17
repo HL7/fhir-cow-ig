@@ -1,0 +1,126 @@
+@startuml ex8-nutrition-order
+skinparam svgDimensionStyle false
+title
+	Diet Order with Hold and Reactivation
+end title
+
+hide footbox
+
+skinparam Note<<resource>> {
+    FontName Consolas
+    FontSize 14
+    BorderColor Black
+}
+
+actor "Practitioner" as Practitioner
+participant "Placer\n(EHR)" as Placer
+participant "Dietary System\n(Fulfiller)" as Dietary
+
+group #eee Ordering
+Practitioner -> Placer: Order a diet for the patient
+Placer -> Placer: create **NutritionOrder**
+
+note left <<resource>> #lightgreen
+**NutritionOrder**
+|_ .id = **diet-1**
+|_ .status = **active**
+|_ .intent = order
+|_ .oralDiet.type = Diabetic diet
+|_ ...
+end note
+end
+
+group Request fulfillment
+Placer -> Dietary: POST **Coordination Task**
+note right <<resource>> #pink
+**Task**
+|_ .id = **task-1**
+|_ .status = **requested**
+|_ .intent = order
+|_ .code = fulfill
+|_ .focus = NutritionOrder diet-1
+|_ ...
+end note
+Placer -> Dietary: Subscribe to updates of Task task-1
+
+Dietary -> Placer: GET NutritionOrder diet-1
+Placer --> Dietary: NutritionOrder diet-1
+
+Dietary -> Dietary: Accept the request
+note right <<resource>> #pink
+**Task**
+|_ .status = **accepted**
+|_ ...
+end note
+Dietary -> Placer: Notification: Task task-1 updated
+end
+
+group Progress
+Dietary -> Dietary: Assign the diet
+note right <<resource>> #pink
+**Task**
+|_ .status = **in-progress**
+|_ .businessStatus = diet assigned
+|_ ...
+end note
+Dietary -> Placer: Notification: Task task-1 updated
+
+Dietary -> Dietary: Prepare meals
+note right <<resource>> #pink
+**Task**
+|_ .status = in-progress
+|_ .businessStatus = **meals being prepared**
+|_ ...
+end note
+Dietary -> Placer: Notification: Task task-1 updated
+end
+
+group Hold
+Practitioner -> Placer: Hold the diet\n(e.g. patient fasting before a procedure)
+Placer -> Placer: update **NutritionOrder**
+note left <<resource>> #lightgreen
+**NutritionOrder**
+|_ .status = **on-hold**
+|_ ...
+end note
+Placer -> Dietary: PUT **Coordination Task**
+note right <<resource>> #pink
+**Task**
+|_ .status = **on-hold**
+|_ .statusReason = patient fasting
+|_ ...
+end note
+Dietary -> Dietary: Stop meal preparation
+end
+
+group Reactivation
+Practitioner -> Placer: Resume the diet
+Placer -> Placer: update **NutritionOrder**
+note left <<resource>> #lightgreen
+**NutritionOrder**
+|_ .status = **active**
+|_ ...
+end note
+Placer -> Dietary: PUT **Coordination Task**
+note right <<resource>> #pink
+**Task**
+|_ .status = **in-progress**
+|_ ...
+end note
+Dietary -> Dietary: Resume meal preparation
+note right <<resource>> #pink
+**Task**
+|_ .status = in-progress
+|_ .businessStatus = **meals being prepared**
+|_ ...
+end note
+Dietary -> Placer: Notification: Task task-1 updated
+end
+
+group #eee At any time
+Placer -> Dietary: GET Task task-1
+Dietary --> Placer: current fulfillment status
+Dietary -> Placer: GET NutritionOrder diet-1
+Placer --> Dietary: current diet
+end
+@enduml
