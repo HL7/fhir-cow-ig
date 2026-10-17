@@ -10,6 +10,8 @@ This guide describes interactions between those requesting and those performing 
 
 In many real-world scenarios there may be additional parties that would like to be informed when certain workflows are occurring, even if they may not be assigned actions to perform by the Placer or Fulfiller in that workflow. For example, an infection control department may wish to know when certain tests for infectious diseases are placed. This implementation guide dos not impose any constraints on how these parties are informed: they may receive notifications via subscriptions, poll, or use some other method. The mechanism by which these secondary consumers are informed of the request may be the same mechanism by which the Fulfiller was made aware. In those cases, the secondary consumer can exam the content of the notification, such as Task.owner, to determine whether any actions are explicitly requested from them.  
 
+Each Actor (Placer, Fulfiller, and Intermediary) is not necessarily implemented as one single system. In many cases they are consisting of several components, e.g. the order placer might be implemented as an order entry system plus an order server. This guide does not propose any specific architecture.
+
 ### Requests, Tasks, and Outputs Events:
 This section provides a brief overview of how FHIR resources are used to represent Request workflows. For more detail, see [Workflow Resource Patterns](https://www.hl7.org/fhir/workflow.html#respatterns). 
 

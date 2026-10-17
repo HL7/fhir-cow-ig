@@ -43,24 +43,6 @@ note left <<resource>> #lightgreen
 	|_ ...
 end note
 
-Placer -> Placer: create\n**""MedicationRequests""** 
-
-note left <<resource>> #lightgreen
-	**MedicationRequest**
-	|_ .id = **prescription-line1**
-	|_ .groupIdentifier = **prescription1**
-	|_ .medication = **Clavamox**
-	|_ .intent = "**order**"
-	|_ ...
-
-	**MedicationRequest**
-	|_ .id = **prescription-line2**
-	|_ .groupIdentifier = **prescription1**
-	|_ .medication = **Azythromycin**
-	|_ .intent = "**order**"
-	|_ ...
-end note
-
 
 
 Placer -> Filler: Patient-mediated selection
