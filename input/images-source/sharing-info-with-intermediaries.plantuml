@@ -1,0 +1,39 @@
+@startuml sharing-info-with-intermediaries
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  BackgroundColor White
+  BorderColor Black
+  Padding 12
+  FontSize 14
+}
+skinparam minClassWidth 100
+left to right direction
+
+rectangle "N-1" as N1
+rectangle "N" as N
+rectangle "N+1" as N2
+rectangle "..." as NX
+rectangle "N+k" as NK
+
+N1 -[#black,plain]-> N : Notification N-1
+N -[#black,plain]-> N2 : Notification N
+N2 -[hidden]-> NX
+NX -[hidden]-> NK
+
+N -[#green,dotted,thickness=2]-> N : Check for local copy of data.\nRewrite before sending own notification
+N <-[#green,dotted,thickness=2]- N2
+
+N2 -[#blue,dashed,thickness=2]-> N : Query to N and they proxy that query\nto N-1 before rewriting the response to N+1
+N -[#blue,dashed,thickness=2]-> N1
+N2 -[#DeepPink,bold]-> N1 : Query directly. N can directly forward\nall references from N-1
+
+legend right
+  | Line | Option |
+  | <color:black>solid black</color> | Notification |
+  | <color:green>dotted green</color> | N keeps a local copy of the data and rewrites it before sending its own notification; N+1 queries N |
+  | <color:blue>dashed blue</color> | N+1 queries N, which proxies the query to N-1 and rewrites the response |
+  | <color:DeepPink>bold pink</color> | N forwards all references from N-1, and N+1 queries N-1 directly |
+endlegend
+@enduml
