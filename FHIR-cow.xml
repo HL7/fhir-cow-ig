@@ -27,6 +27,8 @@
 <artifact id="ActorDefinition/filler" key="ActorDefinition-filler" name="Fulfiller"/>
 <artifact id="SearchParameter/group-or-identifier" key="SearchParameter-group-or-identifier" name="GroupOrIdentifier"/>
 <artifact id="ValueSet/order-notification-status-type" key="ValueSet-order-notification-status-type" name="Order Notification Status Type"/>
+<artifact id="ValueSet/order-status-change-request-code" key="ValueSet-order-status-change-request-code" name="Order Status Change Request Codes"/>
+<artifact id="StructureDefinition/order-status-change-request-task" key="StructureDefinition-order-status-change-request-task" name="Order Status Change Request Task"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
 <artifact id="CodeSystem/subscription-notification-status-type" key="CodeSystem-subscription-notification-status-type" name="Subscription Notification Type"/>
 <artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Example Codes"/>
