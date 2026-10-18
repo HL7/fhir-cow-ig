@@ -13,6 +13,7 @@ skinparam rectangle<<square>> {
   RoundCorner 0
 }
 hide stereotype
+skinparam linetype polyline
 left to right direction
 
 rectangle " " as CenS1 #transparent;line:transparent

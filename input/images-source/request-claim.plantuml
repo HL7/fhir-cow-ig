@@ -9,6 +9,7 @@ skinparam rectangle {
 }
 skinparam nodesep 40
 skinparam ranksep 80
+skinparam linetype polyline
 left to right direction
 
 rectangle " " as ClmS1 #transparent;line:transparent
