@@ -1,0 +1,24 @@
+@startuml request-claim
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam ArrowColor Black
+skinparam rectangle {
+  RoundCorner 25
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 80
+left to right direction
+
+rectangle " " as ClmS1 #transparent;line:transparent
+rectangle "Requestor" as ClmR #d5e8d4;line:82b366
+rectangle "Potential Performer" as ClmA #b1ddf0;line:10739e
+rectangle "Potential Performer" as ClmB #b1ddf0;line:10739e
+rectangle "Potential Performer" as ClmC #b1ddf0;line:10739e
+ClmS1 --> ClmR : 1. Propose service
+ClmR --> ClmA : 2. Who Can Perform Service?
+ClmR --> ClmB
+ClmR --> ClmC
+ClmC --> ClmR : 3. Claim
+@enduml

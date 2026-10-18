@@ -1,0 +1,31 @@
+@startuml request-central
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam ArrowColor Black
+skinparam rectangle {
+  RoundCorner 25
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 80
+skinparam rectangle<<square>> {
+  RoundCorner 0
+}
+hide stereotype
+left to right direction
+
+rectangle " " as CenS1 #transparent;line:transparent
+rectangle "Requestor" as CenR #d5e8d4;line:82b366
+rectangle "Central\nManagement" as CenM <<square>> #fad7ac;line:d79b00
+rectangle "Potential Performer A" as CenA #b1ddf0;line:10739e
+rectangle "Potential Performer B" as CenB #b1ddf0;line:10739e
+rectangle "Potential Performer C" as CenC #b1ddf0;line:10739e
+CenS1 --> CenR : 1. Propose service
+CenR --> CenM : 2. Who can\nperform service?
+CenM <..> CenA
+CenM <..> CenB
+CenM <..> CenC
+CenM --> CenR : 3. Performer C\nAssigned
+CenR --> CenC : 4. Share Additional Info\n(could be query or could be push)
+@enduml

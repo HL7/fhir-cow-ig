@@ -16,7 +16,9 @@ In the most simple flow, the Placer creates a request and indicates the specific
 
 Based on the workflow of interest, the performer may or may not notify the requestor of an 'outcome' at a later time. 
 
-{% include img.html img="request-simplest.png" %}
+<figure>
+  {% include request-simplest.svg %}
+</figure>
 
 
 
@@ -78,7 +80,9 @@ Based on the workflow of interest, the performer may or may not notify the reque
 
 When a requestor can't be certain of whether the Fulfiller will be willing to perform a service (based on availability, insurance, etc.), they may ask the Fulfiller to confirm that they accept the proposed service. If the performer declines to perform the service (or fails to respond within a pre-coordinated period), the requestor may choose to follow up with other potential performers. 
 
-{% include img.html img="request-accept.png" %}
+<figure>
+  {% include request-accept.svg %}
+</figure>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -135,7 +139,9 @@ Examples:
 * A provider may determine that a patient would benefit from receiving care in a long term care facility, and authorize that level of service. The patient and their family may consider several care facilities before deciding which they like.
 * A patient may discuss with their primary care provider that they would like to see a specialist, such as OB/MFM, an orthopedist, a psychologist, etc. The GP may authorize this service without having a specific performer in mind, and may rely on the patient to then find a specialist.  
 
-{% include img.html img="request-patient.png" %}
+<figure>
+  {% include request-patient.svg %}
+</figure>
 
 ##### Example with Subscriptions with Task at Fulfiller
 
@@ -179,7 +185,9 @@ Then:
 
 Sometimes, a requestor may choose to immediately notify several potential performers that a service has been requested. If the requestor and the patient do not have a preference around who will perform the service, it may be that the first potential Fulfiller to indicate availability may functionally 'claim' that service.
 
-{% include img.html img="request-claim.png" %}
+<figure>
+  {% include request-claim.svg %}
+</figure>
 
 This can be accomplished by leveraging the Request-with-Acceptance flow, and keeping a separate task per potential Fulfiller. For brevity, only one flow is described here. 
 
@@ -206,7 +214,9 @@ Alternatively (and more often), a requestor may notify one or more potential Ful
 
 The requestor and the patient may then review the information received from potential performers and then decide which specific performer will be used. 
 
-{% include img.html img="request-bid.png" %}
+<figure>
+  {% include request-bid.svg %}
+</figure>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -235,7 +245,9 @@ Some common reasons for a central coordinator include:
 * Managing waitlists
 * Facilitating some parts of the exchange like endpoint discovery and client registration
 
-{% include img.html img="request-central.png" %}
+<figure>
+  {% include request-central.svg %}
+</figure>
 
 Given the variability, this section is provided only for illustrative value. This section outlines two potential configurations (of several) based on the capabilities of the broker. The intent of the first example is that (with regards to exchange functionality) the Placer need be only minimally aware of whether they are interacting with a coordinator or with a Fulfiller directly. 
 

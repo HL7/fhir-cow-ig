@@ -1,0 +1,24 @@
+@startuml request-patient
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam ArrowColor Black
+skinparam rectangle {
+  RoundCorner 25
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 80
+left to right direction
+
+rectangle "Requestor" as PatR #d5e8d4;line:82b366
+actor "Patient" as PatPt
+rectangle "Potential Performer A" as PatA #b1ddf0;line:10739e
+rectangle "Potential Performer B" as PatB #b1ddf0;line:10739e
+rectangle "Potential Performer C" as PatC #b1ddf0;line:10739e
+PatR --> PatPt : 1. Propose /\nAuthorize Service
+PatPt ..> PatA : 2. Patient Picks Preferred Provider\n(Obstetrician, Psychologist, etc.)
+PatPt ..> PatB
+PatPt ..> PatC
+PatR <..> PatA : 3. Requestor and Performer share info as needed\n(could be query, could be push)
+@enduml

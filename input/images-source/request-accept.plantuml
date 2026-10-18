@@ -1,0 +1,19 @@
+@startuml request-accept
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam ArrowColor Black
+skinparam rectangle {
+  RoundCorner 25
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 80
+left to right direction
+
+rectangle "Requestor" as AccR #d5e8d4;line:82b366
+rectangle "Performer" as AccP #b1ddf0;line:10739e
+AccR --> AccP : Can you perform Service X
+AccP --> AccR : Yes
+AccP ..> AccR : Here's the outcome
+@enduml

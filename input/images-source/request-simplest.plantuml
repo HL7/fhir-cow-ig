@@ -1,0 +1,18 @@
+@startuml request-simplest
+skinparam svgDimensionStyle false
+skinparam defaultFontName Arial
+skinparam defaultTextAlignment center
+skinparam ArrowColor Black
+skinparam rectangle {
+  RoundCorner 25
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 80
+left to right direction
+
+rectangle "Requestor" as SimR #d5e8d4;line:82b366
+rectangle "Performer" as SimP #b1ddf0;line:10739e
+SimR --> SimP : Perform service X
+SimP ..> SimR : Here's the outcome
+@enduml
