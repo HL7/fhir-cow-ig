@@ -11,11 +11,11 @@ skinparam nodesep 40
 skinparam ranksep 80
 left to right direction
 
-rectangle "Requestor" as PatR #d5e8d4;line:82b366
+rectangle "\nRequestor\n" as PatR #d5e8d4;line:82b366
 actor "Patient" as PatPt
-rectangle "Potential Performer A" as PatA #b1ddf0;line:10739e
-rectangle "Potential Performer B" as PatB #b1ddf0;line:10739e
-rectangle "Potential Performer C" as PatC #b1ddf0;line:10739e
+rectangle "\nPotential Performer A\n" as PatA #b1ddf0;line:10739e
+rectangle "\nPotential Performer B\n" as PatB #b1ddf0;line:10739e
+rectangle "\nPotential Performer C\n" as PatC #b1ddf0;line:10739e
 PatR --> PatPt : 1. Propose /\nAuthorize Service
 PatPt ..> PatA : 2. Patient Picks Preferred Provider\n(Obstetrician, Psychologist, etc.)
 PatPt ..> PatB

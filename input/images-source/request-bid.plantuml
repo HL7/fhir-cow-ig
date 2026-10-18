@@ -13,10 +13,10 @@ left to right direction
 
 rectangle " " as BidS1 #transparent;line:transparent
 rectangle " " as BidS4 #transparent;line:transparent
-rectangle "Requestor" as BidR #d5e8d4;line:82b366
-rectangle "Potential Performer A" as BidA #b1ddf0;line:10739e
-rectangle "Potential Performer B" as BidB #b1ddf0;line:10739e
-rectangle "Potential Performer C" as BidC #b1ddf0;line:10739e
+rectangle "\nRequestor\n" as BidR #d5e8d4;line:82b366
+rectangle "\nPotential Performer A\n" as BidA #b1ddf0;line:10739e
+rectangle "\nPotential Performer B\n" as BidB #b1ddf0;line:10739e
+rectangle "\nPotential Performer C\n" as BidC #b1ddf0;line:10739e
 BidS1 --> BidR : 1. Propose service
 BidR --> BidA : 2. Who Can Perform Service?
 BidR --> BidB
