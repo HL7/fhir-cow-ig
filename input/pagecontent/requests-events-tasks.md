@@ -29,7 +29,10 @@ One of the core aspects in FHIR workflow is that FHIR distinguishes **status of 
 The Task resource and specifically `Task.businessStatus` is used to track the actual execution, assigning a code for the status.  
 
 ### Focal resource: **`Task.focus`**
+While the main focus of this IG is on Tasks originating from Requests, nothing in this IG prevents Tasks without Requests.
+
 Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task to be cancelled; for an Order Status Change Request Task, it will reference the Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
+*`Task.basedOn` is different: it references a higher-level authorization that led to the creation of the Task, such as a CarePlan or another Request, which is distinct from the Request that the Task seeks to fulfill. The Request being fulfilled is referenced in `Task.focus`, not in `Task.basedOn`.*
 
 ### Task.input
 `Task.input` is used to get the relevant Data for the performer to execute the Request. Examples:
