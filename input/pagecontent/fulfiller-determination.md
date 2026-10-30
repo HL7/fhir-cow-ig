@@ -156,7 +156,26 @@ Examples:
 <hr>
 
 
-### Request with multiple performers
+### Changing fulfillers – initiated by an alternate fulfiller
+
+In some workflows, the fulfiller of a request changes after a Task has been assigned, and the change is initiated by an alternate fulfiller rather than by the Placer – for example, when the patient (or someone acting for them) decides to obtain the service from a different provider than the one the Placer selected.
+
+The starting point is:
+* A Task exists for a specific fulfiller (A) to execute the request.
+* Other potential fulfillers (B, C, D, …) may exist.
+
+Then:
+1. The patient (or somebody else) changes the fulfiller to another fulfiller (C).
+2. C creates a Task to execute the request and makes it available to the Placer, either as a proposal or as a statement of fact.
+3. The Placer decides what to do, for example:
+   * cancel the Task for A, if C is the only one to fulfill the request; or
+   * cancel the proposal from C, if C should not fulfill it; or
+   * take some other action.
+
+<hr>
+
+
+### Request with multiple fulfillers
 
 Sometimes, a requestor may choose to immediately notify several potential performers that a service has been requested. If the requestor and the patient do not have a preference around who will perform the service, it may be that the first potential Fulfiller to indicate availability may functionally 'claim' that service.
 
@@ -181,7 +200,7 @@ This can be accomplished by leveraging the Request-with-Acceptance flow, and kee
 <hr>
 
 
-### Request with multiple performers with bidding
+### Request with multiple fulfillers with bidding
 
 Alternatively (and more often), a requestor may notify one or more potential Fulfillers that they have a which must be performed. Those potential Fulfillers may respond back with a 'bid' describing the service they could perform. The details of that 'bid' will vary by care-domain, but may indicate the performer's availability, the details of a more specific service they would perform, cost, information about the specific performer who may provide the service, etc.
 

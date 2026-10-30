@@ -159,6 +159,9 @@ pages:
     ex7-discharge-placement.md:
       title: Post-Discharge Placement in SNF
       generation: markdown
+    ex8-nutrition-order.md:
+      title: Diet Order with Hold and Reactivation
+      generation: markdown
 
   artifacts.xml: 
     title: IG Artifacts
