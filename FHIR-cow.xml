@@ -36,6 +36,7 @@
 <page key="cancelling-and-modifying-requests" name="Cancelling and Modifying Orders"/>
 <page key="index" name="Clinical Order Workflows - Home Page"/>
 <page key="core-concepts" name="Core Concepts"/>
+<page key="ex8-nutrition-order" name="Diet Order with Hold and Reactivation"/>
 <page key="downloads" name="Downloads"/>
 <page key="examples" name="Examples"/>
 <page key="fulfiller-determination" name="Fulfiller Determination"/>

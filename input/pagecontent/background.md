@@ -104,6 +104,8 @@ Integration architects often need to balance two competing interests. On one han
 ### Brief Survey of Mechanisms for Pushing FHIR Content 
 This section provides context on the main FHIR-based mechanisms for pushing content between actors.
 
+The details mentioned here about these communication mechanisms, such as Messaging or Subscriptions, are not meant to be exhaustive, and their own documentation should be referenced: the [RESTful API](https://hl7.org/fhir/R4/http.html), [Batch and Transaction](https://hl7.org/fhir/R4/http.html#transaction), [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html), and [Subscriptions (R5 Backport)](https://hl7.org/fhir/uv/subscriptions-backport/).
+
 **RESTful POST of Resources (Creates or Updates)**
 * This mechanism may be used alongside others. It requires the availability of FHIR servers.
 * Actors must pre-coordinate where the definitive instances of shared FHIR resources will be hosted, when they should be exchanged, who can update them, and under what circumstances.

@@ -14,5 +14,6 @@ You can find examples on the [Artifacts page](./artifacts.html#example-example-i
 |[Lab Order Flow with insufficient sample](ex5-lab-order-flow-specimen-rejected.html)|A Lab Order Workflow where the sample is insufficient, Sample is collected by Physician|Placer assigned|
 |[Lab Order with involvement of a reference lab](ex6-lab-order-flow-with-reference-lab.html)|A Lab Order Workflow which involves a Reference Laboratory, Sample is collected by Physician|Placer assigned|
 |[Post-discharge placement](ex7-discharge-placement.html)|A patient and their provider determine how a patient should receive skilled nursing and other care post discharge|Chosen among several|
+|[Diet order with hold and reactivation](ex8-nutrition-order.html)|A practitioner orders a diet (NutritionOrder) that the dietary system accepts and prepares; the order is temporarily put on hold and later reactivated|Placer assigned|
 
 {:.table-bordered .table-sm .table-striped }

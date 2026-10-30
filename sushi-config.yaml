@@ -159,6 +159,9 @@ pages:
     ex7-discharge-placement.md:
       title: Post-Discharge Placement in SNF
       generation: markdown
+    ex8-nutrition-order.md:
+      title: Diet Order with Hold and Reactivation
+      generation: markdown
 
   artifacts.xml: 
     title: IG Artifacts
@@ -182,6 +185,7 @@ pages:
 parameters:
   special-url: 
     - http://hl7.org/fhir/ValueSet/subscription-notification-type
+  auto-oid-root: 2.16.840.1.113883.4.642.40.99
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
