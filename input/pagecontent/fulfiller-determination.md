@@ -21,7 +21,7 @@ Based on the workflow of interest, the performer may or may not notify the reque
 
 
 
-##### Task at Fulfiller
+#### Task at Fulfiller
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -137,7 +137,7 @@ Examples:
 
 {% include img.html img="request-patient.png" %}
 
-##### Example with Subscriptions with Task at Fulfiller
+#### Example with Subscriptions with Task at Fulfiller
 
 <div class="panel panel-default">
   <div class="panel-heading">
