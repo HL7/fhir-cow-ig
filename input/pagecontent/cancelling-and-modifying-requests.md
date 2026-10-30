@@ -57,7 +57,7 @@ The filler may accept or reject that Cancellation by updating Cancellation Task.
 
 <a name="authCancel"></a>
 ### Fulfiller request to cancel the Request
-In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) to request from the Placer to cancel their request.
+In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses an [Order Status Change Request Task](StructureDefinition-order-status-change-request-task.html) with a code of `abort` to request from the Placer to cancel their request.
 
 ```
 Request Resource:
@@ -67,7 +67,7 @@ Request Resource:
 Coordination Task:
     * status: rejected/cancelled/failed
     * focus: serviceRequest1
-Cancellation Request Task:
+Order Status Change Request Task:
     * Status: requested
     * Code: abort
     * focus: serviceRequest1

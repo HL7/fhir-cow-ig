@@ -141,7 +141,20 @@ Description: "A task to indicate a Placer-initiated cancellation of a request fu
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS 
-  * ^short = "This can only reference the CoordinationTask or a Request resource"
-  * ^definition = "If the Placer requests from the Filler to cancel a Coordination Task, then the focus is a reference to the Coordination Task. If the Fulfiller requests from the Placer to cancel a Request resource that authorizes a particular service, then the focus is a reference that Request resource."
-* focus only Reference(ServiceRequest or DeviceRequest or MedicationRequest or NutritionOrder or SupplyRequest or VisionPrescription or CoordinationTask)
+  * ^short = "This can only reference the CoordinationTask"
+  * ^definition = "The Coordination Task that the Placer requests the Filler to cancel. To request a change of status of a Request resource, use an Order Status Change Request Task."
+* focus only Reference(CoordinationTask)
+
+
+Profile: OrderStatusChangeRequestTask
+Parent: Task
+Id: order-status-change-request-task
+Title: "Order Status Change Request Task"
+Description: "A task to request a change of status of an authorization."
+* code 1..1 MS
+* code from OrderStatusChangeRequestCodes (required)
+* focus 1..1 MS
+  * ^short = "This can only reference a Request resource"
+  * ^definition = "The Request resource that authorizes a particular service, and whose change of status is requested - for example, a Fulfiller requesting from the Placer to cancel a Request resource."
+* focus only Reference(ServiceRequest or DeviceRequest or MedicationRequest or NutritionOrder or SupplyRequest or VisionPrescription)
 
