@@ -31,7 +31,8 @@
 <artifact id="StructureDefinition/order-status-change-request-task" key="StructureDefinition-order-status-change-request-task" name="Order Status Change Request Task"/>
 <artifact id="ActorDefinition/placer" key="ActorDefinition-placer" name="Placer"/>
 <artifact id="CodeSystem/subscription-notification-status-type" key="CodeSystem-subscription-notification-status-type" name="Subscription Notification Type"/>
-<artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Example Codes"/>
+<artifact id="CodeSystem/temp" key="CodeSystem-temp" name="Temp Clinical Order Workflow Business Status Codes"/>
+<artifact id="CodeSystem/cow-message-header-event" key="CodeSystem-cow-message-header-event" name="Temp Clinical Order Workflow Message Header Event Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="background" name="Background - Goals and General Principles"/>

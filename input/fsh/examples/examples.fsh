@@ -98,6 +98,6 @@ Usage:       #example
 Title:       "COW MessageHeader Example"
 Description: "COW example of a message header for an order update"
 * id       = "cow-message-header-example"
-* eventCoding       = http://hl7.org/fhir/uv/cow/CodeSystem/temp#order-update
+* eventCoding       = http://hl7.org/fhir/uv/cow/CodeSystem/cow-message-header-event#order-update
 * source.endpoint   = "https://placer.example.org/fhir/$processAck"
 * focus = Reference(COWCoordinationTask)
