@@ -56,6 +56,27 @@ Providers often wish to ensure that other members of the patient's care team are
 
 These intended CC recipients may be communicated via [CommunicationRequest resources](https://hl7.org/fhir/communicationrequest.html). When Placers wish to ensure that an Output is communicated to a specific destination for a CC provider, Placers SHOULD use a PractitionerRole resource in `CommunicationRequest.recipient`. Multiple CommunicationRequest resources can correspond to a single Workflow Request resource; for example, the Placer may indicate that there are specific providers they intend to notify of a result themselves via a CommunicationRequest resource with `.informationProvider` set to the Placer. This can serve a helpful function of informing the Fulfiller that they do not need to notify those recipients of the Output.
 
+### Task inputs and outputs
+
+Outcomes of an execution can be referenced in the execution results (e.g. DiagnosticReport), or in the Task. The outputs that fulfill a request, such as a DiagnosticReport or a Procedure, should be in the Coordination `Task.output`.
+
+Many services will require the generation of intermediate records. A sub-task that generates some records (e.g. filling a form, capturing Consent) should include that as their `Task.output`. These sub-tasks may link back to the original Coordination Task. Such outcomes MAY be included in the Coordination Task.
+
+The core principles for using `Task.input` and `Task.output` are the following:
+* **`Task.input`:** Existing record or prerequisite data required to execute a specific task belongs in `Task.input`.
+  * If a resource listed in `Task.input` (such as a specimen) is modified or updated during execution, it remains in `Task.input`.
+* **`Task.output`:** New data, record, or deliverable created directly through the execution of a specific task belongs in `Task.output`.
+* If information is available when a Request is made and is pertinent to the authorization, it should be in `Request.supportingInfo`.
+
+This also applies across different levels of Tasks:
+* When an intermediate sub-task executes (e.g., collecting a specimen, gathering patient consent, completing a screening form), the resulting artifact is recorded as `Task.output` on that sub-task.
+* At the coordination (parent) Task level, that same artifact functions as a prerequisite. Therefore, it can optionally be referenced in the parent Task's `Task.input` as a matter of workflow convention and convenience, preventing systems from having to traverse the entire `Task.partOf` hierarchy to find critical information.
+
+Examples:
+* **MRI:** a ServiceRequest for an MRI, and a Coordination Task "Get me a result for MRI". A sub-task "Check MRI safe" has the completed MRI screening form as its `Task.output`. The Coordination Task's `Task.output` is the DiagnosticReport and ImagingStudy. Optionally, the screening form is also in the Coordination Task's `Task.input`, so it can be found without traversing the Task hierarchy.
+* **Surgery:** a ServiceRequest for surgery, and a Coordination Task "Perform surgery". A sub-task "Collect consent" has the collected consent as its `Task.output`. The Coordination Task's `Task.output` is the Procedure and the procedure note. Optionally, the consent is also in the Coordination Task's `Task.input`, so it can be found without traversing the full Task hierarchy. The Placer is only expected to need to look at the top-level Tasks.
+* **Hemolyzed specimen:** if a specimen is an input, it is always an input to the execution. The Observation that says "specimen is hemolyzed" is an output.
+
 ### Effect of intermediaries
 
 
