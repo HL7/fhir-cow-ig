@@ -123,6 +123,8 @@ Description: "Minimum expectations for a Task resource when created or updated f
   * ^extension[=].extension[=].valueCode = #SHALL:populate-if-known
   * ^extension[=].extension[+].url = "actor"
   * ^extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/cow/ActorDefinition/filler"
+* statusReason.extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Task.statusReason named statusReasonReference 0..1
+* statusReason.extension[statusReasonReference] ^short = "Reference to the reason for the current status (R5 CodeableReference)"
 * code 1.. MS
 * focus 1.. MS
   * ^short = "This can only reference a Request resource."
