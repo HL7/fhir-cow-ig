@@ -11,14 +11,14 @@ As general guidance, this guide recommends that [Request resource].replaces be u
 <a name="fulfCancel"></a>
 ### Placer Initiated Cancellations
 
-This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a Placer sends a cancellation request to the Fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a Placer sends a cancellation request to the Fulfiller via a [Fulfillment Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
 
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
 
-Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code set to `abort`, a .status of `requested`, and the original Coordination Task in focus.
+Once the filler has begun work, Placers must request cancellation by creating and communicating a Fulfillment Cancellation Request Task. This Fulfillment Cancellation Request Task has .code set to `abort`, a .status of `requested`, and the original Coordination Task in focus.
 
-The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
+The filler may accept or reject that Cancellation by updating the Fulfillment Cancellation Request Task.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
 
 <figure>
 {%include cancelation-when-in-progress-example-task-at-fulfiller.svg%}
@@ -41,23 +41,23 @@ Note that this guide makes no requirements around whether a Placer may cancel th
 Also note that even once a Coordination Task is in-progress, Fillers may choose to immediately accept requests for cancellation per business agreements; user input at the Fulfiller is not required.  
 
 
-Upon receiving the request, the filler accepts or rejects the cancellation by updating the cancellation request task `.status`.  
+Upon receiving the request, the filler accepts or rejects the cancellation by updating the Fulfillment Cancellation Request Task `.status`.  
 
 
 Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the coordination Task.status --> Cancelled.  
  
 
-Once the filler has begun work, Placers MUST request cancellation by creating and communicating a Cancellation Request Task. This Cancellation Request task has .code=Abort, and the original Coordination Task in focus and a status of Requested.   
+Once the filler has begun work, Placers MUST request cancellation by creating and communicating a Fulfillment Cancellation Request Task. This Fulfillment Cancellation Request Task has .code=Abort, and the original Coordination Task in focus and a status of Requested.   
 
-The filler may accept or reject that Cancellation by updating Cancellation Task.status to Accepted or Rejected, and they MAY update the Coordination Task to On Hold.  
+The filler may accept or reject that Cancellation by updating the Fulfillment Cancellation Request Task.status to Accepted or Rejected, and they MAY update the Coordination Task to On Hold.  
  
 * Before there is a Coordination Task, the Placer MAY simply change the request.status.  
-* When there is already a Coordination Task, it is necessary to cancel the Coordination Task by issuing a cancellation request Task or setting Coordination Task.status directly to Cancelled.
+* When there is already a Coordination Task, it is necessary to cancel the Coordination Task by issuing a Fulfillment Cancellation Request Task or setting Coordination Task.status directly to Cancelled.
   
 
 <a name="authCancel"></a>
 ### Fulfiller request to cancel the Request
-In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses an [Order Status Change Request Task](StructureDefinition-order-status-change-request-task.html) with a code of `abort` to request from the Placer to cancel their request.
+In some cases a Fulfiller may determine that the authorization for a service for a particular patient is inappropriate or even dangerous. Since the Request resource that authorizes the service is only modifiable by the Placer, the Fulfiller uses an [Order Change Request Task](StructureDefinition-order-status-change-request-task.html) with a code of `abort` to request from the Placer to cancel their request.
 
 ```
 Request Resource:
@@ -67,7 +67,7 @@ Request Resource:
 Coordination Task:
     * status: rejected/cancelled/failed
     * focus: serviceRequest1
-Order Status Change Request Task:
+Order Change Request Task:
     * Status: requested
     * Code: abort
     * focus: serviceRequest1

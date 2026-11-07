@@ -136,20 +136,20 @@ Description: "Minimum expectations for a Task resource when created or updated f
 Profile: CancellationRequestTask
 Parent: Task
 Id: cancellation-request-task
-Title: "Cancellation Request Task"
+Title: "Fulfillment Cancellation Request Task"
 Description: "A task to indicate a Placer-initiated cancellation of a request fulfillment."
 * code = http://hl7.org/fhir/CodeSystem/task-code#abort
 //* status = #requested
 * focus 1..1 MS 
   * ^short = "This can only reference the CoordinationTask"
-  * ^definition = "The Coordination Task that the Placer requests the Filler to cancel. To request a change of status of a Request resource, use an Order Status Change Request Task."
+  * ^definition = "The Coordination Task that the Placer requests the Filler to cancel. To request a change of status of a Request resource, use an Order Change Request Task."
 * focus only Reference(CoordinationTask)
 
 
 Profile: OrderStatusChangeRequestTask
 Parent: Task
 Id: order-status-change-request-task
-Title: "Order Status Change Request Task"
+Title: "Order Change Request Task"
 Description: "A task to request a change of status of an authorization."
 * code 1..1 MS
 * code from OrderStatusChangeRequestCodes (required)
