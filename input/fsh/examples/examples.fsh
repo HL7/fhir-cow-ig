@@ -65,7 +65,7 @@ Description: "Example of a COW cancellation task created by the Placer in order 
 * focus               = Reference(COWCoordinationTask)
 
 Instance:    COWAuthorizationCancellationTask
-InstanceOf:  CancellationRequestTask
+InstanceOf:  OrderStatusChangeRequestTask
 Usage:       #example
 Title:       "COW Authorization Cancellation Task"
 Description: "Example of a COW cancellation task created by the Fulfiller in order to request from the Placer that the authorized service is cancelled."
@@ -98,6 +98,6 @@ Usage:       #example
 Title:       "COW MessageHeader Example"
 Description: "COW example of a message header for an order update"
 * id       = "cow-message-header-example"
-* eventCoding       = http://hl7.org/fhir/uv/cow/CodeSystem/temp#order-update
+* eventCoding       = http://hl7.org/fhir/uv/cow/CodeSystem/cow-message-header-event#order-update
 * source.endpoint   = "https://placer.example.org/fhir/$processAck"
 * focus = Reference(COWCoordinationTask)

@@ -9,7 +9,7 @@ In many cases the fulfillment of clinical orders is a multi-step process that ca
 
 In cases where the progress can be "coded", systems should use the `.businessStatus` element in the Coordination Task to represent that progress status e.g. `collection-complete` or `mandatory-program-complete`.  
 
-If further detail on progress is needed, the mechanism depends on whether there is a need to persist and exchange the progress, or the stakeholders can consult the relevant resources to determine progress from those resources. See [Sharing Ouputs](sharing-outputs.html).  
+If further detail on progress is needed, the mechanism depends on whether there is a need to persist and exchange the progress, or the stakeholders can consult the relevant resources to determine progress from those resources. See [Sharing outcomes of clinical orders](sharing-content.html#sharing-outcomes-of-clinical-orders).  
 
 Two mechanisms can be used:
 

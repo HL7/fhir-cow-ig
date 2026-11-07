@@ -2,6 +2,19 @@
 
 When placing a clinical order, the Placer may need to share relevant clinical information as inputs to the order. These inputs provide context that the Fulfiller needs to carry out the requested service. For example, when prescribing nursing care, a Placer may share the patient's current medication list so that the nursing care provider has the information needed to safely administer and monitor medications.
 
+There are two major use cases when there is a RESTful exchange established between the Placer and Filler: `Task` at the Placer or `Task` at the Fulfiller.
+
+When the `Task` is at the Fulfiller the expectation is that the Fulfiller will do a search on the Placer's FHIR Server to obtain the necessary information about the clinical order. This allows the Fulfiller to access the information that is relevant to the order, subject to the appropriate access control rules.
+
+When the `Task` is at the Placer there is an implicit (or explicit) subscription of the Fulfiller to the Placer for the `Task`. In this case the Placer can provide the necessary information within the subscription notification `Bundle`. This allows the placing of the order and the necessary information in a single exchange, where the Placer determines what the initially provided information is.
+
+In summary, when the Placer wants to provide information in a single exchange at the time of order, they should use the following bundle types:
+
+* Subscription Notification Bundle for a RESTful exchange when `Task` is at Placer
+* Message Bundle for a messaging exchange.
+
+Other bundling mechanisms are out of scope of this IG.
+
 ### Sharing additional information about a clinical order
 
 #### Provided by placer unsolicited

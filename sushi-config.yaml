@@ -86,7 +86,7 @@ pages:
       title: Order Initiation
       generation: markdown
     order-grouping.md:
-      title: Order Grouping
+      title: Grouped, Related, and Dependent Orders
       generation: markdown
     fulfiller-determination.md:
       title: Fulfiller Determination
@@ -159,6 +159,9 @@ pages:
     ex7-discharge-placement.md:
       title: Post-Discharge Placement in SNF
       generation: markdown
+    ex8-nutrition-order.md:
+      title: Diet Order with Hold and Reactivation
+      generation: markdown
 
   artifacts.xml: 
     title: IG Artifacts
@@ -182,6 +185,7 @@ pages:
 parameters:
   special-url: 
     - http://hl7.org/fhir/ValueSet/subscription-notification-type
+  auto-oid-root: 2.16.840.1.113883.4.642.40.99
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
@@ -211,7 +215,7 @@ menu:
     #   Requests to a Central Service: requests-to-central-coordinator.html
     #   Patient-Mediated Requests: patient-mediated-requests.html
     Order Initiation: order-initiation.html
-    Order Grouping: order-grouping.html
+    Grouped, Related, and Dependent Orders: order-grouping.html
     Fulfiller Determination: fulfiller-determination.html
     Fulfiller Requests for Additional Info: fulfiller-need-for-additional-info.html
     Cancelling and Modifying Requests: cancelling-and-modifying-requests.html
