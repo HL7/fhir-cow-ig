@@ -22,6 +22,8 @@ Not all states will apply to every workflow or use case, and implementations may
 
 The following states support the patterns described in [Cancelling and Modifying Requests](cancelling-and-modifying-requests.html), where a Request is cancelled by the Placer, or declined, not performed, or replaced by a proposal from the Fulfiller.
 
+These are possible states, not a sequence of states nor an exhaustive list. For example, cancellation may be initiated by the Placer, and then accepted or not by the Fulfiller.
+
 | Workflow State to Represent | Request resource representation |Task resource representation | Event resources representation | Descriptions |
 | ----------------------------- | -----------------------------| -----------------------------| -----------------------------| -----------------------------| 
 | Placer cancelled the Coordination Task | Request:<br>- Status: revoked<br>- Intent: order | Coordination Task:<br>- Status: cancelled<br>- Code: fulfill<br>- Intent: order<br>- Focus: [the Request] | *Not set* | |
