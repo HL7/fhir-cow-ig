@@ -18,7 +18,7 @@ Fulfiller <- Fulfiller: Update Task.Status 'accepted' => 'in-progress'
 
 Fulfiller -> Placer: SubscriptionStatus notification - Task updated
 
-note over Placer, Fulfiller: Could also have that the Fulfiller makes a Plan, RequestOrchestration, etc. with Task.output\nA Placer could then update the Task to Accepted if they accept the Fulfiller's Proposal.
+note over Placer, Fulfiller: Could also have that the Fulfiller makes a Plan, RequestGroup (RequestOrchestration in R5), etc. with Task.output\nA Placer could then update the Task to Accepted if they accept the Fulfiller's Proposal.
 
 Placer --> Placer: Update status of tracking if needed, such as ServiceRequest.status. 
 
