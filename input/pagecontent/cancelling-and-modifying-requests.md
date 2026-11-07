@@ -11,12 +11,14 @@ As general guidance, this guide recommends that [Request resource].replaces be u
 <a name="fulfCancel"></a>
 ### Placer Initiated Cancellations
 
-This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a Placer sends a cancellation request to the Fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. This satisfies a requirement of the FHIR Task State Machine that a task may not move from in-progress to cancelled. 
+This is equivalent to the normal flow through the step that an intended performer has been selected. In this flow, a Placer sends a cancellation request to the Fulfiller via a [Cancellation Request Task](StructureDefinition-cancellation-request-task.html) - having a status of “Requested” and a code of “Abort”. 
 
 
-Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the Coordination Task.status --> Cancelled.
+The Placer MAY cancel the request by directly updating the Coordination `Task.status` to cancelled, also after the Fulfiller has begun work (indicated by a Coordination Task status of in-progress); this is valid from a FHIR Workflow perspective. Parties MAY determine by business agreement when there should be agreement or other coordination involved in cancelling the fulfillment of a request. This can be managed using a Cancellation Request Task, with `.code` set to `abort`, a `.status` of `requested`, and the original Coordination Task in focus.
 
-Once the filler has begun work, Placers must request cancellation by creating and communicating a CancellationRequest Task. This CancellationRequest Task has .code set to `abort`, a .status of `requested`, and the original Coordination Task in focus.
+Specification authors SHOULD determine what mechanism they will use to communicate a request to cancel fulfillment, or whether there is a workflow inflection point past which a Cancellation Request Task should be used.
+
+If the Placer and the Fulfiller attempt to update `Task.status` at nearly the same time, this can be handled via HTTP status codes and OperationOutcomes that indicate to a party that their attempt to update the Task (via HTTP PUT) was unsuccessful.
 
 The filler may accept or reject that Cancellation by updating CancellationRequestTask.status to Accepted or Rejected, and they MAY update the status of the Coordination Task as well.   
 
@@ -42,12 +44,6 @@ Also note that even once a Coordination Task is in-progress, Fillers may choose 
 
 
 Upon receiving the request, the filler accepts or rejects the cancellation by updating the cancellation request task `.status`.  
-
-
-Until the Fulfiller begins work (indicated by updating the Coordination Task to a status of In-Progress), the Placer may cancel that request by directly updating on the coordination Task.status --> Cancelled.  
- 
-
-Once the filler has begun work, Placers MUST request cancellation by creating and communicating a Cancellation Request Task. This Cancellation Request task has .code=Abort, and the original Coordination Task in focus and a status of Requested.   
 
 The filler may accept or reject that Cancellation by updating Cancellation Task.status to Accepted or Rejected, and they MAY update the Coordination Task to On Hold.  
  
