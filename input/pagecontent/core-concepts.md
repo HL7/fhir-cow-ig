@@ -54,6 +54,7 @@ This type of “chain care” is common and introduces complexity—but also mot
   {% include sharing-info-with-intermediaries.svg %}
   <figcaption>Figure 3.4.1 - Example options for sharing info across intermediaries</figcaption>
 </figure>
+ <p></p>
 
 If direct communication is possible, and if references across notifications were preserved, the Fulfiller may query the Placer directly. Whether such communication is possible depends on the broader environment, e.g. endpoint discoverability, (dynamic) client registration, shared scopes and business rules, etc.
 
