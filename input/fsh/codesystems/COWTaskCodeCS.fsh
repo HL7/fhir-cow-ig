@@ -9,3 +9,4 @@ Description: "Task codes defined by the Clinical Orders Workflow IG, intended fo
 * ^caseSensitive = true
 * ^content = #complete
 * #bid-for-fulfilment "Bid for fulfilment" "A Task indicating that a potential fulfiller is bidding to fulfil a request. This Task is created by a potential fulfiller in response to a solicitation, indicating their ability and willingness to perform the requested service, along with any relevant conditions such as availability or cost."
+* #mark-complete "Mark complete" "A request to the owner of a Request to mark it as completed, e.g. when the Placer notices that the fulfillment has been done."

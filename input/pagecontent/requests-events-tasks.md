@@ -12,9 +12,10 @@ The Task resource can convey the information for facilitating, steering or docum
 - Owner - the entity that is responsible for the executing, delegating, rejecting...
   - In R4 and later the `.owner` on `Task`
 
-This Implementation Guide introduces two specific types of Task that are important for the execution of workflows:
+This Implementation Guide introduces three specific types of Task that are important for the execution of workflows:
 * **Coordination Task** - the preferred way to keep track of statuses, and requested and performed activities (see [profile](StructureDefinition-coordination-task.html)).
-* **Cancellation Request Task** - the preferred way to request cancellation of a Request, or of another Task (see [profile](StructureDefinition-cancellation-request-task.html)).  
+* **Cancellation Request Task** - the preferred way to request cancellation of a Coordination Task (see [profile](StructureDefinition-cancellation-request-task.html)).  
+* **Order Status Change Request Task** - the preferred way to request a change of status of a Request, such as abort, suspend, resume, or mark complete (see [profile](StructureDefinition-order-status-change-request-task.html)).  
 
 <br>
 
@@ -30,7 +31,7 @@ The Task resource and specifically `Task.businessStatus` is used to track the ac
 ### Focal resource: **`Task.focus`**
 While the main focus of this IG is on Tasks originating from Requests, nothing in this IG prevents Tasks without Requests.
 
-Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task or Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
+Tasks can be used for tracking and coordinating the execution of requests. `Task.focus` indicates which request is being acted upon by the Task. For a Coordination Task, this will refer to the Request. For a Cancellation Request Task, this will reference the Coordination Task to be cancelled; for an Order Status Change Request Task, it will reference the Request resource for which a status change is requested; see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)   
 *`Task.basedOn` is different: it references a higher-level authorization that led to the creation of the Task, such as a CarePlan or another Request, which is distinct from the Request that the Task seeks to fulfill. The Request being fulfilled is referenced in `Task.focus`, not in `Task.basedOn`.*
 
 ### Task.input
