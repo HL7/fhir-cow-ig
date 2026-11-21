@@ -29,6 +29,19 @@ Fulfiller systems may also update the Coordination Task's inputs with details of
 
 In some cases, a Fulfiller may determine that they need additional information from the Placer before they can proceed with fulfilling a request. See the [Fulfillers requesting additional information](fulfiller-need-for-additional-info.html) pattern for details on how this is handled.
 
+### Surfacing supporting information
+
+Surfacing supporting information is the ability for a third party, the Placer, or the Fulfiller to access the supporting information that was used for the authorization and/or the fulfillment of the request. This is used, for example, when information that is relevant for the execution of an order arrives late – such as in response to a [request for additional information by the Fulfiller](#request-for-additional-information-by-fulfiller) – and needs to be persisted.
+
+There are several ways to do this:
+* The Order Placer updates the existing Request (see [Cancelling and Modifying Orders](cancelling-and-modifying-requests.html)).
+* The Task with all its `.input` is persisted (see [Task inputs and outputs](#task-inputs-and-outputs)).
+* The information is persisted independently in the clinical repository (e.g., QuestionnaireResponse) and referenced or retrieved dynamically via searches.
+* The supplementary information is referenced directly within the outcome, such as a DiagnosticReport (`DiagnosticReport.supportingInfo`, an R5 element; in R4 this would need an extension).
+* The Filler creates a secondary Request (e.g., filler-order) to carry the late-arriving context in `.supportingInfo`, referencing the original Placer order via `Request.basedOn`.
+
+Which of these mechanisms are used, and how, is defined in derived IGs.
+
 ### Sharing outcomes of clinical orders
 
 Many types of referrals and orders will involve the creation of output resources, either as a final product or as part of an intermediate workflow step. This could include a results report, individual observations, a proposed plan of care, a consult note, etc. 
