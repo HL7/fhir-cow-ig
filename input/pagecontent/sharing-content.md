@@ -27,7 +27,7 @@ Fulfiller systems may also update the Coordination Task's inputs with details of
 
 #### Request for additional information by fulfiller
 
-In some cases, a Fulfiller may determine that they need additional information from the Placer for fulfilling a request. See also the [Fulfillers requesting additional information](fulfiller-need-for-additional-info.html) pattern for details on how this is handled.
+In some cases, a Fulfiller may determine that they need additional information from the Placer before they can proceed with fulfilling a request. See the [Fulfillers requesting additional information](fulfiller-need-for-additional-info.html) pattern for details on how this is handled.
 
 ### Surfacing supporting information
 
