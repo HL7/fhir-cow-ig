@@ -11,3 +11,14 @@ Description: "This value set contains the COW business status codes, for use in 
 * COWTempCodeSystem#awaiting-interpretation 
 * COWTempCodeSystem#preliminary-outcome 
 * COWTempCodeSystem#awaiting-information
+* COWTempCodeSystem#patient-contacted
+* COWTempCodeSystem#scheduled
+* COWTempCodeSystem#patient-arrived
+* COWTempCodeSystem#exam-begun
+* COWTempCodeSystem#exam-complete
+* COWTempCodeSystem#waiting-for-info
+* COWTempCodeSystem#result-started
+* COWTempCodeSystem#complete
+* COWTempCodeSystem#bid-submitted
+* COWTempCodeSystem#bid-accepted
+* COWTempCodeSystem#service-approved
