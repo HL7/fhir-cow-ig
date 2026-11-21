@@ -29,6 +29,17 @@ Fulfiller systems may also update the Coordination Task's inputs with details of
 
 In some cases, a Fulfiller may determine that they need additional information from the Placer before they can proceed with fulfilling a request. See the [Fulfillers requesting additional information](fulfiller-need-for-additional-info.html) pattern for details on how this is handled.
 
+### Surfacing supporting information
+
+Surfacing supporting information is the ability for a third party, the Placer, or the Fulfiller to access the supporting information that was used for the authorization and/or the fulfillment of the request. *This is relevant, for example, when information that is relevant for the execution of an order arrives late and needs to be persisted.*
+
+*There are several options to do this:*
+* Reference the supplementary information directly within the diagnostic result artifact (e.g., `DiagnosticReport.supportingInfo`); this needs to be defined in the resulting related IGs.
+* The information is persisted independently in the clinical repository (e.g., QuestionnaireResponse) and referenced or retrieved dynamically via searches, as governed by rules in a derived order IG.
+* The Task with all its `.input` is persisted; this should be governed by rules in a derived order IG.
+* The Order Placer updates the existing Request, governed by rules in a derived order IG.
+* The Filler creates a secondary Request (e.g., filler-order) to carry the late-arriving context in `.supportingInfo`, referencing the original Placer order via `Request.basedOn`, governed by rules in a derived order IG.
+
 ### Sharing outcomes of clinical orders
 
 Many types of referrals and orders will involve the creation of output resources, either as a final product or as part of an intermediate workflow step. This could include a results report, individual observations, a proposed plan of care, a consult note, etc. 
